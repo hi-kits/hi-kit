@@ -1,0 +1,34 @@
+{
+  "name": "hi-kits",
+  "version": "1.0.0",
+  "description": "the UI base on web components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liulina0228/hi-kit.git"
+  },
+  "keywords": [
+    "ui",
+    "web-components",
+    "shadow-dom"
+  ],
+  "author": "liulina0228",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liulina0228/hi-kit/issues"
+  },
+  "homepage": "https://github.com/liulina0228/hi-kit#readme",
+  "devDependencies": {
+    "@web/dev-server": "^0.1.30",
+    "@webcomponents/shadycss": "^1.11.0",
+    "@webcomponents/template": "^1.5.0",
+    "@webcomponents/webcomponentsjs": "^2.6.0",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@types/trusted-types": "^2.0.2"
+  }
+}
