@@ -1,10 +1,14 @@
-import './xy-loading.js';
-import './xy-icon.js';
+/**
+ * button
+ * @class: HButton
+ * @version 0.0.1
+ * @author by fico on 2022/04/27
+ * @Copyright © 2022 hi-kits. All rights reserved.
+ * @description
+ */
 
-export default class XyButton extends HTMLElement {
-    //https://mladenplavsic.github.io/css-ripple-effect
-    static get observedAttributes() { return ['disabled','icon','loading','href','htmltype'] }
-
+export default class HButton extends HTMLElement {
+    
     constructor() {
         super();
         const shadowRoot = this.attachShadow({ mode: 'open' });
@@ -178,9 +182,7 @@ export default class XyButton extends HTMLElement {
         `
     }
 
-    focus() {
-        this.btn.focus();
-    }
+   
 
     get disabled() {
         return this.getAttribute('disabled')!==null;
@@ -226,15 +228,15 @@ export default class XyButton extends HTMLElement {
         return this.getAttribute('loading')!==null;
     }
 
-    set icon(value) {
+    set icon(value: string | any) {
         this.setAttribute('icon', value);
     }
 
-    set htmltype(value) {
+    set htmltype(value: string | any) {
         this.setAttribute('htmltype', value);
     }
 
-    set href(value) {
+    set href(value: string | any) {
         this.setAttribute('href', value);
     }
 
@@ -263,11 +265,8 @@ export default class XyButton extends HTMLElement {
     }
 
     connectedCallback() {
-        this.btn = this.shadowRoot.getElementById('btn');
-        this.ico = this.shadowRoot.getElementById('icon');
-        this.load = document.createElement('xy-loading');
-        this.load.style.color = 'inherit';
-        this.btn.addEventListener('mousedown',function(ev){
+        
+        this.addEventListener('mousedown',(ev: { clientX: number; clientY: number; }) =>{
             //ev.preventDefault();
             //ev.stopPropagation();
             if(!this.disabled){
@@ -276,12 +275,12 @@ export default class XyButton extends HTMLElement {
                 this.style.setProperty('--y',(ev.clientY - top)+'px');
             }
         })
-        this.addEventListener('click',function(ev){
+        this.addEventListener('click', (ev)=>{
             if(this.toggle){
                 this.checked=!this.checked;
             }
         })
-        this.btn.addEventListener('keydown', (ev) => {
+        this.addEventListener('keydown', (ev: { keyCode: any; stopPropagation: () => void; }) => {
             switch (ev.keyCode) {
                 case 13://Enter
                     ev.stopPropagation();
@@ -294,104 +293,24 @@ export default class XyButton extends HTMLElement {
         this.loading = this.loading;
     }
 
-    attributeChangedCallback (name, oldValue, newValue) {
-        if(name == 'disabled' && this.btn){
+    attributeChangedCallback (name: string, oldValue: any, newValue: null) {
+        if(name == 'disabled' && this){
             if(newValue!==null){
-                this.btn.setAttribute('disabled', 'disabled');
+                this.setAttribute('disabled', 'disabled');
                 if(this.href){
-                    this.btn.removeAttribute('href');
+                    this.removeAttribute('href');
                 }
             }else{
-                this.btn.removeAttribute('disabled');
+                this.removeAttribute('disabled');
                 if(this.href){
-                    this.btn.href = this.href;
+                    this.href = this.href;
                 }
             }
         }
-        if( name == 'loading' && this.btn){
-            if(newValue!==null){
-                this.shadowRoot.prepend(this.load);
-                this.btn.setAttribute('disabled', 'disabled');
-            }else{
-                this.shadowRoot.removeChild(this.load);
-                this.btn.removeAttribute('disabled');
-            }
-        }
-        if( name == 'icon' && this.ico){
-            this.ico.name = newValue;
-        }
-        if( name == 'href' && this.btn){
-            if(!this.disabled){
-                this.btn.href = newValue;
-            }
-        }
-        if( name == 'htmltype' && this.btn){
-            this.btn.type = newValue;
-        }
     }
 }
 
-if(!customElements.get('xy-button')){
-    customElements.define('xy-button', XyButton);
+if(!customElements.get('h-button')){
+    customElements.define('h-button', HButton);
 }
 
-class XyButtonGroup extends HTMLElement {
-    static get observedAttributes() { return ['disabled'] }
-    constructor() {
-        super();
-        const shadowRoot = this.attachShadow({ mode: 'open' });
-        shadowRoot.innerHTML = `
-        <style>
-        :host {
-            display:inline-flex;
-        }
-        ::slotted(xy-button:not(:first-of-type):not(:last-of-type)){
-            border-radius:0;
-        }
-        ::slotted(xy-button){
-            margin:0!important;
-        }
-        ::slotted(xy-button:not(:first-of-type)){
-            margin-left:-1px!important;
-        }
-        ::slotted(xy-button[type]:not([type="dashed"]):not(:first-of-type)){
-            margin-left:1px!important;
-        }
-        ::slotted(xy-button:first-of-type){
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0px;
-        }
-        ::slotted(xy-button:last-of-type){
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-        </style>
-        <slot></slot>
-        `
-    }
-
-
-    get disabled() {
-        return this.getAttribute('disabled')!==null;
-    }
-
-    set disabled(value) {
-        if(value===null||value===false){
-            this.removeAttribute('disabled');
-        }else{
-            this.setAttribute('disabled', '');
-        }
-    }
-
-    connectedCallback() {
-        
-    }
-
-    attributeChangedCallback (name, oldValue, newValue) {
-        
-    }
-}
-
-if(!customElements.get('xy-button-group')){
-    customElements.define('xy-button-group', XyButtonGroup);
-}

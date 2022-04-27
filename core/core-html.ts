@@ -1,5 +1,12 @@
 /**
  * @license
+ * Copyright 2022 hi-kits
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+// 重要提示：这些导入必须是纯类型
+/**
+ * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -175,7 +182,7 @@ export namespace LitUnstable {
     }
   }
 }
-// 调试日志窗口
+
 interface DebugLoggingWindow {
   // Even in dev mode, we generally don't want to emit these events, as that's
   // another level of cost, so only emit them when DEV_MODE is true _and_ when
@@ -184,9 +191,9 @@ interface DebugLoggingWindow {
 }
 
 /**
- * 用于可视化和记录Lit模板系统正在执行的操作。
+ * Useful for visualizing and logging insights into what the Lit template system is doing.
  *
- * 在prod模式构建之外编译。
+ * Compiled out of prod mode builds.
  */
 const debugLogEvent = DEV_MODE
   ? (event: LitUnstable.DebugLog.Entry) => {
@@ -202,9 +209,8 @@ const debugLogEvent = DEV_MODE
       );
     }
   : undefined;
-
-// 用于连接嵌套的beginRender和endRender事件
-// 在引发错误以阻止endRender事件发生时进行渲染
+// Used for connecting beginRender and endRender events when there are nested
+// renders when errors are thrown preventing an endRender event from being
 // called.
 let debugLogRenderId = 0;
 
@@ -2166,3 +2172,4 @@ if (DEV_MODE && globalThis.litHtmlVersions.length > 1) {
       `Loading multiple versions is not recommended.`
   );
 }
+
