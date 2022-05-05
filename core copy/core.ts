@@ -1,9 +1,7 @@
 /**
- * core
- * @version 0.0.1
- * @author by fico on 2022/04/27
- * @Copyright © 2022 hi-kits. All rights reserved.
- * @description
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
  */
 
 export * from "./element/custom-element.js";

@@ -5,11 +5,7 @@
  */
 
 // 重要提示：这些导入必须是纯类型
-/**
- * @license
- * Copyright 2017 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
+
 
 // IMPORTANT: these imports must be type-only
 import type {Directive, DirectiveResult, PartInfo} from './core-directive';
