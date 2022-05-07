@@ -1,26 +1,26 @@
 {
   "compilerOptions": {
-    "pretty": true,
-    "target": "ES2015",
+    "target": "es5",
     "module": "ES2015",
     "moduleResolution": "node",
     "importHelpers": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "declaration": true,
-    "declarationMap": true,
     "sourceMap": true,
     "noEmitOnError": true,
-    "skipLibCheck": true,
-    "preserveConstEnums": true,
-    "stripInternal": true,
-    "strict": true,
     "outDir": "dist/build",
-    "rootDir": "src",
-    "lib": [
-      "dom",
-      "esnext"
-    ]
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "rootDir": "./",
+    "lib": ["es2020", "DOM", "DOM.Iterable"],  
+    "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
+    "paths": {
+      "@ele": [ "hi-element/" ],
+      "@ele/*": [ "hi-element/*" ],
+      "@ui": [ "ui/" ],
+      "@ui/*": [ "ui/*" ]
+    }, 
   },
   "include": [
     "src"

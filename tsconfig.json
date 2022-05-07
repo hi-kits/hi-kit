@@ -30,7 +30,9 @@
     "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "paths": {
       "@ele": [ "core/hi-element/" ],
-      "@ele/*": [ "core/hi-element/*" ]
+      "@ele/*": [ "core/hi-element/*" ],
+      "@ui": [ "ui/" ],
+      "@ui/*": [ "ui/*" ]
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     //要包含的类型声明文件路径列表。

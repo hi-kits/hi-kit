@@ -1,10 +1,10 @@
 {
-  "name": "fast-todo-app",
+  "name": "ui",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && webpack --config webpack.config.js --mode=production",
+    "build": "webpack --config webpack.config.js ",
     "dev": "webpack-dev-server",
     "serve": "http-server -c-1"
   },

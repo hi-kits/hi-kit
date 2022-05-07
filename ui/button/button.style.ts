@@ -7,7 +7,7 @@
  * @description
  */
 
-import { HIElement, customElement, attr, css,  html } from '@ele/index';
+import { css } from '@ele/index';
 
 export const buttonStyles = css`
     :host{ 

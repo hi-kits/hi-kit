@@ -7,17 +7,36 @@
  * @description
  */
 
-import { HIElement, customElement, attr, css,  html, observable } from '@ele/index';
-import { btntemplate as template } from "./button.template";
+import { HIElement, customElement, attr, observable, ref, slotted,  html } from '@ele/index';
 import { buttonStyles as styles } from "./button.style";
+
+const template = html<Button>`
+    ${x => x.ishref ? 
+    `<a class="btn" type="${x.htmltype}" download="${x.download}" href="${x.download}" target="${x.target}" rel="${x.rel}"><slot></slot></a>` : 
+    `<button
+        class="btn"
+        ?autofocus="${x.autofocus}"
+        ?disabled="${x.disabled}"
+        form="${x.formId}"
+        formaction="${x.formaction}"
+        formenctype="${x.formenctype}"
+        formmethod="${x.formmethod}"
+        formnovalidate="${x.formnovalidate}"
+        formtarget="${x.formtarget}"
+        type="${x.type}"
+        ${ref("control")}
+    >
+        <span class="content" >
+            <slot ${slotted("defaultSlottedContent")}></slot>
+        </span>
+    </button>`
+    }
+ `;
 @customElement({
    name: 'h-button',
    template,
    styles
 })
-export class HButton extends HIElement {
-@attr greeting: string = 'Hello';
-}
 export class Button extends HIElement {
     // 代理
     proxy = document.createElement("input");
@@ -33,6 +52,23 @@ export class Button extends HIElement {
      */
     @attr({ mode: "boolean" })
     public autofocus!: boolean;
+
+    /**
+     * 确定元素是否应在页面加载时接收文档焦点
+     */
+    @attr htmltype!: boolean;
+    /**
+     * 下载链接
+     */
+    @attr download!: string;
+    /**
+     * 下载链接
+     */
+    @attr target!: string;
+    /**
+     * 下载链接
+     */
+    @attr rel!: string;
 
     /**
      * 要将元素关联到的窗体的id
