@@ -38,6 +38,7 @@
     "@types/trusted-types": "^2.0.2",
     "eslint": "^8.14.0",
     "http-server": "^14.1.0",
-    "ts-loader": "^9.3.0"
+    "ts-loader": "^9.3.0",
+    "tslib": "^2.4.0"
   }
 }

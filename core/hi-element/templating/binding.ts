@@ -150,7 +150,7 @@ function updatePropertyTarget(this: BindingBehavior, value: unknown): void {
     this.target[this.targetName!] = value;
 }
 
-function updateClassTarget(this: BindingBehavior, value: string): void {
+function updateClassTarget(this: BindingBehavior, value: string): any {
     const classVersions = this.classVersions || Object.create(null);
     const target = this.target;
     let version = this.version || 0;
@@ -298,10 +298,10 @@ export class BindingBehavior implements Behavior {
     public bindingObserver: BindingObserver | null = null;
 
     /** @internal */
-    public classVersions: Record<string, number>;
+    public classVersions!: Record<string, number>;
 
     /** @internal */
-    public version: number;
+    public version!: number;
 
     /** @internal */
     public target: any;

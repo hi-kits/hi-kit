@@ -321,4 +321,4 @@ export class Button extends HIElement {
         }
     };
 }
-
+HIElement.define(Button);

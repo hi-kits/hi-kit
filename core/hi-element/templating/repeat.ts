@@ -70,7 +70,7 @@ function bindWithPositioning(
 export class RepeatBehavior<TSource = any> implements Behavior, Subscriber {
     private source: TSource | null = null;
     private views: SyntheticView[] = [];
-    private template: SyntheticViewTemplate;
+    private template!: SyntheticViewTemplate;
     private templateBindingObserver: BindingObserver<TSource, SyntheticViewTemplate>;
     private items: readonly any[] | null = null;
     private itemsObserver: Notifier | null = null;

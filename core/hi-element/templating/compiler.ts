@@ -21,7 +21,7 @@ let sharedContext: CompilationContext | null = null;
 class CompilationContext {
     public targetIndex!: number;
     public behaviorFactories!: NodeBehaviorFactory[];
-    public directives: ReadonlyArray<HTMLDirective>;
+    public directives!: ReadonlyArray<HTMLDirective>;
 
     public addFactory(factory: NodeBehaviorFactory): void {
         factory.targetIndex = this.targetIndex;

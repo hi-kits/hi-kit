@@ -25,7 +25,7 @@
 * npm
 
 ```shell
-npm i hi-kitss
+npm i hi-kits
 ```
 
 
