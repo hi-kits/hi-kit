@@ -11,26 +11,15 @@ import { HIElement, customElement, attr, observable, ref, slotted,  html } from 
 import { buttonStyles as styles } from "./button.style";
 
 const template = html<Button>`
-    ${x => x.ishref ? 
-    `<a class="btn" type="${x.htmltype}" download="${x.download}" href="${x.download}" target="${x.target}" rel="${x.rel}"><slot></slot></a>` : 
-    `<button
+    
+    <button
         class="btn"
-        ?autofocus="${x.autofocus}"
-        ?disabled="${x.disabled}"
-        form="${x.formId}"
-        formaction="${x.formaction}"
-        formenctype="${x.formenctype}"
-        formmethod="${x.formmethod}"
-        formnovalidate="${x.formnovalidate}"
-        formtarget="${x.formtarget}"
-        type="${x.type}"
-        ${ref("control")}
+
     >
         <span class="content" >
-            <slot ${slotted("defaultSlottedContent")}></slot>
+           dddddd
         </span>
-    </button>`
-    }
+    </button>
  `;
 @customElement({
    name: 'h-button',

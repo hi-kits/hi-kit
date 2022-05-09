@@ -65,7 +65,7 @@ export const isFunction = (value: any) => toString(value) == "[object Function]"
  * @param {any} value
  * @example utilscore.getType(null) // => "null"
  */
-export const getType = (value: any) => toString(value).match(/\s([a-z]+)/i)[1].toLocaleLowerCase();
+// export const getType = (value: any) => toString(value).match(/\s([a-z]+)/i)[1].toLocaleLowerCase();
 
 /**
  * 判断元素是否为空

@@ -97,10 +97,11 @@ export abstract class ElementStyles {
         return this;
     }
 
-    /**
+  /**
      * Create ElementStyles from ComposableStyles.
      */
-    public static readonly create: ElementStyleFactory = (() => {
+  // @ts-ignore
+  public static readonly create: ElementStyleFactory = (() => {
         if (DOM.supportsAdoptedStyleSheets) {
             const styleSheetCache = new Map();
             return (styles: ComposableStyles[]) =>
@@ -116,11 +117,12 @@ export abstract class ElementStyles {
 function reduceStyles(
     styles: ReadonlyArray<ComposableStyles>
 ): (string | CSSStyleSheet)[] {
-    return styles
+  return styles
         .map((x: ComposableStyles) =>
             x instanceof ElementStyles ? reduceStyles(x.styles) : [x]
         )
-        .reduce((prev: string[], curr: string[]) => prev.concat(curr), []);
+    // @ts-ignore
+    .reduce((prev: string[], curr: string[]) => prev.concat(curr), []);
 }
 
 function reduceBehaviors(
@@ -128,6 +130,8 @@ function reduceBehaviors(
 ): ReadonlyArray<Behavior> | null {
     return styles
         .map((x: ComposableStyles) => (x instanceof ElementStyles ? x.behaviors : null))
+
+      // @ts-ignore
         .reduce((prev: Behavior[] | null, curr: Behavior[] | null) => {
             if (curr === null) {
                 return prev;

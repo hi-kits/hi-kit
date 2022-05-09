@@ -207,9 +207,7 @@ export function hslToHsv(h: any, s: number, l: number) {
  * @param hex Hexadecimal string of rgb colors, can have length 3 or 6.
  * @return {number[]} HSV values.
  */
-export function hexToHsv(hex: { match: (arg0: RegExp) => any[]; }) {
-    return rgbToHsv(...hex.match(/.{2}/g).map(v => parseInt(v, 16)));
-}
+
 
 /**
  * Try's to parse a string which represents a color to a HSV array.
@@ -217,88 +215,3 @@ export function hexToHsv(hex: { match: (arg0: RegExp) => any[]; }) {
  * @param str
  * @return {*}
  */
-export function parseToHSVA(str: string) {
-    // Check if string is a color-name
-    str = str.match(/^[a-zA-Z]+$/) ? standardizeColor(str) : str;
-
-    // Regular expressions to match different types of color represention
-    const regex = {
-        cmyk: /^cmyk[\D]+([\d.]+)[\D]+([\d.]+)[\D]+([\d.]+)[\D]+([\d.]+)/i,
-        rgba: /^((rgba)|rgb)[\D]+([\d.]+)[\D]+([\d.]+)[\D]+([\d.]+)[\D]*?([\d.]+|$)/i,
-        hsla: /^((hsla)|hsl)[\D]+([\d.]+)[\D]+([\d.]+)[\D]+([\d.]+)[\D]*?([\d.]+|$)/i,
-        hsva: /^((hsva)|hsv)[\D]+([\d.]+)[\D]+([\d.]+)[\D]+([\d.]+)[\D]*?([\d.]+|$)/i,
-        hexa: /^#?(([\dA-Fa-f]{3,4})|([\dA-Fa-f]{6})|([\dA-Fa-f]{8}))$/i
-    };
-
-    /**
-     * Takes an Array of any type, convert strings which represents
-     * a number to a number an anything else to undefined.
-     * @param array
-     * @return {*}
-     */
-    const numarize = (array: any[]): any => array.map(v => /^(|\d+)\.\d+|\d+$/.test(v) ? Number(v) : undefined);
-
-    let match;
-    invalid: for (const type in regex) {
-
-        // Check if current scheme passed
-        if (!(match = regex[type].exec(str)))
-            continue;
-
-        // match[2] does only contain a truly value if rgba, hsla, or hsla got matched
-        //const alpha = !!match[2];
-
-        // Try to convert
-        switch (type) {
-            case 'cmyk': {
-                let [, c, m, y, k] = numarize(match);
-
-                if (c > 100 || m > 100 || y > 100 || k > 100)
-                    break invalid;
-
-                return {values: cmykToHsv(c, m, y, k), type};
-            }
-            case 'rgba': {
-                let [, , , r, g, b, a] = numarize(match);
-
-                if (r > 255 || g > 255 || b > 255 || a < 0 || a > 1)
-                    break invalid;
-
-                return {values: [...rgbToHsv(r, g, b), a], a, type};
-            }
-            case 'hexa': {
-                let [, hex] = match;
-
-                if (hex.length === 4 || hex.length === 3) {
-                    hex = hex.split('').map(v => v + v).join('');
-                }
-
-                const raw = hex.substring(0, 6);
-                let a = hex.substring(6);
-
-                // Convert 0 - 255 to 0 - 1 for opacity
-                a = a ? (parseInt(a, 16) / 255) : undefined;
-
-                return {values: [...hexToHsv(raw), a], a, type};
-            }
-            case 'hsla': {
-                let [, , , h, s, l, a] = numarize(match);
-
-                if (h > 360 || s > 100 || l > 100 || a < 0 || a > 1)
-                    break invalid;
-
-                return {values: [...hslToHsv(h, s, l), a], a, type};
-            }
-            case 'hsva': {
-                let [, , , h, s, v, a] = numarize(match);
-
-                if (h > 360 || s > 100 || v > 100 || a < 0 || a > 1)
-                    break invalid;
-
-                return {values: [h, s, v, a], a, type};
-            }
-        }
-    }
-
-    return {values: null, type: null};
-}

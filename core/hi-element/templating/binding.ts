@@ -75,7 +75,7 @@ function triggerUnbind(this: BindingBehavior): void {
     this.context = null;
 }
 
-function updateAttributeTarget(this: BindingBehavior, value: unknown): void {
+function updateAttributeTarget(this: BindingBehavior, value: any): void {
     DOM.setAttribute(this.target, this.targetName!, value);
 }
 

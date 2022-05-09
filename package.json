@@ -6,7 +6,12 @@
   "scripts": {
     "start": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "http-server -c-1"
+    "serve": "http-server -c-1",
+    "dev:ex": "webpack-dev-server --mode development --config build/webpack.ex.dev.js",
+    "build:ex": "webpack --mode production --config build/webpack.ex.prod.js",
+    "build:ele": "webpack --mode production --config build/webpack.ele.js",
+    "build:ui": "webpack --mode production --config build/webpack.ui.js",
+    "build": "npm run build:ele && npm run build:ui"
   },
   "repository": {
     "type": "git",
@@ -29,16 +34,20 @@
     "@webcomponents/shadycss": "^1.11.0",
     "@webcomponents/template": "^1.5.0",
     "@webcomponents/webcomponentsjs": "^2.6.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "eslint": "^8.14.0",
+    "html-webpack-plugin": "^5.5.0",
+    "http-server": "^14.1.0",
+    "ts-loader": "^9.3.0",
     "typescript": "^4.6.3",
     "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0",
+    "webpack-merge": "^5.8.0"
   },
   "dependencies": {
     "@polymer/polymer": "^3.4.1",
     "@types/trusted-types": "^2.0.2",
-    "eslint": "^8.14.0",
-    "http-server": "^14.1.0",
-    "ts-loader": "^9.3.0",
     "tslib": "^2.4.0"
   }
 }
