@@ -10,14 +10,12 @@
 import { HIElement, customElement, attr, observable, ref, slotted,  html } from '@ele/index';
 import { buttonStyles as styles } from "./button.style";
 
-const template = html<Button>`
-    
+const template = html<Button>`    
     <button
         class="btn"
-
     >
         <span class="content" >
-           dddddd
+           呃呃呃呃呃<slot></slot>
         </span>
     </button>
  `;
@@ -218,12 +216,12 @@ export class Button extends HIElement {
         this.proxy.setAttribute("type", this.type);
         this.handleUnsupportedDelegatesFocus();
 
-        const elements = Array.from(this.control?.children) as HTMLSpanElement[];
-        if (elements) {
-            elements.forEach((span: HTMLSpanElement) => {
-                span.addEventListener("click", this.handleClick);
-            });
-        }
+        // const elements = Array.from(this.control?.children) as HTMLSpanElement[];
+        // if (elements) {
+        //     elements.forEach((span: HTMLSpanElement) => {
+        //         span.addEventListener("click", this.handleClick);
+        //     });
+        // }
     }
 
     /**
@@ -310,4 +308,4 @@ export class Button extends HIElement {
         }
     };
 }
-HIElement.define(Button);
+// HIElement.define(Button);

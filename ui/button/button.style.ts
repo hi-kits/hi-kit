@@ -8,22 +8,25 @@
  */
 
 import { css } from '@ele/index';
+import { hiConfig } from "../config";
 
 export const buttonStyles = css`
     :host{ 
         position:relative; 
         display:inline-flex; 
-        padding: .25em .625em;
+        padding: 6px 12px;
         box-sizing:border-box; 
         vertical-align: middle;
         line-height: 1.8;
+        width: 120px;
+        height:36px;
         overflow:hidden; 
         align-items:center;
         justify-content: center;
-        border:1px solid var(--borderColor,rgba(0,0,0,.2)); 
+        border:1px solid ${hiConfig.borderColor}; 
         font-size: 14px; 
-        color: var(--fontColor,#333);  
-        border-radius: var(--borderRadius,.25em); 
+        color: ${hiConfig.color};  
+        border-radius: ${hiConfig.borderRadius}; 
         transition:background .3s,box-shadow .3s,border-color .3s,color .3s;
     }
     :host([shape="circle"]){ 
@@ -52,7 +55,7 @@ export const buttonStyles = css`
     :host(:not([type="primary"]):not([type="danger"]):not([disabled]):hover),
     :host(:not([type="primary"]):not([type="danger"]):focus-within),
     :host([type="flat"][focus]){ 
-        color:var(--themeColor,#42b983); 
+        color: ${hiConfig.color}; 
         border-color: var(--themeColor,#42b983); 
     }
     :host(:not([type="primary"]):not([type="danger"])) .btn::after{ 

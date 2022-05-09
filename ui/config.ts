@@ -9,7 +9,7 @@
 
 export const hiConfig = {
     /*文字颜色*/
-    fontColor: '#333',
+    color: '#333',
     /*边框颜色，按钮、输入框*/
     borderColor: '#d9d9d9',
     /*圆角*/
@@ -24,6 +24,10 @@ export const hiConfig = {
     infoColor: '#1890ff',
     /*危险色*/
     dangerColor: '#ff7875',
+    /*被禁用*/
+    disabled: {
+        opacity: 0.3,
+    },
     /**
      * 按钮配置
     */

@@ -7,37 +7,21 @@
  * @description
  */
 
- import { HIElement, customElement, attr, observable, ref, slotted,  html } from '@ele/index';
- import { buttonStyles as styles } from "./checkbox.style";
- 
- const template = html<Checkbox>`
-     ${x => x.ishref ? 
-     `<a class="btn" type="${x.htmltype}" download="${x.download}" href="${x.download}" target="${x.target}" rel="${x.rel}"><slot></slot></a>` : 
-     `<button
-         class="btn"
-         ?autofocus="${x.autofocus}"
-         ?disabled="${x.disabled}"
-         form="${x.formId}"
-         formaction="${x.formaction}"
-         formenctype="${x.formenctype}"
-         formmethod="${x.formmethod}"
-         formnovalidate="${x.formnovalidate}"
-         formtarget="${x.formtarget}"
-         type="${x.type}"
-         ${ref("control")}
-     >
-         <span class="content" >
-             <slot ${slotted("defaultSlottedContent")}></slot>
-         </span>
-     </button>`
-     }
-  `;
- @customElement({
+import { HIElement, customElement, attr, observable, ref, slotted,  html } from '@ele/index';
+import { buttonStyles as styles } from "./checkbox.style";
+
+const template = html<Checkbox>`
+    <label for="checkbox">
+    <span class="cheked"><svg class="icon" style="fill: #fff;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1408"><path d="M700.7232 331.008l73.984 70.7584-329.5744 344.7808-192.6656-190.1056 71.936-72.9088L443.0336 600.576z"></path></svg></span>
+    <slot></slot>
+    </label>
+`;
+@customElement({
     name: 'h-checkbox',
     template,
     styles
- })
- export class Checkbox extends HIElement {
+})
+export class Checkbox extends HIElement {
      // 代理
      proxy = document.createElement("input");
      readonly form!: HTMLFormElement;
@@ -229,12 +213,12 @@
          this.proxy.setAttribute("type", this.type);
          this.handleUnsupportedDelegatesFocus();
  
-         const elements = Array.from(this.control?.children) as HTMLSpanElement[];
-         if (elements) {
-             elements.forEach((span: HTMLSpanElement) => {
-                 span.addEventListener("click", this.handleClick);
-             });
-         }
+        //  const elements = Array.from(this.control?.children) as HTMLSpanElement[];
+        //  if (elements) {
+        //      elements.forEach((span: HTMLSpanElement) => {
+        //          span.addEventListener("click", this.handleClick);
+        //      });
+        //  }
      }
  
      /**
@@ -321,4 +305,5 @@
          }
      };
  }
+//  HIElement.define(Checkbox);
 
