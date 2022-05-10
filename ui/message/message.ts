@@ -11,14 +11,13 @@ import { HIElement, customElement, attr, observable, ref, slotted,  html } from 
 import { buttonStyles as styles } from "./message.style";
 
 const template = html<Message>`
-    <div class="message">
-        <slot></slot>
+    <div class="message">短发短发
+        <slot>dfsdf</slot>
     </div>
  `;
 @customElement({
    name: 'h-message',
    template,
-   styles
 })
 export class Message extends HIElement {
 
@@ -53,103 +52,98 @@ export class Message extends HIElement {
     show!: boolean;
     timer!: any;
 
-    /**
-     * 当自定义元素第一次被连接到文档DOM时被调用
-     * @internal
-     */
-    public connectedCallback(): void {
-        super.connectedCallback();
-
-    }
-
-    /**
-     * 当自定义元素与文档DOM断开连接时被调用。
-     * 被移除的元素的 disconnectedCallback 会被同步触发，在 disconnectedCallback 中可以做一些清理工作，例如移除事件监听。在那之后新创建的 t_fendt 元素的 connectedCallback 将会被调用。
-     * @internal
-     */
-    public disconnectedCallback(): void {
-        super.disconnectedCallback();
-
-        
-    }
-
-    /**
-     * Prevent events to propagate if disabled and has no slotted content wrapped in HTML elements
-     * 如果已禁用且HTML元素中没有包装的时隙内容，则防止事件传播
-     * @internal
-     */
-    private handleClick = (e: Event) => {
-
-    };
+   
+    // static definition = {
+    //     name: 'h-message',
+    //     template,
+    //     styles,
+    //     attributes: [
+    //       'value', // same attr/prop
+    //       { attribute: 'some-attr', property: 'someAttr' }, // different attr/prop
+    //     ]
+    //   };
+    
+    //   value = 'sdfsdfsdf';
+    //   someAttr = '';
 
 }
 
+
+
+// HIElement.define(Message);
 export default {
-
-    info: (text='',duration,onclose) => {
+    info: () => {
         const message = new Message();
-        message.timer && clearTimeout(message.timer);
-        message.type = 'info';
-        message.textContent = text;
-        message.show = true;
-        message.onclose = onclose;
-        message.timer = setTimeout(()=>{
-            message.show = false;
-        },duration||3000);
+        document.body.appendChild(message);
         return message;
     },
-
-    success: function(text='',duration,onclose) {
-        const message = new Message();
-        message.timer && clearTimeout(message.timer);
-        message.type = 'success';
-        message.textContent = text;
-        message.show = true;
-        message.onclose = onclose;
-        message.timer = setTimeout(()=>{
-            message.show = false;
-        },duration||3000);
-        return message;
-    },
-
-    error: function(text='',duration,onclose) {
-        const message = new Message();
-        message.timer && clearTimeout(message.timer);
-        message.type = 'error';
-        message.textContent = text;
-        message.show = true;
-        message.onclose = onclose;
-        message.timer = setTimeout(()=>{
-            message.show = false;
-        },duration||3000);
-        return message;
-    },
-
-    warning: function(text='',duration,onclose) {
-        const message = new Message();
-        message.timer && clearTimeout(message.timer);
-        message.type = 'warning';
-        message.textContent = text;
-        message.show = true;
-        message.onclose = onclose;
-        message.timer = setTimeout(()=>{
-            message.show = false;
-        },duration||3000);
-        return message;
-    },
-
-    loading: function(text='',duration=0,onclose) {
-        const message = new Message();
-        message.timer && clearTimeout(message.timer);
-        message.type = 'loading';
-        message.textContent = text;
-        message.show = true;
-        message.onclose = onclose;
-        if(duration!==0){
-            message.timer = setTimeout(()=>{
-                message.show = false;
-            },duration||3000);
-        }
-        return message;
-    }
 }
+// export default {
+
+//     info: (text='',duration,onclose) => {
+//         const message = new Message();
+//         message.timer && clearTimeout(message.timer);
+//         message.type = 'info';
+//         message.textContent = text;
+//         message.show = true;
+//         message.onclose = onclose;
+//         message.timer = setTimeout(()=>{
+//             message.show = false;
+//         },duration||3000);
+//         return message;
+//     },
+
+//     success: function(text='',duration,onclose) {
+//         const message = new Message();
+//         message.timer && clearTimeout(message.timer);
+//         message.type = 'success';
+//         message.textContent = text;
+//         message.show = true;
+//         message.onclose = onclose;
+//         message.timer = setTimeout(()=>{
+//             message.show = false;
+//         },duration||3000);
+//         return message;
+//     },
+
+//     error: function(text='',duration,onclose) {
+//         const message = new Message();
+//         message.timer && clearTimeout(message.timer);
+//         message.type = 'error';
+//         message.textContent = text;
+//         message.show = true;
+//         message.onclose = onclose;
+//         message.timer = setTimeout(()=>{
+//             message.show = false;
+//         },duration||3000);
+//         return message;
+//     },
+
+//     warning: function(text='',duration,onclose) {
+//         const message = new Message();
+//         message.timer && clearTimeout(message.timer);
+//         message.type = 'warning';
+//         message.textContent = text;
+//         message.show = true;
+//         message.onclose = onclose;
+//         message.timer = setTimeout(()=>{
+//             message.show = false;
+//         },duration||3000);
+//         return message;
+//     },
+
+//     loading: function(text='',duration=0,onclose) {
+//         const message = new Message();
+//         message.timer && clearTimeout(message.timer);
+//         message.type = 'loading';
+//         message.textContent = text;
+//         message.show = true;
+//         message.onclose = onclose;
+//         if(duration!==0){
+//             message.timer = setTimeout(()=>{
+//                 message.show = false;
+//             },duration||3000);
+//         }
+//         return message;
+//     }
+// }

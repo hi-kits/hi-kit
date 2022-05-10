@@ -11,7 +11,7 @@ import { css } from '@ele/index';
 import { hiConfig } from "../config";
 
 export const buttonStyles = css`
-    :host{ 
+    :host{
         position:relative; 
         display:inline-flex; 
         padding: 6px 12px;
