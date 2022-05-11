@@ -32,6 +32,8 @@ export const hiConfig = {
      * 按钮配置
     */
     button: {
+        /* 背景色 */
+        background: '#d9d9d9',
         size: 'large'
     }
 }
