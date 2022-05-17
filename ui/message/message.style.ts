@@ -32,7 +32,7 @@ export const buttonStyles = css`
         background: #fff;
         border-radius: 3px;
         transform: translateY(-100%);
-        transition:.3s transform cubic-bezier(.645, .045, .355, 1);
+        transition: 3s transform cubic-bezier(.645, .045, .355, 1);
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         pointer-events:all;
     }

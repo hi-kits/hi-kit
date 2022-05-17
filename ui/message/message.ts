@@ -18,21 +18,19 @@ const template = html<Message>`
 @customElement({
    name: 'h-message',
    template,
+   styles
 })
 export class Message extends HIElement {
 
 
     /**
-     * The button type.
-     * button 的类型。可选值：
-     * submit:  此按钮将表单数据提交给服务器。如果未指定属性，或者属性动态更改为空值或无效值，则此值为默认值。
-     * reset:  此按钮重置所有组件为初始值。
-     * button: 此按钮没有默认行为。它可以有与元素事件相关的客户端脚本，当事件出现时可触发。
-     * menu: 此按钮打开一个由指定<menu>元素进行定义的弹出菜单。
-     *
-     * @public
-     * @remarks
-     * HTML Attribute: type
+     * The Message Service type.
+     * Service 的类型。可选值：
+     * info:  默认的消息提示。
+     * success:  成功的消息提示。
+     * error: 失败的消息提示。
+     * warning: 警告的消息提示。
+     * loading: 加载中的消息提示。
      */
 
     @attr type!: 'info' | 'success' | 'error' | 'warning' | 'loading';
@@ -40,19 +38,42 @@ export class Message extends HIElement {
 
 
     /**
-     *
-     * Default slotted content
-     *
+     * 显示状态
      * @public
      * @remarks
      */
-
+    private _show!: boolean;
+    get show(): boolean {
+        return this._show;
+    }
+    set show(value: boolean) {
+        this._show = value;
+        if(value===null||value===false){
+            this.removeAttribute('show');
+        }else{
+            this.setAttribute('show', '');
+        }
+    }
     @observable
-    public defaultSlottedContent: HTMLElement[] = [];
-    show!: boolean;
+    
+    // public get show(): boolean {
+    //     return this._show;
+    // }
+    // public set show(value: boolean) {
+    //     this._show = value;
+    // }
     timer!: any;
 
-   
+    connectedCallback() {
+        super.connectedCallback();
+        this.shadowRoot!.addEventListener('transitionend',(ev:any)=>{
+            if(ev.propertyName === 'transform' && !this.show){
+                messageContent.removeChild(this);
+                this.dispatchEvent(new CustomEvent('close'));
+            }
+        })
+    }
+
     // static definition = {
     //     name: 'h-message',
     //     template,
@@ -68,14 +89,24 @@ export class Message extends HIElement {
 
 }
 
-
+let messageContent: any = document.getElementById('MessageContent');
+if(!messageContent){
+    messageContent = document.createElement('div');
+    messageContent.id = 'MessageContent';
+    messageContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:10px; z-index:51;';
+    document.body.appendChild(messageContent);
+}
 
 // HIElement.define(Message);
 export default {
     info: () => {
         const message = new Message();
-        document.body.appendChild(message);
-        return message;
+        messageContent.appendChild(message);
+        message.show = true;
+        message.textContent = '';
+        message.timer = setTimeout(()=>{
+            message.show = false;
+        }, 3000);
     },
 }
 // export default {
