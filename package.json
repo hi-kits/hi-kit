@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dist": "yarn build:tsc && yarn build:rollup",
     "build:tsc": "tsc -p ./tsconfig.json",
-    "build:rollup": "rollup -c",
+    "build:rollup": "rollup -c --watch",
     "dev": "webpack-dev-server  --hot --mode development"
   },
   "keywords": [],

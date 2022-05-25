@@ -64,13 +64,18 @@ const kitUmdConfig = (
     name) => ({
     input: `packages/${name}/index.ts`,
     output: [{
-      file: `dist/umd/${name}/index.umd.js`,
+      file: `dist/umd/${name}/${name}.umd.js`,
       format:'umd',
       name,
     }, 
     {
-        file: `dist/esm/${name}/index.js`,
+        file: `dist/esm/${name}/${name}.js`,
         format: "esm",
+    },
+    {
+        file: `dist/esm/${name}/${name}.min.js`,
+        format: "esm",
+        plugins: [terser()],
     },
 ],
     plugins: [...kitCommonPluginList],
@@ -81,8 +86,13 @@ export default [
         input: './packages/index.ts',
         output: [
             {
-                file: "dist/esm/index.js",
+                file: "dist/esm/hi-kit.js",
                 format: "esm",
+            },
+            {
+                file: "dist/esm/hi-kit.min.js",
+                format: "esm",
+                plugins: [terser()],
             },
             {
                 file: "dist/umd/index.js",
