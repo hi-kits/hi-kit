@@ -1,1 +1,1 @@
-import "../../dist/esm"
+import "../../dist/esm/hi-kit"
