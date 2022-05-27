@@ -1,6 +1,6 @@
 /**
- * checkbox Group
- * @class: HCheckboxGroup
+ * CheckboxGroup
+ * @class: CheckboxGroup
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -9,7 +9,7 @@
 
 
 import { HIElement, customElement,  html } from 'hi-element';
-import { buttonGroupStyles as styles } from "./checkbox.group.style";
+import { CheckboxGroupStyles as styles } from "./checkbox.group.style";
   
  
 const template = html<CheckboxGroup>`<slot></slot>`;

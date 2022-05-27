@@ -1,18 +1,18 @@
 /**
- * button
- * @class: HButton
+ * Message
+ * @class: Message
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
 
-import { HIElement, customElement, attr, observable, ref, slotted,  html } from '@ele/index';
-import { buttonStyles as styles } from "./message.style";
+import { HIElement, customElement, attr, observable, ref, slotted,  html } from 'hi-element';
+import { MessageStyles as styles } from "./message.style";
 
 const template = html<Message>`
-    <div class="message">短发短发
-        <slot>dfsdf</slot>
+    <div class="message">
+        <slot>dfsd222f</slot>
     </div>
  `;
 @customElement({

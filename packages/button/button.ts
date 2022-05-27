@@ -1,6 +1,6 @@
 /**
- * button
- * @class: HButton
+ * Button
+ * @class: Button
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -9,7 +9,7 @@
 
 import { HIElement, customElement, attr, observable, ref, slotted,  html } from 'hi-element';
 
-import { buttonStyles as styles } from "./button.style";
+import { ButtonStyles as styles } from "./button.style";
 
 const template = html<Button>`    
     <button

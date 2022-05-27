@@ -1,1 +1,1 @@
-import "../../dist/esm"
+import "../../packages/index"

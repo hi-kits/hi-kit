@@ -1,6 +1,6 @@
 /**
- * button
- * @class: HButton
+ * CheckboxStyles
+ * @const: CheckboxStyles
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -9,7 +9,7 @@
 
 import { css } from 'hi-element';
 
-export const buttonStyles = css`
+export const CheckboxStyles = css`
     :host{ 
         display:inline-block;
         font-size:14px;

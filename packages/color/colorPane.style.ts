@@ -1,15 +1,15 @@
 /**
- * button
- * @class: HButton
+ * ColorPaneStyles
+ * @const: ColorPaneStyles
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
 
-import { css } from '@ele/index';
+import { css } from 'hi-element';
 
-export const buttonStyles = css`
+export const ColorPaneStyles = css`
     
 :host{
     display: block;

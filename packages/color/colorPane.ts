@@ -1,14 +1,14 @@
 /**
- * button
- * @class: HButton
+ * ColorPane
+ * @class: ColorPane
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
 
-import { HIElement, customElement, attr, observable, ref, slotted,  html } from '@ele/index';
-import { buttonStyles as styles } from "./colorPicker.style";
+import { HIElement, customElement, attr, observable, ref, slotted,  html } from 'hi-element';
+import { ColorPaneStyles as styles } from "./colorPane.style";
 
 const Material_colors = ['#f44336','#E91E63','#9C27B0','#673AB7','#3F51B5','#2196F3','#03A9F4','#00BCD4','#009688','#4CAF50','#8BC34A','#CDDC39','#FFEB3B','#FFC107','#FF9800','#FF5722','#795548','#9E9E9E','#607D8B','rgba(0,0,0,.65)','transparent']
 
@@ -53,36 +53,30 @@ const template = html<ColorPane>`
 
  `;
 @customElement({
-   name: 'h-message',
+   name: 'h-colorPane',
    template,
    styles
 })
 export class ColorPane extends HIElement {
 
 
-    /**
-     * 显示状态
-     * @public
-     * @remarks
-     */
-    private _show!: boolean;
-    get show(): boolean {
-        return this._show;
-    }
-    set show(value: boolean) {
-        this._show = value;
-        if(value===null||value===false){
-            this.removeAttribute('show');
-        }else{
-            this.setAttribute('show', '');
-        }
-    }
+
+  connectedCallback() {
+      
+     
+  }
+
+  mousemove = (ev) => {
+
+  }
+
+  mouseup = () => {
+
+  }
 
 
-    connectedCallback() {
-        super.connectedCallback();
-        
-    }
+
+
 
 
 

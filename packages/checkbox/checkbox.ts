@@ -1,6 +1,6 @@
 /**
- * checkbox
- * @class: HCheckbox
+ * Checkbox
+ * @class: Checkbox
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -8,7 +8,7 @@
  */
 
 import { HIElement, customElement, attr, observable, ref, slotted,  html } from 'hi-element';
-import { buttonStyles as styles } from "./checkbox.style";
+import { CheckboxStyles as styles } from "./checkbox.style";
 
 const template = html<Checkbox>`
     <label for="checkbox">

@@ -1,6 +1,6 @@
 /**
- * button
- * @class: HButton
+ * ButtonStyles
+ * @const: ButtonStyles
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -10,7 +10,7 @@
 import { css } from 'hi-element';
 import { hiConfig } from "../config";
 
-export const buttonStyles = css`
+export const ButtonStyles = css`
     :host{
         position:relative; 
         display:inline-flex; 
