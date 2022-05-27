@@ -16,7 +16,7 @@ const template = html<Button>`
         class="btn"
     >
         <span class="content" >
-           呃呃呃呃呃<slot></slot>
+           <slot></slot>
         </span>
     </button>
  `;

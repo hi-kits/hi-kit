@@ -34,14 +34,24 @@
                 <p></p>
                 <h-button>33333</h-button>
             </div>
-            <h2>按钮 <span>checkbox</span></h2>
+            <h2>复选框 <span>checkbox</span></h2>
             <div>
-    
-                <h-checkBox>123</h-checkBox>
+                <h-checkbox-group name="books" required min="2" max="3" defaultvalue="Angular">
+                    <h-checkbox>React</h-checkbox>
+                    <h-checkbox>Vue</h-checkbox>
+                    <h-checkbox>Angular</h-checkbox>
+                    <h-checkbox>Flutter</h-checkbox>
+                    <h-checkbox>Swift</h-checkbox>
+                </h-checkbox-group>
+                <h-checkbox>123</h-checkbox>
             </div>
             <h2>消息 <span>message</span></h2>
             <div>
-                <h-message>消息</h-message>
+                <h-button onclick="Message.info('This a info message')">info</h-button>
+                <h-button onclick="Message.success('This a success message')">success</h-button>
+                <h-button onclick="Message.error('This a error message')">error</h-button>
+                <h-button onclick="Message.warning('This a warning message')">warning</h-button>
+                <h-button onclick="Message.loading('This a loading message')">loading</h-button>
             </div>
             <h2>栅格 <span>grid</span></h2>
             <div>

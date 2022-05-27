@@ -11,6 +11,7 @@ import { HIElement, customElement, attr, observable, ref, slotted,  html } from 
 import { CheckboxStyles as styles } from "./checkbox.style";
 
 const template = html<Checkbox>`
+    <input type="checkbox" id="checkbox">
     <label for="checkbox">
     <span class="cheked"><svg class="icon" style="fill: #fff;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1408"><path d="M700.7232 331.008l73.984 70.7584-329.5744 344.7808-192.6656-190.1056 71.936-72.9088L443.0336 600.576z"></path></svg></span>
     <slot></slot>
