@@ -39,11 +39,11 @@ const kitCommonPluginList = [
         extensions,
         babelHelpers: 'runtime',
         presets: [
-          ["@babel/preset-env", { loose: true }],
+          "@babel/preset-env",
           "@babel/preset-typescript",
         ],
         plugins: [
-          ['@babel/plugin-proposal-class-properties', { loose: true }],
+          ['@babel/plugin-proposal-class-properties'],
           ['@babel/plugin-proposal-decorators', { legacy: true }],
           ["@babel/plugin-transform-runtime"]
         ]
