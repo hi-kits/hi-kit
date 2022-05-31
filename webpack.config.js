@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './examples/src/main.ts',
   output: {
-    path: path.resolve(process.cwd(), './hi-kit'),
-    filename: '[name].js'
+    path: path.resolve(process.cwd(), '../dist'),
+    filename: '[name].js',
   },
   resolve: {
     extensions: ['.ts', '.js'],
@@ -27,7 +27,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './examples/index.html',
       filename: './index.html',
-      favicon: './examples/logo.svg'
+      favicon: './examples/logo.svg',
+      scriptLoading: 'module',
     })
   ],
   devServer: {

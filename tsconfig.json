@@ -18,9 +18,10 @@
   ],
   "lib": [
       "DOM",
-      "ES2015",
+      "es2017",
       "ES2016.Array.Include"
   ]
 },
-"include": ["examples/src"]
+"exclude": ["examples/src"],
+// "": []
 }
