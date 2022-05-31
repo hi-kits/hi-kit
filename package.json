@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dist": "yarn build:tsc && yarn build:rollup",
+    "clean": "rimraf dist",
+    "build:dist": "yarn run clean && yarn build:tsc && yarn build:rollup",
     "build:tsc": "tsc -p ./tsconfig.json",
     "build:rollup": "rollup -c",
     "dev": "webpack-dev-server  --hot --mode development"

@@ -39,7 +39,7 @@ const kitCommonPluginList = [
         extensions,
         babelHelpers: 'runtime',
         presets: [
-          "@babel/preset-env",
+          ["@babel/preset-env", { loose: true }],
           "@babel/preset-typescript",
         ],
         plugins: [

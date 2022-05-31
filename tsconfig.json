@@ -5,7 +5,7 @@
   "strictNullChecks": true,
   "moduleResolution": "node",
   "declarationDir": "dist/dts",
-  "outDir": "dist/esmModule",
+  "outDir": "out-tsc",
   "importsNotUsedAsValues": "error",
   "experimentalDecorators": true,
   "noImplicitAny": false,
