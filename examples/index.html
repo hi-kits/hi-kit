@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>hi-kit</title>
         <style>
+            html {padding: 12px;}
             body {
                 width: 100%;
                 height: 100%;
@@ -12,9 +13,12 @@
             }
             .MainBody {padding:10px 0 50px;width: 90%;}
             h2 span{color: #999; font-size: 60%; font-weight: 200;}
+            h-row{ margin: 6px 0;}
             h-col{
                 background: #2196f380;
                 color:#fff;
+                line-height: 24px;
+                min-height: 24px;
             }
             .layout{ height: 300px; }
         .side{ width: 200px; }
@@ -24,7 +28,7 @@
             h-layout{ background: #2196f380; }
         </style>
     </head>
-    <!-- <script type="module" src="./hi-kit.js"></script> -->
+    <!-- <script type="module" src="./hi-kit.min.js"></script> -->
     <body>
         <div class="MainBody">
 
@@ -56,9 +60,28 @@
             <h2>栅格 <span>grid</span></h2>
             <div>
                 <h-row gutter="10">
-                    <h-col span="8">11</h-col>
-                    <h-col span="8">22</h-col>
-                    <h-col span="8">33</h-col>
+                    <h-col span="8"></h-col>
+                    <h-col span="8"></h-col>
+                    <h-col span="8"></h-col>
+                </h-row>
+                <h-row gutter="10">
+                    <h-col span="4"></h-col>
+                    <h-col span="8"></h-col>
+                    <h-col span="12"></h-col>
+                </h-row>
+                <h-row gutter="10">
+                    <h-col span="12"></h-col>
+                    <h-col span="12"></h-col>
+                </h-row>
+                <h-row gutter="10">
+                    <h-col span="24">
+                        <h-row gutter="10">
+                            <h-col span="6"></h-col>
+                            <h-col span="6"></h-col>
+                            <h-col span="6"></h-col>
+                            <h-col span="6"></h-col>
+                        </h-row>
+                    </h-col>
                 </h-row>
             </div>
             <h2>加载 <span>loading</span></h2>
@@ -68,15 +91,15 @@
             <h2>布局 <span>layout</span></h2>
             <div>
                 <h-layout class="layout">
-                    <h-layout class="header">HEADER</h-layout>
+                    <h-layout class="header">头部</h-layout>
                     <h-layout row expand>
                         <h-layout class="side"></h-layout>
                         <h-layout expand center class="main">
-                            <h-layout center class="box">h-layout</h-layout>
+                            <h-layout center class="box">内容区域</h-layout>
                         </h-layout>
                         <h-layout class="side"></h-layout>
                     </h-layout>
-                    <h-layout class="footer">FOOTER</h-layout>
+                    <h-layout class="footer">底部</h-layout>
                 </h-layout>
             </div>
             <h2>开关 <span>switch</span></h2>
@@ -85,6 +108,18 @@
                 <h-switch onchange="console.log(event)" checked></h-switch>
                 <h-switch></h-switch>
                 <h-switch disabled checked></h-switch>
+            </div>
+            <h2>短标 <span>short</span></h2>
+            <div>
+                <h-short></h-short>
+            </div>
+            <h2>Toast提示 <span>toast</span></h2>
+            <div>
+                <h-toast></h-toast>
+            </div>
+            <h2>盒 <span>box</span></h2>
+            <div>
+                <h-box></h-box>
             </div>
         </div>
     </body>
