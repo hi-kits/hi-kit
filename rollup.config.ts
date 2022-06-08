@@ -17,21 +17,30 @@ import {
     transformHTMLFragment,
 } from "./build/transform-fragments";
 
+import { readDirPackages } from "./build/getPackageName"
+
+const timeStart = new Date().getTime();
+const kitsList = readDirPackages(function(filePath) {
+  console.log('done', new Date().getTime() - timeStart);
+})
+
+console.log(kitsList);
+
+
 const parserOptions = {
     sourceType: "module",
 };
-const kitsList = [
-    'button',
-    'checkbox',
-    'color',
-    'grid',
-    'loading',
-    'message',
-    'switch'
-];
+// const kitsList = [
+//     'button',
+//     'checkbox',
+//     'color',
+//     'grid',
+//     'loading',
+//     'message',
+//     'switch'
+// ];
 
 const kitCommonPluginList = [
-    typescript({ tsconfig: './tsconfig.json'}),
     nodeResolve(),
     commonjs(),
     babel({
@@ -72,6 +81,10 @@ const kitUmdConfig = (
       file: `dist/umd/${name}/${name}.umd.js`,
       format:'umd',
       name,
+    }, {
+        file: `dist/umd/${name}/${name}.umd.min.js`,
+        format:'umd',
+        name,
     }, 
     {
         file: `dist/esm/${name}/${name}.js`,
@@ -83,7 +96,16 @@ const kitUmdConfig = (
         plugins: [terser()],
     },
 ],
-    plugins: [...kitCommonPluginList],
+    plugins: [
+        typescript(
+            {
+                // 分开打包的时候不需要.d.t文件
+                declaration: false,
+                declarationDir: null,
+                tsconfig: './tsconfig.json'
+            }
+        ),
+        ...kitCommonPluginList],
 });
 
 export default [
@@ -100,12 +122,20 @@ export default [
                 plugins: [terser()],
             },
             {
-                file: "dist/umd/index.js",
+                file: "dist/umd/hi-kit.js",
                 format: "umd",
                 name: 'hi-ui',
+            },
+            {
+                file: "dist/umd/hi-kit.min.js",
+                format: "umd",
+                name: 'hi-ui',
+                plugins: [terser()],
             }
         ],
-        plugins: [...kitCommonPluginList],
+        plugins: [
+            typescript({tsconfig: './tsconfig.json'}),
+            ...kitCommonPluginList],
     },
     ...kitsList.map((name) =>
     kitUmdConfig(name)

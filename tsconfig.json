@@ -4,7 +4,7 @@
   "esModuleInterop": true,
   "strictNullChecks": true,
   "moduleResolution": "node",
-  "declarationDir": "dist/dts",
+  "declarationDir": "./dist/dts",
   "outDir": "out-tsc",
   "importsNotUsedAsValues": "error",
   "experimentalDecorators": true,
@@ -22,6 +22,6 @@
       "ES2016.Array.Include"
   ]
 },
-"exclude": ["examples/src", "rollup.config.ts", "dist"],
+"exclude": ["examples/src", "rollup.config.ts", "dist", "utils"],
 // "": []
 }
