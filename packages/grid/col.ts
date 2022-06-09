@@ -23,8 +23,11 @@ const template = html<Col>`<slot></slot>`;
    styles
 })
 export class Col extends HIElement {
-
-   @attr offset;
+   /**
+     * 子项目跨度
+     * @public number
+     */
+   @attr span;
 
 }
 

@@ -22,13 +22,15 @@ const template = html<Row>`<slot></slot>`;
    template,
 })
 export class Row extends HIElement {
-    
-    @attr gutter;
-
-    attributeChangedCallback(name, oldValue, newValue){
-        if( name == 'gutter' && this.shadowRoot){
-            this.style.setProperty('--gutter', newValue + 'px');
-        }
+    /**
+     * 子项目间距
+     * @public number
+     */
+    @attr gutter: number;
+    private gutterChanged(oldValue, newValue): void {
+        this.style.setProperty('--gutter', newValue + 'px');
+        
     }
+
 }
 

@@ -83,13 +83,7 @@ export class Short extends HIElement {
 
 
     attributeChangedCallback (name, oldValue, newValue) {
-        if( name == 'disabled'){
-            if(newValue!==null && this.shadowRoot){
-                this.setAttribute('disabled', 'disabled');
-            }else{
-                this.removeAttribute('disabled');
-            }
-        }
+        
         if( name == 'checked'){
             if(newValue!==null && this.shadowRoot){
                 this.checked = true;

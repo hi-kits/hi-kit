@@ -29,7 +29,11 @@ export class Toast extends HIElement {
     focus() {
         // this.focus();
     }
-    connectedCallback() {
+    /**
+     * 当自定义元素第一次被连接到文档DOM时被调用
+     * @internal
+     */
+     connectedCallback() {
         super.connectedCallback()
         this.disabled = this.disabled;
         this.checked = this.checked;
@@ -75,15 +79,11 @@ export class Toast extends HIElement {
         })
     }
 
-
+    /**
+     * 当自定义元素的一个属性被增加、移除或更改时被调用。
+     */
     attributeChangedCallback (name, oldValue, newValue) {
-        if( name == 'disabled'){
-            if(newValue!==null && this.shadowRoot){
-                this.setAttribute('disabled', 'disabled');
-            }else{
-                this.removeAttribute('disabled');
-            }
-        }
+        
         if( name == 'checked'){
             if(newValue!==null && this.shadowRoot){
                 this.checked = true;
@@ -93,17 +93,10 @@ export class Toast extends HIElement {
         }
     }
 }
-let toastContent: any = document.getElementById('ToastContent');
-if(!toastContent){
-    toastContent = document.createElement('div');
-    toastContent.id = 'ToastContent';
-    toastContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:10px; z-index:51;';
-    document.body.appendChild(toastContent);
-}
 
 export default {
     info: () => {
         const message = new Toast();
-        toastContent.appendChild(message);
+        document.body.appendChild(message);
     },
 }
