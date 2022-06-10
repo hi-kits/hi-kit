@@ -57,68 +57,16 @@ export class Box extends HIElement {
     focus() {
         // this.focus();
     }
-    connectedCallback() {
+    /**
+     * 当自定义元素第一次被连接到文档DOM时被调用
+     * @internal
+     */
+     connectedCallback() {
         super.connectedCallback()
-        this.disabled = this.disabled;
-        this.checked = this.checked;
-        this.shadowRoot!.addEventListener('change',(ev)=>{
-            this.checked = this.checked;
-            this.dispatchEvent(new CustomEvent('change', {
-                detail: {
-                    checked: this.checked
-                }
-            }));
-        })
-        this.shadowRoot!.addEventListener('keydown', (ev) => {
-            switch (ev['keyCode']) {
-                case 13://Enter
-                    this.checked = !this.checked;
-                    break;
-                default:
-                    break;
-            }
-        })
-        this.shadowRoot!.addEventListener('focus',(ev)=>{
-            ev.stopPropagation();
-            if(!this.isfocus){
-                this.dispatchEvent(new CustomEvent('focus',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
-            }
-        })
-        this.shadowRoot!.addEventListener('blur',(ev)=>{
-            ev.stopPropagation();
-            if(Number(getComputedStyle(this).zIndex)==2){
-                this.isfocus = true;
-            }else{
-                this.isfocus = false;
-                this.dispatchEvent(new CustomEvent('blur',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
-            }
-        })
+        
     }
 
 
-    attributeChangedCallback (name, oldValue, newValue) {
-        if( name == 'disabled'){
-            if(newValue!==null && this.shadowRoot){
-                this.setAttribute('disabled', 'disabled');
-            }else{
-                this.removeAttribute('disabled');
-            }
-        }
-        if( name == 'checked'){
-            if(newValue!==null && this.shadowRoot){
-                this.checked = true;
-            }else{
-                this.checked = false;
-            }
-        }
-    }
+
 }
 

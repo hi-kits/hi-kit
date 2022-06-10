@@ -65,19 +65,22 @@ const template = html<Loading>`
    template,
 })
 export class Loading extends HIElement {
-    
+    /**
+     * loading 尺寸
+     * @public number
+     */
     @attr size;
-    @attr color;
-
-
-
-    attributeChangedCallback (name, oldValue, newValue) {
-        if( name == 'color' ){
-            // this.style.color = newValue;
-        }
-        if( name == 'size' ){
-            this.style.fontSize = newValue + 'px';
-        }
+    private sizeChanged(oldValue, newValue) {
+        this.style.fontSize = newValue + 'px';        
     }
+    /**
+     * loading 颜色
+     * @public number
+     */
+    @attr color;
+    private colorChanged(oldValue, newValue) {
+        this.style.color = newValue;
+    }
+
 }
 

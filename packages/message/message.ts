@@ -63,8 +63,11 @@ export class Message extends HIElement {
     //     this._show = value;
     // }
     timer!: any;
-
-    connectedCallback() {
+    /**
+     * 当自定义元素第一次被连接到文档DOM时被调用
+     * @internal
+     */
+     connectedCallback() {
         super.connectedCallback();
         this.shadowRoot!.addEventListener('transitionend',(ev:any)=>{
             if(ev.propertyName === 'transform' && !this.show){

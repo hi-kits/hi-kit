@@ -7,11 +7,11 @@
  * @description
  */
 
-import { HIElement, customElement, attr, html } from 'hi-element';
+import { HIElement, customElement, attr, html, observable } from 'hi-element';
 import { SwitchStyles as styles } from "./switch.style";
 
 const template = html<Switch>`
-<input type="checkbox" id="switch"/>
+<input type="checkbox" id="switch" />
 <label for="switch"></label>
 `;
 @customElement({
@@ -20,77 +20,70 @@ const template = html<Switch>`
    styles
 })
 export class Switch extends HIElement {
+    /**
+     * 无效
+     * @public  boolean
+     */
+    @attr disabled: boolean;
+    private disabledChanged(oldValue, newValue): void {
+        if(newValue!==null){
+            this.setAttribute('disabled', 'disabled');
+        }else{
+            this.removeAttribute('disabled');
+        }
+    }
+    /**
+     * When true, the control will be immutable by user interaction. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly | readonly HTML attribute} for more information.
+     * @public
+     * @remarks
+     * HTML Attribute: readonly
+     */
+    @attr({ attribute: "readonly", mode: "boolean" })
+    public readOnly: boolean; // Map to proxy element
+    private readOnlyChanged(): void {
 
-    @attr disabled = false;
+        this.readOnly
+            ? this.classList.add("readonly")
+            : this.classList.remove("readonly");
+    }
+
     @attr checked = true;
-    isfocus;
-    value;
-    
-    focus() {
-        // this.focus();
+    /**
+     * @internal
+     */
+    public checkedChanged(prev: boolean | undefined, next: boolean) {
+        this.checked 
+            ? this.classList.add("checked") 
+            : this.classList.remove("checked");
+            console.log(this.initialValue);
+            
+        
     }
-    connectedCallback() {
+    /**
+     * 选中时在表单提交中的元素值。
+     * Default to "on" to reach parity with input[type="checkbox"]
+     *
+     * @internal
+     */
+    public initialValue: string = "on";
+
+
+    /**
+     * @internal
+     */
+     public clickHandler = (e: MouseEvent) => {
+        if (!this.disabled && !this.readOnly) {
+            this.checked = !this.checked;
+        }
+    };
+    /**
+     * 当自定义元素第一次被连接到文档DOM时被调用
+     * @internal
+     */
+     connectedCallback() {
         super.connectedCallback()
-        this.disabled = this.disabled;
-        this.checked = this.checked;
-        this.shadowRoot!.addEventListener('change',(ev)=>{
-            this.checked = this.checked;
-            this.dispatchEvent(new CustomEvent('change', {
-                detail: {
-                    checked: this.checked
-                }
-            }));
-        })
-        this.shadowRoot!.addEventListener('keydown', (ev) => {
-            switch (ev['keyCode']) {
-                case 13://Enter
-                    this.checked = !this.checked;
-                    break;
-                default:
-                    break;
-            }
-        })
-        this.shadowRoot!.addEventListener('focus',(ev)=>{
-            ev.stopPropagation();
-            if(!this.isfocus){
-                this.dispatchEvent(new CustomEvent('focus',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
-            }
-        })
-        this.shadowRoot!.addEventListener('blur',(ev)=>{
-            ev.stopPropagation();
-            if(Number(getComputedStyle(this).zIndex)==2){
-                this.isfocus = true;
-            }else{
-                this.isfocus = false;
-                this.dispatchEvent(new CustomEvent('blur',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
-            }
-        })
+        this.shadowRoot!.addEventListener("click", this.clickHandler);
     }
 
-
-    attributeChangedCallback (name, oldValue, newValue) {
-        if( name == 'disabled'){
-            if(newValue!==null && this.shadowRoot){
-                this.setAttribute('disabled', 'disabled');
-            }else{
-                this.removeAttribute('disabled');
-            }
-        }
-        if( name == 'checked'){
-            if(newValue!==null && this.shadowRoot){
-                this.checked = true;
-            }else{
-                this.checked = false;
-            }
-        }
-    }
 }
 

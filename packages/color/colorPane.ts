@@ -60,19 +60,22 @@ const template = html<ColorPane>`
 export class ColorPane extends HIElement {
 
 
+    /**
+     * 当自定义元素第一次被连接到文档DOM时被调用
+     * @internal
+     */
+    connectedCallback() {
+        
+        
+    }
 
-  connectedCallback() {
-      
-     
-  }
+    mousemove = (ev) => {
 
-  mousemove = (ev) => {
+    }
 
-  }
+    mouseup = () => {
 
-  mouseup = () => {
-
-  }
+    }
 
 
 
