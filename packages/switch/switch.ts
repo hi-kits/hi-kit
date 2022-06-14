@@ -11,7 +11,7 @@ import { HIElement, customElement, attr, html, observable } from 'hi-element';
 import { SwitchStyles as styles } from "./switch.style";
 
 const template = html<Switch>`
-<input type="checkbox" id="switch" />
+<input type="checkbox" id="switch" :value="${x => x.initialValue}" ?disabled="${x => x.disabled}" />
 <label for="switch"></label>
 `;
 @customElement({
@@ -20,6 +20,7 @@ const template = html<Switch>`
    styles
 })
 export class Switch extends HIElement {
+    
     /**
      * 无效
      * @public  boolean
@@ -55,9 +56,6 @@ export class Switch extends HIElement {
         this.checked 
             ? this.classList.add("checked") 
             : this.classList.remove("checked");
-            console.log(this.initialValue);
-            
-        
     }
     /**
      * 选中时在表单提交中的元素值。
@@ -65,7 +63,7 @@ export class Switch extends HIElement {
      *
      * @internal
      */
-    public initialValue: string = "on";
+    public initialValue: string = 'no';
 
 
     /**
@@ -74,6 +72,7 @@ export class Switch extends HIElement {
      public clickHandler = (e: MouseEvent) => {
         if (!this.disabled && !this.readOnly) {
             this.checked = !this.checked;
+
         }
     };
     /**

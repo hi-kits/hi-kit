@@ -16,12 +16,11 @@ export const SwitchStyles = css`
     -webkit-tap-highlight-color: transparent;
 }
 :host([disabled]){ 
-    pointer-events: none; 
     opacity:.6; 
+    cursor: not-allowed;
 }
 :host([disabled]) label{ 
-    pointer-events: all;  
-    cursor: not-allowed; 
+    pointer-events: none;  
 }
 #switch{
     position:absolute;

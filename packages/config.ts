@@ -13,7 +13,7 @@ export const hiConfig = {
     /*边框颜色，按钮、输入框*/
     borderColor: '#d9d9d9',
     /*圆角*/
-    borderRadius: '3px',
+    borderRadius: '4px',
     /*成功色*/
     successColor: '#52c41a',
     /*警告色*/

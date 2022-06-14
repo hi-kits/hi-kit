@@ -7,12 +7,13 @@
  * @description
  */
 
-import { HIElement, customElement, attr, html } from 'hi-element';
+import { HIElement, customElement, html } from 'hi-element';
 import { ToastStyles as styles } from "./toast.style";
 
 const template = html<Toast>`
-
-<div class="ToastBox ToastIn" style="z-index: 2021; margin-left: -54.5px;">默认Toast样式</div>
+<div class="ToastBox">
+    ${x => x.content}
+</div>
 `;
 @customElement({
    name: 'h-toast',
@@ -20,83 +21,89 @@ const template = html<Toast>`
    styles
 })
 export class Toast extends HIElement {
-
-    @attr disabled = false;
-    @attr checked = true;
-    isfocus;
-    value;
-    
-    focus() {
-        // this.focus();
+    // ------------------ 构造函数 ------------------
+    constructor(
+    ) {
+        super();
     }
+    // ------------------ 参数 ------------------
+    /**
+     * 显示状态
+     * @type boolean
+     */
+    private _show: boolean = false;
+    public get show(): boolean {
+        return this._show;
+    }
+    public set show(value: boolean) {
+        this._show = value;
+        if ( value === null || value === false){
+            this.removeAttribute('show');
+        } else {
+            this.setAttribute('show', '');
+        }
+    }
+    /**
+     * 显示内容
+     * @public
+     */
+    content = '';
+    /**
+     * 间隔时间
+     * @public
+     */
+    time: number;
+    /**
+     * 定时器
+     * @public
+     */    
+    timer!: any;
+    // ------------------ 属性 ------------------
+
+    // ------------------ 自定义函数 ------------------
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
      connectedCallback() {
-        super.connectedCallback()
-        this.disabled = this.disabled;
-        this.checked = this.checked;
-        this.shadowRoot!.addEventListener('change',(ev)=>{
-            this.checked = this.checked;
-            this.dispatchEvent(new CustomEvent('change', {
-                detail: {
-                    checked: this.checked
-                }
-            }));
-        })
-        this.shadowRoot!.addEventListener('keydown', (ev) => {
-            switch (ev['keyCode']) {
-                case 13://Enter
-                    this.checked = !this.checked;
-                    break;
-                default:
-                    break;
+        super.connectedCallback();
+        this.shadowRoot!.addEventListener('transitionend',(ev:any)=>{
+            if(ev.propertyName === 'transform' && !this.show){
+                toastContent.removeChild(this);
+                this.dispatchEvent(new CustomEvent('close'));
             }
         })
-        this.shadowRoot!.addEventListener('focus',(ev)=>{
-            ev.stopPropagation();
-            if(!this.isfocus){
-                this.dispatchEvent(new CustomEvent('focus',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
-            }
-        })
-        this.shadowRoot!.addEventListener('blur',(ev)=>{
-            ev.stopPropagation();
-            if(Number(getComputedStyle(this).zIndex)==2){
-                this.isfocus = true;
-            }else{
-                this.isfocus = false;
-                this.dispatchEvent(new CustomEvent('blur',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
-            }
-        })
-    }
-
-    /**
-     * 当自定义元素的一个属性被增加、移除或更改时被调用。
-     */
-    attributeChangedCallback (name, oldValue, newValue) {
-        
-        if( name == 'checked'){
-            if(newValue!==null && this.shadowRoot){
-                this.checked = true;
-            }else{
-                this.checked = false;
-            }
-        }
     }
 }
 
-export default {
-    info: () => {
-        const message = new Toast();
-        document.body.appendChild(message);
-    },
+let toastContent: any = document.getElementById('ToastWrap');
+if(!toastContent){
+    toastContent = document.createElement('div');
+    toastContent.id = 'ToastWrap';
+    toastContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:-100px; z-index:51;';
+    document.body.appendChild(toastContent);
+}
+/**
+ * 消息提示
+ * @function get
+ * @param { Object } options 请求参数对象
+ * @param { string } options.content 显示内容
+ * @param { Function } options.time 显示时间间隔
+ * @param { Function } options.site 位置
+ * @private
+ */
+export default (
+    options: {
+        content: string, 
+        time: number, 
+        site: Array<any>
+    } ) => {
+        const toast = new Toast();
+        toast.time = options.time;
+        toast.content = options.content;
+        toast.show = true;
+        toastContent.appendChild(toast);
+        toast.timer = setTimeout(()=>{
+            toast.show = false;
+        }, options.time || 2000 );
 }

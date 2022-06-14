@@ -1,6 +1,6 @@
 /**
- * Key Code values
- * @deprecated - KeyCodes are deprecated, use individual string key exports
+ * 键码代码值
+ * @deprecated - 不推荐使用键码，请使用单个字符串键导出
  */
 export declare enum KeyCodes {
     alt = 18,
@@ -74,283 +74,283 @@ export declare enum KeyCodes {
     windowsRight = 92
 }
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeAlt: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeArrowDown: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeArrowLeft: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeArrowRight: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeArrowUp: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeBack: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeBackSlash: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeBreak: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeCapsLock: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeCloseBracket: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeColon: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeColon2: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeComma: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeCtrl: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeDelete: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeEnd: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeEnter: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeEquals: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeEquals2: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeEquals3: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeEscape: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeForwardSlash: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction1: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction10: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction11: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction12: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction2: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction3: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction4: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction5: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction6: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction7: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction8: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeFunction9: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeHome: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeInsert: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeMenu: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeMinus: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeMinus2: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumLock: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPad0: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPad1: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPad2: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPad3: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPad4: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPad5: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPad6: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPad7: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPad8: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPad9: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPadDivide: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPadDot: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPadMinus: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPadMultiply: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeNumPadPlus: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeOpenBracket: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodePageDown: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodePageUp: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodePeriod: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodePrint: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeQuote: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeScrollLock: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeShift: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeSpace: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeTab: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeTilde: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeWindowsLeft: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeWindowsOpera: number;
 /**
- * @deprecated - KeyCodes are deprecated, use string key exports
+ * @deprecated - 密钥码已弃用，请使用字符串密钥导出
  */
 export declare const keyCodeWindowsRight: number;
 /**
- * String values for use with KeyboardEvent.key
+ * 用于 KeyboardEvent.key 的字符串值 
  */
 export declare const keyArrowDown: "ArrowDown";
 export declare const keyArrowLeft: "ArrowLeft";

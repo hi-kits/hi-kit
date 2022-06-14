@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "hi-element": "0.0.9"
+    "hi-element": "0.0.11"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",

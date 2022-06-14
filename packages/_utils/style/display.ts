@@ -1,5 +1,5 @@
 /**
- * Define all possible CSS display values.
+ * 定义所有的 CSS display 值
  * @public
  */
 export type CSSDisplayPropertyValue =
@@ -28,15 +28,15 @@ export type CSSDisplayPropertyValue =
     | "table-row-group";
 
 /**
- * A CSS fragment to set `display: none;` when the host is hidden using the [hidden] attribute.
+ * 设置 `display: none;` 的CSS片段使用 [hidden] 属性隐藏 host
  * @public
  */
 export const hidden = `:host([hidden]){display:none}`;
 
 /**
- * Applies a CSS display property.
- * Also adds CSS rules to not display the element when the [hidden] attribute is applied to the element.
- * @param display - The CSS display property value
+ * 应用CSS display 属性
+ * 还添加了CSS规则，以便在 [hidden] 属性应用于元素时不显示该元素
+ * @param display - CSS display 属性值
  * @public
  */
 export function display(displayValue: CSSDisplayPropertyValue): string {

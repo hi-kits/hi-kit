@@ -12,7 +12,8 @@ import { MessageStyles as styles } from "./message.style";
 
 const template = html<Message>`
     <div class="message">
-        <slot>dfsd222f</slot>
+        <slot></slot>
+        ${ x => x.textContent}
     </div>
  `;
 @customElement({
@@ -21,22 +22,12 @@ const template = html<Message>`
    styles
 })
 export class Message extends HIElement {
-
-
-    /**
-     * The Message Service type.
-     * Service 的类型。可选值：
-     * info:  默认的消息提示。
-     * success:  成功的消息提示。
-     * error: 失败的消息提示。
-     * warning: 警告的消息提示。
-     * loading: 加载中的消息提示。
-     */
-
-    @attr type!: 'info' | 'success' | 'error' | 'warning' | 'loading';
-
-
-
+    // ------------------ 构造函数 ------------------
+    constructor(
+    ) {
+        super();
+    }
+    // ------------------ 参数 ------------------
     /**
      * 显示状态
      * @public
@@ -48,65 +39,61 @@ export class Message extends HIElement {
     }
     set show(value: boolean) {
         this._show = value;
-        if(value===null||value===false){
+        if ( value === null || value === false ){
             this.removeAttribute('show');
-        }else{
+        } else {
             this.setAttribute('show', '');
         }
     }
-    @observable
-    
-    // public get show(): boolean {
-    //     return this._show;
-    // }
-    // public set show(value: boolean) {
-    //     this._show = value;
-    // }
+    /**
+     * 定时器
+     * @public
+     */
     timer!: any;
+    // ------------------ 属性 ------------------
+    /**
+     * 消息服务类型
+     * Service 的类型。可选值：
+     * info:  默认的消息提示。
+     * success:  成功的消息提示。
+     * error: 失败的消息提示。
+     * warning: 警告的消息提示。
+     * loading: 加载中的消息提示。
+     */
+    @attr type!: 'info' | 'success' | 'error' | 'warning' | 'loading';
+
+
+    // ------------------ 自定义函数 ------------------
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
      connectedCallback() {
         super.connectedCallback();
-        this.shadowRoot!.addEventListener('transitionend',(ev:any)=>{
-            if(ev.propertyName === 'transform' && !this.show){
+        this.shadowRoot!.addEventListener('transitionend', (ev:any) =>{
+            if ( ev.propertyName === 'transform' && !this.show ) {
                 messageContent.removeChild(this);
                 this.dispatchEvent(new CustomEvent('close'));
             }
         })
     }
 
-    // static definition = {
-    //     name: 'h-message',
-    //     template,
-    //     styles,
-    //     attributes: [
-    //       'value', // same attr/prop
-    //       { attribute: 'some-attr', property: 'someAttr' }, // different attr/prop
-    //     ]
-    //   };
-    
-    //   value = 'sdfsdfsdf';
-    //   someAttr = '';
-
 }
 
-let messageContent: any = document.getElementById('MessageContent');
+let messageContent: any = document.getElementById('MessageWrap');
 if(!messageContent){
     messageContent = document.createElement('div');
-    messageContent.id = 'MessageContent';
+    messageContent.id = 'MessageWrap';
     messageContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:10px; z-index:51;';
     document.body.appendChild(messageContent);
 }
 
-// HIElement.define(Message);
 export default {
-    info: () => {
+    info: (text) => {
         const message = new Message();
         messageContent.appendChild(message);
         message.show = true;
-        message.textContent = '';
+        message.textContent = text;
         message.timer = setTimeout(()=>{
             message.show = false;
         }, 3000);
