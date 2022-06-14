@@ -9,7 +9,8 @@
     "build:dist": "yarn run clean && yarn build:tsc && yarn build:rollup",
     "build:tsc": "tsc -p ./tsconfig.json",
     "build:rollup": "rollup -c",
-    "dev": "webpack-dev-server  --hot --mode development"
+    "dev": "webpack-dev-server  --hot --mode development",
+    "start": "yarn dev"
   },
   "keywords": [],
   "author": "",

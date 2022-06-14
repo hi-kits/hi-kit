@@ -2,13 +2,17 @@
   "compilerOptions": {
   "declaration": true,
   "esModuleInterop": true,
+  "resolveJsonModule": true,
   "strictNullChecks": true,
   "moduleResolution": "node",
-  "declarationDir": "./dist/dts",
-  "outDir": "out-tsc",
+  "declarationDir": "dist/dts",
+  "outDir": "dist/esm",
   "importsNotUsedAsValues": "error",
   "experimentalDecorators": true,
   "noImplicitAny": false,
+  "allowJs": true,
+  "skipLibCheck": true,
+  "importHelpers": true,
   "strictPropertyInitialization": false,
   "target": "es2015",
   "module": "ESNext",
@@ -23,5 +27,6 @@
   ]
 },
 "exclude": ["examples/src", "rollup.config.ts", "dist", "utils"],
+"include": ["packages"]
 // "": []
 }

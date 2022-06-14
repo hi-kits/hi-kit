@@ -77,7 +77,8 @@ const kitCommonPluginList = [
 const kitUmdConfig = (
     name) => ({
     input: `packages/${name}/index.ts`,
-    output: [{
+    output: [
+    {
       file: `dist/umd/${name}/${name}.umd.js`,
       format:'umd',
       name,
@@ -85,16 +86,8 @@ const kitUmdConfig = (
         file: `dist/umd/${name}/${name}.umd.min.js`,
         format:'umd',
         name,
-    }, 
-    {
-        file: `dist/esm/${name}/${name}.js`,
-        format: "esm",
-    },
-    {
-        file: `dist/esm/${name}/${name}.min.js`,
-        format: "esm",
         plugins: [terser()],
-    },
+    }, 
 ],
     plugins: [
         typescript(
@@ -113,23 +106,23 @@ export default [
         input: './packages/index.ts',
         output: [
             {
-                file: "dist/esm/hi-kit.js",
+                file: "dist/hi-kit.js",
                 format: "esm",
             },
             {
-                file: "dist/esm/hi-kit.min.js",
+                file: "dist/hi-kit.min.js",
                 format: "esm",
                 plugins: [terser()],
             },
             {
                 file: "dist/umd/hi-kit.js",
                 format: "umd",
-                name: 'hi-ui',
+                name: 'hi-kit',
             },
             {
                 file: "dist/umd/hi-kit.min.js",
                 format: "umd",
-                name: 'hi-ui',
+                name: 'hi-kit',
                 plugins: [terser()],
             }
         ],
