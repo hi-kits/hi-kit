@@ -47,16 +47,10 @@ export const MessageStyles = css`
 h-loading{
     display:none;
 }
+:host([show][type="info"]) .message {
+    background: #f9f9f9;
+}
 
-:host([show][type="loading"]) h-loading{
-    display:block;
-}
-:host([show][type="loading"]) h-icon{
-    display:none;
-}
-:host h-icon{
-    color:var(--themeColor,#42b983);
-}
 `;
  
 

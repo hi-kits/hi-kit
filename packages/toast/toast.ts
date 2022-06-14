@@ -90,7 +90,6 @@ if(!toastContent){
  * @param { string } options.content 显示内容
  * @param { Function } options.time 显示时间间隔
  * @param { Function } options.site 位置
- * @private
  */
 export default (
     options: {

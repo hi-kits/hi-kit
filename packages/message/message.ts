@@ -10,6 +10,24 @@
 import { HIElement, customElement, attr, observable, ref, slotted,  html } from 'hi-element';
 import { MessageStyles as styles } from "./message.style";
 
+type MessageType = 'info' | 'success' | 'error' | 'warning' | 'loading' | 'show';
+
+/**
+ * 消息提示
+ * @function get
+ * @param { Object } options 请求参数对象
+ * @param { string } options.type 消息类型
+ * @param { string } options.content 消息内容
+ * @param { number } options.duration 自动关闭的延时，单位毫秒。设为 0 时不自动关闭
+ * @param { number } options.callback 关闭时触发的回调函数
+ */
+interface MessageOptions {
+    type: MessageType,
+    content:string, 
+    duration: number, 
+    callback: () => void 
+}
+
 const template = html<Message>`
     <div class="message">
         <slot></slot>
@@ -59,20 +77,43 @@ export class Message extends HIElement {
      * error: 失败的消息提示。
      * warning: 警告的消息提示。
      * loading: 加载中的消息提示。
+     * show: 通用的消息提示。
      */
-    @attr type!: 'info' | 'success' | 'error' | 'warning' | 'loading';
+    @attr type!: MessageType;
+    // typeChanged(oldValue: string, newValue: string): void {
+    //     switch (newValue) {
+    //         case 'info':
+    //             break;
+    //         default:
+    //             break;
+    //     }
+        
+    // }
 
-
+    // 自动关闭的延时，单位毫秒。设为 0 时不自动关闭
+    onCallback;
     // ------------------ 自定义函数 ------------------
+    // 设置参数
+    setParams (message:any, type: string, content:string, duration: number, callback?: () => void): void {
+        message.type = type;
+        message.show = true;
+        message.onCallback = callback;
+        message.textContent = content;
+        message.timer = setTimeout(()=>{
+            message.show = false;
+        }, duration || 2000);
+    }
+
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
-     connectedCallback() {
+     connectedCallback(): void {
         super.connectedCallback();
         this.shadowRoot!.addEventListener('transitionend', (ev:any) =>{
             if ( ev.propertyName === 'transform' && !this.show ) {
                 messageContent.removeChild(this);
+                this.onCallback();
                 this.dispatchEvent(new CustomEvent('close'));
             }
         })
@@ -89,82 +130,35 @@ if(!messageContent){
 }
 
 export default {
-    info: (text) => {
+    info: ( options: MessageOptions ) => {
         const message = new Message();
         messageContent.appendChild(message);
-        message.show = true;
-        message.textContent = text;
-        message.timer = setTimeout(()=>{
-            message.show = false;
-        }, 3000);
+        message.setParams(message, 'info', options.content, options.duration, options.callback);
+    },
+    success: ( options: MessageOptions ) => {
+        const message = new Message();
+        messageContent.appendChild(message);
+        message.setParams(message, 'success', options.content, options.duration, options.callback);
+    },
+    error: ( options: MessageOptions ) => {
+        const message = new Message();
+        messageContent.appendChild(message);
+        message.setParams(message, 'error', options.content, options.duration, options.callback);
+    },
+    warning: ( options: MessageOptions ) => {
+        const message = new Message();
+        messageContent.appendChild(message);
+        message.setParams(message, 'warning', options.content, options.duration, options.callback);
+    },
+    loading: ( options: MessageOptions ) => {
+        const message = new Message();
+        messageContent.appendChild(message);
+        message.setParams(message, 'loading', options.content, options.duration, options.callback);
+    },
+    show: ( options: MessageOptions ) => {
+        const message = new Message();
+        messageContent.appendChild(message);
+        message.setParams(message, options.type, options.content, options.duration, options.callback);
     },
 }
-// export default {
 
-//     info: (text='',duration,onclose) => {
-//         const message = new Message();
-//         message.timer && clearTimeout(message.timer);
-//         message.type = 'info';
-//         message.textContent = text;
-//         message.show = true;
-//         message.onclose = onclose;
-//         message.timer = setTimeout(()=>{
-//             message.show = false;
-//         },duration||3000);
-//         return message;
-//     },
-
-//     success: function(text='',duration,onclose) {
-//         const message = new Message();
-//         message.timer && clearTimeout(message.timer);
-//         message.type = 'success';
-//         message.textContent = text;
-//         message.show = true;
-//         message.onclose = onclose;
-//         message.timer = setTimeout(()=>{
-//             message.show = false;
-//         },duration||3000);
-//         return message;
-//     },
-
-//     error: function(text='',duration,onclose) {
-//         const message = new Message();
-//         message.timer && clearTimeout(message.timer);
-//         message.type = 'error';
-//         message.textContent = text;
-//         message.show = true;
-//         message.onclose = onclose;
-//         message.timer = setTimeout(()=>{
-//             message.show = false;
-//         },duration||3000);
-//         return message;
-//     },
-
-//     warning: function(text='',duration,onclose) {
-//         const message = new Message();
-//         message.timer && clearTimeout(message.timer);
-//         message.type = 'warning';
-//         message.textContent = text;
-//         message.show = true;
-//         message.onclose = onclose;
-//         message.timer = setTimeout(()=>{
-//             message.show = false;
-//         },duration||3000);
-//         return message;
-//     },
-
-//     loading: function(text='',duration=0,onclose) {
-//         const message = new Message();
-//         message.timer && clearTimeout(message.timer);
-//         message.type = 'loading';
-//         message.textContent = text;
-//         message.show = true;
-//         message.onclose = onclose;
-//         if(duration!==0){
-//             message.timer = setTimeout(()=>{
-//                 message.show = false;
-//             },duration||3000);
-//         }
-//         return message;
-//     }
-// }
