@@ -8,12 +8,10 @@
  */
 
 import { css } from 'hi-element';
-import { hiConfig } from "../config";
 
 export const EditWordStyles = css`
 
 span { background-color: #eef; padding: 0 2px }
-
 
 `;
  

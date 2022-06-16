@@ -51,11 +51,11 @@
             </div>
             <h2>消息 <span>message</span></h2>
             <div>
-                <h-button onclick="Message.info({text: 'This a info message'})">info</h-button>
-                <h-button onclick="Message.success({text:'This a success message'})">success</h-button>
-                <h-button onclick="Message.error({text:'This a error message'})">error</h-button>
-                <h-button onclick="Message.warning({text:'This a warning message'})">warning</h-button>
-                <h-button onclick="Message.loading({text:'This a loading message'})">loading</h-button>
+                <h-button onclick="Message.info({content: 'This a info message', duration: 30})">info</h-button>
+                <h-button onclick="Message.success({content:'This a success message', duration: 10000})">success</h-button>
+                <h-button onclick="Message.error({content:'This a error message'})">error</h-button>
+                <h-button onclick="Message.warning({content:'This a warning message'})">warning</h-button>
+                <h-button onclick="Message.loading({content:'This a loading message'})">loading</h-button>
             </div>
             <h2>栅格 <span>grid</span></h2>
             <div>
@@ -86,7 +86,7 @@
             </div>
             <h2>加载 <span>loading</span></h2>
             <div>
-                <h-loading size="420" color="green"></h-loading>
+                <h-loading size="42" color="red"></h-loading>
             </div>
             <h2>布局 <span>layout</span></h2>
             <div>
@@ -120,6 +120,10 @@
             <h2>盒 <span>box</span></h2>
             <div>
                 <h-box></h-box>
+            </div>
+            <h2>文本编辑 <span>editWord</span></h2>
+            <div>
+                <h-edit-word>33333333</h-edit-word>
             </div>
         </div>
     </body>

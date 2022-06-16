@@ -94,7 +94,7 @@ export class Message extends HIElement {
     onCallback;
     // ------------------ 自定义函数 ------------------
     // 设置参数
-    setParams (message:any, type: string, content:string, duration: number, callback?: () => void): void {
+    setParams (message:any, type: string, content:string, duration: number, callback: () => void = (() => {})): void {
         message.type = type;
         message.show = true;
         message.onCallback = callback;

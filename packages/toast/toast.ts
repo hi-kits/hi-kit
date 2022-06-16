@@ -65,7 +65,7 @@ export class Toast extends HIElement {
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
-     connectedCallback() {
+    connectedCallback() {
         super.connectedCallback();
         this.shadowRoot!.addEventListener('transitionend',(ev:any)=>{
             if(ev.propertyName === 'transform' && !this.show){

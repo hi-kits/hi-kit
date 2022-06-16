@@ -20,7 +20,6 @@ const styles = css`
 .loading{
     display: block;
     width: 100px;
-    height: 10px;
     margin: auto;
     animation: rotate 1.4s linear infinite;
 }
@@ -55,9 +54,11 @@ const styles = css`
 }
 `
 const template = html<Loading>`
-<svg class="loading" id="loading" viewBox="22 22 44 44" xmlns="http://www.w3.org/2000/svg"><circle class="circle" cx="44" cy="44" r="20.2" fill="none" stroke-width="3.6"></circle></svg>
-<slot></slot>
-
+<template>
+    <svg class="loading" ${ref("loading")}
+    viewBox="22 22 44 44" xmlns="http://www.w3.org/2000/svg"><circle class="circle" cx="44" cy="44" r="20.2" fill="none" stroke-width="3.6"></circle></svg>
+    <slot></slot>
+</template>
 `;
 @customElement({
    name: 'h-loading',
@@ -66,20 +67,37 @@ const template = html<Loading>`
 })
 export class Loading extends HIElement {
     /**
+     * svg 对象
+     * @public number
+     */
+    @observable
+    loading: SVGElement;
+    /**
      * loading 尺寸
      * @public number
      */
     @attr size;
-    private sizeChanged(oldValue, newValue) {
+    sizeChanged(oldValue, newValue): void {
         this.style.fontSize = newValue + 'px';        
+        this.style.height = newValue + 'px'; 
+        if (this.loading) {
+            this.loading!.style.height = newValue + 'px'
+        }
     }
+
     /**
      * loading 颜色
      * @public number
      */
     @attr color;
-    private colorChanged(oldValue, newValue) {
+    private colorChanged(oldValue, newValue): void {
         this.style.color = newValue;
+    }
+    connectedCallback() {
+
+        super.connectedCallback();
+        this.loading!.style.height   = this.size  + 'px';
+
     }
 
 }
