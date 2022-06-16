@@ -1,5 +1,5 @@
 {
-  "name": "hi-kits-new",
+  "name": "hi-kits",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "clean": "rimraf dist",
     "build:dist": "yarn run clean && yarn build:tsc && yarn build:rollup",
     "build:tsc": "tsc -p ./tsconfig.json",
-    "build:rollup": "rollup -c",
+    "build:rollup": "rollup -c --watch",
     "dev": "webpack-dev-server  --hot --mode development",
     "start": "yarn dev"
   },
