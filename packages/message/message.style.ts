@@ -7,6 +7,7 @@
  */
 
 import { css } from 'hi-element';
+import { hiConfig } from "../config";
 
 export const MessageStyles = css`
 :host{
@@ -47,7 +48,7 @@ h-loading{
     display:none;
 }
 :host([show][type="info"]) .message {
-    background: #f9f9f9;
+    background: ${hiConfig.infoColor};
 }
 
 `;
