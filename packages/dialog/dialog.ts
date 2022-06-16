@@ -1,6 +1,5 @@
 /**
- * Dialog
- * @class: Dialog
+ * @class: HiDialog
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -10,7 +9,7 @@
 import { HIElement, customElement, attr, html } from 'hi-element';
 import { DialogStyles as styles } from "./dialog.style";
 
-const template = html<Dialog>`
+const template = html<HiDialog>`
 <div class="dialog">
     <div class="dialog-content">
         <div class="dialog-title" id="title">${x => x.title}</div>
@@ -31,7 +30,7 @@ const template = html<Dialog>`
    template,
    styles
 })
-export class Dialog extends HIElement {
+export class HiDialog extends HIElement {
 
     @attr public canceltext!: string;
     private canceltextChanged(oldValue, newValue): void {
@@ -62,7 +61,7 @@ export class Dialog extends HIElement {
 
 export default {
     alert: function()  {
-        const dialog = new Dialog();
+        const dialog = new HiDialog();
         document.body.appendChild(dialog);
         if( typeof arguments[0] === 'object' ){
             const { title, oktext, content, ok} = arguments[0];

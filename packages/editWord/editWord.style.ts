@@ -1,5 +1,4 @@
 /**
- * EditWordStyles
  * @const: EditWordStyles
  * @version 0.0.1
  * @author by fico on 2022/06/11

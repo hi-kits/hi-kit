@@ -1,6 +1,5 @@
 /**
- * Button
- * @class: Button
+ * @class: HiButton
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -11,7 +10,7 @@ import { HIElement, customElement, attr, observable, ref, slotted,  html } from 
 
 import { ButtonStyles as styles } from "./button.style";
 
-const template = html<Button>`    
+const template = html<HiButton>`    
     <button
         class="btn"
     >
@@ -25,7 +24,7 @@ const template = html<Button>`
    template,
    styles
 })
-export class Button extends HIElement {
+export class HiButton extends HIElement {
     // 代理
     proxy = document.createElement("input");
     readonly form!: HTMLFormElement;

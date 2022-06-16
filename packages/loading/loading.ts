@@ -1,6 +1,5 @@
 /**
- * Loading
- * @const: Loading
+ * @const: HiLoading
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -53,7 +52,7 @@ const styles = css`
     } 
 }
 `
-const template = html<Loading>`
+const template = html<HiLoading>`
 <template>
     <svg class="loading" ${ref("loading")}
     viewBox="22 22 44 44" xmlns="http://www.w3.org/2000/svg"><circle class="circle" cx="44" cy="44" r="20.2" fill="none" stroke-width="3.6"></circle></svg>
@@ -65,7 +64,7 @@ const template = html<Loading>`
    styles,
    template,
 })
-export class Loading extends HIElement {
+export class HiLoading extends HIElement {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     /**

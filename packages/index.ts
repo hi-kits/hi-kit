@@ -1,4 +1,4 @@
-export * from "./button";
+export { HiButton, HiButtonGroup } from "./button";
 export * from "./checkbox";
 export * from "./grid";
 export * from "./loading";
@@ -8,13 +8,13 @@ export * from "./toast";
 export * from "./box";
 export * from "./editWord";
 // export * from "./color";
-import Messages from './message/message';
-import Dialog from './dialog/dialog';
-import Toast from './toast/toast';
+import { HiMessage } from './message/message';
+import { HiDialog } from './dialog/dialog';
+import { HiToast } from './toast/toast';
 // export * from "./message";
-window['Message'] = Messages;
-window['Dialog'] = Dialog;
-window['Toast'] = Toast;
+window['Message'] = HiMessage;
+window['Dialog'] = HiDialog;
+window['HiToast'] = HiToast;
 
 window['showDialog'] = function (e){
     console.log(e);

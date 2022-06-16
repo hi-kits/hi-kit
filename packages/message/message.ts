@@ -1,6 +1,5 @@
 /**
- * Message
- * @class: Message
+ * @class: HiMessage
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -31,7 +30,7 @@ interface MessageOptions {
     callback: () => void 
 }
 
-const template = html<Message>`
+const template = html<HiMessage>`
     <div class="message">
         <slot></slot>
         ${ x => x.textContent}
@@ -42,7 +41,7 @@ const template = html<Message>`
    template,
    styles
 })
-export class Message extends HIElement {
+export class HiMessage extends HIElement {
     // ------------------ 构造函数 ------------------
     constructor(
     ) {
@@ -148,7 +147,7 @@ export default {
      * @param { MessageOptions} options
      */
     info: ( options: MessageOptions ) => {
-        const message = new Message();
+        const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, 'info', options.content, options.duration, options.callback);
     },
@@ -158,7 +157,7 @@ export default {
      * @param { MessageOptions} options
      */
     success: ( options: MessageOptions ) => {
-        const message = new Message();
+        const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, 'success', options.content, options.duration, options.callback);
     },
@@ -168,7 +167,7 @@ export default {
      * @param { MessageOptions} options
      */
     error: ( options: MessageOptions ) => {
-        const message = new Message();
+        const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, 'error', options.content, options.duration, options.callback);
     },
@@ -178,7 +177,7 @@ export default {
      * @param { MessageOptions} options
      */
     warning: ( options: MessageOptions ) => {
-        const message = new Message();
+        const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, 'warning', options.content, options.duration, options.callback);
     },
@@ -188,7 +187,7 @@ export default {
      * @param { MessageOptions} options
      */
     loading: ( options: MessageOptions ) => {
-        const message = new Message();
+        const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, 'loading', options.content, options.duration, options.callback);
     },
@@ -198,7 +197,7 @@ export default {
      * @param { MessageOptions} options
      */
     show: ( options: MessageOptions ) => {
-        const message = new Message();
+        const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, options.type, options.content, options.duration, options.callback);
     },

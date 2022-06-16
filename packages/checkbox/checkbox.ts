@@ -1,6 +1,5 @@
 /**
- * Checkbox
- * @class: Checkbox
+ * @class: HiCheckbox
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -10,7 +9,7 @@
 import { HIElement, customElement, attr, observable, ref, slotted,  html } from 'hi-element';
 import { CheckboxStyles as styles } from "./checkbox.style";
 
-const template = html<Checkbox>`
+const template = html<HiCheckbox>`
     <input type="checkbox" id="checkbox">
     <label for="checkbox">
     <span class="cheked"><svg class="icon" style="fill: #fff;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1408"><path d="M700.7232 331.008l73.984 70.7584-329.5744 344.7808-192.6656-190.1056 71.936-72.9088L443.0336 600.576z"></path></svg></span>
@@ -22,7 +21,7 @@ const template = html<Checkbox>`
     template,
     styles
 })
-export class Checkbox extends HIElement {
+export class HiCheckbox extends HIElement {
      // 代理
      proxy = document.createElement("input");
      readonly form!: HTMLFormElement;

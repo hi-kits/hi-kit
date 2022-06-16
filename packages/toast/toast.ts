@@ -1,6 +1,5 @@
 /**
- * Toast
- * @class: Toast
+ * @class: HiToast
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -10,7 +9,7 @@
 import { HIElement, customElement, html } from 'hi-element';
 import { ToastStyles as styles } from "./toast.style";
 
-const template = html<Toast>`
+const template = html<HiToast>`
 <div class="ToastBox" style="${x => x.position()}">
     ${x => x.content}
 </div>
@@ -20,7 +19,7 @@ const template = html<Toast>`
    template,
    styles
 })
-export class Toast extends HIElement {
+export class HiToast extends HIElement {
     // ------------------ 构造函数 ------------------
     constructor(
     ) {
@@ -77,6 +76,7 @@ export class Toast extends HIElement {
         super.connectedCallback();
         this.shadowRoot!.addEventListener('transitionend',(ev:any)=>{
             if(ev.propertyName === 'transform' && !this.show){
+                // DOM.removeChildNodes(toastContent);
                 toastContent.removeChild(this);
                 this.dispatchEvent(new CustomEvent('close'));
             }
@@ -140,7 +140,7 @@ export default (
         duration: number, 
         site: Array<any>,
     } ) => {
-        const toast = new Toast();
+        const toast = new HiToast();
         toast.duration = options.duration;
         toast.content = options.content;
         toast.site = options.site;

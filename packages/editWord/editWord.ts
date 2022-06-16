@@ -1,6 +1,5 @@
 /**
- * EditWord
- * @class: EditWord
+ * @class: HiEditWord
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -11,7 +10,7 @@ import { HIElement, customElement, attr, html, when, observable,slotted, Observa
 import { EditWordStyles as styles } from "./editWord.style";
 
 
-const template = html<EditWord>`
+const template = html<HiEditWord>`
 
 <form ${ref("form")}>
     <input ${ref("input")} required="required">
@@ -26,7 +25,7 @@ const template = html<EditWord>`
    template,
    styles
 })
-export class EditWord extends HIElement {
+export class HiEditWord extends HIElement {
     // ------------------ 构造函数 ------------------
     constructor(
     ) {

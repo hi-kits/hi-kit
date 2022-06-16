@@ -1,6 +1,5 @@
 /**
- * Layout
- * @class: Layout
+ * @class: HiLayout
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -33,13 +32,13 @@ const styles = css`
    align-items: center;
 }
 `;
-const template = html<Layout>`<slot></slot>`;
+const template = html<HiLayout>`<slot></slot>`;
 @customElement({
    name: 'h-layout',
    template,
    styles
 })
-export class Layout extends HIElement {
+export class HiLayout extends HIElement {
    
 
 }

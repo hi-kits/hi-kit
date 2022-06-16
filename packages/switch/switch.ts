@@ -1,6 +1,5 @@
 /**
- * Switch
- * @class: Switch
+ * @class: HiSwitch
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -10,7 +9,7 @@
 import { HIElement, customElement, attr, html, observable } from 'hi-element';
 import { SwitchStyles as styles } from "./switch.style";
 
-const template = html<Switch>`
+const template = html<HiSwitch>`
 <input type="checkbox" id="switch" :value="${x => x.initialValue}" ?disabled="${x => x.disabled}" />
 <label for="switch"></label>
 `;
@@ -19,7 +18,7 @@ const template = html<Switch>`
    template,
    styles
 })
-export class Switch extends HIElement {
+export class HiSwitch extends HIElement {
     
     /**
      * 无效

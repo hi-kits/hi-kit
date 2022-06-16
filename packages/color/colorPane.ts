@@ -1,6 +1,5 @@
 /**
- * ColorPane
- * @class: ColorPane
+ * @class: HiColorPane
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -13,7 +12,7 @@ import { ColorPaneStyles as styles } from "./colorPane.style";
 const Material_colors = ['#f44336','#E91E63','#9C27B0','#673AB7','#3F51B5','#2196F3','#03A9F4','#00BCD4','#009688','#4CAF50','#8BC34A','#CDDC39','#FFEB3B','#FFC107','#FF9800','#FF5722','#795548','#9E9E9E','#607D8B','rgba(0,0,0,.65)','transparent']
 
 
-const template = html<ColorPane>`
+const template = html<HiColorPane>`
     
 <div class="color-pane" id="color-pane">
             <div class="color-palette" id="color-palette"></div>
@@ -57,7 +56,7 @@ const template = html<ColorPane>`
    template,
    styles
 })
-export class ColorPane extends HIElement {
+export class HiColorPane extends HIElement {
 
 
     /**

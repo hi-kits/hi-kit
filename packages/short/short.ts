@@ -1,6 +1,5 @@
 /**
- * Short
- * @class: Short
+ * @class: HiShort
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -10,7 +9,7 @@
 import { HIElement, customElement, attr, html } from 'hi-element';
 import { ShortStyles as styles } from "./short.style";
 
-const template = html<Short>`
+const template = html<HiShort>`
 
 <div class="Short">
 		<div class="ShortMedia">
@@ -25,7 +24,7 @@ const template = html<Short>`
    template,
    styles
 })
-export class Short extends HIElement {
+export class HiShort extends HIElement {
 
     @attr disabled = false;
     @attr checked = true;

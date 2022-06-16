@@ -1,2 +1,2 @@
-export * from "./button"
-export * from "./button.group"
+export { HiButton } from "./button"
+export { HiButtonGroup } from "./button.group"

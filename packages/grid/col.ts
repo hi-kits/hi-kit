@@ -1,6 +1,5 @@
 /**
- * Col
- * @class: Col
+ * @class: HiCol
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -16,13 +15,13 @@ ${
 Array.from({length:24},(el,i)=>':host([span="'+(i+1)+'"]) {grid-column: span '+(i+1)+'}\n').join('')
 }
 `;
-const template = html<Col>`<slot></slot>`;
+const template = html<HiCol>`<slot></slot>`;
 @customElement({
    name: 'h-col',
    template,
    styles
 })
-export class Col extends HIElement {
+export class HiCol extends HIElement {
    /**
      * 子项目跨度
      * @public number

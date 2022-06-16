@@ -1,5 +1,4 @@
 /**
- * SwitchStyles
  * @const: SwitchStyles
  * @version 0.0.1
  * @author by fico on 2022/04/27

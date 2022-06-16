@@ -1,6 +1,5 @@
 /**
- * ColorPicker
- * @class: ColorPicker
+ * @class: HiColorPicker
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -12,7 +11,7 @@ import { ColorPickerStyles as styles } from "./colorPicker.style";
 
 
 
-const template = html<ColorPicker>`
+const template = html<HiColorPicker>`
     <div class="pop-footer">
         
         
@@ -23,7 +22,7 @@ const template = html<ColorPicker>`
    template,
    styles
 })
-export class ColorPicker extends HIElement {
+export class HiColorPicker extends HIElement {
 
 
 
@@ -57,4 +56,4 @@ export class ColorPicker extends HIElement {
 
 
 }
-HIElement.define(ColorPicker)
+HIElement.define(HiColorPicker)
