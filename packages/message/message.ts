@@ -10,6 +10,9 @@
 import { HIElement, customElement, attr, observable, ref, slotted,  html } from 'hi-element';
 import { MessageStyles as styles } from "./message.style";
 
+/**
+ * 消息类型
+ */
 type MessageType = 'info' | 'success' | 'error' | 'warning' | 'loading' | 'show';
 
 /**
@@ -90,10 +93,19 @@ export class Message extends HIElement {
         
     // }
 
-    // 自动关闭的延时，单位毫秒。设为 0 时不自动关闭
+    // 关闭时触发的回调函数
     onCallback;
     // ------------------ 自定义函数 ------------------
-    // 设置参数
+    /**
+     * 设置参数
+     * @date 2022-06-16
+     * @param { any } message
+     * @param { string} type
+     * @param { string} content
+     * @param { number } duration
+     * @param { callback: () => void = (() => {})} 
+     * @returns { void }
+     */
     setParams (message:any, type: string, content:string, duration: number, callback: () => void = (() => {})): void {
         message.type = type;
         message.show = true;
@@ -108,7 +120,7 @@ export class Message extends HIElement {
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
-     connectedCallback(): void {
+    connectedCallback(): void {
         super.connectedCallback();
         this.shadowRoot!.addEventListener('transitionend', (ev:any) =>{
             if ( ev.propertyName === 'transform' && !this.show ) {
@@ -130,31 +142,61 @@ if(!messageContent){
 }
 
 export default {
+    /**
+     * 信息提示
+     * @date 2022-06-16
+     * @param { MessageOptions} options
+     */
     info: ( options: MessageOptions ) => {
         const message = new Message();
         messageContent.appendChild(message);
         message.setParams(message, 'info', options.content, options.duration, options.callback);
     },
+    /**
+     * 成功提示
+     * @date 2022-06-16
+     * @param { MessageOptions} options
+     */
     success: ( options: MessageOptions ) => {
         const message = new Message();
         messageContent.appendChild(message);
         message.setParams(message, 'success', options.content, options.duration, options.callback);
     },
+    /**
+     * 错误提示
+     * @date 2022-06-16
+     * @param { MessageOptions} options
+     */
     error: ( options: MessageOptions ) => {
         const message = new Message();
         messageContent.appendChild(message);
         message.setParams(message, 'error', options.content, options.duration, options.callback);
     },
+    /**
+     * 警告提示
+     * @date 2022-06-16
+     * @param { MessageOptions} options
+     */
     warning: ( options: MessageOptions ) => {
         const message = new Message();
         messageContent.appendChild(message);
         message.setParams(message, 'warning', options.content, options.duration, options.callback);
     },
+    /**
+     * 加载提示
+     * @date 2022-06-16
+     * @param { MessageOptions} options
+     */
     loading: ( options: MessageOptions ) => {
         const message = new Message();
         messageContent.appendChild(message);
         message.setParams(message, 'loading', options.content, options.duration, options.callback);
     },
+    /**
+     * 通用提示
+     * @date 2022-06-16
+     * @param { MessageOptions} options
+     */
     show: ( options: MessageOptions ) => {
         const message = new Message();
         messageContent.appendChild(message);

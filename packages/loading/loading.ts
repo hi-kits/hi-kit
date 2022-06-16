@@ -66,18 +66,20 @@ const template = html<Loading>`
    template,
 })
 export class Loading extends HIElement {
+    // ------------------ 构造函数 ------------------
+    // ------------------ 参数 ------------------
     /**
      * svg 对象
-     * @public number
      */
     @observable
     loading: SVGElement;
+    // ------------------ 属性 ------------------
     /**
      * loading 尺寸
      * @public number
      */
     @attr size;
-    sizeChanged(oldValue, newValue): void {
+    private sizeChanged(oldValue, newValue): void {
         this.style.fontSize = newValue + 'px';        
         this.style.height = newValue + 'px'; 
         if (this.loading) {
@@ -87,14 +89,18 @@ export class Loading extends HIElement {
 
     /**
      * loading 颜色
-     * @public number
+     * @public string
      */
-    @attr color;
+    @attr color: string;
     private colorChanged(oldValue, newValue): void {
         this.style.color = newValue;
     }
+    // ------------------ 自定义函数 ------------------
+    /**
+     * 当自定义元素第一次被连接到文档DOM时被调用
+     * @internal
+     */
     connectedCallback() {
-
         super.connectedCallback();
         this.loading!.style.height   = this.size  + 'px';
 

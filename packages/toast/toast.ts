@@ -11,7 +11,7 @@ import { HIElement, customElement, html } from 'hi-element';
 import { ToastStyles as styles } from "./toast.style";
 
 const template = html<Toast>`
-<div class="ToastBox">
+<div class="ToastBox" style="${x => x.position()}">
     ${x => x.content}
 </div>
 `;
@@ -52,12 +52,20 @@ export class Toast extends HIElement {
      * 间隔时间
      * @public
      */
-    time: number;
+    duration: number;
     /**
      * 定时器
      * @public
      */    
     timer!: any;
+    
+    /**
+     * 显示位置信息设置 
+     * @date 6/16/2022 - 2:03:25 PM
+     * @examples [10,10] or ['45%'] or [,,20,20] or ['20%',20]
+     * @type {Array<string>}
+     */
+    site: Array<string>;
     // ------------------ 属性 ------------------
 
     // ------------------ 自定义函数 ------------------
@@ -72,7 +80,42 @@ export class Toast extends HIElement {
                 toastContent.removeChild(this);
                 this.dispatchEvent(new CustomEvent('close'));
             }
-        })
+        });
+            
+        this.position();
+    }
+    
+    
+    /**
+     * 及时显示位置
+     * @date 6/16/2022 - 2:02:42 PM
+     *
+     * @returns {string}
+     */
+    position(): string {
+        if ( !this.site ) {
+            return '';
+        };
+        let CSS: any = {};
+        for ( let i=0; i < this.site.length; i++ ) {
+            if( !this.site[i] ){
+                continue;
+            } else {
+                let _Site;
+                if ( typeof this.site[i] === 'string' && this.site[i].indexOf('%') >= 0 ) {
+                    _Site = this.site[i];
+                } else {
+                    _Site = this.site[i] + 'px';
+                };
+                switch(i){
+                    case 0: CSS.top = _Site; CSS.bottom = 'auto'; break;
+                    case 1: CSS.right = _Site; CSS.left = 'auto'; CSS['margin-left'] = 'auto'; break;
+                    case 2: CSS.bottom = _Site; break;
+                    case 3: CSS.left = _Site; CSS['margin-left'] = 'auto'; break;
+                };
+            };
+        };
+        return `top:${CSS.top}; right:${CSS.right}; bottom:${CSS.bottom}; left:${CSS.left}; margin-left:${CSS['margin-left']};`;        
     }
 }
 
@@ -88,21 +131,22 @@ if(!toastContent){
  * @function get
  * @param { Object } options 请求参数对象
  * @param { string } options.content 显示内容
- * @param { Function } options.time 显示时间间隔
+ * @param { Function } options.duration 显示时间间隔
  * @param { Function } options.site 位置
  */
 export default (
     options: {
         content: string, 
-        time: number, 
-        site: Array<any>
+        duration: number, 
+        site: Array<any>,
     } ) => {
         const toast = new Toast();
-        toast.time = options.time;
+        toast.duration = options.duration;
         toast.content = options.content;
+        toast.site = options.site;
         toast.show = true;
         toastContent.appendChild(toast);
         toast.timer = setTimeout(()=>{
             toast.show = false;
-        }, options.time || 2000 );
+        }, options.duration || 2000 );
 }
