@@ -16,3 +16,7 @@ window['Message'] = Messages;
 window['Dialog'] = Dialog;
 window['Toast'] = Toast;
 
+window['showDialog'] = function (e){
+    console.log(e);
+    
+}

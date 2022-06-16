@@ -40,6 +40,8 @@ export class EditWord extends HIElement {
     @observable
     public form: HTMLFormElement;
     // ------------------ 属性 ------------------
+    // @attr
+    // ochange: Function;
     // ------------------ 自定义函数 ------------------
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
@@ -66,6 +68,18 @@ export class EditWord extends HIElement {
         this.input.addEventListener('blur', () => {
             this.updateDisplay();
         });
+        this.addEventListener("ochange", (e: Event): void => {
+            if (
+                e.defaultPrevented ||
+                e.target === null
+            ) {
+                return;
+            }
+    
+            e.preventDefault();
+            alert(2)
+           
+        });
     }
     /**
      * 更新显示
@@ -75,7 +89,11 @@ export class EditWord extends HIElement {
         this.form.style.display = 'none';
         this.span.textContent = this.input.value;
         this.input.style.width = this.span.clientWidth + 'px';
-        this.$emit("change",  this.input.value);
+        // console.log(this.ochange);
+        // this.ochange(3)
+        
+        // this.ochange(this.input.value)
+        this.$emit("ochange",  this.input.value);
     }
 
 
