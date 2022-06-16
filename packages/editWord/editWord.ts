@@ -75,6 +75,7 @@ export class EditWord extends HIElement {
         this.form.style.display = 'none';
         this.span.textContent = this.input.value;
         this.input.style.width = this.span.clientWidth + 'px';
+        this.$emit("change",  this.input.value);
     }
 
 
