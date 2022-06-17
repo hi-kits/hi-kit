@@ -53,11 +53,11 @@
             </div>
             <h2>消息 <span>message</span></h2>
             <div>
-                <h-button onclick="Message.info({content: 'This a info message', duration: 30})">info</h-button>
-                <h-button onclick="Message.success({content:'This a success message', duration: 10000})">success</h-button>
-                <h-button onclick="Message.error({content:'This a error message'})">error</h-button>
-                <h-button onclick="Message.warning({content:'This a warning message'})">warning</h-button>
-                <h-button onclick="Message.loading({content:'This a loading message'})">loading</h-button>
+                <h-button onclick="HiMessage.info({content: 'This a info message', duration: 300})">info</h-button>
+                <h-button onclick="HiMessage.success({content:'This a success message', duration: 10000})">success</h-button>
+                <h-button onclick="HiMessage.error({content:'This a error message'})">error</h-button>
+                <h-button onclick="HiMessage.warning({content:'This a warning message'})">warning</h-button>
+                <h-button onclick="HiMessage.loading({content:'This a loading message'})">loading</h-button>
             </div>
             <h2>栅格 <span>grid</span></h2>
             <div class="Grid">
@@ -163,6 +163,10 @@
                 <h-tips tips="some tips" type="warning"><h-button>warning</h-button></h-tips>
                 <h-tips tips="some tips" type="error"><h-button>error</h-button></h-tips>
                 <h-tips tips="some tips" color="#000"><h-button>custom color</h-button></h-tips>
+            </div>
+            <h2>分页 <span>pagination</span></h2>
+            <div>
+                <h-pagination onchange="HiMessage.warning({content: '当前页: '+ event.detail.current, duration: 1000})" simple pagesize="3" total="50"></h-pagination>
             </div>
         </div>
     </body>

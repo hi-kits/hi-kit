@@ -11,10 +11,8 @@ import { HIElement, customElement, attr, observable, ref, slotted,  html } from 
 import { ButtonStyles as styles } from "./button.style";
 
 const template = html<HiButton>`    
-    <button
-        class="btn"
-    >
-        <span class="content" >
+    <button class="btn">
+        <span class="content">
            <slot></slot>
         </span>
     </button>

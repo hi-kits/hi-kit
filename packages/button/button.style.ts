@@ -11,15 +11,21 @@ import { css } from 'hi-element';
 import { hiConfig } from "../config";
 
 export const ButtonStyles = css`
-    :host{
+
+    :host{ 
         position:relative; 
         display:inline-flex; 
-        padding: 6px 12px;
+        padding: .25em .625em;
         box-sizing:border-box; 
         vertical-align: middle;
         line-height: 1.8;
-        min-width: 100px;
-        height:36px;
+        min-width: 60px;
+        min-height: 24px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: center;
+        text-decoration: none;
+
         overflow:hidden; 
         align-items:center;
         justify-content: center;
@@ -55,7 +61,7 @@ export const ButtonStyles = css`
     :host(:not([type="primary"]):not([type="danger"]):not([disabled]):hover),
     :host(:not([type="primary"]):not([type="danger"]):focus-within),
     :host([type="flat"][focus]){ 
-        color: ${hiConfig.color}; 
+        color:var(--themeColor,#42b983); 
         border-color: var(--themeColor,#42b983); 
     }
     :host(:not([type="primary"]):not([type="danger"])) .btn::after{ 

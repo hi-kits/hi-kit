@@ -10,6 +10,7 @@ export * from "./editWord";
 export * from "./popover"
 export * from "./date-picker"
 export { HiTips } from "./tips";
+export { HiPagination } from "./pagination";
 import { HiMessageService } from './message';
 import { HiDialog } from './dialog';
 import { HiToastService } from './toast';
