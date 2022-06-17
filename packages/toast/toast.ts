@@ -51,7 +51,7 @@ export class HiToast extends HIElement {
      * 间隔时间
      * @public
      */
-    duration: number;
+    duration: number | undefined;
     /**
      * 定时器
      * @public
@@ -64,7 +64,7 @@ export class HiToast extends HIElement {
      * @examples [10,10] or ['45%'] or [,,20,20] or ['20%',20]
      * @type {Array<string>}
      */
-    site: Array<string>;
+    site: Array<string> | undefined;
     // ------------------ 属性 ------------------
 
     // ------------------ 自定义函数 ------------------
@@ -119,31 +119,40 @@ export class HiToast extends HIElement {
     }
 }
 
-let toastContent: any = document.getElementById('ToastWrap');
+let toastContent: any = document.getElementById('HiToastWrap');
 if(!toastContent){
     toastContent = document.createElement('div');
-    toastContent.id = 'ToastWrap';
+    toastContent.id = 'HiToastWrap';
     toastContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:-100px; z-index:51;';
     document.body.appendChild(toastContent);
 }
+
 /**
  * 消息提示
  * @function get
+ * @date 6/17/2022 - 1:50:51 PM
+ *
+ * @export
+ * @param {{
+        content: string, 
+        duration: number, 
+        site: Array<any>,
+    }} options
  * @param { Object } options 请求参数对象
  * @param { string } options.content 显示内容
  * @param { Function } options.duration 显示时间间隔
  * @param { Function } options.site 位置
  */
-export default (
+export function HiToastService (
     options: {
         content: string, 
-        duration: number, 
-        site: Array<any>,
-    } ) => {
+        duration?: number, 
+        site?: Array<any>,
+    }) {
         const toast = new HiToast();
         toast.duration = options.duration;
         toast.content = options.content;
-        toast.site = options.site;
+        toast.site = options!.site;
         toast.show = true;
         toastContent.appendChild(toast);
         toast.timer = setTimeout(()=>{

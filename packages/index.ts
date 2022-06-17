@@ -8,14 +8,15 @@ export * from "./toast";
 export * from "./box";
 export * from "./editWord";
 export * from "./popover"
-// export * from "./color";
-import { HiMessage } from './message/message';
-import { HiDialog } from './dialog/dialog';
-import { HiToast } from './toast/toast';
-// export * from "./message";
-window['Message'] = HiMessage;
-window['Dialog'] = HiDialog;
-window['HiToast'] = HiToast;
+export * from "./date-picker"
+export { HiTips } from "./tips";
+import { HiMessageService } from './message';
+import { HiDialog } from './dialog';
+import { HiToastService } from './toast';
+
+window['HiMessage'] = HiMessageService;
+window['HiDialog'] = HiDialog;
+window['HiToast'] = HiToastService;
 
 window['showDialog'] = function (e){
     console.log(e);

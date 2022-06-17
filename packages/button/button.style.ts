@@ -18,7 +18,7 @@ export const ButtonStyles = css`
         box-sizing:border-box; 
         vertical-align: middle;
         line-height: 1.8;
-        width: 120px;
+        min-width: 100px;
         height:36px;
         overflow:hidden; 
         align-items:center;

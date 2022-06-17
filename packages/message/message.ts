@@ -24,10 +24,10 @@ type MessageType = 'info' | 'success' | 'error' | 'warning' | 'loading' | 'show'
  * @param { number } options.callback 关闭时触发的回调函数
  */
 interface MessageOptions {
-    type: MessageType,
+    type?: MessageType,
     content:string, 
-    duration: number, 
-    callback: () => void 
+    duration?: number | undefined, 
+    callback?: () => void 
 }
 
 const template = html<HiMessage>`
@@ -105,7 +105,13 @@ export class HiMessage extends HIElement {
      * @param { callback: () => void = (() => {})} 
      * @returns { void }
      */
-    setParams (message:any, type: string, content:string, duration: number, callback: () => void = (() => {})): void {
+    setParams (
+        message:any, 
+        type: string | undefined, 
+        content:string, 
+        duration: number | undefined, 
+        callback: () => void = (() => {})
+    ): void {
         message.type = type;
         message.show = true;
         message.onCallback = callback;
@@ -132,15 +138,15 @@ export class HiMessage extends HIElement {
 
 }
 
-let messageContent: any = document.getElementById('MessageWrap');
+let messageContent: any = document.getElementById('HiMessageWrap');
 if(!messageContent){
     messageContent = document.createElement('div');
-    messageContent.id = 'MessageWrap';
+    messageContent.id = 'HiMessageWrap';
     messageContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:10px; z-index:51;';
     document.body.appendChild(messageContent);
 }
 
-export default {
+export const HiMessageService = {
     /**
      * 信息提示
      * @date 2022-06-16

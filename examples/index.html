@@ -4,17 +4,17 @@
         <meta charset="utf-8" />
         <title>hi-kit</title>
         <style>
-            html {padding: 12px;}
+            html {padding: 36px;}
             body {
                 width: 100%;
                 height: 100%;
                 margin: 0px;
-                padding: 12px;
+                padding: 0;
             }
-            .MainBody {padding:10px 0 50px;width: 90%;}
+            .MainBody {padding:10px 0 50px;}
             h2 span{color: #999; font-size: 60%; font-weight: 200;}
-            h-row{ margin: 6px 0;}
-            h-col{
+            .Grid h-row{ margin: 6px 0;}
+            .Grid h-col{
                 background: #2196f380;
                 color:#fff;
                 line-height: 24px;
@@ -26,6 +26,8 @@
         .box{ width: 100px; height: 100px; color: #fff; }
         .header,.footer{ padding: 5px 10px; color: #fff; }
             h-layout{ background: #2196f380; }
+           
+        h-tips,h-popover{ margin: 0 10px 10px 0; }
         </style>
     </head>
     <!-- <script type="module" src="./hi-kit.min.js"></script> -->
@@ -58,7 +60,7 @@
                 <h-button onclick="Message.loading({content:'This a loading message'})">loading</h-button>
             </div>
             <h2>栅格 <span>grid</span></h2>
-            <div>
+            <div class="Grid">
                 <h-row gutter="10">
                     <h-col span="8"></h-col>
                     <h-col span="8"></h-col>
@@ -124,9 +126,43 @@
             <h2>文本编辑 <span>editWord</span></h2>
             <div>
                 <h-edit-word ochange="showDialog(event)">33333333</h-edit-word>
-            <div style="margin-left: 100px">
-                <div>popover</div>
-                <h-popover dir="top" title="uuu" trigger="click" hOk='' type='confirm'>popover2</h-popover>
+                <div style="margin-left: 100px">
+                    <div>popover</div>
+                    <h-popover dir="top" title="uuu" trigger="click" hOk='' type='confirm'>popover2</h-popover>
+                </div>
+            </div>
+            <h2>文字提示气泡框 <span>Tips</span></h2>
+            <div>
+                <p>normal</p>
+                <h-row gutter="10" style="max-width: 600px; margin: 0px auto; --gutter:10px;">
+                    <h-col span="4"></h-col>
+                    <h-col span="4"><h-tips tips="topleft topleft topleft topleft some tips" dir="topleft"><h-button>topleft</h-button></h-tips></h-col>
+                    <h-col span="4"><h-tips type="ww" prefix="2223." suffix=".wwwe" tips="some tips" dir="top"><h-button>top</h-button></h-tips></h-col>
+                    <h-col span="4"><h-tips tips="some tips" dir="topright"><h-button>topright</h-button></h-tips></h-col>
+                    <h-col span="8"></h-col>
+                    <h-col span="4"><h-tips dir="lefttop" tips="a a a a a a a a a lefttop lefttop lefttop lefttop lefttop some tips"><h-button>lefttop</h-button></h-tips></h-col>
+                    <h-col span="12"></h-col>
+                    <h-col span="4"><h-tips dir="righttop" show="true" tips="a a a a a a a a a lefttop lefttop lefttop lefttop lefttop lefttop some tips"><h-button>righttop</h-button></h-tips></h-col>
+                    <h-col span="4"></h-col>
+                    <h-col span="4"><h-tips dir="left" tips="some tips some tips some tips some tips some tips some tips some tips"><h-button>left</h-button></h-tips></h-col>
+                    <h-col span="12"></h-col>
+                    <h-col span="4"><h-tips dir="right" tips="some tips"><h-button>right</h-button></h-tips></h-col>
+                    <h-col span="4"></h-col>
+                    <h-col span="4"><h-tips dir="leftbottom" tips="a a a a a a a a a leftbottom leftbottom leftbottom leftbottom leftbottom leftbottom leftbottom leftbottom some tips"><h-button>leftbottom</h-button></h-tips></h-col>
+                    <h-col span="12"></h-col>
+                    <h-col span="4"><h-tips dir="rightbottom" tips="a a a rightbottom rightbottom rightbottom rightbottom rightbottom some tips"><h-button>rightbottom</h-button></h-tips></h-col>
+                    <h-col span="4"></h-col>
+                    <h-col span="4"></h-col>
+                    <h-col span="4"><h-tips dir="bottomleft" tips="some tips"><h-button>bottomleft</h-button></h-tips></h-col>
+                    <h-col span="4"><h-tips dir="bottom" tips="some tips"><h-button>bottom</h-button></h-tips></h-col>
+                    <h-col span="4"><h-tips dir="bottomright" tips="some tips"><h-button>bottomright</h-button>
+                </h-tips></h-col></h-row>
+                
+                <p>status</p>
+                <h-tips tips="some tips" type="success"><h-button>success</h-button></h-tips>
+                <h-tips tips="some tips" type="warning"><h-button>warning</h-button></h-tips>
+                <h-tips tips="some tips" type="error"><h-button>error</h-button></h-tips>
+                <h-tips tips="some tips" color="#000"><h-button>custom color</h-button></h-tips>
             </div>
         </div>
     </body>

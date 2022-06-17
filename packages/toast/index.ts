@@ -1,1 +1,1 @@
-export * from "./toast"
+export { HiToast, HiToastService } from "./toast"
