@@ -7,7 +7,7 @@ import { HiShort } from "./short";
 import { HiToast } from "./toast";
 // import  { Box } from "./box";
 import  { HiEditWord } from "./editWord";
-// import  { Popover } from "./popover"
+import  { Popover } from "./popover"
 import { HiTips } from "./tips";
 import { HiPagination } from "./pagination";
 import { HiMessageService } from './message';
@@ -22,16 +22,3 @@ window['HiToast'] = HiToastService;
 //     console.log(e);
     
 // }
-
-export default {
-    HiButton, HiButtonGroup,
-    HiCheckbox, HiCheckboxGroup,
-    HiCol, HiRow, HiLayout,
-    HiLoading,
-    HiSwitch,
-    HiShort,
-    HiToast,
-    HiEditWord,
-    HiTips,
-    HiPagination
-}

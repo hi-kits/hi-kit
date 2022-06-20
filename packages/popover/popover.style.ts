@@ -232,5 +232,6 @@ export const PopoverStyles = css`
   }
   slot{
     border-radius: inherit;
+    cursor: pointer;
   }
 `;
