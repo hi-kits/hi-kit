@@ -28,6 +28,13 @@ export class HiShort extends HIElement {
 
     @attr disabled = false;
     @attr checked = true;
+    private checkedChanged(oldValue, newValue): void {
+        if( newValue !== null){
+            this.checked = true;
+        }else{
+            this.checked = false;
+        }
+    }
     isfocus;
     value;
     
@@ -36,8 +43,6 @@ export class HiShort extends HIElement {
     }
     connectedCallback() {
         super.connectedCallback()
-        this.disabled = this.disabled;
-        this.checked = this.checked;
         this.shadowRoot!.addEventListener('change',(ev)=>{
             this.checked = this.checked;
             this.dispatchEvent(new CustomEvent('change', {
@@ -80,16 +85,5 @@ export class HiShort extends HIElement {
         })
     }
 
-
-    attributeChangedCallback (name, oldValue, newValue) {
-        
-        if( name == 'checked'){
-            if(newValue!==null && this.shadowRoot){
-                this.checked = true;
-            }else{
-                this.checked = false;
-            }
-        }
-    }
 }
 
