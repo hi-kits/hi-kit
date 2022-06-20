@@ -98,7 +98,19 @@
             </div>
             <h2>加载 <span>loading</span></h2>
             <div>
-                <h-loading size="42" color="red"></h-loading>
+                <h-loading></h-loading>
+                <h-loading size="40" color="green"></h-loading>
+                <h-loading size="60" color="olivedrab"></h-loading>
+                <h-loading size="80" color="orange"></h-loading>
+            </div>
+            <h2>滑块 <span>slider</span></h2>
+            <div>
+                <h-slider onchange="console.log(event)"></h-slider>
+                <h-slider defaultvalue="100" min="0" max="300" step="5"></h-slider>
+                <h-slider defaultvalue="30" min="-100" max="100" step="1"></h-slider>
+                <h-slider defaultvalue="100" min="10" max="200" step="2" showtips></h-slider>
+                <h-slider defaultvalue="150" min="10" max="200" step="2" disabled></h-slider>
+                <h-slider style="height:200px" vertical showtips defaultvalue="150" min="10" max="200" step="2"></h-slider>
             </div>
             <h2>布局 <span>layout</span></h2>
             <div>
