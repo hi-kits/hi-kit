@@ -1,0 +1,31 @@
+# 忽略目录
+# Tests
+dist/dts/__test__/
+dist/esm/__test__/
+dist/esmModule/
+*.spec.*
+
+
+# Source files
+public/
+build/
+doc/sss
+packages/
+examples/
+utils/
+
+# config files
+.eslintignore
+.eslintrc.js
+.prettierignore
+api-extractor.json
+karma.conf.js
+rollup.config.js
+tsconfig.json
+webpack.config.js
+babel.config.js
+package-lock.json
+
+# cache
+.rollupcache
+temp
