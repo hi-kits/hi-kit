@@ -1,16 +1,15 @@
-export { HiButton, HiButtonGroup } from "./button";
-export * from "./checkbox";
-export * from "./grid";
-export * from "./loading";
-export * from "./switch";
-export * from "./short";
-export * from "./toast";
-export * from "./box";
-export * from "./editWord";
-export * from "./popover"
-export * from "./date-picker"
-export { HiTips } from "./tips";
-export { HiPagination } from "./pagination";
+import { HiButton, HiButtonGroup } from "./button";
+import { HiCheckbox, HiCheckboxGroup } from "./checkbox";
+import { HiCol, HiRow, HiLayout} from "./grid";
+import { HiLoading } from "./loading";
+import  { HiSwitch } from "./switch";
+import { HiShort } from "./short";
+import { HiToast } from "./toast";
+// import  { Box } from "./box";
+import  { HiEditWord } from "./editWord";
+// import  { Popover } from "./popover"
+import { HiTips } from "./tips";
+import { HiPagination } from "./pagination";
 import { HiMessageService } from './message';
 import { HiDialog } from './dialog';
 import { HiToastService } from './toast';
@@ -19,7 +18,20 @@ window['HiMessage'] = HiMessageService;
 window['HiDialog'] = HiDialog;
 window['HiToast'] = HiToastService;
 
-window['showDialog'] = function (e){
-    console.log(e);
+// window['showDialog'] = function (e){
+//     console.log(e);
     
+// }
+
+export default {
+    HiButton, HiButtonGroup,
+    HiCheckbox, HiCheckboxGroup,
+    HiCol, HiRow, HiLayout,
+    HiLoading,
+    HiSwitch,
+    HiShort,
+    HiToast,
+    HiEditWord,
+    HiTips,
+    HiPagination
 }

@@ -1,0 +1,41 @@
+<svg  viewBox="0 0 150 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="0%" y1="59.8765432%" x2="100%" y2="40.1234568%" id="linearGradient-1">
+            <stop stop-color="#83AAD5" offset="0%"></stop>
+            <stop stop-color="#AB55C4" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="75.9838566%" y1="12.865948%" x2="20.7983559%" y2="87.134052%" id="linearGradient-2">
+            <stop stop-color="#1CD077" offset="0%"></stop>
+            <stop stop-color="#0B97F8" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="40.1234568%" x2="0%" y2="59.8765432%" id="linearGradient-3">
+            <stop stop-color="#AA56C4" offset="0%"></stop>
+            <stop stop-color="#83AAD5" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="62.9794996%" y1="36.4823931%" x2="13.9396931%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#4F2363" offset="0%"></stop>
+            <stop stop-color="#563668" stop-opacity="0.296658176" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="65.9282628%" y1="43.6426132%" x2="19.2675641%" y2="77.723228%" id="linearGradient-5">
+            <stop stop-color="#973BBA" offset="0%"></stop>
+            <stop stop-color="#9145BC" stop-opacity="0.125107558" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="89.8534886%" y1="12.865948%" x2="8.11825593%" y2="87.134052%" id="linearGradient-6">
+            <stop stop-color="#0B97F8" offset="0%"></stop>
+            <stop stop-color="#1CD580" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M9.57809147,0 L33,0 L33,0 L22.1116295,16 L4.60412196,16 C2.39498296,16 0.60412196,14.209139 0.60412196,12 C0.60412196,11.1908258 0.849533742,10.4006782 1.30795426,9.73388471 L7.1059657,1.30041353 C7.6656339,0.486350694 8.5902014,1.81472462e-16 9.57809147,0 Z" id="矩形" fill="url(#linearGradient-1)"></path>
+        <path d="M32.7075269,0 L48.6091988,0 C51.3706226,1.26909153e-15 53.6091988,2.23857625 53.6091988,5 C53.6091988,5.9858091 53.3177864,6.94962104 52.7715918,7.77028601 L24.8903934,49.6621716 C24.334186,50.4978809 23.3968384,51 22.3929576,51 L6.2311194,51 C4.0219804,51 2.2311194,49.209139 2.2311194,47 C2.2311194,46.2113438 2.4642546,45.4402858 2.90121959,44.7837493 L32.7075269,0 L32.7075269,0 Z" id="矩形" fill="url(#linearGradient-2)"></path>
+        <path d="M67.7914122,35 L91.2133208,35 L91.2133208,35 L80.8784255,51 L62.8174427,51 C60.6083037,51 58.8174427,49.209139 58.8174427,47 C58.8174427,46.1908258 59.0628545,45.4006782 59.521275,44.7338847 L65.3192865,36.3004135 C65.8789547,35.4863507 66.8035222,35 67.7914122,35 Z" id="矩形" fill="url(#linearGradient-3)" transform="translate(73.213321, 43.000000) scale(-1, -1) translate(-73.213321, -43.000000) "></path>
+        <polygon id="三角形" fill="url(#linearGradient-4)" points="32.7075269 0 22.1116295 16 18.0523658 16"></polygon>
+        <polygon id="三角形" fill="url(#linearGradient-5)" points="32.7075269 0 18.0523658 16 11.2201656 16"></polygon>
+        <polygon id="三角形" fill="url(#linearGradient-4)" transform="translate(62.379946, 43.000000) scale(-1, -1) translate(-62.379946, -43.000000) " points="69.7075269 35 59.1116295 51 55.0523658 51"></polygon>
+        <polygon id="三角形" fill="url(#linearGradient-5)" transform="translate(65.963846, 43.000000) scale(-1, -1) translate(-65.963846, -43.000000) " points="76.7075269 35 62.0523658 51 55.2201656 51"></polygon>
+        <path d="M64.2138051,0 L80.115477,0 C82.8769008,1.26909153e-15 85.115477,2.23857625 85.115477,5 C85.115477,5.9858091 84.8240647,6.94962104 84.27787,7.77028601 L56.3966716,49.6621716 C55.8404643,50.4978809 54.9031166,51 53.8992358,51 L37.7373976,51 C35.5282586,51 33.7373976,49.209139 33.7373976,47 C33.7373976,46.2113438 33.9705328,45.4402858 34.4074978,44.7837493 L64.2138051,0 L64.2138051,0 Z" id="矩形" fill="url(#linearGradient-6)" transform="translate(59.859799, 25.500000) scale(-1, -1) translate(-59.859799, -25.500000) "></path>
+        <text id="KITS" font-family="Helvetica-Bold, Helvetica" font-size="24" font-weight="bold" fill="#000000">
+            <tspan x="94" y="50">KITS</tspan>
+        </text>
+    </g>
+</svg>
