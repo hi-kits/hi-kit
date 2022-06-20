@@ -1,5 +1,5 @@
 /**
- * @class: HiSelect
+ * @class: HiPagination
  * @version 0.0.1
  * @author by fico on 2022/06/17
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -162,8 +162,8 @@ export class HiPagination extends HIElement {
         }
         this.updatePage(current);
     }
-    updatePage( current = this.current ){
-        this.left.disabled = current==1;
+    updatePage( current = this.current ): void{
+        this.left.disabled = current == 1;
         this.right.disabled = current==this.count;
         if(this.href){
             this.left['href'] = this.href + '=' + (current-1);

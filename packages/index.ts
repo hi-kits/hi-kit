@@ -1,5 +1,6 @@
 export { HiButton, HiButtonGroup } from "./button";
 export * from "./checkbox";
+export * from "./radio";
 export * from "./grid";
 export * from "./loading";
 export * from "./switch";

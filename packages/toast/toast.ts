@@ -78,7 +78,7 @@ export class HiToast extends HIElement {
             if(ev.propertyName === 'transform' && !this.show){
                 // DOM.removeChildNodes(toastContent);
                 toastContent.removeChild(this);
-                this.dispatchEvent(new CustomEvent('close'));
+                this.$emit('close');
             }
         });
             
