@@ -18,7 +18,8 @@ const styles = css`
 }
 .loading{
     display: block;
-    width: 100px;
+    width: 1em;
+    height: 1em;
     margin: auto;
     animation: rotate 1.4s linear infinite;
 }

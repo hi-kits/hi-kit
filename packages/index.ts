@@ -5,7 +5,9 @@ import { HiLoading } from "./loading";
 import  { HiSwitch } from "./switch";
 import { HiShort } from "./short";
 import { HiToast } from "./toast";
+import  { HiSlider } from "./slider";
 // import  { Box } from "./box";
+import  { HiDrawlottery } from "./extend/drawlottery";
 import  { HiEditWord } from "./editWord";
 import  { Popover } from "./popover"
 import { HiTips } from "./tips";
