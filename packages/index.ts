@@ -6,6 +6,8 @@ import  { HiSwitch } from "./switch";
 import { HiShort } from "./short";
 import { HiToast } from "./toast";
 import  { HiSlider } from "./slider";
+import  { HiIcon } from "./icon";
+import  { HiDivider } from "./divider";
 // import  { Box } from "./box";
 import  { HiDrawlottery } from "./extend/drawlottery";
 import  { HiEditWord } from "./editWord";
@@ -24,6 +26,8 @@ window['HiToast'] = HiToastService;
 //     console.log(e);
     
 // }
+
+
 
 export default {
     HiButton, HiButtonGroup,

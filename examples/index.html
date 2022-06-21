@@ -40,6 +40,17 @@
                 <p></p>
                 <h-button>33333</h-button>
             </div>
+            <h2>icon</h2>
+            <div>
+            <p>name</p>
+                <h-icon name="user" size="30" color="orangered"></h-icon>
+                <h-icon name="location" size="30" color="orangered"></h-icon>
+                <h-icon name="message" size="30" color="#1E90FF"></h-icon>
+                <h-icon name="heart" size="30" color="#F44336"></h-icon>
+                <h-icon name="send" size="50" color="#3F51B5"></h-icon>
+                <h-icon name="comment" size="50" color="#3F51B5"></h-icon>
+                <h-icon name="audio" size="50" color="#3F51B5"></h-icon>
+            </div>
             <h2>复选框 <span>checkbox</span></h2>
             <div>
                 <h-checkbox-group name="books" required min="2" max="3" defaultvalue="Angular">
@@ -60,6 +71,29 @@
                     <h-radio>Flutter</h-radio>
                     <h-radio>Swift</h-radio>
                 </h-radio-group>
+            </div>
+            <h2>分割线 <span>divider</span></h2>
+            <div>
+                <p>水平分割线</p>
+                <h-divider text="With Text" dashed></h-divider>
+                <h-divider color="red" text="With Text"></h-divider>
+                <h-divider color="#1E90FF" size="30" text="With Text">
+                    <h-button>按钮</h-button>
+                </h-divider>
+                <p>垂直分割线</p>
+                <div>
+                    Text
+                    <h-divider type="vertical"></h-divider>
+                    <a href="#">Link</a>
+                    <h-divider type="vertical"></h-divider>
+                    <a href="#">Link</a>
+                </div>
+                <p>分割线方向</p>
+                <div>
+                    <h-divider text="With Text" dir="center"></h-divider>
+                    <h-divider text="Left Text" dir="left"></h-divider>
+                    <h-divider text="Right Text"  dir="right"></h-divider>
+                </div>
             </div>
             <h2>消息 <span>message</span></h2>
             <div>

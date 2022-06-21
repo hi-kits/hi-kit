@@ -100,7 +100,7 @@ export class HiLoading extends HIElement {
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
-    connectedCallback() {
+    connectedCallback(): void {
         super.connectedCallback();
         this.loading!.style.height   = this.size  + 'px';
 
