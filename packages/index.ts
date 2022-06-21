@@ -11,7 +11,7 @@ import  { HiDivider } from "./divider";
 // import  { Box } from "./box";
 import  { HiDrawlottery } from "./extend/drawlottery";
 import  { HiEditWord } from "./editWord";
-// import  { Popover } from "./popover"
+import  { Popover } from "./popover"
 import { HiTips } from "./tips";
 import { HiPagination } from "./pagination";
 import { HiMessageService } from './message';

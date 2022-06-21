@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2022-06-09 15:44:00
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-16 16:22:29
+ * @LastEditTime: 2022-06-20 17:46:39
  */
 import {
   HIElement,
@@ -13,9 +13,7 @@ import {
   observable,
   ref,
   when,
-  slotted,
   html,
-  css,
 } from 'hi-element';
 
 import { PopoverStyles as styles } from './popover.style';
@@ -32,7 +30,7 @@ const template = html<Popover>`
   <slot></slot>
   <div class="popoverWrap">
     <div class="popcon-content" ${ref("control")}>
-      <div class="popcon-title" id="title">${(x) => x.title}</div>
+      <div class="popcon-title" id="title">${(x) => x.ptitle}</div>
       <hr/>
       <div class="popcon-body">
         ${(x) => x.content}
@@ -70,7 +68,7 @@ export class Popover extends HIElement {
    */
   @attr dir: DirType = 'top';
   // title
-  @attr title: string = '';
+  @attr ptitle: string = '';
   // 类型
   @attr type: PopoverType = 'nomal';
   // 内容
@@ -94,6 +92,7 @@ export class Popover extends HIElement {
   private popoverVisibleChange() {
     this.open = this.popoverVisible;
   }
+  @attr hOk: string | Function = '';
   /**
      * 是否展示
      *
@@ -102,10 +101,9 @@ export class Popover extends HIElement {
   @observable
   public open: boolean = false;
   private openChanged(): void {
-    // console.log(this.open);
     this.open ? this.setAttribute("open", ''): this.removeAttribute("open");
   }
-  
+  // popver Content
   public control: HTMLDivElement;
   /**
    * 当自定义元素第一次被连接到文档DOM时被调用
@@ -113,21 +111,17 @@ export class Popover extends HIElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    console.log(this.control, this.trigger!=='click');
-    if (this.trigger) {
-      // this.addEventListener('click',this.show);
-      if(this.trigger==='contextmenu'){
-        this.addEventListener('contextmenu',(ev)=>{
-          ev.preventDefault();
-          this.show(ev);
-        });
-      } else {
-        this.addEventListener(this.trigger, this.show);
-      }
+    // TODO如果trigger方式是鼠标右键
+    if(this.trigger==='contextmenu'){
+      this.addEventListener('contextmenu',(ev)=>{
+        ev.preventDefault();
+        this.show(ev);
+      });
+    } else {
+      // 其他方式直接绑定事件
+      this.addEventListener(this.trigger, this.show);
     }
-    // if(!(this.trigger && this.trigger!=='click')){
-    //   this.addEventListener('click',this.show);
-    // }
+    // 如果有按钮的
     if(this.type=='confirm'){
       const elements = Array.from(this.control?.children) as HTMLDivElement[];
       if (elements) {
@@ -139,7 +133,9 @@ export class Popover extends HIElement {
             // 获取操作按钮的类型
             const type = btn.id.split('-')[1];
             // 确定取消 绑定事件
-            btn.addEventListener("click", this.handleClick);
+            btn.addEventListener("click", (e) => {
+              this.handleClick(e, type);
+            });
           });
         }
       }
@@ -161,17 +157,29 @@ export class Popover extends HIElement {
    * @return {*} void
    */
   show(ev): void{
-    if (!this.disabled && !this.open) {
-      this.open = true;
-    } else {
-      this.open = false
+    const path = ev.path || (ev.composedPath && ev.composedPath());
+    // 排除在popover之内
+    if (!path.includes(this.control)) {
+      if (!this.disabled && !this.open) {
+        this.open = true;
+      } else {
+        this.open = false
+      }
     }
   }
   // 按钮的点击事件
-  handleClick(e): void{
+  handleClick(e, type): void{
     e.stopPropagation();
     // submit  ｜ cancel需要做一些其他的处理
     // TODO callback()
+    if (type === 'submit' && this.hOk) {
+      if (typeof this.hOk === 'string') {
+        new Function(this.hOk)();
+      }
+      if (typeof this.hOk === 'function') {
+        this.hOk();
+      }
+    }
     this.open = false;
   }
 }

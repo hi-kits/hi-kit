@@ -182,10 +182,16 @@
             <h2>文本编辑 <span>editWord</span></h2>
             <div>
                 <h-edit-word ochange="showDialog(event)">33333333</h-edit-word>
-                <div style="margin-left: 100px">
-                    <div>popover</div>
-                    <h-popover dir="top" title="uuu" trigger="click" hOk='' type='confirm'>popover2</h-popover>
-                </div>
+            </div>
+            <div></div>
+            <h2>popover</h2>
+            <div style="margin-left: 100px">
+                <h-popover dir="top" ptitle="uuu" trigger="click" hOk='alert(233)' type='confirm'>
+                    <h-button>click popover</h-button>
+                </h-popover>
+                <h-popover dir="top" ptitle="我是title" content="我是内容" >
+                    <h-button>hover popover</h-button>
+                </h-popover>
             </div>
             <h2>文字提示气泡框 <span>Tips</span></h2>
             <div>
