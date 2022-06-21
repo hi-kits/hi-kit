@@ -1,0 +1,16 @@
+{
+    "tabWidth": 2,
+    "useTabs": false,
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid",
+    "trailingComma": "none",
+    "generatorStarSpacing": true,
+    "offsetTernaryExpressions": true,
+    "printWidth": 140,
+    "quoteProps": "consistent",
+    "semi": true,
+    "singleQuote": true,
+    "spaceBeforeFunctionParent": true,
+    "yieldStarSpacing": true
+  }
