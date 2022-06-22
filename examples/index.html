@@ -265,7 +265,12 @@
                 <h-pagination onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" pagesize="3" total="50"></h-pagination>
                 <h-pagination onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" simple="true" pagesize="3" total="50"></h-pagination>
             </div>
-            <h-drawlottery>h-drawlotterys</h-drawlottery>
+            <!-- <h-drawlottery>h-drawlotterys</h-drawlottery> -->
+            <h2>侧边栏 <span>pagination</span></h2>
+            <div>
+                <h-sidebar id="Sidebar"></h-sidebar>
+                <h-button onclick="document.getElementById('Sidebar').setAttribute('show','')">打开侧边栏</h-button>
+            </div>
         </div>
     </body>
     

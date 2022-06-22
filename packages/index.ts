@@ -10,6 +10,7 @@ import  { HiIcon } from "./icon";
 import  { HiDivider } from "./divider";
 import  { HiCountdown } from "./countdown";
 import  { HiRadio } from "./radio";
+import  { HiSidebar } from "./sidebar";
 // import  { Box } from "./box";
 // import  { HiDrawlottery } from "./extend/drawlottery";
 import { HiEditWord } from './editWord';
