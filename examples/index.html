@@ -50,16 +50,24 @@
                 <h-button block >block</h-button>
                 <h-button type="flat" href="https://ys-zjrs.haier.net/zjm/synsm/pushManage/favicon.ico" download="111">href</h-button>
             </div>
-            <h2>icon</h2>
+            <h2>图标 <span>icon</span></h2>
             <div>
-            <p>name</p>
-                <h-icon name="user" size="30" color="orangered"></h-icon>
-                <h-icon name="location" size="30" color="orangered"></h-icon>
-                <h-icon name="message" size="30" color="#1E90FF"></h-icon>
-                <h-icon name="heart" size="30" color="#F44336"></h-icon>
-                <h-icon name="send" size="50" color="#3F51B5"></h-icon>
-                <h-icon name="comment" size="50" color="#3F51B5"></h-icon>
-                <h-icon name="audio" size="50" color="#3F51B5"></h-icon>
+                <p>默认提供15个图标</p>
+                <h-icon name="info-circle" size="30" color="orangered"></h-icon>
+                <h-icon name="question-circle" size="30" color="orangered"></h-icon>
+                <h-icon name="warning-circle" size="30" color="#1E90FF"></h-icon>
+                <h-icon name="sync" size="30" color="#F44336"></h-icon>
+                <h-icon name="user" size="50" color="#42b983"></h-icon>
+                <h-icon name="heart" size="50" color="#F44336"></h-icon>
+                <h-icon name="error" size="50" color="#3F51B5"></h-icon>
+                <h-icon name="star" size="50" color="#3F51B5"></h-icon>
+                <h-icon name="link" size="50" color="#3F51B5"></h-icon>
+                <h-icon name="right" size="50" color="#3F51B5"></h-icon>
+                <h-icon name="left" size="50" color="#3F51B5"></h-icon>
+                <h-icon name="up" size="50" color="#3F51B5"></h-icon>
+                <h-icon name="down" size="50" color="#3F51B5"></h-icon>
+                <h-icon name="check-circle" size="50" color="#3F51B5"></h-icon>
+                <h-icon name="search" size="50" color="#3F51B5"></h-icon>
             </div>
             <h2>复选框 <span>checkbox</span></h2>
             <div>
@@ -107,8 +115,8 @@
             </div>
             <h2>消息 <span>message</span></h2>
             <div>
-                <h-button onclick="HiMessage.info({content: 'This a info message', duration: 300})">info</h-button>
-                <h-button onclick="HiMessage.success({content:'This a success message', duration: 10000})">success</h-button>
+                <h-button onclick="HiMessage.info({content: 'This a info message', duration: 3000})">info</h-button>
+                <h-button onclick="HiMessage.success({content:'This a success message', duration: 2000})">success</h-button>
                 <h-button onclick="HiMessage.error({content:'This a error message'})">error</h-button>
                 <h-button onclick="HiMessage.warning({content:'This a warning message'})">warning</h-button>
                 <h-button onclick="HiMessage.loading({content:'This a loading message'})">loading</h-button>
@@ -186,8 +194,11 @@
             </div>
             <h2>Toast提示 <span>toast</span></h2>
             <div>
-                <h-button onclick="HiToast({content: 'This a Toast', duration: 1000})">toast</h-button>
-                <h-button onclick="HiToast({content: '居中提示', site:['50%'], duration: 1000})">位置</h-button>
+                <h-button onclick="HiToast({content: 'This a Toast', duration: 1000})">默认</h-button>
+                <h-button onclick="HiToast({content: '居中提示', site:['50%'], duration: 1000})">居中提示</h-button>
+                <h-button onclick="HiToast({content: '顶部提示', site:['5%'], duration: 1000})">顶部提示</h-button>
+                <h-button onclick="HiToast({content: '左侧提示', site:['50%',,,10], duration: 1000})">左侧提示</h-button>
+                <h-button onclick="HiToast({content: '右侧提示', site:['50%',10,], duration: 1000})">右侧提示</h-button>
             </div>
             <h2>评分 <span>rate</span></h2>
             <div>
@@ -195,7 +206,8 @@
             </div>
             <h2>倒计时 <span>countdown</span></h2>
             <div>
-                <h-countdown style="font-size: 12px; color: rgba(39, 196, 157, 0.707); background-color: rgb(164, 31, 31);"></h-countdown>
+                <h-countdown style="font-size: 12px; color: rgba(39, 73, 196, 0.707); "></h-countdown>
+                <h-countdown beginTime="2022-08-08" endTime="2022-08-09" size="14" color="#3F51B5"></h-countdown>
             </div>
             <h2>盒 <span>box</span></h2>
             <div>

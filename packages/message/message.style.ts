@@ -44,13 +44,15 @@ export const MessageStyles = css`
     margin-right:5px;
 }
 
-h-loading{
-    display:none;
-}
-:host([show][type="info"]) .message {
-    background: ${hiConfig.infoColor};
-}
 
+// :host([show][type="info"]) .message {
+//     background: ${hiConfig.infoColor};
+// }
+
+:host h-icon{
+    font-size: 16px;
+    color:var(--themeColor,#42b983);
+}
 `;
  
 

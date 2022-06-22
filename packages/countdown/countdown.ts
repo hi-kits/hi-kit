@@ -8,6 +8,9 @@
 
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 
+import { DateServices } from '../_utils/date.services'
+
+
 const styles = css`
 
 :host .Countdown{
@@ -97,8 +100,14 @@ export class HiCountdown extends HIElement {
     countdownTxt: HTMLDivElement;
     // ------------------ 属性 ------------------
 
-    @attr beginTime = + new Date('2022-09-10');
-    @attr endTime  = +new Date('2022-10-11');
+    @attr beginTime: any = '2022-09-10';
+    private beginTimeChanged(oldValue, newValue): void {
+        this.beginTime = + new Date(DateServices(new Date(newValue), 'yyyy-MM-dd hh:mm:ss'));
+    }
+    @attr endTime: any  = '2023-10-11';
+    private endTimeChanged(oldValue, newValue): void {
+        this.endTime = +new Date(DateServices(new Date(newValue), 'yyyy-MM-dd hh:mm:ss'));
+    }
     
 
     /**
