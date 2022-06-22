@@ -10,11 +10,11 @@ import  { HiIcon } from "./icon";
 import  { HiDivider } from "./divider";
 import  { HiCountdown } from "./countdown";
 // import  { Box } from "./box";
-import  { HiDrawlottery } from "./extend/drawlottery";
-import  { HiEditWord } from "./editWord";
-import  { Popover } from "./popover"
-import { HiTips } from "./tips";
-import { HiPagination } from "./pagination";
+// import  { HiDrawlottery } from "./extend/drawlottery";
+import { HiEditWord } from './editWord';
+import { Popover } from './popover';
+import { HiTips } from './tips';
+import { HiPagination } from './pagination';
 import { HiMessageService } from './message';
 import { HiDialog } from './dialog';
 import { HiToastService } from './toast';
@@ -25,20 +25,5 @@ window['HiToast'] = HiToastService;
 
 // window['showDialog'] = function (e){
 //     console.log(e);
-    
+
 // }
-
-
-
-export default {
-    HiButton, HiButtonGroup,
-    HiCheckbox, HiCheckboxGroup,
-    HiCol, HiRow, HiLayout,
-    HiLoading,
-    HiSwitch,
-    HiShort,
-    HiToast,
-    HiEditWord,
-    HiTips,
-    HiPagination
-}

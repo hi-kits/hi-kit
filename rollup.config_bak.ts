@@ -17,10 +17,10 @@ import {
     transformHTMLFragment,
 } from "./build/transform-fragments";
 
-import { readDirPackages } from "./build/getPackageName"
+import { getPackagesInfoList } from "./build/getPackageName"
 
 const timeStart = new Date().getTime();
-const kitsList = readDirPackages(function(filePath) {
+const kitsList = getPackagesInfoList("packages/", "_", function(filePath) {
   console.log('done', new Date().getTime() - timeStart);
 })
 
