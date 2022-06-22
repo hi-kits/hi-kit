@@ -8,6 +8,7 @@
 
 import { HIElement, customElement, html, attr, ref, observable } from 'hi-element';
 import { PaginationStyles as styles } from "./pagination.style";
+import { HiButton } from "../button";
 
 const template = html<HiPagination>`
 <h-button type="flat" ${ x => x.href ? "href=1" : "" } target="_self" ${ref('left')}>
@@ -163,14 +164,24 @@ export class HiPagination extends HIElement {
         this.updatePage(current);
     }
     updatePage( current = this.current ): void{
-        this.left.disabled = current == 1;
-        this.right.disabled = current==this.count;
+        if (current == 1) {
+            this.left.setAttribute('disabled','');
+        } else {
+            this.left.removeAttribute('disabled');
+        }
+        if (current==this.count) {
+            this.right.setAttribute('disabled','');
+        } else {
+            this.right.removeAttribute('disabled');
+        }
+        // this.left.disabled = current == 1;
+        // this.right.disabled = current==this.count;
         if(this.href){
-            this.left['href'] = this.href + '=' + (current-1);
-            this.right['href'] = this.href + '=' + (current+1);
+            this.left.setAttribute('href', this.href + '=' + (current-1));
+            this.left.setAttribute('href', this.href + '=' + (current+1));
         }
         if(this.simple){
-            // this.page.querySelector('.simple-page').textContent = current + ' / ' + this.count;
+            this.page.innerHTML = current + ' / ' + this.count;
         }else{
             if( this.count>9 ){
                 let place: Array<any>;
