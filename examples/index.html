@@ -30,7 +30,8 @@
         h-tips,h-popover{ margin: 0 10px 10px 0; }
         </style>
     </head>
-    <!-- <script type="module" src="./hi-kit.min.js"></script> -->
+    <script  src="./font_icon/iconfont.js"></script>
+    <link rel="stylesheet" href="../font_icon/iconfont.css">
     <body>
         <div class="MainBody">
 
@@ -176,7 +177,16 @@
             </div>
             <h2>Toast提示 <span>toast</span></h2>
             <div>
-                <!-- <h-toast></h-toast> -->
+                <h-button onclick="HiToast({content: 'This a Toast', duration: 1000})">toast</h-button>
+                <h-button onclick="HiToast({content: '居中提示', site:['50%'], duration: 1000})">位置</h-button>
+            </div>
+            <h2>评分 <span>rate</span></h2>
+            <div>
+                <h-rate></h-rate>
+            </div>
+            <h2>倒计时 <span>countdown</span></h2>
+            <div>
+                <h-countdown style="font-size: 12px; color: rgba(39, 196, 157, 0.707); background-color: rgb(164, 31, 31);"></h-countdown>
             </div>
             <h2>盒 <span>box</span></h2>
             <div>

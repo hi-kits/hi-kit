@@ -8,6 +8,7 @@ import { HiToast } from "./toast";
 import  { HiSlider } from "./slider";
 import  { HiIcon } from "./icon";
 import  { HiDivider } from "./divider";
+import  { HiCountdown } from "./countdown";
 // import  { Box } from "./box";
 import  { HiDrawlottery } from "./extend/drawlottery";
 import  { HiEditWord } from "./editWord";
