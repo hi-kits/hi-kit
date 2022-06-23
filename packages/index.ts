@@ -11,6 +11,7 @@ import  { HiDivider } from "./divider";
 import  { HiCountdown } from "./countdown";
 import  { HiRadio } from "./radio";
 import  { HiSidebar } from "./sidebar";
+import  { HiFlip } from "./flip";
 // import  { Box } from "./box";
 // import  { HiDrawlottery } from "./extend/drawlottery";
 import { HiEditWord } from './editWord';
