@@ -21,12 +21,11 @@
       "web-ie11"
   ],
   "lib": [
-      "DOM",
-      "es2017",
-      "ES2016.Array.Include"
-  ]
-},
-"exclude": ["examples/src", "rollup.config.ts", "dist", "utils"],
-"include": ["packages", "extendPackages"]
+    "DOM",
+    "es2017",
+    "ES2016.Array.Include"
+  ]},
+  "exclude": ["examples/src", "rollup.config.ts", "dist", "src/utils"],
+  "include": ["src"]
 // "": []
 }
