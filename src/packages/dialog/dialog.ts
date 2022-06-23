@@ -1,5 +1,5 @@
 /**
- * @class: HiDialog
+ * @class: HiDialog 对话框
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.

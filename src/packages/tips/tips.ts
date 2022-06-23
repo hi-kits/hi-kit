@@ -1,5 +1,5 @@
 /**
- * @class: HiTips
+ * @class: HiTips 文字提示
  * @version 0.0.1
  * @author by fico on 2022/06/17
  * @Copyright © 2022 hi-kits. All rights reserved.

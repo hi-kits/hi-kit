@@ -13,8 +13,8 @@
     "build:dist:package": "yarn run clean:package && yarn build:tsc && yarn build:package",
     "build:dist:extends": "yarn run clean:extends && yarn build:tsc && yarn build:extends",
     "build:tsc": "tsc -p ./tsconfig.json",
-    "build:package": "rollup -c rollup.package.config.ts",
-    "build:extends": "rollup -c rollup.extends.config.ts",
+    "build:package": "rollup -c rollup.package.config.ts --watch",
+    "build:extends": "rollup -c rollup.extends.config.ts --watch",
     "dev": "webpack-dev-server  --hot --mode development",
     "start": "yarn dev"
   },
