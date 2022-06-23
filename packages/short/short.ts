@@ -12,11 +12,8 @@ import { ShortStyles as styles } from "./short.style";
 const template = html<HiShort>`
 
 <div class="Short">
-		<div class="ShortMedia">
-			王
-		</div>
-		<div class="ShortLabel">姓名</div>
-		<a href="javascript:;" class="ShortDel"></a>
+	<span>${x => x.text}</span>
+    <slot></slot>
 </div>
 `;
 @customElement({
@@ -25,65 +22,56 @@ const template = html<HiShort>`
    styles
 })
 export class HiShort extends HIElement {
-
-    @attr disabled = false;
-    @attr checked = true;
-    private checkedChanged(oldValue, newValue): void {
-        if( newValue !== null){
-            this.checked = true;
-        }else{
-            this.checked = false;
+    // ------------------ 构造函数 ------------------
+    // ------------------ 参数 ------------------
+    // ------------------ 属性 ------------------
+     
+     /**
+      * 中间文字	
+      * @date 6/21/2022 - 1:54:16 PM
+      *
+      * @type {string}
+      */
+     @attr text: string;
+     private textChanged(oldValue, newValue): void {
+        
+    }
+     
+     /**
+      * 中间文字方向
+      * @date 6/21/2022 - 1:55:36 PM
+      *
+      * @type {('center' | 'left' | 'right')}
+      */
+     @attr dir: 'center' | 'left' | 'right';
+ 
+     /**
+      * 文字颜色
+      * @public string
+      */
+     @attr color: string;
+     private colorChanged(oldValue, newValue): void {
+         this.style.color = newValue;
+     }
+     /**
+      * 文字尺寸
+      * @public number
+      */
+     @attr size;
+     private sizeChanged(oldValue, newValue): void {
+         this.style.fontSize = newValue + 'px';        
+     }
+     // ------------------ 自定义函数 ------------------
+     /**
+      * 当自定义元素第一次被连接到文档DOM时被调用
+      * @internal
+      */
+     connectedCallback(): void {
+         super.connectedCallback();
+         if (['', null, undefined].includes(this.text)) {
+            this.setAttribute('hide', '');
         }
-    }
-    isfocus;
-    value;
-    
-    focus() {
-        // this.focus();
-    }
-    connectedCallback() {
-        super.connectedCallback()
-        this.shadowRoot!.addEventListener('change',(ev)=>{
-            this.checked = this.checked;
-            this.dispatchEvent(new CustomEvent('change', {
-                detail: {
-                    checked: this.checked
-                }
-            }));
-        })
-        this.shadowRoot!.addEventListener('keydown', (ev) => {
-            switch (ev['keyCode']) {
-                case 13://Enter
-                    this.checked = !this.checked;
-                    break;
-                default:
-                    break;
-            }
-        })
-        this.shadowRoot!.addEventListener('focus',(ev)=>{
-            ev.stopPropagation();
-            if(!this.isfocus){
-                this.dispatchEvent(new CustomEvent('focus',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
-            }
-        })
-        this.shadowRoot!.addEventListener('blur',(ev)=>{
-            ev.stopPropagation();
-            if(Number(getComputedStyle(this).zIndex)==2){
-                this.isfocus = true;
-            }else{
-                this.isfocus = false;
-                this.dispatchEvent(new CustomEvent('blur',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
-            }
-        })
-    }
+     }
 
 }
 

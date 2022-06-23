@@ -1,13 +1,15 @@
 /**
- * @class: HiMessage
+ * @class: HiMessage 消息
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
 
-import { HIElement, customElement, attr, observable, ref, slotted,  html } from 'hi-element';
+import { HIElement, customElement, attr, observable, ref, slotted,  html, when } from 'hi-element';
 import { MessageStyles as styles } from "./message.style";
+import { HiIcon } from "../icon";
+import { HiLoading } from "../loading";
 
 /**
  * 消息类型
@@ -32,6 +34,14 @@ interface MessageOptions {
 
 const template = html<HiMessage>`
     <div class="message">
+        ${when(
+            x => x.type == 'loading',
+            html`<h-loading size="16" color="green"></h-loading>`
+        )}
+        ${when(
+            x => x.type != 'loading',
+            html<HiMessage>`<h-icon ${ref('icon')} name="${x => x.iconName}" ></h-icon>`
+        )}
         <slot></slot>
         ${ x => x.textContent}
     </div>
@@ -48,6 +58,10 @@ export class HiMessage extends HIElement {
         super();
     }
     // ------------------ 参数 ------------------
+    @observable
+    icon: HTMLElement;
+    @observable
+    iconName: string;
     /**
      * 显示状态
      * @public
@@ -82,15 +96,31 @@ export class HiMessage extends HIElement {
      * show: 通用的消息提示。
      */
     @attr type!: MessageType;
-    // typeChanged(oldValue: string, newValue: string): void {
-    //     switch (newValue) {
-    //         case 'info':
-    //             break;
-    //         default:
-    //             break;
-    //     }
+    private typeChanged(oldValue: string, newValue: string): void {
+        let name = '';
+        let color = '';
+        switch (newValue) {
+            case 'info':
+                this.iconName = 'info-circle';
+                this.icon.style.color = 'var(--infoColor,#1890ff)';
+                break;
+            case 'success':
+                this.iconName = 'check-circle';
+                this.icon.style.color = 'var(--successColor,#52c41a)';
+                break;
+            case 'error':
+                this.iconName = 'error';
+                this.icon.style.color = 'var(--errorColor,#f4615c)';
+                break;
+            case 'warning':
+                this.iconName = 'warning-circle';
+                this.icon.style.color = 'var(--waringColor,#faad14)';
+                break;
+            default:
+                break;
+        }
         
-    // }
+    }
 
     // 关闭时触发的回调函数
     onCallback;
