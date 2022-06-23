@@ -1,2 +1,1 @@
-import "../../packages/index"
-
+import '../../module/index';
