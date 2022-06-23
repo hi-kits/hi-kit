@@ -19,8 +19,9 @@ import { template } from './button.template';
 export class HiButton extends HIElement {
   // 代理
   proxy = document.createElement('input');
-  // buttonDOM
-  public buttonControl: HTMLButtonElement;
+  // imgDOM
+  public control: HTMLImageElement;
+  public useControl: HTMLElement;
   readonly form!: HTMLFormElement;
   // ishref!: false;
   // disabled!: boolean;
@@ -220,6 +221,17 @@ export class HiButton extends HIElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
+    /* 图片测试 */
+    import('./img/qipao.png').then(res => {
+      console.log('=========', res.default);
+      this.control.setAttribute('src', res.default);
+    });
+    /* svg test */
+    import('../_iconfont/icon.svg').then(res => {
+      console.log('=========', res);
+      this.useControl.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `${res}#icon-location`);
+    });
+
     this.proxy.setAttribute('type', this.htmltype);
     this.handleUnsupportedDelegatesFocus();
 
@@ -289,8 +301,6 @@ export class HiButton extends HIElement {
   private handleFormReset = () => {
     this.form?.reset();
   };
-
-  public control!: HTMLButtonElement;
 
   /**
    * Overrides the focus call for where delegatesFocus is unsupported.

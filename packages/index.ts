@@ -9,7 +9,6 @@ import { HiSlider } from './slider';
 import { HiIcon } from './icon';
 import { HiDivider } from './divider';
 // import  { Box } from "./box";
-// import  { HiDrawlottery } from "./extend/drawlottery";
 import { HiEditWord } from './editWord';
 import { Popover } from './popover';
 import { HiTips } from './tips';

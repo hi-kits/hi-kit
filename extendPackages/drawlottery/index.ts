@@ -1,1 +1,1 @@
-export * from "./drawlottery"
+export * from './drawlottery';

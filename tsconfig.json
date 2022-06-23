@@ -27,6 +27,6 @@
   ]
 },
 "exclude": ["examples/src", "rollup.config.ts", "dist", "utils"],
-"include": ["packages"]
+"include": ["packages", "extendPackages"]
 // "": []
 }

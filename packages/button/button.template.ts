@@ -7,7 +7,7 @@ import type { HiButton } from './button';
  * @Author: liulina
  * @Date: 2022-06-21 17:53:32
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-21 18:19:38
+ * @LastEditTime: 2022-06-23 10:22:52
  */
 
 // export const dialogTemplate = (
@@ -40,5 +40,6 @@ export const template = html<HiButton>`
       ${when(x => x.checked, html` checked`)}
     ></button>`
   )}
+  <img ${ref('control')} />
   <slot></slot>
 `;
