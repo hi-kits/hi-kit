@@ -354,43 +354,24 @@
                       </div>
                 </h-flip>
             </div>
-            <h2>打字机 <span>typewriter</span></h2>
+            <h2>空状态 <span>empty</span></h2>
             <div>
-                <h-typewriter text="这是一段打字机效果的文本。">
-                    <div class="container">
-                        <dl class="sticky-stack">
-                          <dt>A</dt>
-                          <dd>Algeria</dd>
-                          <dd>Angola</dd>
-                      
-                          <dt>B</dt>
-                          <dd>Benin</dd>
-                          <dd>Botswana</dd>
-                          <dd>Burkina Faso</dd>
-                          <dd>Burundi</dd>
-                      
-                          <dt>C</dt>
-                          <dd>Cabo Verde</dd>
-                          <dd>Cameroon</dd>
-                          <dd>Central African Republic</dd>
-                          <dd>Chad</dd>
-                          <dd>Comoros</dd>
-                          <dd>Congo, Democratic Republic of the</dd>
-                          <dd>Congo, Republic of the</dd>
-                          <dd>Cote d'Ivoire</dd>
-                      
-                          <dt>D</dt>
-                          <dd>Djibouti</dd>
-                      
-                          <dt>E</dt>
-                          <dd>Egypt</dd>
-                          <dd>Equatorial Guinea</dd>
-                          <dd>Eritrea</dd>
-                          <dd>Eswatini (formerly Swaziland)</dd>
-                          <dd>Ethiopia</dd>
-                        </dl>
-                      </div>
-                </h-typewriter>
+                <h-row gutter="10">
+                    <h-col span="8">
+                        <h-empty></h-empty>
+                    </h-col>
+                    <h-col span="8">
+                        <h-empty color="#3967FF" size="20"></h-empty>
+                    </h-col>
+                    <h-col span="8">
+                        <h-empty>
+                            <h-icon name="user" size="50" color="#42b983"></h-icon>
+                            <p>自定义空状态</p>
+                            <h-button>Click Here</h-button>
+                        </h-empty>
+                    </h-col>
+                </h-row>
+                
             </div>
         </div>
     </body>

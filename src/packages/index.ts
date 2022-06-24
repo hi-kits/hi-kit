@@ -14,6 +14,7 @@ import  { HiSidebar } from "./sidebar";
 // import  { Box } from "./box";
 import { HiEditWord } from './editWord';
 import { Popover } from './popover';
+import { HiEmpty } from './empty';
 import { HiTips } from './tips';
 import { HiPagination } from './pagination';
 import { HiMessageService } from './message';
