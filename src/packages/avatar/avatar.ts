@@ -72,7 +72,7 @@ export class HiAvatar extends HIElement {
      */
     @attr circle: boolean;
     /**
-     * loading 尺寸
+     * 尺寸
      * @public number
      */
     @attr size: 'large' | 'small' | 'default' | number;
@@ -85,7 +85,7 @@ export class HiAvatar extends HIElement {
     }
 
     /**
-     * loading 颜色
+     * 颜色
      * @public string
      */
     @attr color: string;

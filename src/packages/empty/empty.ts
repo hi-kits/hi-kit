@@ -55,7 +55,7 @@ export class HiEmpty extends HIElement {
     slots: Node;
     // ------------------ 属性 ------------------
     /**
-     * loading 尺寸
+     * 尺寸
      * @public number
      */
     @attr size;
@@ -64,7 +64,7 @@ export class HiEmpty extends HIElement {
     }
 
     /**
-     * loading 颜色
+     * 颜色
      * @public string
      */
     @attr color: string;
@@ -78,7 +78,6 @@ export class HiEmpty extends HIElement {
      */
     connectedCallback(): void {
         super.connectedCallback();
-        console.log(this.slots['clientHeight']);
         
     }
 
