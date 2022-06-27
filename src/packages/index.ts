@@ -1,16 +1,24 @@
-import { HiButton, HiButtonGroup } from "./button";
-import { HiCheckbox, HiCheckboxGroup } from "./checkbox";
-import { HiCol, HiRow, HiLayout} from "./grid";
-import { HiLoading } from "./loading";
-import  { HiSwitch } from "./switch";
-import { HiShort } from "./short";
-import { HiToast } from "./toast";
-import  { HiSlider } from "./slider";
-import  { HiIcon } from "./icon";
-import  { HiDivider } from "./divider";
-import  { HiCountdown } from "./countdown";
-import  { HiRadio } from "./radio";
-import  { HiSidebar } from "./sidebar";
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: liulina
+ * @Date: 2022-06-23 10:24:32
+ * @LastEditors: liulina
+ * @LastEditTime: 2022-06-27 19:44:48
+ */
+import { HiButton, HiButtonGroup } from './button';
+import { HiCheckbox, HiCheckboxGroup } from './checkbox';
+import { HiCol, HiRow, HiLayout } from './grid';
+import { HiLoading } from './loading';
+import { HiSwitch } from './switch';
+import { HiShort } from './short';
+import { HiToast } from './toast';
+import { HiSlider } from './slider';
+import { HiIcon } from './icon';
+import { HiDivider } from './divider';
+import { HiCountdown } from './countdown';
+import { HiRadio } from './radio';
+import { HiSidebar } from './sidebar';
 // import  { Box } from "./box";
 import { HiEditWord } from './editWord';
 import { Popover } from './popover';
@@ -19,6 +27,7 @@ import { HiPagination } from './pagination';
 import { HiMessageService } from './message';
 import { HiDialog } from './dialog';
 import { HiToastService } from './toast';
+import { HiDatePane } from './date-picker';
 
 window['HiMessage'] = HiMessageService;
 window['HiDialog'] = HiDialog;

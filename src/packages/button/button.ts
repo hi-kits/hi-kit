@@ -222,15 +222,15 @@ export class HiButton extends HIElement {
     super.connectedCallback();
 
     /* 图片测试 */
-    import('./img/qipao.png').then(res => {
-      console.log('=========', res.default);
-      this.control.setAttribute('src', res.default);
-    });
-    /* svg test */
-    import('../_iconfont/icon.svg').then(res => {
-      console.log('=========', res);
-      this.useControl.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `${res}#icon-location`);
-    });
+    // import('./img/qipao.png').then(res => {
+    //   console.log('=========', res.default);
+    //   this.control.setAttribute('src', res.default);
+    // });
+    // /* svg test */
+    // import('../_iconfont/icon.svg').then(res => {
+    //   console.log('=========', res);
+    //   this.useControl.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `${res}#icon-location`);
+    // });
 
     this.proxy.setAttribute('type', this.htmltype);
     this.handleUnsupportedDelegatesFocus();
@@ -330,9 +330,9 @@ export class HiButton extends HIElement {
 
   public onMouceDown(ev: any) {
     if (!this.disabled) {
-      const { left, top } = this.getBoundingClientRect();
-      this.style.setProperty('--x', ev.clientX - left + 'px');
-      this.style.setProperty('--y', ev.clientY - top + 'px');
+      // const { left, top } = this.getBoundingClientRect();
+      // this.style.setProperty('--x', ev.clientX - left + 'px');
+      // this.style.setProperty('--y', ev.clientY - top + 'px');
     }
   }
   public onKeydown(ev: any) {
