@@ -6,8 +6,25 @@
  * @description
  */
 
-import { HIElement, customElement, attr, html } from 'hi-element';
-import { CardStyles as styles } from "./card.style";
+import { HIElement, customElement, attr, html, css } from 'hi-element';
+import { hiConfig } from "../config";
+
+export const styles = css`
+
+.Card{
+    position:relative;
+    background:#fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    font-size:12px;
+    overflow:hidden;
+    border-radius: 12px
+}
+
+:host([noBorder]) .Card{
+    border: 0;
+}
+
+`;
 
 const template = html<HiCard>`
 
