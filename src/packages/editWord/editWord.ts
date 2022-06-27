@@ -76,7 +76,6 @@ export class HiEditWord extends HIElement {
             }
     
             e.preventDefault();
-            alert(2)
            
         });
     }

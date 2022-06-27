@@ -7,3 +7,4 @@
  * @LastEditTime: 2022-06-23 09:19:53
  */
 import './drawlottery';
+import  { HiFlip } from "./flip";

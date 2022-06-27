@@ -1,5 +1,5 @@
 /**
- * @class: HiToast
+ * @class: HiToast Toast提示
  * @version 0.0.1
  * @author by fico on 2022/04/27
  * @Copyright © 2022 hi-kits. All rights reserved.

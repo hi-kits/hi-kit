@@ -4,8 +4,9 @@
  * @Author: liulina
  * @Date: 2022-06-23 10:24:32
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-27 19:44:48
+ * @LastEditTime: 2022-06-27 20:00:07
  */
+// import  { Box } from "./box";
 import { HiButton, HiButtonGroup } from './button';
 import { HiCheckbox, HiCheckboxGroup } from './checkbox';
 import { HiCol, HiRow, HiLayout } from './grid';
@@ -19,9 +20,12 @@ import { HiDivider } from './divider';
 import { HiCountdown } from './countdown';
 import { HiRadio } from './radio';
 import { HiSidebar } from './sidebar';
-// import  { Box } from "./box";
+import { HiAvatar, HiAvatarGroup } from './avatar';
+import { HiBadge } from './badge';
+import { HiCard, HiCardFooter, HiCardHeader, HiCardContent } from './card';
 import { HiEditWord } from './editWord';
 import { Popover } from './popover';
+import { HiEmpty } from './empty';
 import { HiTips } from './tips';
 import { HiPagination } from './pagination';
 import { HiMessageService } from './message';
