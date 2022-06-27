@@ -13,7 +13,7 @@ import  { HiRadio } from "./radio";
 import  { HiSidebar } from "./sidebar";
 import  { HiAvatar, HiAvatarGroup } from "./avatar";
 import  { HiBadge } from "./badge";
-// import  { Box } from "./box";
+import  { HiCard, HiCardFooter, HiCardHeader, HiCardContent } from "./card";
 import { HiEditWord } from './editWord';
 import { Popover } from './popover';
 import { HiEmpty } from './empty';

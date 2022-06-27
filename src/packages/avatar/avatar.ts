@@ -98,9 +98,7 @@ export class HiAvatar extends HIElement {
      * @internal
      */
     connectedCallback(): void {
-        super.connectedCallback();
-        console.log(this.slots['clientHeight']);
-        
+        super.connectedCallback();        
     }
 
 }

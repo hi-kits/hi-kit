@@ -13,7 +13,7 @@
             }
             .MainBody {padding:10px 0 50px;}
             h2 span{color: #999; font-size: 60%; font-weight: 200;}
-            .Grid h-row{ margin: 6px 0;}
+            h-row{ margin: 6px 0;}
             .Grid h-col{
                 background: #2196f380;
                 color:#fff;
@@ -27,7 +27,7 @@
         .header,.footer{ padding: 5px 10px; color: #fff; }
             h-layout{ background: #2196f380; }
            
-        h-tips,h-popover{ margin: 0 10px 10px 0; }
+        h-popover{ margin: 0 10px 10px 0; }
         </style>
     </head>
     <script  src="./font_icon/iconfont.js"></script>
@@ -209,9 +209,130 @@
                 <h-countdown style="font-size: 12px; color: rgba(39, 73, 196, 0.707); "></h-countdown>
                 <h-countdown beginTime="2022-08-08" endTime="2022-08-09" size="14" color="#3F51B5"></h-countdown>
             </div>
-            <h2>盒 <span>box</span></h2>
+            <h2>卡片 <span>card</span></h2>
             <div>
-                <h-box></h-box>
+                <h-row gutter="10">
+                    <h-col span="6">
+                        <h-card>
+                            <h-card-content>
+                                <p>简单卡片</p>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                            </h-card-content>
+                        </h-card>
+                    </h-col>
+                    <h-col span="6">
+                        <h-card>
+                            <h-card-header>Card title</h-card-header>
+                            <h-card-content>
+                                <p>带有标题的卡片。卡片头是用来显示卡的标题。</p>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                            </h-card-content>
+                        </h-card>
+                    </h-col>
+                    <h-col span="6">
+                        <h-card>
+
+                            <h-card-content>
+                                <p>带有尾的卡片。页脚是一些附加信息或自定义操作。</p>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                            </h-card-content>
+                            <h-card-footer>
+                                <div><h-icon name="sync" size="16" color="#F44336"></h-icon></div>
+                                <div><h-icon name="user" size="16" color="#42b983"></h-icon></div>
+                                <div><h-icon name="heart" size="16" color="#F44336"></h-icon></div>
+                            </h-card-footer>
+                        </h-card>
+                    </h-col>
+                    <h-col span="6">
+                        <h-card>
+                            <h-card-header>
+                                Card title
+                                <div slot="extra">
+                                    <a href="javascript:;">More</a>
+                                    <a href="javascript:;">More</a>
+                                    <a href="javascript:;">More</a>
+                                </div>
+                            </h-card-header>
+                            <h-card-content>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                            </h-card-content>
+                            <h-card-footer>
+                                <div><h-icon name="sync" size="16" color="#F44336"></h-icon></div>
+                            </h-card-footer>
+                        </h-card>
+                    </h-col>
+                </h-row>
+                <h-row gutter="10">
+                    <h-col span="6">
+                        <h-card>
+                            <h-card-header>Card title</h-card-header>
+                            <h-card-content>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                            </h-card-content>
+                            <h-card-footer  style="justify-content: space-between">
+                                <a href="javascript:;" class="Link">喜欢</a>
+                                <a href="javascript:;" class="Link">查看更多</a>
+                            </h-card-footer>
+                        </h-card>
+                    </h-col>
+                    <h-col span="6">
+                        <h-card>
+                            <h-card-header style="background-image:url(./03.jpg); height: 128px; color: white;align-items: flex-end;">
+                                Card title
+                            </h-card-header>
+                            <h-card-content>
+                                带有标题和尾的卡片。卡片头是用来显示卡的标题和脚注的一些附加信息或自定义操作。
+                            </h-card-content>
+                            <h-card-footer>
+                                <div><h-icon name="sync" size="16" color="#F44336"></h-icon></div>
+                            </h-card-footer>
+                        </h-card>
+                    </h-col>
+                    <h-col span="6">
+                        <h-card>
+                            <h-card-header>
+                                Card title
+                                <div slot="extra">
+                                    <a href="javascript:;">More</a>
+                                </div>
+                            </h-card-header>
+                            <h-card-content>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                            </h-card-content>
+                            <h-card-footer style="justify-content: space-between">
+                                <span>2015年1月20日</span>
+                                <span>评论 5</span>
+                            </h-card-footer>
+                        </h-card>
+                    </h-col>
+                    <h-col span="6" style="background-color: rgb(229, 229, 229); padding: 12px;">
+                        <h-card noBorder>
+                            <h-card-header>
+                                无边框
+                            </h-card-header>
+                            <h-card-content>
+                                <p>在灰色背景上使用无边框的卡片。</p>
+                                <p>Card content</p>
+                                <p>Card content</p>
+                            </h-card-content>
+                            <h-card-footer>
+                                <div><h-icon name="sync" size="16" color="#F44336"></h-icon></div>
+                                <div><h-icon name="user" size="16" color="#42b983"></h-icon></div>
+                                <div><h-icon name="heart" size="16" color="#F44336"></h-icon></div>
+                            </h-card-footer>
+                        </h-card>
+                    </h-col>
+                </h-row>
+                
             </div>
             <h2>文本编辑 <span>editWord</span></h2>
             <div>
