@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-27 11:26:28
+ * @LastEditTime: 2022-06-28 14:39:35
  */
 import { HIElement, customElement, attr, when, ref, slotted, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-picker.style';
@@ -35,6 +35,7 @@ const valueParseDate: ValueConverter = {
     return this.parseDate(this.$value, this.type);
   },
   fromView(value: string): any {
+    return true;
     // convert strings to numbers
   }
 };
@@ -44,6 +45,7 @@ const dateParseDate: ValueConverter = {
     return new Date(this.$value);
   },
   fromView(value: string): any {
+    return true;
     // convert strings to numbers
   }
 };
