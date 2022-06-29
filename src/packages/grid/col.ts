@@ -26,7 +26,7 @@ export class HiCol extends HIElement {
      * 子项目跨度
      * @public number
      */
-   @attr span;
+   @attr span: number = 24;
 
 }
 

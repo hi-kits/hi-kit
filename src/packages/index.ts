@@ -28,10 +28,12 @@ import { Popover } from './popover';
 import { HiEmpty } from './empty';
 import { HiTips } from './tips';
 import { HiPagination } from './pagination';
+import { HiTimeline, HiTimelineItem } from './timeline';
 import { HiMessageService } from './message';
 import { HiDialog } from './dialog';
 import { HiToastService } from './toast';
 import { HiDatePane } from './date-picker';
+import { HiList, HiListItem, HiListItemAction, HiListItemExtra, HiListItemMedia, HiListItemInner } from './list';
 
 window['HiMessage'] = HiMessageService;
 window['HiDialog'] = HiDialog;
