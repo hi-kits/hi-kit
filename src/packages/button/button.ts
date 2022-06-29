@@ -330,9 +330,9 @@ export class HiButton extends HIElement {
 
   public onMouceDown(ev: any) {
     if (!this.disabled) {
-      const { left, top } = this.getBoundingClientRect();
-      this.style.setProperty('--x', ev.clientX - left + 'px');
-      this.style.setProperty('--y', ev.clientY - top + 'px');
+      // const { left, top } = this.getBoundingClientRect();
+      // this.style.setProperty('--x', ev.clientX - left + 'px');
+      // this.style.setProperty('--y', ev.clientY - top + 'px');
     }
   }
   public onKeydown(ev: any) {
