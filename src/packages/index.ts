@@ -34,6 +34,7 @@ import { HiDialog } from './dialog';
 import { HiToastService } from './toast';
 import { HiDatePane } from './date-picker';
 import { HiList, HiListItem, HiListItemAction, HiListItemExtra, HiListItemMedia, HiListItemInner } from './list';
+import { HiComment, HiCommentAction } from './comment';
 
 window['HiMessage'] = HiMessageService;
 window['HiDialog'] = HiDialog;

@@ -64,7 +64,7 @@ export class HiSidebar extends HIElement {
     // ------------------ 参数 ------------------
     // ------------------ 属性 ------------------
     /**
-     * loading 尺寸
+     * 尺寸
      * @public number
      */
     @attr size;
@@ -74,7 +74,7 @@ export class HiSidebar extends HIElement {
     }
 
     /**
-     * loading 颜色
+     * 颜色
      * @public string
      */
     @attr color: string;

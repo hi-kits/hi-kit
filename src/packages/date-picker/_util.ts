@@ -1,4 +1,3 @@
-import { log } from '../../../../fluentui-master/packages/web-components/tools/date-pick/date-pick';
 /*
  * @Descripttion:
  * @version:
