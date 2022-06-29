@@ -13,6 +13,7 @@ export const SwitchStyles = css`
 :host{ 
     display:inline-block; 
     -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
 }
 :host([disabled]){ 
     opacity:.6; 

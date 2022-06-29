@@ -4,6 +4,8 @@
         <meta charset="utf-8" />
         <title>hi-kit</title>
         <style>
+            ul,p{ margin: 0;}
+            ul,li,ol {list-style: none;}
             html {padding: 36px;}
             body {
                 width: 100%;
@@ -11,6 +13,7 @@
                 margin: 0px;
                 padding: 0;
             }
+            a {color: #1890ff; text-decoration: none;}
             .MainBody {padding:10px 0 50px;}
             h2 span{color: #999; font-size: 60%; font-weight: 200;}
             h-row{ margin: 6px 0;}
@@ -687,6 +690,216 @@
                         
                     </h-col>
                     
+                </h-row>
+                
+            </div>
+            <h2>列表 <span>list</span></h2>
+            <div>
+                <h-row gutter="10">
+                    <h-col span="12">
+                        <h-list>
+                            <h-list-item>
+                                content
+                            </h-list-item>
+                            <h-list-item>
+                                content
+                            </h-list-item>
+                            <h-list-item>
+                                content
+                                <h-list-item-action>
+                                    <h-short style="color: #FFF; background-color: #31d100fd; " text="333"></h-short>
+                                </h-list-item-action>
+                            </h-list-item>
+                            <h-list-item>
+                                content
+                                <h-list-item-action>
+                                    <h-short style="color: #FFF; background-color: #01bffd; " text="333"></h-short>
+                                </h-list-item-action>
+                            </h-list-item>
+                        </h-list>
+                    </h-col>
+                    <h-col span="12">
+                        <h-list>
+                            <h-list-item>
+                                content
+                                <h-list-item-action>
+                                    <h-switch></h-switch>
+                                </h-list-item-action>
+                            </h-list-item>
+                            <h-list-item>
+                                content
+                                <h-list-item-action>
+                                    <h-switch></h-switch>
+                                </h-list-item-action>
+                            </h-list-item>
+                            <h-list-item>
+                                content
+                                <h-list-item-action>
+                                    <h-switch></h-switch>
+                                </h-list-item-action>
+                            </h-list-item>
+                            <h-list-item>
+                                content
+                                <h-list-item-action>
+                                    <h-switch></h-switch>
+                                </h-list-item-action>
+                            </h-list-item>
+                        </h-list>
+                    </h-col>
+                </h-row>
+                <h-row gutter="10">
+                    <h-col span="12">
+                        <h-list>
+                            <h-list-item>
+                                <h-list-item-media>
+                                    <h-avatar circle color="#42b983">
+                                        <img src="./01.jpg" />
+                                    </h-avatar>
+                                </h-list-item-media>
+
+                                <div>
+                                    <div>披头士乐队</div>
+                                    <p style="color: #aaa;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.</p>
+                                </div>
+                            </h-list-item>
+                            <h-list-item>
+                                <h-list-item-media>
+                                    <h-avatar circle color="#42b983">
+                                        <img src="./03.jpg" />
+                                    </h-avatar>
+                                </h-list-item-media>
+
+                                <div>
+                                    <div>披头士乐队</div>
+                                    <p style="color: #aaa;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt.  </p>
+                                </div>
+                            </h-list-item>
+                            <h-list-item>
+                                <h-list-item-media>
+                                    <h-avatar circle color="#42b983">
+                                        <img src="./03.jpg" />
+                                    </h-avatar>
+                                </h-list-item-media>
+
+                                <div>
+                                    <div>披头士乐队</div>
+                                    <p style="color: #aaa;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt.  </p>
+                                </div>
+                            </h-list-item>
+                        </h-list>
+                    </h-col>
+                    <h-col span="12">
+                        <h-list>
+                            <h-list-item>
+                                <h-list-item-media>
+                                    <h-avatar  size="64" color="#42b983">
+                                        <img src="./01.jpg" />
+                                    </h-avatar>
+                                </h-list-item-media>
+
+                                <div>
+                                    <div>披头士乐队</div>
+                                    <p style="color: #aaa;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, </p>
+                                </div>
+
+                                <h-list-item-action>
+                                    <a href="javascript:;">edit</a>
+                                    <h-divider type="vertical"></h-divider>
+                                    <a href="javascript:;">more</a>
+                                </h-list-item-action>
+                                
+                            </h-list-item>
+                            <h-list-item>
+                                <h-list-item-media>
+                                    <h-avatar size="64" color="#42b983">
+                                        <img src="./03.jpg" />
+                                    </h-avatar>
+                                </h-list-item-media>
+
+                                <div>
+                                    <div>披头士乐队</div>
+                                    <p style="color: #aaa;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt.  </p>
+                                </div>
+
+                                <h-list-item-action>
+                                    <a href="javascript:;">edit</a>
+                                    <h-divider type="vertical"></h-divider>
+                                    <a href="javascript:;">more</a>
+                                </h-list-item-action>
+                            </h-list-item>
+                            <h-list-item>
+                                <h-list-item-media>
+                                    <h-avatar size="64" color="#42b983">
+                                        <img src="./02.jpg" />
+                                    </h-avatar>
+                                </h-list-item-media>
+
+                                <div>
+                                    <div>披头士乐队</div>
+                                    <p style="color: #aaa;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt.  </p>
+                                </div>
+
+                                <h-list-item-action>
+                                    <a href="javascript:;">edit</a>
+                                    <h-divider type="vertical"></h-divider>
+                                    <a href="javascript:;">more</a>
+                                </h-list-item-action>
+                            </h-list-item>
+                        </h-list>
+                    </h-col>
+                </h-row>
+                <h-row gutter="10">
+                    <h-col span="12">
+                        <h-list>
+                            <h-list-item>
+                                <h-list-item-inner>
+                                    <h-list-item-media>
+                                        <h-avatar circle color="#42b983">
+                                            <img src="./01.jpg" />
+                                        </h-avatar>
+                                    </h-list-item-media>
+    
+                                    <div>
+                                        <div>披头士乐队</div>
+                                        <p style="color: #aaa;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt.</p>
+                                        <p> Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.</p>
+                                        <h-list-item-action style="color: #aaa; ">
+                                            <h-icon name="user" color="#42b983"></h-icon> 222
+                                            <h-divider type="vertical"></h-divider>
+                                            <h-icon name="heart" color="#F44336"></h-icon> 333
+                                        </h-list-item-action>
+                                    </div>
+                                </h-list-item-inner>
+                                <h-list-item-extra>
+                                    <img width="180" src="./03.jpg" />
+                                </h-list-item-extra>
+                            </h-list-item>
+                            <h-list-item>
+                                <h-list-item-inner>
+                                    <h-list-item-media>
+                                        <h-avatar circle color="#42b983">
+                                            <img src="./01.jpg" />
+                                        </h-avatar>
+                                    </h-list-item-media>
+    
+                                    <div>
+                                        <div>披头士乐队</div>
+                                        <p style="color: #aaa;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt.</p>
+                                        <p> Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.</p>
+                                        <h-list-item-action style="color: #aaa; ">
+                                            <h-icon name="user" color="#42b983"></h-icon> 222
+                                            <h-divider type="vertical"></h-divider>
+                                            <h-icon name="heart" color="#F44336"></h-icon> 333
+                                        </h-list-item-action>
+                                    </div>
+                                </h-list-item-inner>
+                                <h-list-item-extra>
+                                    <img width="180" src="./02.jpg" />
+                                </h-list-item-extra>
+                            </h-list-item>
+                            
+                        </h-list>
+                    </h-col>
                 </h-row>
                 
             </div>

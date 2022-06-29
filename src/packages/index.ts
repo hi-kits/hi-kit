@@ -33,6 +33,7 @@ import { HiMessageService } from './message';
 import { HiDialog } from './dialog';
 import { HiToastService } from './toast';
 import { HiDatePane } from './date-picker';
+import { HiList, HiListItem, HiListItemAction, HiListItemExtra, HiListItemMedia, HiListItemInner } from './list';
 
 window['HiMessage'] = HiMessageService;
 window['HiDialog'] = HiDialog;

@@ -30,9 +30,9 @@ const styles = css`
     align-items: center;
     justify-content: center;
 }
-::slotted(*){
-    max-height:100%;
-    max-width:100%;
+::slotted(img){
+    min-height:100%;
+    min-width:100%;
 }
 :host([circle]) {
     border-radius: 50%;

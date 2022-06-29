@@ -16,13 +16,13 @@ const styles = css`
     transition:.3s;
 }
 .icon {
-    display:block;
+    display:inline-block;
     width: 1em;
     height: 1em;
     margin: auto;
     fill: currentColor;
     overflow: hidden;
-    /*transition:inherit;*/
+    vertical-align: middle;
 }
 :host([spin]){
     animation: rotate 1.4s linear infinite;
