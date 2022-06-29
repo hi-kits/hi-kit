@@ -6,7 +6,7 @@
  * @description
  */
 
-import { HIElement, customElement, attr, html, css } from 'hi-element';
+import { HIElement, customElement, attr, html, css, ref, observable } from 'hi-element';
 import { hiConfig } from "../config";
 
 export const styles = css`
@@ -17,7 +17,6 @@ export const styles = css`
     border: 1px solid rgba(0,0,0,0.06);
     font-size:12px;
     overflow:hidden;
-    border-radius: 12px
 }
 
 :host([noBorder]) .Card{
@@ -28,7 +27,7 @@ export const styles = css`
 
 const template = html<HiCard>`
 
-<div class="Card">
+<div class="Card" ${ref('cardbox')}>
 	<slot></slot>
 </div>
 
@@ -45,10 +44,38 @@ export class HiCard extends HIElement {
 		super();
 	}
 	// ------------------ 参数 ------------------
+    
+    /**
+     * 卡片元素
+     * @date 6/27/2022 - 6:51:24 PM
+     *
+     * @type {HTMLDivElement}
+     */
+    @observable
+    cardbox: HTMLDivElement;
 
 	// ------------------ 属性 ------------------
-	@attr
-	noBorder: boolean;
+    
+	/**
+     * 没有边框
+     * @date 6/27/2022 - 5:39:55 PM
+     *
+     * @type {boolean}
+     */
+    @attr noBorder: boolean;
+    
+	/**
+     * 圆角半径
+     * @date 6/27/2022 - 6:50:58 PM
+     *
+     * @type {number}
+     */
+    @attr radius: number;
+    private radiusChanged(oldValue, newValue): void {
+        setTimeout(() => {
+            this.cardbox.style.borderRadius = newValue + 'px';
+        }, 1);
+    }
 	// ------------------ 自定义函数 ------------------
 
     /**
@@ -56,8 +83,7 @@ export class HiCard extends HIElement {
      * @internal
      */
      connectedCallback(): void {
-        super.connectedCallback()
-        
+        super.connectedCallback();        
     }
 
 

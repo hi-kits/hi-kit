@@ -283,9 +283,9 @@
                         </h-card>
                     </h-col>
                     <h-col span="6">
-                        <h-card>
+                        <h-card radius="12">
                             <h-card-header style="background-image:url(./03.jpg); height: 128px; color: white;align-items: flex-end;">
-                                Card title
+                                圆角卡片
                             </h-card-header>
                             <h-card-content>
                                 带有标题和尾的卡片。卡片头是用来显示卡的标题和脚注的一些附加信息或自定义操作。
@@ -330,6 +330,82 @@
                                 <div><h-icon name="heart" size="16" color="#F44336"></h-icon></div>
                             </h-card-footer>
                         </h-card>
+                    </h-col>
+                </h-row>
+                
+            </div>
+            <h2>时间轴 <span>timeline</span></h2>
+            <div>
+                <h-row gutter="20">
+                    <h-col span="8">
+                        <h-timeline>
+                            <h-timeline-item color="red" style="color:#1890ff">创建服务网站 2022-06-01</h-timeline-item>
+                            <h-timeline-item color="green">解决初始网络问题 2022-06-01</h-timeline-item>
+                            <h-timeline-item color="green">技术测试 2022-06-01</h-timeline-item>
+                            <h-timeline-item last color="green">正在解决的网络问题 2022-06-01</h-timeline-item>
+                        </h-timeline>
+                    </h-col>
+                    <h-col span="8">
+                        <h-timeline mode="alternate">
+                            <h-timeline-item color="green" style="color:#1890ff">创建服务网站 2022-06-01</h-timeline-item>
+                            <h-timeline-item color="green">解决初始网络问题 2022-06-01</h-timeline-item>
+                            <h-timeline-item color="green">技术测试 2022-06-01</h-timeline-item>
+                            <h-timeline-item color="green">
+                                <p style="margin-top: 0;">解决初始网络问题 1</p>
+                                <p>解决初始网络问题 2</p>
+                                <p>解决初始网络问题 3 2022-06-01</p>
+                            </h-timeline-item>
+                        </h-timeline>
+                    </h-col>
+                    <h-col span="8">
+                        <div style="margin-bottom: 20px ; text-align: center;">
+                            <button onclick="document.getElementById('Timeline').setAttribute('mode', 'left')">left</button>
+                            <button onclick="document.getElementById('Timeline').setAttribute('mode', 'right')">right</button>
+                            <button onclick="document.getElementById('Timeline').setAttribute('mode', 'alternate')">alternate</button>
+                        </div>
+                        <h-timeline id="Timeline" mode="alternate">
+                            <h-timeline-item color="green" style="color:#1890ff" label="2022-06-01 09:00:00">创建服务网站</h-timeline-item>
+                            <h-timeline-item color="green" label="2022-06-01 09:12:11">解决初始网络问题</h-timeline-item>
+                            <h-timeline-item color="green" label="2022-06-01">技术测试</h-timeline-item>
+                            <h-timeline-item>技术测试</h-timeline-item>
+                            <h-timeline-item color="green" label="2022-06-01">
+                                <p style="margin-top: 0;">解决初始网络问题 1</p>
+                                <p>解决初始网络问题 2</p>
+                                <p>解决初始网络问题 3</p>
+                            </h-timeline-item>
+                        </h-timeline>
+                    </h-col>
+
+                </h-row>
+                <h-row gutter="20">
+                    
+                    <h-col span="8">
+                        <h-timeline mode="custom">
+                            <h-timeline-item mode="right"  color="red" style="color:#1890ff">
+                                <span slot="dot">
+                                    <h-icon name="info-circle"   color="#42b983"></h-icon>
+                                </span>
+                                创建服务网站 2022-06-01
+                            </h-timeline-item>
+                            <h-timeline-item mode="right" color="green">
+                                <span slot="dot">
+                                    <h-icon name="question-circle"   color="red"></h-icon>
+                                </span>
+                                解决初始网络问题 2022-06-01
+                            </h-timeline-item>
+                            <h-timeline-item mode="left" color="green">
+                                <span slot="dot">
+                                    <h-icon name="warning-circle"   color="red"></h-icon>
+                                </span>
+                                技术测试 2022-06-01
+                            </h-timeline-item>
+                            <h-timeline-item mode="left" color="green">
+                                <span slot="dot">
+                                    <h-icon name="check-circle"   color="#1890ff"></h-icon>
+                                </span>
+                                正在解决的网络问题 2022-06-01
+                            </h-timeline-item>
+                        </h-timeline>
                     </h-col>
                 </h-row>
                 
@@ -538,7 +614,7 @@
                                 <h-icon name="user"></h-icon>
                             </h-avatar>
                             <h-avatar circle color="#42b983">
-                                <img src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                                <img src="./01.jpg" />
                             </h-avatar>
                         </div>
                     </h-col>
@@ -549,7 +625,7 @@
                                 <h-avatar circle>W</h-avatar>
                                 <h-avatar circle style="background-color: #f56a00">U</h-avatar>
                                 <h-avatar circle style="background-color: #87d068">
-                                    <img src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                                    <img src="./01.jpg" />
                                 </h-avatar>
                                 <h-avatar circle style="background-color: #1890ff"><h-icon name="user"></h-icon></h-avatar>
                             </h-avatar-group>
@@ -558,7 +634,7 @@
                             <h-avatar-group>
                                 <h-avatar circle>W</h-avatar>
                                 <h-avatar circle style="background-color: #87d068">
-                                    <img src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                                    <img src="./01.jpg" />
                                 </h-avatar>
                                 <h-avatar circle style="background-color: #e4583f">+2</h-avatar>
                             </h-avatar-group>
