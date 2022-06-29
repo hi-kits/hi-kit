@@ -4,12 +4,12 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-27 19:17:49
+ * @LastEditTime: 2022-06-29 14:46:28
  */
 import { HIElement, customElement, attr, ref, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-range-pane.style';
 import { valueParseDate, defaultValueParseDate, dateParseDate } from './converter';
-import { parseDate } from '../_util';
+import { DateUtils } from '../_util';
 import type { HiDatePane } from '../date-pane/date-pane';
 // ${ref('date01')}
 // ${ref('date02')}
@@ -37,7 +37,7 @@ export class HiDateRangePane extends HIElement {
   @attr({ converter: defaultValueParseDate }) defaultvalue = [new Date(), new Date()];
   @attr({ converter: valueParseDate }) value;
   private valueChange() {
-    if (parseDate(this.value[0]) > parseDate(this.value[1])) {
+    if (DateUtils.parseDate(this.value[0]) > DateUtils.parseDate(this.value[1])) {
       [this.value[0], this.value[1]] = [this.value[1], this.value[0]];
     }
     this.render(this.value);

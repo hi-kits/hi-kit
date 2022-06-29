@@ -3,6 +3,7 @@ import { css } from 'hi-element';
 export const datePaneStyle = css`
   :host {
     display: block;
+    with: 300px;
   }
   /*
 :host(:not([range])) .date-body{
@@ -11,6 +12,7 @@ export const datePaneStyle = css`
 */
   .date-pane {
     padding: 0.8em;
+    with: 300px;
   }
   .date-head,
   .date-week {
