@@ -20,6 +20,13 @@ const styles = css`
     border-bottom: 1px solid rgba(0,0,0,.06);
 }
 
+:host([size="large"]) {
+    padding: 16px 0;
+}
+:host([size="small"]) {
+    padding: 8px 0;
+}
+
 `
 const template = html<HiListItem>`
 <template>
@@ -38,14 +45,14 @@ export class HiListItem extends HIElement {
 
     // ------------------ 属性 ------------------
     /**
-     * 展示模式
-     * @date 6/27/2022 - 6:52:44 PM
-     *
-     * @type {('left' | 'alternate' | 'right' | 'custom')}
+     * 尺寸
+     * @public number
      */
-    @attr mode: 'left' | 'alternate' | 'right' | 'custom';
-    private modeChanged(oldValue, newValue): void {
-       
+    @attr size: 'large' | 'small' | 'default' | number;
+    private sizeChanged(oldValue, newValue): void {
+        if (!['large', 'small', 'default'].includes(newValue)) {
+            this.style.padding = `${newValue}px 0`;        
+        }
     }
     // @attr pending: string;
     // ------------------ 自定义函数 ------------------
