@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-29 16:38:00
+ * @LastEditTime: 2022-06-30 10:06:59
  */
 import { HIElement, customElement, attr, html, ValueConverter, ref } from 'hi-element';
 import { datePaneStyle as styles } from './date-pane.style';
@@ -125,14 +125,14 @@ export class HiDatePane extends HIElement {
     }
     this.render(this.value);
     if (this.init) {
-      //   if (this.range === 'left') {
-      //     const right = this.nextElementSibling;
-      //     right.render();
-      //   }
-      //   if (this.range === 'right') {
-      //     const left = this.previousElementSibling;
-      //     left.render();
-      //   }
+      if (this.range === 'left') {
+        const right = this.nextElementSibling as HiDatePane;
+        right.render();
+      }
+      if (this.range === 'right') {
+        const left = this.previousElementSibling as HiDatePane;
+        left.render();
+      }
       if (this.nativeclick) {
         this.nativeclick = false;
         this.dispatchEvent(
@@ -175,6 +175,8 @@ export class HiDatePane extends HIElement {
   dateMonth: HTMLDivElement;
   // 日历上的年
   dateYear: HTMLDivElement;
+  // 日历上的年分按钮的集合
+  yearBtns: HTMLButtonElement[];
   // 切换年月日的区域
   switch: HiButton;
   // prve 按钮
@@ -289,6 +291,8 @@ export class HiDatePane extends HIElement {
         }
       }
     });
+    // 获取到yearBtns的集合
+    this.yearBtns = Array.from(this.dateYear?.children) as HTMLButtonElement[];
 
     this.init = true;
     this.$value = this.defaultvalue;
@@ -342,10 +346,14 @@ export class HiDatePane extends HIElement {
     this.$value = date;
     const [year, month, day] = DateUtils.toDate(date);
     const [n_year, n_month, n_day] = DateUtils.toDate(new Date());
-    // 左侧的date-pane
-    const left = this.range ? this.previousElementSibling : null;
-    // 右侧的date-pane
-    const right = this.range ? this.nextElementSibling : null;
+    let left;
+    let right;
+    if (this.range) {
+      // 左侧的date-pane
+      left = this.previousElementSibling as HiDatePane;
+      // 右侧的date-pane
+      right = this.nextElementSibling as HiDatePane;
+    }
     console.log(this.mode);
     const mode = this.mode;
     switch (mode) {
@@ -392,10 +400,12 @@ export class HiDatePane extends HIElement {
               el.removeAttribute('selectend');
             }
             // 不可用的日期
-            // const disabled =
-            //   (this.range === 'left' && right && parseDate(el.dataset.date, 'month') > parseDate(right.value, 'month')) ||
-            //   (this.range === 'right' && left && parseDate(el.dataset.date, 'month') < parseDate(left.value, 'month'));
-            // disabled && (el.disabled = true);
+            const disabled =
+              (this.range === 'left' &&
+                right &&
+                DateUtils.parseDate(el.dataset.date, 'month') > DateUtils.parseDate(right.value, 'month')) ||
+              (this.range === 'right' && left && DateUtils.parseDate(el.dataset.date, 'month') < DateUtils.parseDate(left.value, 'month'));
+            disabled && (el.disabled = true);
           } else {
             if (year + '-' + month + '-' + day == days[i]) {
               el.setAttribute('current', '');
@@ -414,14 +424,14 @@ export class HiDatePane extends HIElement {
           this.next.disabled = false;
         }
 
-        // if (this.range === 'left') {
-        //   const disabled = parseDate(date, 'month') >= parseDate(right.value, 'month');
-        //   disabled && (this.next.disabled = true);
-        // }
-        // if (this.range === 'right') {
-        //   const disabled = parseDate(date, 'month') <= parseDate(left.value, 'month');
-        //   disabled && (this.prev.disabled = true);
-        // }
+        if (this.range === 'left') {
+          const disabled = DateUtils.parseDate(date, 'month') >= DateUtils.parseDate(right.value, 'month');
+          disabled && (this.next.disabled = true);
+        }
+        if (this.range === 'right') {
+          const disabled = DateUtils.parseDate(date, 'month') <= DateUtils.parseDate(left.value, 'month');
+          disabled && (this.prev.disabled = true);
+        }
         break;
       // 如果当前展示的月份
       case 'month':
@@ -460,10 +470,10 @@ export class HiDatePane extends HIElement {
               el.removeAttribute('selectend');
             }
             if (this.type == 'date') {
-              // const disabled =
-              //   (this.range === 'left' && parseDate(el.dataset.date, 'month') > parseDate(right.value, 'month')) ||
-              //   (this.range === 'right' && parseDate(el.dataset.date, 'month') < parseDate(left.value, 'month'));
-              // disabled && (el.disabled = true);
+              const disabled =
+                (this.range === 'left' && DateUtils.parseDate(el.dataset.date, 'month') > DateUtils.parseDate(right.value, 'month')) ||
+                (this.range === 'right' && DateUtils.parseDate(el.dataset.date, 'month') < DateUtils.parseDate(left.value, 'month'));
+              disabled && (el.disabled = true);
             }
           } else {
             if (el.dataset.month == month + '') {
@@ -482,21 +492,21 @@ export class HiDatePane extends HIElement {
           this.prev.disabled = false;
           this.next.disabled = false;
         }
-        // if (this.range === 'left') {
-        //   const right = this.nextElementSibling;
-        //   const disabled = year >= parseDate(right.value, 'year');
-        //   disabled && (this.next.disabled = true);
-        // }
-        // if (this.range === 'right') {
-        //   const left = this.previousElementSibling;
-        //   const disabled = year <= parseDate(left.value, 'year');
-        //   disabled && (this.prev.disabled = true);
-        // }
+        if (this.range === 'left') {
+          const right = this.nextElementSibling as HiDatePane;
+          const disabled = year >= Number(DateUtils.parseDate(right.value, 'year'));
+          disabled && (this.next.disabled = true);
+        }
+        if (this.range === 'right') {
+          const left = this.previousElementSibling as HiDatePane;
+          const disabled = year <= Number(DateUtils.parseDate(left.value, 'year'));
+          disabled && (this.prev.disabled = true);
+        }
         break;
       case 'year':
         const years = this.getYears(year);
-        const yearBtns = Array.from(this.dateYear?.children) as HTMLButtonElement[];
-        yearBtns.forEach((el, i) => {
+        
+        this.yearBtns.forEach((el, i) => {
           el.dataset.year = years[i] + '';
           el.dataset.date = years[i] + '';
           el.textContent = years[i] + '';
@@ -530,10 +540,10 @@ export class HiDatePane extends HIElement {
               el.removeAttribute('selectend');
             }
             if (this.type !== 'year') {
-              // const disabled =
-              //   (this.range === 'left' && el.dataset.year > parseDate(right.value, 'year')) ||
-              //   (this.range === 'right' && el.dataset.year < parseDate(left.value, 'year'));
-              // disabled && (el.disabled = true);
+              const disabled =
+                (this.range === 'left' && el.dataset.year > DateUtils.parseDate(right.value, 'year')) ||
+                (this.range === 'right' && el.dataset.year < DateUtils.parseDate(left.value, 'year'));
+              disabled && (el.disabled = true);
             }
           } else {
             if (el.dataset.year == year + '') {
@@ -546,22 +556,23 @@ export class HiDatePane extends HIElement {
         this.switch.textContent = years[0] + '年 - ' + (years[0] + 19) + '年';
         this.switch.disabled = true;
         if (this.minormax) {
-          // this.prev.disabled = this.min[0] >= this.years[0].dataset.year;
-          // this.next.disabled = this.max[0] <= this.years[19].dataset.year;
+          this.prev.disabled = (this.yearBtns[0].dataset.year && this.min[0] >= Number(this.yearBtns[0].dataset.year)) as boolean;
+          this.next.disabled = this.max[0] <= Number(this.yearBtns[19].dataset.year);
         } else {
           this.prev.disabled = false;
           this.next.disabled = false;
         }
-      // if (this.range === 'left' && this.init) {
-      //   const right = this.nextElementSibling;
-      //   const disabled = this.years[19].dataset.year >= right.years[0].dataset.year;
-      //   disabled && (this.next.disabled = true);
-      // }
-      // if (this.range === 'right' && this.init) {
-      //   const left = this.previousElementSibling;
-      //   const disabled = this.years[0].dataset.year <= left.years[19].dataset.year;
-      //   disabled && (this.prev.disabled = true);
-      // }
+        if (this.range === 'left' && this.init) {
+          const right = this.nextElementSibling as HiDatePane;
+          const disabled =
+            this.yearBtns[19].dataset.year && Number(this.yearBtns[19].dataset.year) >= Number(right.yearBtns[0].dataset.year);
+          disabled && (this.next.disabled = true);
+        }
+        if (this.range === 'right' && this.init) {
+          const left = this.previousElementSibling as HiDatePane;
+          const disabled = Number(this.yearBtns[0].dataset.year) <= Number(left.yearBtns[19].dataset.year);
+          disabled && (this.prev.disabled = true);
+        }
       default:
         break;
     }
