@@ -1,53 +1,47 @@
 /**
- * @const: HiAvatarGroup 头像组
+ * @const: HiCommentAction 评论操作
  * @version 0.0.1
- * @author by fico on 2022/04/27
+ * @author by fico on 2022/06/29
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
 
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-import { HiIcon } from "../icon";
 
 const styles = css`
-::slotted(h-avatar:not(:first-child)) {
-    margin-left: -12px;
-    border: 1px solid #fff;
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 4px 0;
+    font-size: 14px;
+    color: #ccc;
+    align-items: center;
 }
+
+
+
 `
-const template = html<HiAvatarGroup>`
-<slot class="Slot"></slot>
+const template = html<HiCommentAction>`
+<slot></slot>
 `;
 @customElement({
-   name: 'h-avatar-group',
+   name: 'h-comment-action',
    styles,
    template,
 })
-export class HiAvatarGroup extends HIElement {
+export class HiCommentAction extends HIElement {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
-    @observable
-    slots: Node;
     // ------------------ 属性 ------------------
-    
-    /**
-     * 圆形
-     * @date 6/24/2022 - 3:11:12 PM
-     *
-     * @type {boolean}
-     */
-    @attr circle: boolean;
     /**
      * 尺寸
      * @public number
      */
-    @attr size: 'large' | 'small' | 'default' | number;
+    @attr size;
     private sizeChanged(oldValue, newValue): void {
-        if (!['large', 'small', 'default'].includes(newValue)) {
-            this.style.width = newValue + 'px';
-            this.style.height = newValue + 'px';        
-            this.style.fontSize = newValue * 0.65 + 'px';        
-        }
+        this.style.fontSize = newValue + 'px';        
+        this.style.height = newValue + 'px'; 
     }
 
     /**
@@ -64,7 +58,8 @@ export class HiAvatarGroup extends HIElement {
      * @internal
      */
     connectedCallback(): void {
-        super.connectedCallback();        
+        super.connectedCallback();
+
     }
 
 }

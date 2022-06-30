@@ -30,14 +30,17 @@ export class HiList extends HIElement {
 
     // ------------------ 属性 ------------------
     /**
-     * 展示模式
-     * @date 6/27/2022 - 6:52:44 PM
-     *
-     * @type {('left' | 'alternate' | 'right' | 'custom')}
+     * 尺寸
+     * @public number
      */
-    @attr mode: 'left' | 'alternate' | 'right' | 'custom';
-    private modeChanged(oldValue, newValue): void {
+    @attr size: 'large' | 'small' | 'default' | string;
+    private sizeChanged(oldValue, newValue): void {
 
+        for (let index = 0; index < this.children.length; index++) {
+            const element = this.children[index];
+            element.setAttribute('size', this.size);
+        }
+        
     }
     // @attr pending: string;
     // ------------------ 自定义函数 ------------------
