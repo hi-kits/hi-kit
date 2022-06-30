@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-29 14:46:28
+ * @LastEditTime: 2022-06-30 10:01:17
  */
 import { HIElement, customElement, attr, ref, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-range-pane.style';
@@ -13,23 +13,25 @@ import { DateUtils } from '../_util';
 import type { HiDatePane } from '../date-pane/date-pane';
 // ${ref('date01')}
 // ${ref('date02')}
-const template = html<HiDateRangePane>`
-  <h-date-pane id="date-left" range="left"></h-date-pane>
-  <h-date-pane id="date-right" range="right"></h-date-pane>
-`;
 
+
+const rangeTemplate = html<HiDateRangePane>`
+  <h2>我是DateRangePane</h2>
+  <h-date-pane id="date-left" range="left" ${ref('date01')}></h-date-pane>
+  <h-date-pane id="date-right" range="right" ${ref('date02')}></h-date-pane>
+`;
 @customElement({
   name: 'h-date-range-pane',
-  template,
+  template: rangeTemplate,
   styles
 })
 export class HiDateRangePane extends HIElement {
   private selected = false;
   private $date = ['', ''];
   // 左侧date-pane
-  private date01: HiDatePane;
+  public date01: HiDatePane;
   // 右侧date-pane
-  private date02: HiDatePane;
+  public date02: HiDatePane;
 
   private $value;
 
@@ -84,7 +86,9 @@ export class HiDateRangePane extends HIElement {
     }
   }
   connectedCallback(): void {
+    super.connectedCallback();
     this.$date = ['', ''];
+    
     this.type = this.type;
     this.min && (this.min = this.min);
     this.max && (this.max = this.max);

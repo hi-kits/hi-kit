@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-23 10:24:32
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-27 20:00:07
+ * @LastEditTime: 2022-06-30 09:55:08
  */
 // import  { Box } from "./box";
 import { HiButton, HiButtonGroup } from './button';
@@ -32,7 +32,7 @@ import { HiTimeline, HiTimelineItem } from './timeline';
 import { HiMessageService } from './message';
 import { HiDialog } from './dialog';
 import { HiToastService } from './toast';
-import { HiDatePane } from './date-picker';
+import { HiDatePane, HiDateRangePane } from './date-picker';
 import { HiList, HiListItem, HiListItemAction, HiListItemExtra, HiListItemMedia, HiListItemInner } from './list';
 
 window['HiMessage'] = HiMessageService;
