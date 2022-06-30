@@ -977,6 +977,67 @@
                             
                         </h-list>
                     </h-col>
+                    <h-col span="12">
+                        <h-list>
+                            <h-list-item>
+                                <h-list-item-inner>
+                                    <h-comment>
+                                        <div slot="avatar">
+                                            <h-avatar circle color="#42b983">
+                                                <img src="./01.jpg" />
+                                            </h-avatar>
+                                        </div>
+                                        <div slot="author">
+                                            作者名
+                                        </div>
+                                        <div slot="time">
+                                            1 day
+                                        </div>
+                                        We supply a series of design principles, practical patterns and high quality design resources.
+                                        <h-comment-action>
+                                            <h-icon name="user" color="#42b983"></h-icon> 0
+                                            <h-divider type="vertical"></h-divider>
+                                            <h-icon name="user" color="#42b983"></h-icon> 222
+                                            <h-divider type="vertical"></h-divider>
+                                            <h-icon name="heart" color="#F44336"></h-icon> 333
+                                        </h-comment-action>
+                                    </h-comment>
+                                </h-list-item-inner>
+                                <h-list-item-extra>
+                                    <img width="180" src="./03.jpg" />
+                                </h-list-item-extra>
+                            </h-list-item>
+                            <h-list-item>
+                                <h-list-item-inner>
+                                    <h-comment>
+                                        <div slot="avatar">
+                                            <h-avatar circle color="#42b983">
+                                                <img src="./01.jpg" />
+                                            </h-avatar>
+                                        </div>
+                                        <div slot="author">
+                                            作者名
+                                        </div>
+                                        <div slot="time">
+                                            2 day
+                                        </div>
+                                        We supply a series of design principles, practical patterns and high quality design resources.
+                                        <h-comment-action>
+                                            <h-icon name="user" color="#42b983"></h-icon> 0
+                                            <h-divider type="vertical"></h-divider>
+                                            <h-icon name="user" color="#42b983"></h-icon> 222
+                                            <h-divider type="vertical"></h-divider>
+                                            <h-icon name="heart" color="#F44336"></h-icon> 333
+                                        </h-comment-action>
+                                    </h-comment>
+                                </h-list-item-inner>
+                                <h-list-item-extra>
+                                    <img width="180" src="./02.jpg" />
+                                </h-list-item-extra>
+                            </h-list-item>
+                            
+                        </h-list>
+                    </h-col>
                 </h-row>
                 
             </div>
@@ -1127,6 +1188,108 @@
                             
                     </h-col>
                     
+                </h-row>
+                
+            </div>
+            <h2>步骤条 <span>steps</span></h2>
+            <div>
+                <h-row gutter="10">
+                    <h-col span="24">
+                        <p style="margin: 12px;">基本用法</p>
+                        <h-steps current="1">
+                            <h-step title="Finished" desc="This is a description."></h-step>
+                            <h-step title="In Progress" subtitle="Left 00:00:08" desc="This is a description."></h-step>
+                            <h-step title="Waiting" desc="This is a description."></h-step>
+                        </h-steps>
+                    </h-col>
+                    <h-col span="24">
+                        <p style="margin: 12px;">迷你版</p>
+                        <h-steps current="1" size="small">
+                            <h-step title="Finished" desc="This is a description."></h-step>
+                            <h-step title="In Progress" subtitle="Left 00:00:08" desc="This is a description."></h-step>
+                            <h-step title="Waiting" desc="This is a description."></h-step>
+                        </h-steps>
+                    </h-col>
+                    <h-col span="24">
+                        <p style="margin: 12px;">起始序号</p>
+                        <h-steps current="1" start="3" size="small">
+                            <h-step title="Finished" desc="This is a description."></h-step>
+                            <h-step title="In Progress" subtitle="Left 00:00:08" desc="This is a description."></h-step>
+                            <h-step title="Waiting" desc="This is a description."></h-step>
+                        </h-steps>
+                    </h-col>
+                    <h-col span="24">
+                        <p style="margin: 12px;">带图标的步骤条</p>
+                        <h-steps current="1" start="3" size="small">
+                            <h-step title="Finished" desc="This is a description.">
+                                <div slot="icon">
+                                    <h-icon name="user" size="24" color="#42b983"></h-icon>
+                                </div>
+                            </h-step>
+                            <h-step title="In Progress" subtitle="Left 00:00:08" desc="This is a description.">
+                                <div slot="icon">
+                                    <h-icon name="heart" size="24" color="#F44336"></h-icon>
+                                </div>
+                            </h-step>
+                            <h-step title="Waiting" desc="This is a description.">
+                                <div slot="icon">
+                                    <h-icon name="star" size="24" color="#1E90FF"></h-icon>
+                                </div>
+                            </h-step>
+                        </h-steps>
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">竖直方向的步骤条</p>
+                        <h-steps current="1" dir="vertical">
+                            <h-step title="Finished" desc="This is a description."></h-step>
+                            <h-step title="In Progress" subtitle="Left 00:00:08" desc="This is a description."></h-step>
+                            <h-step title="Waiting" desc="This is a description."></h-step>
+                        </h-steps>
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">竖直方向的步骤条</p>
+                        <h-steps current="1"  size="small" dir="vertical">
+                            <h-step title="Finished" desc="This is a description."></h-step>
+                            <h-step title="In Progress" subtitle="Left 00:00:08" desc="This is a description."></h-step>
+                            <h-step title="Waiting" desc="This is a description."></h-step>
+                        </h-steps>
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">竖直方向的步骤条</p>
+                        <h-steps current="1" dir="vertical">
+                            <h-step title="Finished" desc="This is a description.">
+                                <div slot="icon">
+                                    <h-icon name="user" size="24" color="#42b983"></h-icon>
+                                </div>
+                            </h-step>
+                            <h-step title="In Progress" subtitle="Left 00:00:08" desc="This is a description.">
+                                <div slot="icon">
+                                    <h-icon name="heart" size="24" color="#F44336"></h-icon>
+                                </div>
+                            </h-step>
+                            <h-step title="Waiting" desc="This is a description.">
+                                <div slot="icon">
+                                    <h-icon name="star" size="24" color="#1E90FF"></h-icon>
+                                </div>
+                            </h-step>
+                        </h-steps>
+                    </h-col>
+                    <h-col span="12">
+                        <p style="margin: 12px;">点状步骤条</p>
+                        <h-steps current="1" dot="true">
+                            <h-step title="Finished" desc="This is a description."></h-step>
+                            <h-step title="In Progress" subtitle="Left 00:00:08" desc="This is a description."></h-step>
+                            <h-step title="Waiting" desc="This is a description."></h-step>
+                        </h-steps>
+                    </h-col>
+                    <h-col span="12">
+                        <p style="margin: 12px;">点状步骤条</p>
+                        <h-steps current="1" dot="true" dir="vertical">
+                            <h-step title="Finished" desc="This is a description."></h-step>
+                            <h-step title="In Progress" subtitle="Left 00:00:08" desc="This is a description."></h-step>
+                            <h-step title="Waiting" desc="This is a description."></h-step>
+                        </h-steps>
+                    </h-col>
                 </h-row>
                 
             </div>

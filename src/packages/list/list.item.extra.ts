@@ -32,17 +32,7 @@ export class HiListItemExtra extends HIElement {
     // ------------------ 参数 ------------------
 
     // ------------------ 属性 ------------------
-    /**
-     * 展示模式
-     * @date 6/27/2022 - 6:52:44 PM
-     *
-     * @type {('left' | 'alternate' | 'right' | 'custom')}
-     */
-    @attr mode: 'left' | 'alternate' | 'right' | 'custom';
-    private modeChanged(oldValue, newValue): void {
-       
-    }
-    // @attr pending: string;
+
     // ------------------ 自定义函数 ------------------
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用

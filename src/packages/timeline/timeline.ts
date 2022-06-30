@@ -70,8 +70,9 @@ export class HiTimeline extends HIElement {
     connectedCallback(): void {
         super.connectedCallback();
         // 设置最后一个子元素的显示状态
-        this.children[this.children.length - 1].setAttribute('last','');
-        
+        if (this.children.length > 0) {
+            this.children[this.children.length - 1].setAttribute('last','');
+        }
         
         
     }
