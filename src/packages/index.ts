@@ -36,6 +36,8 @@ import { HiDatePane, HiDateRangePane } from './date-picker';
 import { HiList, HiListItem, HiListItemAction, HiListItemExtra, HiListItemMedia, HiListItemInner } from './list';
 import { HiComment, HiCommentAction } from './comment';
 import { HiSteps, HiStep } from './steps';
+import { HiSegmenteds, HiSegmented } from './segmented';
+import { HiTabs, HiTab } from './tabs';
 
 window['HiMessage'] = HiMessageService;
 window['HiDialog'] = HiDialog;

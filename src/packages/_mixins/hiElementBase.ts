@@ -2,9 +2,9 @@
 /**
  * 将mixin应用于构造函数
  * 来源于 {@link https://www.typescriptlang.org/docs/handbook/mixins.html | TypeScript Documentation }
- * @function applyMixins
+ * @function HIElementBase
  * @version 0.0.1
- * @author by fico on 2022/06/13
+ * @author by fico on 2022/06/30
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @public
  */
