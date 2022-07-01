@@ -1319,6 +1319,53 @@
                 </h-row>
                 
             </div>
+            <h2>分段控制器 <span>segmented</span></h2>
+            <div>
+                <h-row gutter="10">
+                    <h-col span="24">
+                        <p style="margin: 12px;">基本用法</p>
+                        <h-segmenteds current="1">
+                            <h-segmented>Daily</h-segmented>
+                            <h-segmented>Weekly</h-segmented>
+                            <h-segmented>Monthly</h-segmented>
+                            <h-segmented>Quarterly</h-segmented>
+                            <h-segmented>Yearly</h-segmented>
+                        </h-segmenteds>
+                    </h-col>
+                </h-row>
+                
+            </div>
+            <h2>标签页 <span>tabs</span></h2>
+            <div>
+                <h-row gutter="10">
+                    <h-col span="8">
+                        <p style="margin: 12px;">基本用法</p>
+                        <h-tabs>
+                            <h-tab label="tab1">tab111</h-tab>
+                            <h-tab label="tab2">tab222</h-tab>
+                            <h-tab label="tab3">tab333</h-tab>
+                        </h-tabs>
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">禁用 disabled</p>
+                        <h-tabs>
+                            <h-tab label="tab1">tab111</h-tab>
+                            <h-tab label="tab2" disabled>tab222</h-tab>
+                            <h-tab label="tab3">tab333</h-tab>
+                        </h-tabs>
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">标识key、activekey</p>
+                        <h-tabs id="Tabs" activekey="B">
+                            <h-tab label="tab1" key="A">tab111</h-tab>
+                            <h-tab label="tab2" key="B">tab222</h-tab>
+                            <h-tab label="tab3" key="C">tab333</h-tab>
+                        </h-tabs>
+                        <h-button type="primary" onclick="document.getElementById('Tabs').setAttribute('activekey', 'C')">跳转tab3</h-button>
+                    </h-col>
+                </h-row>
+                
+            </div>
         </div>
     </body>
     

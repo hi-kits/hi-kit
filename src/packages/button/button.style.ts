@@ -152,7 +152,7 @@ export const ButtonStyles = css`
     opacity: 0.3;
     transition: 0s;
   }
-  xy-icon {
+  h-icon {
     margin-right: 0.35em;
     transition: none;
   }

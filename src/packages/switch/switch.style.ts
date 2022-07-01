@@ -7,11 +7,11 @@
  */
 
 import { css } from 'hi-element';
+import { display } from '../_utils/style';
 
 export const SwitchStyles = css`
-
+${display("inline-block")}
 :host{ 
-    display:inline-block; 
     -webkit-tap-highlight-color: transparent;
     vertical-align: middle;
 }
