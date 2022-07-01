@@ -7,15 +7,15 @@
  */
 
 import { css } from 'hi-element';
+import { display } from '../_utils/style';
 import { hiConfig } from "../config";
 
 export const TabsStyles = css`
+${display("block")}
 :host{
-    display:block;
     text-align: unset;
 }
-
-.Tab{
+.Tab {
     display:flex;
     flex-direction:column;
     height: 100%;
@@ -108,7 +108,7 @@ export const TabsStyles = css`
     justify-content:flex-end;
 }
 ::slotted(h-tab){
-    
+
     box-sizing:border-box;
     width:100%;
     height:100%;
