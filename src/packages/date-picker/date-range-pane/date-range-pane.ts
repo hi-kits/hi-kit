@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-30 10:01:17
+ * @LastEditTime: 2022-07-01 12:21:31
  */
 import { HIElement, customElement, attr, ref, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-range-pane.style';
@@ -14,9 +14,7 @@ import type { HiDatePane } from '../date-pane/date-pane';
 // ${ref('date01')}
 // ${ref('date02')}
 
-
 const rangeTemplate = html<HiDateRangePane>`
-  <h2>我是DateRangePane</h2>
   <h-date-pane id="date-left" range="left" ${ref('date01')}></h-date-pane>
   <h-date-pane id="date-right" range="right" ${ref('date02')}></h-date-pane>
 `;
@@ -88,7 +86,7 @@ export class HiDateRangePane extends HIElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.$date = ['', ''];
-    
+
     this.type = this.type;
     this.min && (this.min = this.min);
     this.max && (this.max = this.max);

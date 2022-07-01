@@ -4,9 +4,9 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-30 10:06:59
+ * @LastEditTime: 2022-06-30 16:29:28
  */
-import { HIElement, customElement, attr, html, ValueConverter, ref } from 'hi-element';
+import { HIElement, customElement, attr, html, ValueConverter, ref, observable } from 'hi-element';
 import { datePaneStyle as styles } from './date-pane.style';
 import type { HiButton } from '../../button/button';
 // import { parseDate, toDate } from '../_util';
@@ -70,6 +70,7 @@ const template = html<HiDatePane>`
 `;
 const valueParseDate: ValueConverter = {
   toView(value: any): string {
+    console.log(222);
     // convert numbers to strings
     return DateUtils.parseDate(this.$value, this.type);
   },
@@ -111,9 +112,13 @@ export class HiDatePane extends HIElement {
   }
 
   @attr type: 'date' | 'month' | 'year' = 'date';
-
-  @attr({ converter: valueParseDate }) value: string = '';
-  private valueChange() {
+  // 用于和外部交互的value   ({ converter: valueParseDate })
+  @attr value: string = '';
+  private valueChanged() {
+    this.value = DateUtils.parseDate(this.value, this.type);
+    // 先执行valuechanged然后再执行converter
+    console.log(333);
+    this.$value = this.value;
     //'2019/1/1'
     if (this.minormax) {
       // 找到最小的
@@ -123,7 +128,7 @@ export class HiDatePane extends HIElement {
         'max'
       ).toLocaleDateString();
     }
-    this.render(this.value);
+    this.render(this.$value);
     if (this.init) {
       if (this.range === 'left') {
         const right = this.nextElementSibling as HiDatePane;
@@ -187,21 +192,19 @@ export class HiDatePane extends HIElement {
   public connectedCallback(): void {
     super.connectedCallback();
     this.mode = this.type;
-    this.value = this.defaultvalue;
-    console.log(this.value);
     // 左侧向前的按钮
     this.prev.addEventListener('click', () => {
       let [year, month, day] = DateUtils.toDate(this.$value);
       this.nativeclick = true;
       switch (this.mode) {
         case 'date':
-          this.value = new Date(...(this.toDay(year, month - 2, day) as [number, number, number])).toLocaleDateString();
+          this.value = DateUtils.dateToString(new Date(...(this.toDay(year, month - 2, day) as [number, number, number])));
           break;
         case 'month':
-          this.value = new Date(...(this.toDay(year - 1, month - 1, day) as [number, number, number])).toLocaleDateString();
+          this.value = DateUtils.dateToString(new Date(...(this.toDay(year - 1, month - 1, day) as [number, number, number])));
           break;
         case 'year':
-          this.value = new Date(...(this.toDay(year - 20, month - 1, day) as [number, number, number])).toLocaleDateString();
+          this.value = DateUtils.dateToString(new Date(...(this.toDay(year - 20, month - 1, day) as [number, number, number])));
         default:
           break;
       }
@@ -212,13 +215,13 @@ export class HiDatePane extends HIElement {
       this.nativeclick = true;
       switch (this.mode) {
         case 'date':
-          this.value = new Date(...(this.toDay(year, month, day) as [number, number, number])).toLocaleDateString();
+          this.value = DateUtils.dateToString(new Date(...(this.toDay(year, month + 1, day) as [number, number, number])));
           break;
         case 'month':
-          this.value = new Date(...(this.toDay(year + 1, month - 1, day) as [number, number, number])).toLocaleDateString();
+          this.value = DateUtils.dateToString(new Date(...(this.toDay(year + 1, month - 1, day) as [number, number, number])));
           break;
         case 'year':
-          this.value = new Date(...(this.toDay(year + 20, month - 1, day) as [number, number, number])).toLocaleDateString();
+          this.value = DateUtils.dateToString(new Date(...(this.toDay(year + 20, month - 1, day) as [number, number, number])));
         default:
           break;
       }
@@ -227,7 +230,6 @@ export class HiDatePane extends HIElement {
     this.switch.addEventListener('click', () => {
       switch (this.mode) {
         case 'date':
-          console.log(this.mode);
           this.mode = 'month';
           this.render();
           break;
@@ -293,10 +295,8 @@ export class HiDatePane extends HIElement {
     });
     // 获取到yearBtns的集合
     this.yearBtns = Array.from(this.dateYear?.children) as HTMLButtonElement[];
-
+    this.value = this.defaultvalue;
     this.init = true;
-    this.$value = this.defaultvalue;
-    this.render(this.$value);
   }
 
   getDays(year, month) {
@@ -354,7 +354,6 @@ export class HiDatePane extends HIElement {
       // 右侧的date-pane
       right = this.nextElementSibling as HiDatePane;
     }
-    console.log(this.mode);
     const mode = this.mode;
     switch (mode) {
       // 如果当前展示的类型是天
@@ -369,6 +368,7 @@ export class HiDatePane extends HIElement {
           el.dataset.day = _day.toString().padStart(2, '0');
           el.textContent = _day;
           if (n_year + '-' + n_month + '-' + n_day == days[i]) {
+            // now 今天
             el.setAttribute('now', '');
           } else {
             el.removeAttribute('now');
@@ -407,6 +407,7 @@ export class HiDatePane extends HIElement {
               (this.range === 'right' && left && DateUtils.parseDate(el.dataset.date, 'month') < DateUtils.parseDate(left.value, 'month'));
             disabled && (el.disabled = true);
           } else {
+            // current 代表当前选择的日期
             if (year + '-' + month + '-' + day == days[i]) {
               el.setAttribute('current', '');
             } else {
@@ -439,6 +440,7 @@ export class HiDatePane extends HIElement {
         monthBtns.forEach((el, i) => {
           el.dataset.date = year + '-' + el.dataset.month;
           el.dataset.year = year + '';
+          // now 今天
           if (n_year + '-' + n_month == year + '-' + Number(el.dataset.month)) {
             el.setAttribute('now', '');
           } else {
@@ -476,6 +478,7 @@ export class HiDatePane extends HIElement {
               disabled && (el.disabled = true);
             }
           } else {
+            // current 代表当前选择的日期
             if (el.dataset.month == month + '') {
               el.setAttribute('current', '');
             } else {
@@ -511,6 +514,7 @@ export class HiDatePane extends HIElement {
           el.dataset.date = years[i] + '';
           el.textContent = years[i] + '';
           if (el.dataset.year == n_year + '') {
+            // now 今天
             el.setAttribute('now', '');
           } else {
             el.removeAttribute('now');
@@ -546,6 +550,7 @@ export class HiDatePane extends HIElement {
               disabled && (el.disabled = true);
             }
           } else {
+            // current 代表当前选择的日期
             if (el.dataset.year == year + '') {
               el.setAttribute('current', '');
             } else {

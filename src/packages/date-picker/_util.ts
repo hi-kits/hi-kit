@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-27 19:08:48
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-29 14:46:12
+ * @LastEditTime: 2022-06-30 16:17:18
  */
 
 export class DateUtils {
@@ -14,6 +14,12 @@ export class DateUtils {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     return [year, month, day];
+  };
+  static dateToString = date => {
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return year + '-' + month + '-' + day;
   };
 
   static parseDate = (date, type = 'date') => {

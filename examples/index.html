@@ -420,10 +420,33 @@
             <div></div>
             <h2>popover</h2>
             <div style="margin-left: 100px">
-                <h-popover dir="top" ptitle="uuu" trigger="click" hOk='alert(233)' type='confirm'>
-                    <h-button>click popover</h-button>
+
+            <h-popover type="confirm" onsubmit="console.log('ok')" title="确定删除吗?" content="删除后无法撤销"><h-button>confirm</h-button></h-popover>
+                <h-popover disabled type="confirm" onsubmit="console.log('ok')" title="确定删除吗?" content="删除后无法撤销"><h-button> disabled</h-button></h-popover>
+                <h-popover>
+                    <h-button>自定义content</h-button>
+                    <h-popcon title="确定删除吗?" type="confirm" onsubmit="console.log('ok')">
+                        <div>
+                            <div>自定义删除后无法撤销</div>
+                            <div>删除后无法撤销</div>
+                            <div>删除后无法撤销</div>
+                        </div>
+                    </h-popcon>
                 </h-popover>
-                <h-popover dir="top" ptitle="我是title" content="我是内容" >
+                <h-popover>
+                    <h-button>自定义2</h-button>
+                    <h-popcon type="pane" title="提示">
+                        <div>
+                            <div>这是一段提示提示提示提示提示</div>
+                            <div>这是一段提示</div>
+                            <div>这是一段提示</div>
+                        </div>
+                    </h-popcon>
+                </h-popover>
+                <h-popover dir="left" ptitle="uuu" trigger="click" hOk='alert(233)' type='confirm'>
+                    <h-button>confirmOk</h-button>
+                </h-popover>
+                <h-popover dir="top" ptitle="我是title" content="我是内容" trigger="hover">
                     <h-button>hover popover</h-button>
                 </h-popover>
             </div>
@@ -472,8 +495,9 @@
                 <h-button onclick="document.getElementById('Sidebar').setAttribute('show','')">打开侧边栏</h-button>
             </div>
             <h2>日历<span>date-picker</span></h2>
-            <h-date-pane id="date-left" range="left"></h-date-pane>
+            <h-date-pane id="date-left"></h-date-pane>
             <h-date-range-pane range min="2016-10-20" max="2023-3-5" defaultvalue="2019-10-01~2019-12-25"></h-date-range-pane>
+            <h-date-picker range min="2016-10-20" max="2023-3-5" defaultvalue="2019-10-01~2019-12-25"></h-date-picker>
             <h2>翻转 <span>flip</span></h2>
             <div>
                 <style>
