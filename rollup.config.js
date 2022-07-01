@@ -4,26 +4,27 @@
  * @Author: liulina
  * @Date: 2022-06-17 10:11:57
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-20 10:43:42
+ * @LastEditTime: 2022-06-23 09:28:12
  */
-import commonJS from "rollup-plugin-commonjs";
-import filesize from "rollup-plugin-filesize";
-import resolve from "rollup-plugin-node-resolve";
-import { terser } from "rollup-plugin-terser";
-import transformTaggedTemplate from "rollup-plugin-transform-tagged-template";
-import typescript from "rollup-plugin-typescript2";
-import {
-  transformCSSFragment,
-  transformHTMLFragment,
-} from "./build/transform-fragments";
-import { getPackagesInfoList } from "./build/getPackageName";
+import commonJS from 'rollup-plugin-commonjs';
+import filesize from 'rollup-plugin-filesize';
+import resolve from 'rollup-plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
+import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
+import typescript from 'rollup-plugin-typescript2';
+import babel from '@rollup/plugin-babel';
+import { transformCSSFragment, transformHTMLFragment } from './build/transform-fragments';
+// import { getPackagesInfoList } from './build/getPackageName';
+import image from 'rollup-plugin-img';
+
+const extensions = ['.js', '.ts'];
 
 const timeStart = new Date().getTime();
-const kitsList = getPackagesInfoList("packages/", "_", function (filePath) {
-  console.log("done", new Date().getTime() - timeStart);
-});
+// const kitsList = getPackagesInfoList('packages/', '_', function (filePath) {
+//   console.log('done', new Date().getTime() - timeStart);
+// });
 const parserOptions = {
-  sourceType: "module",
+  sourceType: 'module'
 };
 
 const kitCommonPluginList = [
@@ -32,51 +33,68 @@ const kitCommonPluginList = [
   typescript({
     tsconfigOverride: {
       compilerOptions: {
-        declaration: false,
-      },
-    },
+        declaration: false
+      }
+    }
+  }),
+  image({
+    limit: 10000,
+    output: `images`, // default the root
+    extensions: /\.(png|jpg|jpeg|gif|svg)$/, // support png|jpg|jpeg|gif|svg, and it's alse the default value
+    limit: 8192, // default 8192(8k)
+    exclude: 'node_modules/**'
+  }),
+  babel({
+    exclude: 'node_modules/**', // 只编译源代码
+    extensions,
+    babelHelpers: 'runtime',
+    presets: ['@babel/preset-env', '@babel/preset-typescript'],
+    plugins: [
+      '@babel/plugin-proposal-class-properties',
+      ['@babel/plugin-proposal-decorators', { legacy: true }],
+      '@babel/plugin-transform-runtime'
+      // [
+      //   'import',
+      //   {
+      //     libraryName: 'hi-kits',
+      //     libraryDirectory: 'module',
+      //     camel2DashComponentName: false, // default: true,
+      //     customName: (name, file) => {
+      //       console.log('---------namenamenamenamename-------------', name, file);
+      //       return `hi-kits/module/${name}`;
+      //     }
+      //   }
+      // ]
+    ]
   }),
   transformTaggedTemplate({
-    tagsToProcess: ["css"],
+    tagsToProcess: ['css'],
     transformer: transformCSSFragment,
-    parserOptions,
+    parserOptions
   }),
   transformTaggedTemplate({
-    tagsToProcess: ["html"],
+    tagsToProcess: ['html'],
     transformer: transformHTMLFragment,
-    parserOptions,
+    parserOptions
   }),
   filesize({
     showMinifiedSize: false,
-    showBrotliSize: true,
-  }),
+    showBrotliSize: true
+  })
 ];
-
-const kitUmdConfig = (name) => ({
-  // input: `packages/${name}/index.ts`,
-  input: `packages/${name}/index.ts`,
-  output: [
-    {
-      file: `lib/${name}/index.js`,
-      format: "umd",
-      name,
-    },
-  ],
-  plugins: [...kitCommonPluginList],
-});
 
 export default [
   {
     input: {
-      index: "packages/index.ts",
-      ...kitsList,
+      index: 'packages/index.ts',
+      ...kitsList
     },
     output: [
       {
-        dir: "module",
-        format: "esm",
-      },
+        dir: 'module',
+        format: 'esm'
+      }
     ],
-    plugins: [...kitCommonPluginList],
-  },
+    plugins: [...kitCommonPluginList]
+  }
 ];
