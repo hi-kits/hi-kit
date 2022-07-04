@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-01 11:11:06
+ * @LastEditTime: 2022-07-01 18:55:15
  */
 import { HIElement, customElement, attr, when, ref, slotted, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-picker.style';
@@ -24,23 +24,14 @@ const template = html<DatePicker>`
           p-id="8054"
         ></path></svg
     ></h-button>
-    <div id="popcon" class="date-pane" ${ref('popcon')}>
+    <h-popcon id="popcon" class="date-pane" ${ref('popcon')}>
       <div class="pop-footer">
         <h-button ${ref('btnCancel')} autoclose>取 消</h-button>
         <h-button ${ref('btnSubmit')} type="primary" id="btn-submit" autoclose>确 认</h-button>
       </div>
-    </div>
+    </h-popcon>
   </h-popover>
 `;
-// const valueParseDate: ValueConverter = {
-//   toView(value: any): string | []  {
-   
-//   },
-//   fromView(value: string): any {
-//     return true;
-//     // convert strings to numbers
-//   }
-// };
 const dateParseDate: ValueConverter = {
   toView(value: any): Date {
     // convert numbers to strings
@@ -50,6 +41,7 @@ const dateParseDate: ValueConverter = {
     return true;
   }
 };
+
 @customElement({
   name: 'h-date-picker',
   template,
@@ -61,57 +53,55 @@ export class DatePicker extends HIElement {
   // 是否是范围事件选择器
   @attr({ mode: 'boolean' }) range: boolean = false;
   // 最小值
-  @attr min: string
+  @attr min: string;
   // 最大值
   @attr max: string;
   // 默认值
-  @attr({ converter: dateParseDate }) defaultvalue: string = '';
+  @attr defaultvalue: string = '';
   // popover方向
   @attr dir = 'top';
+  // type
   @attr type = 'date';
-
 
   @attr value: string;
   private valueChanged(value) {
-    console.log(value);
-    
     if (this.range) {
       // convert numbers to strings
-      this.$value.map((value) => DateUtils.parseDate(value, this.type));
+      this.$value.map(value => DateUtils.parseDate(value, this.type));
     } else {
       DateUtils.parseDate(this.$value, this.type);
     }
-    this.$value = value;
-    // this.datetxt.textContent = this.range ? this.value.join("~") : this.value;
+    this.datetxt.textContent = this.value;
     if (this.nativeclick) {
       this.nativeclick = false;
       this.dispatchEvent(
-        new CustomEvent("change", {
+        new CustomEvent('change', {
           detail: {
             value: this.value,
-            date: this.date,
-          },
+            date: this.date
+          }
         })
       );
     } else {
       if (this.datePane) {
         this.datePane.value = this.value;
       } else {
-        // this.defaultvalue = this.range ? this.value.join("~") : this.value;
+        this.defaultvalue = this.value;
       }
     }
   }
 
   @attr({ converter: dateParseDate }) date: string = '';
 
-  @attr rangedate: [Date, Date] = [new Date(), new Date()];
-
   private mode = this.type;
+  // 存放数组类型的数据
   private $value;
   // 目前的datePane
   private datePane: HiDatePane | HiDateRangePane;
   // 是否点击过
   private nativeclick = false;
+
+  // DOM ref
   public popover;
   public popcon;
   public select;
@@ -119,20 +109,40 @@ export class DatePicker extends HIElement {
   public btnCancel;
   public btnSubmit;
 
-
   connectedCallback(): void {
     super.connectedCallback();
-    if (!this.datePane) {
-      if (this.range) {
-        this.datePane = new HiDateRangePane();
-      } else {
-        this.datePane = new HiDatePane();
+    this.defaultvalue = this.getDefaultValue();
+    this.select.addEventListener('click', () => {
+      if (!this.datePane) {
+        if (this.range) {
+          this.datePane = new HiDateRangePane();
+        } else {
+          this.datePane = new HiDatePane();
+        }
+        this.min && (this.datePane.min = this.min.split('-').map(Number));
+        this.max && (this.datePane.max = this.max.split('-').map(Number));
+        this.datePane.type = this.type;
+        this.datePane.defaultvalue = this.defaultvalue;
+        this.popcon.prepend(this.datePane);
       }
-      this.min && (this.datePane.min = this.min.split("-").map(Number));
-      this.max && (this.datePane.max = this.max.split("-").map(Number));
-      this.datePane.type = this.type;
-      this.datePane.defaultvalue = this.defaultvalue;
-      this.popcon.prepend(this.datePane);
+    });
+    this.btnSubmit.addEventListener('click', () => {
+      this.nativeclick = true;
+      this.value = this.datePane.value;
+    });
+    this.popcon.addEventListener('close', () => {
+      this.datePane.value = this.value;
+      // this.datePane.mode = this.type;
+    });
+    this.$value = this.range ? this.defaultvalue.split('~') : this.defaultvalue;
+    this.value = this.defaultvalue;
+  }
+
+  getDefaultValue(): string {
+    if (this.range) {
+      return this.defaultvalue || DateUtils.dateToString(new Date()) + '~' + DateUtils.dateToString(new Date());
+    } else {
+      return this.defaultvalue || DateUtils.dateToString(new Date());
     }
   }
 }

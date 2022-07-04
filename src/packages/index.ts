@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-23 10:24:32
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-30 09:55:08
+ * @LastEditTime: 2022-07-01 17:14:02
  */
 // import  { Box } from "./box";
 import { HiButton, HiButtonGroup } from './button';
@@ -24,7 +24,7 @@ import { HiAvatar, HiAvatarGroup } from './avatar';
 import { HiBadge } from './badge';
 import { HiCard, HiCardFooter, HiCardHeader, HiCardContent } from './card';
 import { HiEditWord } from './editWord';
-import { Popover } from './popover';
+import { HiPopcon, Popover } from './popover';
 import { HiEmpty } from './empty';
 import { HiTips } from './tips';
 import { HiPagination } from './pagination';

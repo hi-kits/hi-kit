@@ -4,23 +4,13 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-30 16:29:28
+ * @LastEditTime: 2022-07-01 18:45:24
  */
 import { HIElement, customElement, attr, html, ValueConverter, ref, observable } from 'hi-element';
 import { datePaneStyle as styles } from './date-pane.style';
 import type { HiButton } from '../../button/button';
-// import { parseDate, toDate } from '../_util';
 import { DateUtils } from '../_util';
-// ${x =>
-//   x.getMonths().map(
-//     (el, i) =>
-//       `<button
-//         class="date-button date-month-item"
-//         type="flat"
-//         data-month="${i + 1}.toString().padStart(2, '0') >
-//         ${el}
-//       </button>`
-//   )}
+
 const template = html<HiDatePane>`
   <div class="date-pane" id="date-pane">
     <div class="date-head">
@@ -117,7 +107,6 @@ export class HiDatePane extends HIElement {
   private valueChanged() {
     this.value = DateUtils.parseDate(this.value, this.type);
     // 先执行valuechanged然后再执行converter
-    console.log(333);
     this.$value = this.value;
     //'2019/1/1'
     if (this.minormax) {
@@ -508,7 +497,7 @@ export class HiDatePane extends HIElement {
         break;
       case 'year':
         const years = this.getYears(year);
-        
+
         this.yearBtns.forEach((el, i) => {
           el.dataset.year = years[i] + '';
           el.dataset.date = years[i] + '';
