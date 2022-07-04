@@ -1,5 +1,5 @@
 /**
- * @class: HiPagination
+ * @class: HiPagination 分页
  * @version 0.0.1
  * @author by fico on 2022/06/17
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -40,8 +40,15 @@ export class HiPagination extends HIElement {
      * @type {number}
      */
     count: number = 1;
-    init: boolean;
     
+    /**
+     * 初始化状态
+     * @date 7/4/2022 - 9:43:35 AM
+     *
+     * @type {boolean}
+     */
+    init: boolean;
+
     /**
      * 当前位置
      * @date 6/17/2022 - 5:38:37 PM
@@ -61,11 +68,34 @@ export class HiPagination extends HIElement {
             })
         }
     }
-
+    
+    /**
+     * 左侧箭头
+     * @date 7/4/2022 - 9:43:58 AM
+     *
+     * @public
+     * @type {HTMLButtonElement}
+     */
     @observable
     public left: HTMLButtonElement;
+    
+    /**
+     * 分页展示
+     * @date 7/4/2022 - 9:44:43 AM
+     *
+     * @public
+     * @type {!HTMLDivElement}
+     */
     @observable
     public page!: HTMLDivElement;
+    
+    /**
+     * 右侧箭头
+     * @date 7/4/2022 - 9:44:33 AM
+     *
+     * @public
+     * @type {HTMLButtonElement}
+     */
     @observable
     public right: HTMLButtonElement;
     // ------------------ 属性 ------------------
@@ -87,6 +117,9 @@ export class HiPagination extends HIElement {
      * @type {number}
      */
     @attr pagesize: number = 1;
+    pagesizeChanged(oldValue, newValue): void {
+        this.render(newValue,this.total);
+    }
     /**
      * 数据总数total
      * 设置或返回分页组件的数据总数
@@ -150,7 +183,11 @@ export class HiPagination extends HIElement {
         })
         this.init = true;
     }
-    
+    /**
+     * 
+     * @param pagesize 每页显示的条数
+     * @param total 总数
+     */
     render(pagesize, total): void {
         this.count = Math.ceil(total/pagesize);
         const current = Math.min(Math.max(1,this.current),this.count);
@@ -163,6 +200,10 @@ export class HiPagination extends HIElement {
         }
         this.updatePage(current);
     }
+    /**
+     * 更新分页
+     * @param current 当前位置
+     */
     updatePage( current = this.current ): void{
         if (current == 1) {
             this.left.setAttribute('disabled','');

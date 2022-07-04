@@ -485,8 +485,37 @@
             </div>
             <h2>分页 <span>pagination</span></h2>
             <div>
-                <h-pagination onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" pagesize="3" total="50"></h-pagination>
-                <h-pagination onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" simple="true" pagesize="3" total="50"></h-pagination>
+                <h-row gutter="10">
+                    <h-col span="8">
+                        <h-pagination onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" pagesize="3" total="50"></h-pagination>
+                    </h-col>
+                    <h-col span="8">
+                        <h-pagination  onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" pagesize="3" total="50"></h-pagination>
+                        <h-button type="primary" onclick="this.previousElementSibling.pagesize=5">设置pagesize为5</h-button>
+                    </h-col>
+                    <h-col span="8">
+                        <h-pagination onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" simple="true" pagesize="3" total="50"></h-pagination>
+                    </h-col>
+                    <h-col span="12">
+                        <p> 三种尺寸</p>
+                        <h-pagination size="large" onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" pagesize="3" total="50"></h-pagination>
+                        <h-pagination size="default" onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" pagesize="3" total="50"></h-pagination>
+                        <h-pagination size="small" onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" pagesize="3" total="50"></h-pagination>
+                        
+                    </h-col>
+                    <h-col span="12">
+                        <style>
+                            .pagination-custom{
+                                font-size:20px;
+                            }
+                            </style>
+                        <p>自定义尺寸   ---  内部采用em相对尺寸，可通过font-size来控制大小</p>
+                        <h-pagination class="pagination-custom" onchange="HiMessage.info({content: '当前页: '+ event.detail.current, duration: 1000})" pagesize="3" total="50"></h-pagination>
+                    </h-col>
+                </h-row>
+                
+                
+               
             </div>
             <!-- <h-drawlottery>h-drawlotterys</h-drawlottery> -->
             <h2>侧边栏 <span>pagination</span></h2>
