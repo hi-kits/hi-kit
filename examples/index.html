@@ -170,17 +170,65 @@
             </div>
             <h2>布局 <span>layout</span></h2>
             <div>
-                <h-layout class="layout">
-                    <h-layout class="header">头部</h-layout>
-                    <h-layout row expand>
-                        <h-layout class="side"></h-layout>
-                        <h-layout expand center class="main">
-                            <h-layout center class="box">内容区域</h-layout>
+                <style>
+                    .layoutBox{
+                        width: 100px;
+                        height: 100px;
+                        color: #fff;
+                    }
+                    .layoutBoxo{
+                        background: rgba(33, 243, 103, 0.5);
+                    }
+                </style>
+                <h-row gutter="10">
+                    <h-col span="8">
+                        <p>水平排列row 默认为垂直排列，row表示水平排列</p>
+                        <h-layout row>
+                            <h-layout class="layoutBox">1</h-layout>
+                            <h-layout class="layoutBox layoutBoxo">2</h-layout>
                         </h-layout>
-                        <h-layout class="side"></h-layout>
-                    </h-layout>
-                    <h-layout class="footer">底部</h-layout>
-                </h-layout>
+                    </h-col>
+                    <h-col span="8">
+                        <p>填充expand 根据剩余空间填充（主轴方向）</p>
+                        <h-layout row>
+                            <h-layout class="layoutBox" expand>1</h-layout>
+                            <h-layout class="layoutBox layoutBoxo">2</h-layout>
+                        </h-layout>
+                    </h-col>
+                    <h-col span="8">
+                        <p>居中center</p>
+                        <h-layout center style="height:200px">
+                            <h-layout class="layoutBox layoutBoxo">1</h-layout>
+                        </h-layout>
+                    </h-col>
+                    <h-col span="4">
+                        <p>居中 center="crosAxis"</p>
+                        <h-layout  center="crosAxis" style="height:200px">
+                            <h-layout class="layoutBox layoutBoxo">1</h-layout>
+                        </h-layout>
+                    </h-col>
+                    <h-col span="4">
+                        <p>居中 center="mainAxis"</p>
+                        <h-layout  center="mainAxis" style="height:200px">
+                            <h-layout class="layoutBox layoutBoxo">1</h-layout>
+                        </h-layout>
+                    </h-col>
+                    <h-col span="16">
+                        <p>h-layout 简单的示例</p>
+                        <h-layout class="layout">
+                            <h-layout class="header">头部</h-layout>
+                            <h-layout row expand>
+                                <h-layout class="side"></h-layout>
+                                <h-layout expand center class="main">
+                                    <h-layout center class="box">内容区域</h-layout>
+                                </h-layout>
+                                <h-layout class="side"></h-layout>
+                            </h-layout>
+                            <h-layout class="footer">底部</h-layout>
+                        </h-layout>
+                    </h-col>
+                </h-row>
+                
             </div>
             <h2>开关 <span>switch</span></h2>
             <div>

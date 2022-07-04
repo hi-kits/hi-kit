@@ -153,7 +153,7 @@ export class HiPagination extends HIElement {
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
-    connectedCallback() {
+    connectedCallback(): void {
         super.connectedCallback();
         this.current = this.defaultcurrent;
         this.render(this.pagesize, this.total);
