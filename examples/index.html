@@ -183,8 +183,8 @@
             </div>
             <h2>开关 <span>switch</span></h2>
             <div>
-                <h-switch></h-switch>
-                <h-switch onchange="console.log(event)" checked></h-switch>
+                <h-switch onchange="HiMessage.info({content: event.detail.checked, duration: 1000})"></h-switch>
+                <h-switch onchange="console.log(event.detail.checked)" checked></h-switch>
                 <h-switch></h-switch>
                 <h-switch disabled checked name="disabled">sdsdd</h-switch>
             </div>
