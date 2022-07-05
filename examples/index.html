@@ -33,8 +33,8 @@
         h-popover{ margin: 0 10px 10px 0; }
         </style>
     </head>
-    <script  src="./font_icon/iconfont.js"></script>
-    <link rel="stylesheet" href="../font_icon/iconfont.css">
+    <!-- <script  src="./font_icon/iconfont.js"></script> -->
+    <!-- <link rel="stylesheet" href="../font_icon/iconfont.css"> -->
     <body>
         <div class="MainBody">
 
@@ -49,7 +49,7 @@
                 <h-button type="dashed">dashed</h-button>
                 <h-button shape='circle' type="primary">cir</h-button>
                 <h-button  type="danger">danger</h-button>
-                <h-button  type='flat'>flat</h-button>
+                <h-button loading type='flat'>flat</h-button>
                 <h-button block >block</h-button>
                 <h-button type="flat" href="https://ys-zjrs.haier.net/zjm/synsm/pushManage/favicon.ico" download="111">href</h-button>
             </div>
@@ -252,6 +252,34 @@
                 <h-button onclick="HiToast({content: '顶部提示', site:['5%'], duration: 1000})">顶部提示</h-button>
                 <h-button onclick="HiToast({content: '左侧提示', site:['50%',,,10], duration: 1000})">左侧提示</h-button>
                 <h-button onclick="HiToast({content: '右侧提示', site:['50%',10,], duration: 1000})">右侧提示</h-button>
+            </div>
+            <h2>对话框 <span>modal</span></h2>
+            <div>
+                <h-button onclick="HiModal.alert({
+                    content: 'This a alert Modal',
+                    ok: () => {
+                        HiMessage.info({content: '确认', duration: 2000})
+                    }
+                })">alert</h-button>
+                <h-button onclick="HiModal.confirm({
+                    content: 'This is a question',
+                    ok: () => {
+                        HiMessage.info({content: 'ok', duration: 2000})
+                    },
+                    cancel:function(){
+                        //按取消键的操作
+                        HiMessage.info({content: 'cancel', duration: 2000})
+                    }
+                })">confirm</h-button>
+                <h-button onclick="HiModal.prompt({content: 'This a info message'})">prompt</h-button>
+                <h-button type="primary" onclick="document.getElementById('modal01').open = true;">open modal</h-button>
+                <h-modal id="modal01" title="自定义弹窗内容" oktext="知道了" >
+                    <h-tabs>
+                        <h-tab label="tab1">tab111</h-tab>
+                        <h-tab label="tab2">tab222</h-tab>
+                        <h-tab label="tab3">tab333</h-tab>
+                    </h-tabs>
+                </h-modal>
             </div>
             <h2>评分 <span>rate</span></h2>
             <div>
