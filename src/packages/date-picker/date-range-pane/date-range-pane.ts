@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-05 10:26:12
+ * @LastEditTime: 2022-07-05 14:31:04
  */
 import { HIElement, customElement, attr, ref, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-range-pane.style';
@@ -64,8 +64,8 @@ export class HiDateRangePane extends HIElement {
   @attr max: string;
   private maxChanged() {
     if (this.max && this.date01) {
-      this.date01.min = this.max;
-      this.date02.min = this.max;
+      this.date01.max = this.max;
+      this.date02.max = this.max;
     }
   }
 
@@ -114,6 +114,7 @@ export class HiDateRangePane extends HIElement {
     this.min && (this.min = this.min);
     this.max && (this.max = this.max);
     this.value = this.defaultvalue;
+
     this.date01.min = this.min;
     this.date02.min = this.min;
     this.date01.max = this.max;
