@@ -17,19 +17,21 @@
             .MainBody {padding:10px 0 50px;}
             h2 span{color: #999; font-size: 60%; font-weight: 200;}
             h-row{ margin: 6px 0;}
-            .Grid h-col{
-                background: #2196f380;
-                color:#fff;
-                line-height: 24px;
-                min-height: 24px;
-            }
+
             .layout{ height: 300px; }
         .side{ width: 200px; }
         .main{ margin: 0 10px; }
         .box{ width: 100px; height: 100px; color: #fff; }
         .header,.footer{ padding: 5px 10px; color: #fff; }
             h-layout{ background: #2196f380; }
-           
+            h-col {
+                padding: 20px;
+                color: #fff;
+                background: #42b983c5;
+            }
+            h-col:nth-child(odd) {
+                background: #3ba1f49a;
+            }
         h-popover{ margin: 0 10px 10px 0; }
         </style>
     </head>
@@ -129,28 +131,31 @@
             <h2>栅格 <span>grid</span></h2>
             <div class="Grid">
                 <h-row gutter="10">
-                    <h-col span="8"></h-col>
-                    <h-col span="8"></h-col>
-                    <h-col span="8"></h-col>
+                    <h-col span="8">col-8</h-col>
+                    <h-col span="8">col-8</h-col>
+                    <h-col span="8">col-8</h-col>
                 </h-row>
                 <h-row gutter="10">
-                    <h-col span="4"></h-col>
-                    <h-col span="8"></h-col>
-                    <h-col span="12"></h-col>
+                    <h-col span="4">col-4</h-col>
+                    <h-col span="8">col-8</h-col>
+                    <h-col span="12">col-12</h-col>
                 </h-row>
                 <h-row gutter="10">
-                    <h-col span="12"></h-col>
-                    <h-col span="12"></h-col>
+                    <h-col span="4">col-4</h-col>
+                    <h-col span="8">col-8</h-col>
+                    <h-col span="4">col-4</h-col>
+                    <h-col span="8">col-8</h-col>
                 </h-row>
                 <h-row gutter="10">
-                    <h-col span="24">
-                        <h-row gutter="10">
-                            <h-col span="6"></h-col>
-                            <h-col span="6"></h-col>
-                            <h-col span="6"></h-col>
-                            <h-col span="6"></h-col>
-                        </h-row>
-                    </h-col>
+                    <h-col span="12">col-12</h-col>
+                    <h-col span="12">col-12</h-col>
+                </h-row>
+                <h-slider type="number" oninput="this.nextElementSibling.gutter=this.value" min="0" max="24" suffix="px" defaultvalue="10" showtips></h-slider>
+                <h-row gutter="10">
+                    <h-col span="6">col-6</h-col>
+                    <h-col span="6">col-6</h-col>
+                    <h-col span="6">col-6</h-col>
+                    <h-col span="6">col-6</h-col>
                 </h-row>
             </div>
             <h2>加载 <span>loading</span></h2>
