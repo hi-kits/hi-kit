@@ -80,7 +80,7 @@ export class HiDivider extends HIElement {
      * 是否虚线
      * @public boolean
      */
-    @attr dashed: boolean;
+    @attr({ mode: "boolean" }) dashed: boolean;
     
     /**
      * 水平还是垂直类型

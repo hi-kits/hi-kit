@@ -31,13 +31,6 @@ export class HiAvatarGroup extends HIElement {
     // ------------------ 属性 ------------------
     
     /**
-     * 圆形
-     * @date 6/24/2022 - 3:11:12 PM
-     *
-     * @type {boolean}
-     */
-    @attr circle: boolean;
-    /**
      * 尺寸
      * @public number
      */

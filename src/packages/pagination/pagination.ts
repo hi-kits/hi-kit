@@ -137,7 +137,7 @@ export class HiPagination extends HIElement {
      *
      * @type {boolean}
      */
-    @attr simple: boolean;
+    @attr({ mode: "boolean" }) simple: boolean;
     
     /**
      * 链接href

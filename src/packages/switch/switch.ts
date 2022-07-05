@@ -64,12 +64,12 @@ export class HiSwitch extends HIElementBase {
     /**
      * @internal
      */
-     public clickHandler = (e: MouseEvent) => {
-        if (!this.disabled && !this.readOnly) {
-            this.checked = !this.checked;
+    //  public clickHandler = (e: MouseEvent) => {
+    //     if (!this.disabled && !this.readOnly) {
+    //         this.checked = !this.checked;
 
-        }
-    };
+    //     }
+    // };
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
@@ -77,7 +77,7 @@ export class HiSwitch extends HIElementBase {
      connectedCallback() {
         super.connectedCallback();
         this.switch = this.shadowRoot!.getElementById('switch');
-        this.switch.addEventListener("click", this.clickHandler);
+        // this.switch.addEventListener("click", this.clickHandler);
         this.switch.addEventListener('change',(ev)=>{
             this.checked = this.switch.checked;
             this.$emit('change', {

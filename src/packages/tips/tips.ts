@@ -84,7 +84,7 @@ export class HiTips extends HIElement {
      *
      * @type {boolean}
      */
-    @attr show: boolean;
+    @attr({ mode: "boolean" }) show: boolean;
     /**
      * 提示信息
      * 提示文字。如果不设置则不显示提示

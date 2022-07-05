@@ -70,7 +70,7 @@ export class HiAvatar extends HIElement {
      *
      * @type {boolean}
      */
-    @attr circle: boolean;
+    @attr({ mode: "boolean" }) circle: boolean;
     /**
      * 尺寸
      * @public number

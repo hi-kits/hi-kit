@@ -39,7 +39,7 @@ export class HiCheckbox extends HIElement {
       *
       * @type {!boolean}
       */
-    @attr disabled!: boolean;
+    @attr({ attribute: "disabled", mode: "boolean" }) disabled!: boolean;
     
     /**
      * 必填项

@@ -63,7 +63,7 @@ export class HiLayout extends HIElement {
     *
     * @type {boolean}
     */
-   @attr row: boolean;
+   @attr({ mode: "boolean" }) row: boolean;
    
    /**
     * 填充 expand
@@ -72,7 +72,7 @@ export class HiLayout extends HIElement {
     *
     * @type {boolean}
     */
-   @attr expand: boolean;
+   @attr({ mode: "boolean" }) expand: boolean;
    // ------------------ 自定义函数 ------------------
    connectedCallback(): void {
       super.connectedCallback();

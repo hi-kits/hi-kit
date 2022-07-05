@@ -121,7 +121,7 @@ export class HiTimelineItem extends HIElement {
      *
      * @type {boolean}
      */
-    @attr last: boolean;
+    @attr({ mode: "boolean" }) last: boolean;
     
     /**
      * 展示模式

@@ -61,7 +61,7 @@ export class HiCardHeader extends HIElement {
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
-        connectedCallback(): void {
+    connectedCallback(): void {
         super.connectedCallback()
         
     }

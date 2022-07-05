@@ -70,7 +70,7 @@ export class HiSteps extends HIElementBase {
      *
      * @type {boolean}
      */
-    @attr dot: boolean;
+    @attr({ mode: "boolean" }) dot: boolean;
 
     // ------------------ 自定义函数 ------------------
     /**

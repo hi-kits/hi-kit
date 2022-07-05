@@ -62,7 +62,7 @@ export class HiCard extends HIElement {
      *
      * @type {boolean}
      */
-    @attr noBorder: boolean;
+    @attr({ mode: "boolean" }) noBorder: boolean;
     
 	/**
      * 圆角半径
