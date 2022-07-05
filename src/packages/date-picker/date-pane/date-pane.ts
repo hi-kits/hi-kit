@@ -4,12 +4,13 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-01 18:45:24
+ * @LastEditTime: 2022-07-05 10:24:28
  */
 import { HIElement, customElement, attr, html, ValueConverter, ref, observable } from 'hi-element';
 import { datePaneStyle as styles } from './date-pane.style';
 import type { HiButton } from '../../button/button';
 import { DateUtils } from '../_util';
+import type { DatePaneType } from '../_dateType';
 
 const template = html<HiDatePane>`
   <div class="date-pane" id="date-pane">
@@ -66,17 +67,15 @@ const valueParseDate: ValueConverter = {
   },
   fromView(value: string): any {
     // convert strings to numbers
-    return true;
+    return value;
   }
 };
 const dateParseDate: ValueConverter = {
   toView(value: any): Date {
-    // convert numbers to strings
     return new Date(this.$value);
   },
   fromView(value: string): any {
-    // convert strings to numbers
-    return true;
+    return value;
   }
 };
 @customElement({
@@ -91,33 +90,44 @@ export class HiDatePane extends HIElement {
   @attr range?: 'left' | 'right';
 
   // 最小值
-  @attr min: Array<Number> = [0, 1, 1];
+  @attr min: string = '1600-1-1';
   private minChanged() {
     DateUtils.toDate(this.min);
+    if (this.min !== null) {
+      this.render();
+    }
   }
   // 最大值
-  @attr max: Array<Number> = [9999, 12, 31];
+  @attr max: string = '9999-1-30';
   private maxChanged() {
     DateUtils.toDate(this.max);
+    if (this.max !== null) {
+      this.render();
+    }
   }
 
-  @attr type: 'date' | 'month' | 'year' = 'date';
+  @attr type: DatePaneType = 'date';
+  private typeChanged() {
+    if (this.max !== null) {
+      this.render();
+    }
+  }
   // 用于和外部交互的value   ({ converter: valueParseDate })
   @attr value: string = '';
   private valueChanged() {
-    this.value = DateUtils.parseDate(this.value, this.type);
+    let value = DateUtils.parseDate(this.value, this.type);
     // 先执行valuechanged然后再执行converter
-    this.$value = this.value;
+    this.$value = value;
     //'2019/1/1'
     if (this.minormax) {
       // 找到最小的
-      this.value = this.getMinorMax(
-        this.getMinorMax(new Date(this.value), new Date(this.max.join(',')), 'min'),
-        new Date(this.min.join(',')),
+      value = this.getMinorMax(
+        this.getMinorMax(new Date(this.value), new Date(this.max), 'min'),
+        new Date(this.min),
         'max'
       ).toLocaleDateString();
     }
-    this.render(this.$value);
+    this.render(value);
     if (this.init) {
       if (this.range === 'left') {
         const right = this.nextElementSibling as HiDatePane;
@@ -145,11 +155,11 @@ export class HiDatePane extends HIElement {
 
   @attr rangedate: [Date, Date] = [new Date(), new Date()];
 
-  private _mode: 'date' | 'month' | 'year' = 'date';
-  public get mode(): 'date' | 'month' | 'year' {
+  private _mode: DatePaneType = 'date';
+  public get mode(): DatePaneType {
     return this._mode;
   }
-  public set mode(value: 'date' | 'month' | 'year') {
+  public set mode(value: DatePaneType) {
     this._mode = value;
     this.dateCon.dataset.type = value;
   }
@@ -285,6 +295,8 @@ export class HiDatePane extends HIElement {
     // 获取到yearBtns的集合
     this.yearBtns = Array.from(this.dateYear?.children) as HTMLButtonElement[];
     this.value = this.defaultvalue;
+    console.log('datePane', this.min, this.max);
+
     this.init = true;
   }
 
@@ -395,6 +407,8 @@ export class HiDatePane extends HIElement {
                 DateUtils.parseDate(el.dataset.date, 'month') > DateUtils.parseDate(right.value, 'month')) ||
               (this.range === 'right' && left && DateUtils.parseDate(el.dataset.date, 'month') < DateUtils.parseDate(left.value, 'month'));
             disabled && (el.disabled = true);
+            console.log(right && right.value);
+            // console.log(DateUtils.parseDate(el.dataset.date, 'month') > DateUtils.parseDate(right.value, 'month'));
           } else {
             // current 代表当前选择的日期
             if (year + '-' + month + '-' + day == days[i]) {
@@ -478,8 +492,8 @@ export class HiDatePane extends HIElement {
         this.switch.textContent = year + '年';
         this.switch.disabled = false;
         if (this.minormax) {
-          this.prev.disabled = this.min[0] >= year;
-          this.next.disabled = this.max[0] <= year;
+          this.prev.disabled = Number(this.min.split('-')[0]) >= year;
+          this.next.disabled = Number(this.max.split('-')[0]) <= year;
         } else {
           this.prev.disabled = false;
           this.next.disabled = false;
@@ -550,8 +564,9 @@ export class HiDatePane extends HIElement {
         this.switch.textContent = years[0] + '年 - ' + (years[0] + 19) + '年';
         this.switch.disabled = true;
         if (this.minormax) {
-          this.prev.disabled = (this.yearBtns[0].dataset.year && this.min[0] >= Number(this.yearBtns[0].dataset.year)) as boolean;
-          this.next.disabled = this.max[0] <= Number(this.yearBtns[19].dataset.year);
+          this.prev.disabled = (this.yearBtns[0].dataset.year &&
+            Number(this.min.split('-')[0]) >= Number(this.yearBtns[0].dataset.year)) as boolean;
+          this.next.disabled = Number(this.max.split('-')[0]) <= Number(this.yearBtns[19].dataset.year);
         } else {
           this.prev.disabled = false;
           this.next.disabled = false;

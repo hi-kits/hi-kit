@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2022-06-09 15:44:00
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-01 16:50:18
+ * @LastEditTime: 2022-07-03 18:55:36
  */
 import { HIElement, customElement, attr, observable, ref, when, html } from 'hi-element';
 import { HiPopcon } from './popcon/popcon';
@@ -49,7 +49,7 @@ export class Popover extends HIElement {
   /**
    * 展示方向
    */
-  @attr dir: DirType = 'top';
+  @attr dir: DirType;
   // title
   @attr ptitle: string = '';
   // 类型

@@ -4,27 +4,30 @@
  * @Author: liulina
  * @Date: 2022-06-27 19:05:32
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-27 19:07:13
+ * @LastEditTime: 2022-07-05 10:24:00
  */
 import type { ValueConverter } from 'hi-element';
+import { DateUtils } from '../_util';
 // 值转换
 export const valueParseDate: ValueConverter = {
-  toView(value: any): [Date, Date] {
-    // convert numbers to strings
-    return this.$value.map(value => this.parseDate(value, this.type));
+  toView(value: any): [string, string] {
+    // 补0之后的时间字符串
+    return typeof value === 'string' ? value.split('~').map(value => DateUtils.parseDate(value, this.type)) : value;
   },
   fromView(value: string): any {
     // convert strings to numbers
+    return value;
   }
 };
 // 默认值转换
 export const defaultValueParseDate: ValueConverter = {
   toView(value: any): Date {
     // convert numbers to strings
-    return value.split('~');
+    return this.defaultvalue.split('~');
   },
   fromView(value: string): any {
     // convert strings to numbers
+    return value;
   }
 };
 
@@ -36,5 +39,6 @@ export const dateParseDate: ValueConverter = {
   },
   fromView(value: string): any {
     // convert strings to numbers
+    return value;
   }
 };

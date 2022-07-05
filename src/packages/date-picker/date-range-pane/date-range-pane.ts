@@ -4,13 +4,14 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-01 12:21:31
+ * @LastEditTime: 2022-07-05 10:26:12
  */
 import { HIElement, customElement, attr, ref, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-range-pane.style';
-import { valueParseDate, defaultValueParseDate, dateParseDate } from './converter';
+import { valueParseDate, dateParseDate } from './converter';
 import { DateUtils } from '../_util';
 import type { HiDatePane } from '../date-pane/date-pane';
+import type { DatePaneType } from '../_dateType';
 // ${ref('date01')}
 // ${ref('date02')}
 
@@ -33,10 +34,15 @@ export class HiDateRangePane extends HIElement {
 
   private $value;
 
-  // 默认值
-  @attr({ converter: defaultValueParseDate }) defaultvalue = [new Date(), new Date()];
-  @attr({ converter: valueParseDate }) value;
-  private valueChange() {
+  // 默认值 ({ converter: defaultValueParseDate })
+  @attr defaultvalue: string[] = [DateUtils.parseDate(new Date()), DateUtils.parseDate(new Date())];
+  defaultvalueChanged() {
+    if (typeof this.defaultvalue === 'string') {
+    }
+  }
+  // value
+  @attr({ converter: valueParseDate }) value: string[];
+  private valueChanged() {
     if (DateUtils.parseDate(this.value[0]) > DateUtils.parseDate(this.value[1])) {
       [this.value[0], this.value[1]] = [this.value[1], this.value[0]];
     }
@@ -47,11 +53,29 @@ export class HiDateRangePane extends HIElement {
   }
   @attr({ converter: dateParseDate }) date: [Date, Date];
   // 最小值
-  @attr min: Array<Number>;
+  @attr min: string;
+  private minChanged() {
+    if (this.min && this.date01) {
+      this.date01.min = this.min;
+      this.date02.min = this.min;
+    }
+  }
   // 最大值
-  @attr max: Array<Number>;
+  @attr max: string;
+  private maxChanged() {
+    if (this.max && this.date01) {
+      this.date01.min = this.max;
+      this.date02.min = this.max;
+    }
+  }
 
-  @attr type = 'date';
+  @attr type: DatePaneType = 'date';
+  private typeChanged() {
+    if (this.type && this.date01) {
+      this.date01.type = this.type;
+      this.date02.type = this.type;
+    }
+  }
 
   // 选择事件
   choose(value) {
@@ -86,11 +110,15 @@ export class HiDateRangePane extends HIElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.$date = ['', ''];
-
     this.type = this.type;
     this.min && (this.min = this.min);
     this.max && (this.max = this.max);
     this.value = this.defaultvalue;
+    this.date01.min = this.min;
+    this.date02.min = this.min;
+    this.date01.max = this.max;
+    this.date02.max = this.max;
+
     this.date01.addEventListener('select', ev => {
       console.log(ev);
       // this.choose(ev.detail.value);

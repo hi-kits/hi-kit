@@ -4,7 +4,7 @@
  * @Author: sueRimn
  * @Date: 2022-06-09 15:44:00
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-01 15:01:15
+ * @LastEditTime: 2022-07-04 18:10:17
  */
 import { HIElement, customElement, attr, observable, ref, when, html } from 'hi-element';
 
@@ -12,20 +12,6 @@ import { PopconStyles as styles } from './popcon.style';
 import type { HiButton } from '../../button/button';
 
 declare const window: any;
-
-type DirType =
-  | 'top'
-  | 'right'
-  | 'bottom'
-  | 'left'
-  | 'efttop'
-  | 'leftbottom'
-  | 'topleft'
-  | 'topright'
-  | 'righttop'
-  | 'rightbottom'
-  | 'bottomleft'
-  | 'bottomright';
 
 type TriggerType = 'hover' | 'focus' | 'contextmenu' | 'click';
 
@@ -36,7 +22,7 @@ const template = html<HiPopcon>`
   <div class="popcon-content">
     ${when(
       x => x.type && x.type !== null,
-      html<HiPopcon>`<div class="popcon-title" id="title" ${ref('titles')}>${x => x.title}</div>
+      html<HiPopcon>`<div class="popcon-title" id="title" ${ref('titles')}>${x => x.ptitle}</div>
         <h-button class="btn-close" id="btn-close" icon="close" ${ref('btnClose')}></h-button>
         <hr />`
     )}
@@ -66,9 +52,9 @@ export class HiPopcon extends HIElement {
   @attr({ mode: 'boolean' }) disabled: boolean = false;
 
   // title
-  @attr title: string = 'popcon';
+  @attr ptitle: string = 'popcon';
   // 类型
-  @attr type: PopoverType = 'nomal';
+  @attr type: PopoverType;
 
   /**
    * 确定文案
