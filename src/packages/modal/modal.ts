@@ -86,10 +86,8 @@ export class HiModal extends HIElement {
      * @public
      * @type {!string}
      */
-    @attr public canceltext: string = '取消';
-    private canceltextChanged(oldValue, newValue): void {
-        this.canceltext = newValue;
-    }
+    @attr canceltext: string = '取消';
+
     
     /**
      * 确定键文本
@@ -98,10 +96,8 @@ export class HiModal extends HIElement {
      * @public
      * @type {!string}
      */
-    @attr public oktext:string = '确定';
-    private oktextChanged(oldValue, newValue): void {
-        this.oktext = newValue;
-    }
+    @attr({ mode: "reflect" }) oktext:string = '确定';
+
     
     /**
      * 对话框类型
