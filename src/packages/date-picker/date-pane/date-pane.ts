@@ -4,12 +4,13 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-01 18:45:24
+ * @LastEditTime: 2022-07-05 15:37:52
  */
 import { HIElement, customElement, attr, html, ValueConverter, ref, observable } from 'hi-element';
 import { datePaneStyle as styles } from './date-pane.style';
 import type { HiButton } from '../../button/button';
 import { DateUtils } from '../_util';
+import type { DatePaneType } from '../_dateType';
 
 const template = html<HiDatePane>`
   <div class="date-pane" id="date-pane">
@@ -58,25 +59,13 @@ const template = html<HiDatePane>`
     </div>
   </div>
 `;
-const valueParseDate: ValueConverter = {
-  toView(value: any): string {
-    console.log(222);
-    // convert numbers to strings
-    return DateUtils.parseDate(this.$value, this.type);
-  },
-  fromView(value: string): any {
-    // convert strings to numbers
-    return true;
-  }
-};
+
 const dateParseDate: ValueConverter = {
   toView(value: any): Date {
-    // convert numbers to strings
-    return new Date(this.$value);
+    return new Date(this.value);
   },
   fromView(value: string): any {
-    // convert strings to numbers
-    return true;
+    return value;
   }
 };
 @customElement({
@@ -91,33 +80,53 @@ export class HiDatePane extends HIElement {
   @attr range?: 'left' | 'right';
 
   // 最小值
-  @attr min: Array<Number> = [0, 1, 1];
+  @attr min: string = '1600-1-1';
   private minChanged() {
     DateUtils.toDate(this.min);
+    if (this.min !== null) {
+      // 如果value为空，则可能是从没有走connected，需要重新赋值
+      if (!this.value) {
+        return (this.value = this.defaultvalue);
+      }
+      this.render();
+    }
   }
   // 最大值
-  @attr max: Array<Number> = [9999, 12, 31];
+  @attr max: string = '9999-1-30';
   private maxChanged() {
     DateUtils.toDate(this.max);
+    if (this.max !== null) {
+      if (!this.value) {
+        return (this.value = this.defaultvalue);
+      }
+      this.render();
+    }
   }
 
-  @attr type: 'date' | 'month' | 'year' = 'date';
+  @attr type: DatePaneType = 'date';
+  private typeChanged() {
+    if (this.max !== null) {
+      this.render();
+    }
+  }
   // 用于和外部交互的value   ({ converter: valueParseDate })
   @attr value: string = '';
   private valueChanged() {
-    this.value = DateUtils.parseDate(this.value, this.type);
+    if (!this.value) {
+      return;
+    }
     // 先执行valuechanged然后再执行converter
-    this.$value = this.value;
+    let value = DateUtils.parseDate(this.value, this.type);
     //'2019/1/1'
     if (this.minormax) {
       // 找到最小的
-      this.value = this.getMinorMax(
-        this.getMinorMax(new Date(this.value), new Date(this.max.join(',')), 'min'),
-        new Date(this.min.join(',')),
+      value = this.getMinorMax(
+        this.getMinorMax(new Date(this.value), new Date(this.max), 'min'),
+        new Date(this.min),
         'max'
       ).toLocaleDateString();
     }
-    this.render(this.$value);
+    this.render(value);
     if (this.init) {
       if (this.range === 'left') {
         const right = this.nextElementSibling as HiDatePane;
@@ -145,20 +154,21 @@ export class HiDatePane extends HIElement {
 
   @attr rangedate: [Date, Date] = [new Date(), new Date()];
 
-  private _mode: 'date' | 'month' | 'year' = 'date';
-  public get mode(): 'date' | 'month' | 'year' {
+  private _mode: DatePaneType = 'date';
+  public get mode(): DatePaneType {
     return this._mode;
   }
-  public set mode(value: 'date' | 'month' | 'year') {
+  public set mode(value: DatePaneType) {
     this._mode = value;
     this.dateCon.dataset.type = value;
   }
-  // 存储panel的value
-  private $value;
   // 是否是初始化
   private init = false;
   // 设置了最大值或者最小值
-  private minormax = !this.min || !this.max;
+  private _minormax: boolean;
+  public get minormax() {
+    return !!this.min || !!this.max;
+  }
   // 是否被点击过
   private nativeclick = false;
   // 控制日期/月份/年展示的type
@@ -183,7 +193,7 @@ export class HiDatePane extends HIElement {
     this.mode = this.type;
     // 左侧向前的按钮
     this.prev.addEventListener('click', () => {
-      let [year, month, day] = DateUtils.toDate(this.$value);
+      let [year, month, day] = DateUtils.toDate(this.value);
       this.nativeclick = true;
       switch (this.mode) {
         case 'date':
@@ -200,7 +210,7 @@ export class HiDatePane extends HIElement {
     });
     //  右侧向后的按钮
     this.next.addEventListener('click', () => {
-      let [year, month, day] = DateUtils.toDate(this.$value);
+      let [year, month, day] = DateUtils.toDate(this.value);
       this.nativeclick = true;
       switch (this.mode) {
         case 'date':
@@ -245,7 +255,7 @@ export class HiDatePane extends HIElement {
     this.dateMonth.addEventListener('click', ev => {
       const target = ev.target as Element;
       const item = target.closest('button');
-      let [year, month, day] = DateUtils.toDate(this.$value);
+      let [year, month, day] = DateUtils.toDate(this.value);
       this.nativeclick = true;
       if (item && item.dataset) {
         if (this.type == 'date') {
@@ -262,7 +272,7 @@ export class HiDatePane extends HIElement {
     this.dateYear.addEventListener('click', ev => {
       const target = ev.target as Element;
       const item = target.closest('button');
-      let [year, month, day] = DateUtils.toDate(this.$value);
+      let [year, month, day] = DateUtils.toDate(this.value);
       this.nativeclick = true;
       if (item) {
         switch (this.type) {
@@ -285,32 +295,8 @@ export class HiDatePane extends HIElement {
     // 获取到yearBtns的集合
     this.yearBtns = Array.from(this.dateYear?.children) as HTMLButtonElement[];
     this.value = this.defaultvalue;
+
     this.init = true;
-  }
-
-  getDays(year, month) {
-    const lastdays = new Date(year, month - 1, 0).getDate();
-    const days = new Date(year, month, 0).getDate();
-    const week = new Date(year, month - 1, 1).getDay();
-    const prev = Array.from(
-      { length: week },
-      (el, i) => (month == 1 ? year - 1 : year) + '-' + (month == 1 ? 12 : month - 1) + '-' + (lastdays + i - week + 1)
-    );
-    const current = Array.from({ length: days }, (el, i) => year + '-' + month + '-' + (i + 1));
-    const next = Array.from(
-      { length: 42 - days - week },
-      (el, i) => (month == 12 ? year + 1 : year) + '-' + (month == 12 ? 1 : month + 1) + '-' + (i + 1)
-    );
-    return [...prev, ...current, ...next];
-  }
-
-  getMonths() {
-    return ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-  }
-
-  getYears(year) {
-    const start = (parseInt(year) / 20) * 20;
-    return Array.from({ length: 20 }, (el, i) => start + i);
   }
 
   toDay(year, month, day) {
@@ -330,9 +316,12 @@ export class HiDatePane extends HIElement {
     );
   }
 
-  public render(date = this.$value): void {
+  public render(date = this.value): void {
     //console.log('render')
-    this.$value = date;
+    if (!date) {
+      return;
+    }
+    this.value = date;
     const [year, month, day] = DateUtils.toDate(date);
     const [n_year, n_month, n_day] = DateUtils.toDate(new Date());
     let left;
@@ -347,63 +336,67 @@ export class HiDatePane extends HIElement {
     switch (mode) {
       // 如果当前展示的类型是天
       case 'date':
-        const days = this.getDays(year, month);
-        const dateBtns = Array.from(this.days?.children) as HTMLButtonElement[];
-        dateBtns.forEach((el, i) => {
-          const [_year, _month, _day] = days[i].split('-');
-          el.dataset.date = _year + '-' + _month.toString().padStart(2, '0') + '-' + _day.toString().padStart(2, '0');
-          el.dataset.year = _year;
-          el.dataset.month = _month.toString().padStart(2, '0');
-          el.dataset.day = _day.toString().padStart(2, '0');
-          el.textContent = _day;
-          if (n_year + '-' + n_month + '-' + n_day == days[i]) {
-            // now 今天
-            el.setAttribute('now', '');
-          } else {
-            el.removeAttribute('now');
-          }
-          if (Number(_month) != Number(month)) {
-            el.setAttribute('other', '');
-          } else {
-            el.removeAttribute('other');
-          }
-          if (this.minormax) {
-            el.disabled = el.dataset.date < DateUtils.parseDate(this.min) || el.dataset.date > DateUtils.parseDate(this.max);
-          } else {
-            el.disabled = false;
-          }
-          if (this.range) {
-            if (el.dataset.date > DateUtils.parseDate(this.rangedate[0]) && el.dataset.date < DateUtils.parseDate(this.rangedate[1])) {
-              el.setAttribute('select', '');
+        const days = DateUtils.getDays(year, month);
+        const dateBtns = this.days && (Array.from(this.days?.children) as HTMLButtonElement[]);
+        dateBtns &&
+          dateBtns.forEach((el, i) => {
+            const [_year, _month, _day] = days[i].split('-');
+            el.dataset.date = _year + '-' + _month.toString().padStart(2, '0') + '-' + _day.toString().padStart(2, '0');
+            el.dataset.year = _year;
+            el.dataset.month = _month.toString().padStart(2, '0');
+            el.dataset.day = _day.toString().padStart(2, '0');
+            el.textContent = _day;
+            if (n_year + '-' + n_month + '-' + n_day == days[i]) {
+              // now 今天
+              el.setAttribute('now', '');
             } else {
-              el.removeAttribute('select');
+              el.removeAttribute('now');
             }
-            if (el.dataset.date == DateUtils.parseDate(this.rangedate[0])) {
-              el.setAttribute('selectstart', '');
+            if (Number(_month) != Number(month)) {
+              el.setAttribute('other', '');
             } else {
-              el.removeAttribute('selectstart');
+              el.removeAttribute('other');
             }
-            if (el.dataset.date == DateUtils.parseDate(this.rangedate[1])) {
-              el.setAttribute('selectend', '');
+
+            if (this.minormax) {
+              el.disabled = el.dataset.date < DateUtils.parseDate(this.min) || el.dataset.date > DateUtils.parseDate(this.max);
             } else {
-              el.removeAttribute('selectend');
+              el.disabled = false;
             }
-            // 不可用的日期
-            const disabled =
-              (this.range === 'left' &&
-                right &&
-                DateUtils.parseDate(el.dataset.date, 'month') > DateUtils.parseDate(right.value, 'month')) ||
-              (this.range === 'right' && left && DateUtils.parseDate(el.dataset.date, 'month') < DateUtils.parseDate(left.value, 'month'));
-            disabled && (el.disabled = true);
-          } else {
-            // current 代表当前选择的日期
-            if (year + '-' + month + '-' + day == days[i]) {
-              el.setAttribute('current', '');
+            if (this.range) {
+              if (el.dataset.date > DateUtils.parseDate(this.rangedate[0]) && el.dataset.date < DateUtils.parseDate(this.rangedate[1])) {
+                el.setAttribute('select', '');
+              } else {
+                el.removeAttribute('select');
+              }
+              if (el.dataset.date == DateUtils.parseDate(this.rangedate[0])) {
+                el.setAttribute('selectstart', '');
+              } else {
+                el.removeAttribute('selectstart');
+              }
+              if (el.dataset.date == DateUtils.parseDate(this.rangedate[1])) {
+                el.setAttribute('selectend', '');
+              } else {
+                el.removeAttribute('selectend');
+              }
+              // 不可用的日期
+              const disabled =
+                (this.range === 'left' &&
+                  right &&
+                  DateUtils.parseDate(el.dataset.date, 'month') > DateUtils.parseDate(right.value, 'month')) ||
+                (this.range === 'right' &&
+                  left &&
+                  DateUtils.parseDate(el.dataset.date, 'month') < DateUtils.parseDate(left.value, 'month'));
+              disabled && (el.disabled = true);
             } else {
-              el.removeAttribute('current');
+              // current 代表当前选择的日期
+              if (year + '-' + month + '-' + day == days[i]) {
+                el.setAttribute('current', '');
+              } else {
+                el.removeAttribute('current');
+              }
             }
-          }
-        });
+          });
         this.switch.textContent = year + '年' + (month + '').padStart(2, '0') + '月';
         this.switch.disabled = false;
         if (this.minormax) {
@@ -478,8 +471,8 @@ export class HiDatePane extends HIElement {
         this.switch.textContent = year + '年';
         this.switch.disabled = false;
         if (this.minormax) {
-          this.prev.disabled = this.min[0] >= year;
-          this.next.disabled = this.max[0] <= year;
+          this.prev.disabled = Number(this.min.split('-')[0]) >= year;
+          this.next.disabled = Number(this.max.split('-')[0]) <= year;
         } else {
           this.prev.disabled = false;
           this.next.disabled = false;
@@ -496,7 +489,7 @@ export class HiDatePane extends HIElement {
         }
         break;
       case 'year':
-        const years = this.getYears(year);
+        const years = DateUtils.getYears(year);
 
         this.yearBtns.forEach((el, i) => {
           el.dataset.year = years[i] + '';
@@ -550,8 +543,9 @@ export class HiDatePane extends HIElement {
         this.switch.textContent = years[0] + '年 - ' + (years[0] + 19) + '年';
         this.switch.disabled = true;
         if (this.minormax) {
-          this.prev.disabled = (this.yearBtns[0].dataset.year && this.min[0] >= Number(this.yearBtns[0].dataset.year)) as boolean;
-          this.next.disabled = this.max[0] <= Number(this.yearBtns[19].dataset.year);
+          this.prev.disabled = (this.yearBtns[0].dataset.year &&
+            Number(this.min.split('-')[0]) >= Number(this.yearBtns[0].dataset.year)) as boolean;
+          this.next.disabled = Number(this.max.split('-')[0]) <= Number(this.yearBtns[19].dataset.year);
         } else {
           this.prev.disabled = false;
           this.next.disabled = false;
@@ -576,29 +570,4 @@ export class HiDatePane extends HIElement {
       return last.getTime() > current.getTime() ? (type === 'min' ? current : last) : type === 'min' ? last : current;
     });
   }
-
-  public toDate = d => {
-    const date = new Date(d);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    return [year, (month + '').padStart(2, '0'), (day + '').padStart(2, '0')];
-  };
-
-  public parseDate = (date, type = 'date') => {
-    const [year, month, day] = this.toDate(date);
-    let value = '';
-    switch (type) {
-      case 'date':
-        value = year + '-' + (month + '').padStart(2, '0') + '-' + (day + '').padStart(2, '0');
-        break;
-      case 'month':
-        value = year + '-' + (month + '').padStart(2, '0');
-        break;
-      default:
-        value = year + '';
-        break;
-    }
-    return value;
-  };
 }
