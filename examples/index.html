@@ -82,7 +82,7 @@
                     <h-checkbox>Vue</h-checkbox>
                     <h-checkbox>Angular</h-checkbox>
                     <h-checkbox>Flutter</h-checkbox>
-                    <h-checkbox>Swift</h-checkbox>
+                    <h-checkbox required>Swift</h-checkbox>
                 </h-checkbox-group>
                 <h-checkbox>123</h-checkbox>
                 <h-switch onchange="this.previousElementSibling.disabled = this.checked" checked=""></h-switch>
@@ -445,9 +445,9 @@
                     </h-col>
                     <h-col span="8">
                         <div style="margin-bottom: 20px ; text-align: center;">
-                            <button onclick="document.getElementById('Timeline').setAttribute('mode', 'left')">left</button>
-                            <button onclick="document.getElementById('Timeline').setAttribute('mode', 'right')">right</button>
-                            <button onclick="document.getElementById('Timeline').setAttribute('mode', 'alternate')">alternate</button>
+                            <h-button onclick="document.getElementById('Timeline').setAttribute('mode', 'left')">left</h-button>
+                            <h-button onclick="document.getElementById('Timeline').setAttribute('mode', 'right')">right</h-button>
+                            <h-button onclick="document.getElementById('Timeline').setAttribute('mode', 'alternate')">alternate</h-button>
                         </div>
                         <h-timeline id="Timeline" mode="alternate">
                             <h-timeline-item color="green" style="color:#1890ff" label="2022-06-01 09:00:00">创建服务网站</h-timeline-item>
