@@ -18,6 +18,7 @@ export const PaginationStyles = css`
 h-button {
     margin: 0 .3em;
     width: 2.3em;
+    min-width: 2.3em;
     height: 2.3em;
     padding: 1px;
     font-size: inherit;
@@ -42,13 +43,19 @@ h-button[current] {
 }
 .page{
     display:inline-flex;
+    align-items: center;
 }
 .icon{
     width:1em;
     height:1em;
     fill: currentColor;
 }
-
+:host([size="small"]) {
+    font-size: 12px;
+}
+:host([size="large"]) {
+    font-size: 18px;
+}
 `;
  
 

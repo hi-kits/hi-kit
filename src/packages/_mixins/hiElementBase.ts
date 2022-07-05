@@ -1,11 +1,3 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: liulina
- * @Date: 2022-07-01 14:01:52
- * @LastEditors: liulina
- * @LastEditTime: 2022-07-01 14:11:32
- */
 /**
  * 将mixin应用于构造函数
  * 来源于 {@link https://www.typescriptlang.org/docs/handbook/mixins.html | TypeScript Documentation }
@@ -17,49 +9,56 @@
  */
 import { HIElement, attr } from 'hi-element';
 export class HIElementBase extends HIElement {
-  // ------------------ 构造函数 ------------------
-  // ------------------ 参数 ------------------
-  // ------------------ 属性 ------------------
-  /**
-   * 颜色
-   * @public string
-   */
-  @attr color: string;
-  colorChanged(oldValue, newValue): void {
-    this.style.color = newValue;
-  }
-  /**
-   * 尺寸
+    // ------------------ 构造函数 ------------------
+    // ------------------ 参数 ------------------
+    // ------------------ 属性 ------------------
+    /**
+     * 颜色
+     * @public string
+     */
+    @attr color: string;
+    colorChanged(oldValue, newValue): void {
+        this.style.color = newValue;
+    }
+    /**
+     * 尺寸
    * @public number
    */
-  @attr size: 'large' | 'small' | 'default' | string;
-  sizeChanged(oldValue, newValue): void {
-    for (let index = 0; index < this.children.length; index++) {
-      const element = this.children[index];
-      element.setAttribute('size', this.size);
-    }
-  }
-
-  // ------------------ 自定义函数 ------------------
-  /**
-   * 处理子元素
-   * @param callback  处理完成回调
-   */
-  childrenFn(callback?): void {
-    const Length = this.children.length;
-    if (Length > 0) {
-      for (let index = 0; index < Length; index++) {
-        const element = this.children[index];
-        if (index == 0) {
-          element.setAttribute('first', '');
-        } else if (index + 1 == Length) {
-          element.setAttribute('last', '');
+    @attr size: 'large' | 'small' | 'default' | string;
+    sizeChanged(oldValue, newValue): void {
+        for (let index = 0; index < this.children.length; index++) {
+            const element = this.children[index];
+            element.setAttribute('size', this.size);
         }
-        element.setAttribute('index', String(index));
-      }
-      if (callback) {
-        callback();
-      }
     }
-  }
+
+    /**
+     * 选项的禁用状态
+     * @public
+     * @remarks
+     * HTML属性：禁用
+     */
+    @attr({ mode: "boolean" }) disabled: boolean;
+    // ------------------ 自定义函数 ------------------
+    /**
+     * 处理子元素
+     * @param callback  处理完成回调
+     */
+    childrenFn(callback?): void {
+        const Length = this.children.length;
+        if (Length > 0) {
+            for (let index = 0; index < Length; index++) {
+                const element = this.children[index];
+                if (index == 0) {
+                    element.setAttribute('first', '');
+                } else if (index + 1 == Length) {
+                    element.setAttribute('last', '');
+                }
+                element.setAttribute('index', String(index));
+            }
+            if (callback) {
+                callback();
+            }
+        }
+    }
 }
