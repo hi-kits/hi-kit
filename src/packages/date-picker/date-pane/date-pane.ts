@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-05 14:25:03
+ * @LastEditTime: 2022-07-05 15:37:52
  */
 import { HIElement, customElement, attr, html, ValueConverter, ref, observable } from 'hi-element';
 import { datePaneStyle as styles } from './date-pane.style';
@@ -295,7 +295,6 @@ export class HiDatePane extends HIElement {
     // 获取到yearBtns的集合
     this.yearBtns = Array.from(this.dateYear?.children) as HTMLButtonElement[];
     this.value = this.defaultvalue;
-    console.log('datePane---', this.value);
 
     this.init = true;
   }
@@ -358,10 +357,8 @@ export class HiDatePane extends HIElement {
             } else {
               el.removeAttribute('other');
             }
-            console.log('minormax', this.minormax);
 
             if (this.minormax) {
-              console.log(el.dataset.date, DateUtils.parseDate(this.min), el.dataset.date, DateUtils.parseDate(this.max));
               el.disabled = el.dataset.date < DateUtils.parseDate(this.min) || el.dataset.date > DateUtils.parseDate(this.max);
             } else {
               el.disabled = false;
