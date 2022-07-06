@@ -23,7 +23,8 @@ const template = html<HiTips>`<slot></slot>`;
 @customElement({
    name: 'h-tips',
    template,
-   styles
+   styles,
+   shadowOptions: { mode: 'closed'},
 })
 export class HiTips extends HIElement {
     // ------------------ 构造函数 ------------------

@@ -13,7 +13,6 @@ import { HiCol, HiRow, HiLayout } from './grid';
 import { HiLoading } from './loading';
 import { HiSwitch } from './switch';
 import { HiShort } from './short';
-import { HiToast } from './toast';
 import { HiSlider } from './slider';
 import { HiIcon } from './icon';
 import { HiDivider } from './divider';

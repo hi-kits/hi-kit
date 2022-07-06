@@ -10,8 +10,9 @@ import { css } from 'hi-element';
 
 export const EditWordStyles = css`
 
-span { background-color: #eef; padding: 0 2px }
-
+span { background-color: #eef; padding:2px 4px }
+input{ border: 1px solid #979af9;
+    line-height: 1.5;}
 `;
  
 
