@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-05 15:37:52
+ * @LastEditTime: 2022-07-06 10:32:49
  */
 import { HIElement, customElement, attr, html, ValueConverter, ref, observable } from 'hi-element';
 import { datePaneStyle as styles } from './date-pane.style';
@@ -75,7 +75,7 @@ const dateParseDate: ValueConverter = {
 })
 export class HiDatePane extends HIElement {
   // 默认值
-  @attr defaultvalue: string = new Date().toLocaleDateString();
+  @attr defaultvalue: string = DateUtils.dateToString(new Date());
   // 左侧还是右侧
   @attr range?: 'left' | 'right';
 
@@ -117,14 +117,14 @@ export class HiDatePane extends HIElement {
     }
     // 先执行valuechanged然后再执行converter
     let value = DateUtils.parseDate(this.value, this.type);
-    //'2019/1/1'
+    //'2019-1-1'
     if (this.minormax) {
       // 找到最小的
-      value = this.getMinorMax(
+      value = DateUtils.dateToString(this.getMinorMax(
         this.getMinorMax(new Date(this.value), new Date(this.max), 'min'),
         new Date(this.min),
         'max'
-      ).toLocaleDateString();
+      ));
     }
     this.render(value);
     if (this.init) {

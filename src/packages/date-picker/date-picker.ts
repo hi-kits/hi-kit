@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-04 23:24:47
+ * @LastEditTime: 2022-07-05 17:34:54
  */
 import { HIElement, customElement, attr, when, ref, slotted, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-picker.style';
@@ -121,6 +121,7 @@ export class DatePicker extends HIElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.defaultvalue = this.getDefaultValue();
+    // selec点击事件
     this.select.addEventListener('click', () => {
       if (!this.datePane) {
         if (this.range) {
@@ -140,6 +141,7 @@ export class DatePicker extends HIElement {
         this.popcon.prepend(this.datePane);
       }
     });
+    // 点击确定按钮
     this.btnSubmit.addEventListener('click', () => {
       this.nativeclick = true;
       if (typeof this.datePane.value !== 'string') {
@@ -148,9 +150,10 @@ export class DatePicker extends HIElement {
 
       this.value = typeof this.datePane.value !== 'string' ? this.datePane.value.join('~') : this.datePane.value;
     });
+    // 面板关闭
     this.popcon.addEventListener('close', () => {
       this.datePane.value = this.range ? this.value.split('~') : this.value;
-      // this.datePane.mode = this.type;
+      this.datePane.mode = this.type;
     });
     this.$value = this.range ? this.defaultvalue.split('~') : this.defaultvalue;
     this.value = this.defaultvalue;
