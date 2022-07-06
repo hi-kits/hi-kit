@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-05 14:31:04
+ * @LastEditTime: 2022-07-05 17:34:10
  */
 import { HIElement, customElement, attr, ref, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-range-pane.style';
@@ -68,6 +68,14 @@ export class HiDateRangePane extends HIElement {
       this.date02.max = this.max;
     }
   }
+  // 最大值
+  @attr mode: DatePaneType;
+  private modeChanged() {
+    if (this.mode && this.date01) {
+      this.date01.mode = this.mode;
+      this.date02.mode = this.mode;
+    }
+  }
 
   @attr type: DatePaneType = 'date';
   private typeChanged() {
@@ -95,13 +103,14 @@ export class HiDateRangePane extends HIElement {
   render(value = this.$value, change?) {
     this.date01.rangedate = value;
     this.date02.rangedate = value;
+    // 如果左右date都选择后，则向父组件传递数据
     if (change) {
       this.$value = value;
       this.dispatchEvent(
         new CustomEvent('change', {
           detail: {
             value: value,
-            date: this.date
+            date: this.$date
           }
         })
       );
@@ -121,12 +130,15 @@ export class HiDateRangePane extends HIElement {
     this.date02.max = this.max;
 
     this.date01.addEventListener('select', ev => {
-      console.log(ev);
-      // this.choose(ev.detail.value);
+      this.choose(ev['detail'].value);
     });
     this.date02.addEventListener('select', ev => {
-      console.log(ev);
-      // this.choose(ev.detail.value);
+      this.choose(ev['detail'].value);
+    });
+    // 监听change事件
+    this.addEventListener('change', ev => {
+      // 修改当前组建的value
+      this.value = ev['detail'].value;
     });
   }
 }
