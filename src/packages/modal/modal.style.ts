@@ -5,10 +5,11 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { css } from 'hi-element';
+// 配置文件
 import { hiConfig } from "../config";
-
+// 样式
 export const ModalStyles = css`
 
 :host{
@@ -22,7 +23,9 @@ export const ModalStyles = css`
     background:rgba(0,0,0,.3);
     visibility:hidden;
     opacity:0;
-    /* backdrop-filter: blur(3px); */ 
+    /* backdrop-filter: blur(3px); 
+    -webkit-backdrop-filter: blur(3px);*/
+
     transition:.3s;
 }
 :host([open]){
@@ -33,11 +36,11 @@ export const ModalStyles = css`
 .Modal {
     display:flex;
     position:relative;
-    min-width: 360px;
+    min-width: 320px;
     margin:auto;
     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
-    max-width: calc(100vw - 20px);
+    max-width: 80vw;
     max-height: calc(100vh - 20px);
     border-radius: 3px;
     background-color: #fff;

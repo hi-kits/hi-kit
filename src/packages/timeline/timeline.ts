@@ -6,19 +6,18 @@
  * @description
  * 垂直展示的时间流信息。
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 
-
-const styles = css`
-
-
-`
+// 样式文件
+const styles = css``;
+// 模版文件
 const template = html<HiTimeline>`
 <template>
     <slot></slot>
 </template>
 `;
+// 定义元素
 @customElement({
    name: 'h-timeline',
    styles,

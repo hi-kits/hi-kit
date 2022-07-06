@@ -5,17 +5,20 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, html, attr, ref, observable } from 'hi-element';
+// 样式文件
 import { RadioStyles as styles } from "./radio.style";
+// 依赖组件
 import { HiTips } from "../tips";
-
+// 模版文件
 const template = html<HiRadio>`
 <h-tips id="tip" type="error">
     <slot></slot>
 </h-tips>
 
 `;
+// 定义元素
 @customElement({
    name: 'h-radio',
    template,

@@ -6,29 +6,28 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { css } from 'hi-element';
-
+import { display } from '../_utils/style';
+// 样式
 export const CheckboxGroupStyles = css`
-    :host {
-        display:inline-block;
-    }
-    :host(:focus-within) xy-tips,:host(:hover) xy-tips{
+    ${display("inline-block")}
+    :host(:focus-within) h-tips,:host(:hover) h-tips{
         z-index:2;
     }
     :host([disabled]){ 
         pointer-events: none; 
     }
-    :host([disabled]) xy-tips{
+    :host([disabled]) h-tips{
         pointer-events: all;
         cursor: not-allowed;
         outline: 0;
     }
-    :host([disabled]) ::slotted(xy-checkbox){
+    :host([disabled]) ::slotted(h-checkbox){
         pointer-events: none;
         opacity:.6;
     }
-    ::slotted(xy-checkbox){
+    ::slotted(h-checkbox){
         transition: opacity .3s;
     }
 `;

@@ -5,8 +5,9 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, html } from 'hi-element';
+// 样式文件
 import { ToastStyles as styles } from "./toast.style";
 
 const template = html<HiToast>`
@@ -14,6 +15,7 @@ const template = html<HiToast>`
     ${x => x.content}
 </div>
 `;
+// 定义元素
 @customElement({
    name: 'h-toast',
    template,

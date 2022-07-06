@@ -18,7 +18,7 @@ const template = html<HiCheckbox>`
     <input type="checkbox" id="checkbox" ${ref('checkbox')}>
     <label for="checkbox">
         <span class="cheked">
-            <svg style="fill: #fff;overflow: hidden;" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+            <svg class="icon" style="fill: #fff;overflow: hidden;" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
                 <path d="M700.7232 331.008l73.984 70.7584-329.5744 344.7808-192.6656-190.1056 71.936-72.9088L443.0336 600.576z"></path>
             </svg>
         </span>
@@ -26,6 +26,7 @@ const template = html<HiCheckbox>`
     </label>
 </h-tips>
 `;
+// 定义元素
 @customElement({
     name: 'h-checkbox',
     template,
@@ -46,13 +47,15 @@ export class HiCheckbox extends HIElementForm {
      * @param newValue 新值
      */
     disabledChanged(oldValue, newValue): void {
-        if(!!newValue){
-            this.checkbox.setAttribute('disabled', '');
-        }else{
-            this.checkbox.removeAttribute('disabled');
-        }
+        this.disabledFn(!!newValue);
     }
-     
+    checkedChanged(oldValue, newValue): void {
+        this.checkedFn(!!newValue);
+    }
+    @attr value: any = this.textContent;
+    private valueChanged(oldValue, newValue): void {
+        this.setAttribute('value', newValue || this.textContent);
+    }
     // ------------------ 自定义函数 ------------------
     /**
       * 当自定义元素第一次被连接到文档DOM时被调用
@@ -61,7 +64,7 @@ export class HiCheckbox extends HIElementForm {
     public connectedCallback(): void {
         super.connectedCallback();
         this.checkbox.addEventListener('change',(ev)=>{
-            // this.checked = this.checkbox.checked;
+            this.checked = this.checkbox.checked;
             this.$emit('change', { checked: this.checked });
         })
         this.checkbox.addEventListener('focus',(ev)=>{
@@ -78,9 +81,36 @@ export class HiCheckbox extends HIElementForm {
                 this.isfocus = false;
                 this.$emit('blur', { value: this.value });
             }
-        })
+        });
         
+        
+        this.checkedFn(this.checked);
+        this.disabledFn(this.disabled);
     }
+    checkedFn(checked): void {
+        if (this.checkbox) {
+            if(checked){
+                this.checkbox.setAttribute('checked', '');
+            } else {
+                this.checkbox.removeAttribute('checked');
+            }
+        }
+    }
+    /**
+     * disabled 处理
+     * @param disabled 
+     */
+    disabledFn(disabled): void {
+        if (this.checkbox) {
+            if(disabled){
+                this.checkbox.setAttribute('disabled', '');
+            } else {
+                this.checkbox.removeAttribute('disabled');
+            }
+        }
+    }
+
+
     checkValidity(){
         if( this.disabled ){
             return true;

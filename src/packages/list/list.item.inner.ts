@@ -6,21 +6,24 @@
  * @description
  * 垂直展示的时间流信息。
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 配置文件
 import { hiConfig } from "../config";
 
-
+// 样式
 const styles = css`
 :host {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-`
+`;
+// 模版文件
 const template = html<HiListItemInner>`
 <slot></slot>
 `;
+// 定义元素
 @customElement({
    name: 'h-list-item-inner',
    styles,

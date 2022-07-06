@@ -6,24 +6,31 @@
  * @description
  */
 
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 import { HiIcon } from "../icon";
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
 
+// 依赖组件
+// 样式文件
 const styles = css`
 ::slotted(h-avatar:not(:first-child)) {
     margin-left: -12px;
     border: 1px solid #fff;
 }
-`
+`;
+// 模版文件
 const template = html<HiAvatarGroup>`
 <slot class="Slot"></slot>
 `;
+// 定义元素
 @customElement({
    name: 'h-avatar-group',
    styles,
    template,
 })
-export class HiAvatarGroup extends HIElement {
+export class HiAvatarGroup extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     @observable
@@ -31,11 +38,11 @@ export class HiAvatarGroup extends HIElement {
     // ------------------ 属性 ------------------
     
     /**
-     * 尺寸
-     * @public number
+     * 尺寸改变时调用
+     * @param oldValue 
+     * @param newValue 
      */
-    @attr size: 'large' | 'small' | 'default' | number;
-    private sizeChanged(oldValue, newValue): void {
+    sizeChanged(oldValue, newValue): void {
         if (!['large', 'small', 'default'].includes(newValue)) {
             this.style.width = newValue + 'px';
             this.style.height = newValue + 'px';        
@@ -43,14 +50,6 @@ export class HiAvatarGroup extends HIElement {
         }
     }
 
-    /**
-     * 颜色
-     * @public string
-     */
-    @attr color: string;
-    private colorChanged(oldValue, newValue): void {
-        this.style.color = newValue;
-    }
     // ------------------ 自定义函数 ------------------
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用

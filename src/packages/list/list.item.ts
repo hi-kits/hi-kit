@@ -6,34 +6,39 @@
  * @description
  * 垂直展示的时间流信息。
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 配置文件
 import { hiConfig } from "../config";
 
-
+// 样式
 const styles = css`
 :host{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 0;
+    padding: 12px;
     border-bottom: 1px solid rgba(0,0,0,.06);
 }
-
+:host(:hover) { 
+    background: rgba(0, 0, 0, 0.05);
+}
 :host([size="large"]) {
-    padding: 16px 0;
+    padding: 16px;
 }
 :host([size="small"]) {
-    padding: 8px 0;
+    padding: 8px;
 }
 
-`
+`;
+// 模版文件
 const template = html<HiListItem>`
 <template>
     <slot name="inner"></slot>
     <slot></slot>
 </template>
 `;
+// 定义元素
 @customElement({
    name: 'h-list-item',
    styles,
@@ -51,7 +56,7 @@ export class HiListItem extends HIElement {
     @attr size: 'large' | 'small' | 'default' | number;
     private sizeChanged(oldValue, newValue): void {
         if (!['large', 'small', 'default'].includes(newValue)) {
-            this.style.padding = `${newValue}px 0`;        
+            this.style.padding = `${newValue}px`;        
         }
     }
     // @attr pending: string;

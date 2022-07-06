@@ -6,7 +6,7 @@
  * @description
  * 垂直展示的时间流信息。
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 
 
@@ -19,6 +19,7 @@ const template = html<HiList>`
     <slot></slot>
 </template>
 `;
+// 定义元素
 @customElement({
    name: 'h-list',
    styles,

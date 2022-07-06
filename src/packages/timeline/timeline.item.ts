@@ -5,10 +5,10 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html, when } from 'hi-element';
 
-
+// 样式文件
 const styles = css`
 :host {
     position: relative;
@@ -89,7 +89,8 @@ const styles = css`
 }
 
 
-`
+`;
+// 模版文件
 const template = html<HiTimelineItem>`
 <template>
     <div  class="ItemHeadCustom">
@@ -139,7 +140,9 @@ export class HiTimelineItem extends HIElement {
      */
     @attr color: string;
     private colorChanged(oldValue, newValue): void {
-        this.temp.style.borderColor = newValue;
+        setTimeout(() => {
+            this.temp.style.borderColor = newValue;
+        }, 10);
     }
     @attr label: string;
     // ------------------ 自定义函数 ------------------

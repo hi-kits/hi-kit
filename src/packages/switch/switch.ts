@@ -41,7 +41,7 @@ export class HiSwitch extends HIElementBase {
             : this.classList.remove("readonly");
     }
 
-    @attr checked;
+    @attr({ mode: "boolean" }) checked;
     /**
      * @internal
      */
@@ -111,7 +111,12 @@ export class HiSwitch extends HIElementBase {
                     checked: this.value
                 });
             }
-        })
+        });
+        if (this.checked) {
+            this.switch.setAttribute('checked','');
+        } else {
+            this.switch.removeAttribute('checked');
+        }
     }
 
 }

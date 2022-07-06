@@ -62,7 +62,7 @@ export class HIElementForm extends HIElementBase {
      *
      * @type {string}
      */
-    @attr({ mode: "boolean" }) value: string;
+    @attr value: string;
     
     /**
      * 只读属性

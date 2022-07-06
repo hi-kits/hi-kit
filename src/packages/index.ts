@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-23 10:24:32
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-06 16:44:35
+ * @LastEditTime: 2022-07-06 18:56:30
  */
 // import  { Box } from "./box";
 import { HiButton, HiButtonGroup } from './button';
@@ -13,7 +13,6 @@ import { HiCol, HiRow, HiLayout } from './grid';
 import { HiLoading } from './loading';
 import { HiSwitch } from './switch';
 import { HiShort } from './short';
-import { HiToast } from './toast';
 import { HiSlider } from './slider';
 import { HiIcon } from './icon';
 import { HiDivider } from './divider';
@@ -29,9 +28,9 @@ import { HiEmpty } from './empty';
 import { HiTips } from './tips';
 import { HiPagination } from './pagination';
 import { HiTimeline, HiTimelineItem } from './timeline';
-import { HiMessageService } from './message';
+import { HiMessage, HiMessageService } from './message';
 import { HiModal, HiModalService } from './modal';
-import { HiToastService } from './toast';
+import { HiToast, HiToastService } from './toast';
 import { HiDatePane, HiDateRangePane } from './date-picker';
 import { HiList, HiListItem, HiListItemAction, HiListItemExtra, HiListItemMedia, HiListItemInner } from './list';
 import { HiComment, HiCommentAction } from './comment';

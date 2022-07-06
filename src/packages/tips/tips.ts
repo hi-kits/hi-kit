@@ -5,8 +5,9 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, html, attr } from 'hi-element';
+// 样式文件
 import { TipsStyles as styles } from "./tips.style";
 
 /**
@@ -16,8 +17,9 @@ import { TipsStyles as styles } from "./tips.style";
  * @typedef {DirType}
  */
 type DirType = 'top' | 'right' | 'bottom' | 'left' | 'topleft' | 'topright' | 'righttop' | 'rightbottom' | 'bottomleft' | 'bottomright' | 'lefttop' | 'leftbottom' | 'auto';
-
+// 模版文件
 const template = html<HiTips>`<slot></slot>`;
+// 定义元素
 @customElement({
    name: 'h-tips',
    template,

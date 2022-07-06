@@ -6,43 +6,49 @@
  * @description
  */
 
-
+// 核心库
 import { HIElement, customElement, observable, ref, html, attr } from 'hi-element';
+// 混入基础功能
+import { HIElementForm } from '../_mixins/hiElementForm';
+// 样式文件
 import { CheckboxGroupStyles as styles } from "./checkbox.group.style";
   
- 
+ // 模版文件
 const template = html<HiCheckboxGroup>`
-<xy-tips id="tip" ${x => x.disabled ? "tabindex='-1'" : ""} type="error">
+<h-tips id="tip" ${x => x.disabled ? "tabindex='-1'" : ""} type="error">
     <slot ${ref('slots')}></slot>
-</xy-tips>
+</h-tips>
 `;
+// 定义元素
 @customElement({
     name: 'h-checkbox-group',
     template,
     styles
 })
-export class HiCheckboxGroup extends HIElement {
+export class HiCheckboxGroup extends HIElementForm {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     @observable
     slots: HTMLSlotElement;
     elements;
-    value;
     init;
     // ------------------ 属性 ------------------
-    /**
-      * 不可点击
-      * @date 6/23/2022 - 5:36:38 PM
-      *
-      * @type {!boolean}
-      */
-    @attr disabled!: boolean;
-    @attr defaultvalue!: Array<any>;
+    valueChanged(): any {
+        this.elements.forEach(el=>{
+            if(this.value.includes(el.value)){
+                el.setAttribute('checked','');
+            } else {
+                el.removeAttribute('checked');
+            }
+        })
+        
+    }
+    @attr defaultvalue!:any;
     // ------------------ 自定义函数 ------------------
-    public connectedCallback(): void {
+    connectedCallback(): void {
         super.connectedCallback();
         this.slots.addEventListener('slotchange',()=>{
-            this.elements  = this.querySelectorAll('x-checkbox');
+            this.elements  = this.querySelectorAll('h-checkbox');
             this.value = this.defaultvalue;
             this.elements.forEach(el=>{
                 el.addEventListener('change',()=>{

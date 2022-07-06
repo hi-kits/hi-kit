@@ -6,9 +6,14 @@
  * @description
  */
 
+// 核心库
 import { HIElement, customElement, html, attr, ref, observable } from 'hi-element';
+// 混入基础功能
+import { HIElementForm } from '../_mixins/hiElementForm';
+// 样式文件
 import { RadioStyles as styles } from "./radio.style";
 
+// 模版文件
 const template = html<HiRadio>`
 <input type="checkbox" id="radio" ${ref("radio")} />
 <label id="label" for="radio">
@@ -17,12 +22,13 @@ const template = html<HiRadio>`
 </label>
 
 `;
+// 定义元素
 @customElement({
    name: 'h-radio',
    template,
    styles
 })
-export class HiRadio extends HIElement {
+export class HiRadio extends HIElementForm {
     // ------------------ 构造函数 ------------------
     constructor(
     ) {
@@ -35,22 +41,7 @@ export class HiRadio extends HIElement {
     parent;
     
     // ------------------ 属性 ------------------
-    @attr disabled: boolean;
-    private disabledChanged(oldValue, newValue): void {
-        if (newValue === null || newValue === false) {
-            this.removeAttribute('disabled');
-        } else {
-            this.setAttribute('disabled', '');
-        }
-    }
-    @attr checked: boolean;
-    private checkedChanged(oldValue, newValue): void {
-        if (newValue === null || newValue === false) {
-            this.radio.checked = true;
-        } else {
-            this.radio.checked = false;
-        }
-    }
+
     @attr name: string;
     @attr value: string;
     private valueChanged(oldValue, newValue): void {

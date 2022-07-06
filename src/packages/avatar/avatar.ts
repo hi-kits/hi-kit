@@ -5,10 +5,12 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
-import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-import { HiIcon } from "../icon";
-
+// 核心库
+import { customElement, attr, observable, css,  html } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
+// 依赖组件
+// 样式文件
 const styles = css`
 :host{
     display: inline-block;
@@ -48,16 +50,18 @@ const styles = css`
     font-size: 16px;
 }
 
-`
+`;
+// 模版文件
 const template = html<HiAvatar>`
 <slot class="Slot"></slot>
 `;
+// 定义元素
 @customElement({
    name: 'h-avatar',
    styles,
    template,
 })
-export class HiAvatar extends HIElement {
+export class HiAvatar extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     @observable
@@ -71,12 +75,13 @@ export class HiAvatar extends HIElement {
      * @type {boolean}
      */
     @attr({ mode: "boolean" }) circle: boolean;
+
     /**
-     * 尺寸
-     * @public number
+     * 尺寸改变时调用
+     * @param oldValue 
+     * @param newValue 
      */
-    @attr size: 'large' | 'small' | 'default' | number;
-    private sizeChanged(oldValue, newValue): void {
+    sizeChanged(oldValue, newValue): void {
         if (!['large', 'small', 'default'].includes(newValue)) {
             this.style.width = newValue + 'px';
             this.style.height = newValue + 'px';        
@@ -84,14 +89,6 @@ export class HiAvatar extends HIElement {
         }
     }
 
-    /**
-     * 颜色
-     * @public string
-     */
-    @attr color: string;
-    private colorChanged(oldValue, newValue): void {
-        this.style.color = newValue;
-    }
     // ------------------ 自定义函数 ------------------
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用

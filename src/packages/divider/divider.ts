@@ -5,7 +5,7 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 
 const styles = css`
@@ -67,6 +67,7 @@ const template = html<HiDivider>`
     </span>
 </template>
 `;
+// 定义元素
 @customElement({
    name: 'h-divider',
    styles,

@@ -5,7 +5,7 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 
 const styles = css`:host {
@@ -15,6 +15,7 @@ const styles = css`:host {
     grid-gap: var(--gutter,0);
 }`
 const template = html<HiRow>`<slot></slot>`;
+// 定义元素
 @customElement({
    name: 'h-row',
    styles,

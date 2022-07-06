@@ -5,9 +5,9 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-
+// 样式
 const styles = css`
 :host{
     font-size:inherit;
@@ -52,7 +52,8 @@ const styles = css`
       stroke-dashoffset: -125px; 
     } 
 }
-`
+`;
+// 模版文件
 const template = html<HiLoading>`
 <template>
     <svg class="loading" ${ref("loading")}
@@ -60,6 +61,7 @@ const template = html<HiLoading>`
     <slot></slot>
 </template>
 `;
+// 定义元素
 @customElement({
    name: 'h-loading',
    styles,

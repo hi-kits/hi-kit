@@ -5,11 +5,13 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, html, attr, ref, observable } from 'hi-element';
+// 样式文件
 import { PaginationStyles as styles } from "./pagination.style";
+// 依赖组件
 import { HiButton } from "../button";
-
+// 模版文件
 const template = html<HiPagination>`
 <h-button type="flat" ${ x => x.href ? "href=1" : "" } target="_self" ${ref('left')}>
     <svg class="icon" viewBox="0 0 1024 1024"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8c-16.4 12.8-16.4 37.5 0 50.3l450.8 352.1c5.3 4.1 12.9 0.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg>
@@ -20,6 +22,7 @@ const template = html<HiPagination>`
 </h-button>
 
 `;
+// 定义元素
 @customElement({
    name: 'h-pagination',
    template,
@@ -189,16 +192,18 @@ export class HiPagination extends HIElement {
      * @param total 总数
      */
     render(pagesize, total): void {
-        this.count = Math.ceil(total/pagesize);
-        const current = Math.min(Math.max(1,this.current),this.count);
-        if(this.simple){
-            const html = `<h-button class="simple-page" tabindex="-1" type="flat">${current} / ${this.count}</h-button>`;
-            this.page.innerHTML = html;
-        }else{
-            const html = Array.from({length:this.count},(el,i)=>i).splice(0,9).map(el=>`<h-button ${this.href?"href="+(el+1):""} target="_self" ${el+1==current?"current":""} type="flat" data-current="${el+1}">${el+1}</h-button>`).join('');
-            this.page.innerHTML = html;
-        }
-        this.updatePage(current);
+        setTimeout(() => {
+            this.count = Math.ceil(total/pagesize);
+            const current = Math.min(Math.max(1,this.current),this.count);
+            if(this.simple){
+                const html = `<h-button class="simple-page" tabindex="-1" type="flat">${current} / ${this.count}</h-button>`;
+                this.page.innerHTML = html;
+            }else{
+                const html = Array.from({length:this.count},(el,i)=>i).splice(0,9).map(el=>`<h-button ${this.href?"href="+(el+1):""} target="_self" ${el+1==current?"current":""} type="flat" data-current="${el+1}">${el+1}</h-button>`).join('');
+                this.page.innerHTML = html;
+            }
+            this.updatePage(current);
+        }, 10);
     }
     /**
      * 更新分页

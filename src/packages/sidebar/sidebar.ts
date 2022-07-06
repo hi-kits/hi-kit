@@ -6,69 +6,76 @@
  * @description
  */
 
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
 
+// 样式文件
 const styles = css`
 :host {
     position: fixed;
 	left: 0;
     top: 0;
-	z-index: 99;
+	z-index: -99;
+    width: 100%;
 	height: 100%;
-	-webkit-transition: -webkit-transform 0.5s;
-	transition: transform 0.5s;
+    opacity: 0;
+    inset: 0px;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease 0s;
 }
-:host nav{
+:host .Sidebar{
     position: absolute;
     top: 0;
     left: 0;
     z-index: 100;
     visibility: hidden;
+    padding:12px;
     width: 300px;
     height: 100%;
-    background: #48a770;
+    background: #fff;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
     -webkit-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
 }
-:host([show]) nav {
+:host([show]) { 
+    opacity: 1;
+    z-index: 50;
+    visibility: visible;
+}
+:host([show]) .Sidebar {
     visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 
 
-`
-const template = html<HiSidebar>`
-<template>
-    <nav class="menu st-effect-9" id="menu-9">
-        <h2 class="icon icon-lab">Sidebar</h2>
-        <ul>
-            <li><a class="icon icon-data" href="#">Data Management</a></li>
-            <li><a class="icon icon-location" href="#">Location</a></li>
-            <li><a class="icon icon-study" href="#">Study</a></li>
-            <li><a class="icon icon-photo" href="#">Collections</a></li>
-            <li><a class="icon icon-wallet" href="#">Credits</a></li>
-        </ul>
-    </nav>
-</template>
 `;
+// 模版文件
+const template = html<HiSidebar>`
+<div class="Sidebar">
+    <slot></slot>
+</div>
+`;
+// 定义元素
 @customElement({
    name: 'h-sidebar',
    styles,
    template,
 })
-export class HiSidebar extends HIElement {
+export class HiSidebar extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
+    sidebar;
     // ------------------ 属性 ------------------
     /**
      * 尺寸
      * @public number
      */
     @attr size;
-    private sizeChanged(oldValue, newValue): void {
+    sizeChanged(oldValue, newValue): void {
         this.style.fontSize = newValue + 'px';        
         this.style.height = newValue + 'px'; 
     }
@@ -78,9 +85,10 @@ export class HiSidebar extends HIElement {
      * @public string
      */
     @attr color: string;
-    private colorChanged(oldValue, newValue): void {
+    colorChanged(oldValue, newValue): void {
         this.style.color = newValue;
     }
+    @attr({ mode: "boolean" }) show: boolean;
     // ------------------ 自定义函数 ------------------
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
@@ -88,8 +96,17 @@ export class HiSidebar extends HIElement {
      */
     connectedCallback(): void {
         super.connectedCallback();
-
+        // this.sidebar = this;
+        document.addEventListener('mousedown', this.setpop);
     }
+    setpop = ev => {
+        const path = ev.path || (ev.composedPath && ev.composedPath());
+        if (
+            (this.show && !path.includes(this) && !path.includes(this.children[0]))
+        ) {
+          this.show = false;
+        }
+    };
 
 }
 

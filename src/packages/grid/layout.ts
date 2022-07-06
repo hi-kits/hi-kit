@@ -5,7 +5,7 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 const styles = css`
 :host {
@@ -34,6 +34,7 @@ const styles = css`
 }
 `;
 const template = html<HiLayout>`<slot></slot>`;
+// 定义元素
 @customElement({
    name: 'h-layout',
    template,

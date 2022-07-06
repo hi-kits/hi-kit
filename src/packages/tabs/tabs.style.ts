@@ -5,11 +5,13 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { css } from 'hi-element';
+// display规则
 import { display } from '../_utils/style';
+// 配置文件
 import { hiConfig } from "../config";
-
+// 样式文件
 export const TabsStyles = css`
 ${display("block")}
 :host{

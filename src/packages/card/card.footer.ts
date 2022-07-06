@@ -5,11 +5,12 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, html, css } from 'hi-element';
+// 配置文件
 import { hiConfig } from "../config";
 
-
+// 样式
 export const styles = css`
 
 :host{
@@ -33,10 +34,11 @@ export const styles = css`
 }
 
 `;
-
+// 模版文件
 const template = html<HiCardFooter>`
 <slot></slot>
 `;
+// 定义元素
 @customElement({
    name: 'h-card-footer',
    template,
