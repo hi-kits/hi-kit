@@ -139,7 +139,9 @@ export class HiTimelineItem extends HIElement {
      */
     @attr color: string;
     private colorChanged(oldValue, newValue): void {
-        this.temp.style.borderColor = newValue;
+        setTimeout(() => {
+            this.temp.style.borderColor = newValue;
+        }, 10);
     }
     @attr label: string;
     // ------------------ 自定义函数 ------------------

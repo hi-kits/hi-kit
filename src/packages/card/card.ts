@@ -72,7 +72,9 @@ export class HiCard extends HIElement {
      */
     @attr radius: number;
     private radiusChanged(oldValue, newValue): void {
-        this.cardbox.style.borderRadius = newValue + 'px';
+        setTimeout(() => {
+            this.cardbox.style.borderRadius = newValue + 'px';
+        }, 10);
     }
 	// ------------------ 自定义函数 ------------------
 

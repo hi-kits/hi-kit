@@ -8,10 +8,11 @@
  */
 
 import { css } from 'hi-element';
+import { display } from '../_utils/style';
 
 export const CheckboxStyles = css`
+${display("inline-block")}
 :host{ 
-    display:inline-block;
     font-size:14px;
     color:var(--fontColor,#333);
     -webkit-tap-highlight-color: transparent;

@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>hi-kit</title>
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
         <style>
             ul,p{ margin: 0;}
             ul,li,ol {list-style: none;}
@@ -77,15 +78,52 @@
             </div>
             <h2>复选框 <span>checkbox</span></h2>
             <div>
-                <h-checkbox-group name="books" required min="2" max="3" defaultvalue="Angular">
-                    <h-checkbox>React</h-checkbox>
-                    <h-checkbox>Vue</h-checkbox>
-                    <h-checkbox>Angular</h-checkbox>
-                    <h-checkbox>Flutter</h-checkbox>
-                    <h-checkbox required>Swift</h-checkbox>
-                </h-checkbox-group>
-                <h-checkbox>123</h-checkbox>
-                <h-switch onchange="this.previousElementSibling.disabled = this.checked" checked=""></h-switch>
+                <h-row gutter="10">
+                    <h-col span="8">
+                        <p>禁用disabled 通过disabled可以禁用开关</p>
+                        <h-checkbox>checkbox</h-checkbox>
+                        <h-switch onchange="this.previousElementSibling.disabled = this.checked"></h-switch>
+                    </h-col>
+                    <h-col span="8">
+                        <p>值value</p>
+                        <h-checkbox value="AAA">checkbox</h-checkbox>
+                        <h-button type="primary" onclick="HiMessage.info(({content: this.previousElementSibling.value, duration: 3000}))">获取value</h-button>
+                    </h-col>
+                    <h-col span="8">
+                        <p>选中checked</p>
+                        <h-checkbox checked>checkbox</h-checkbox>
+                    </h-col>
+                    <h-col span="8">
+                        <p>disabled</p>
+                        <h-checkbox disabled>checkbox</h-checkbox>
+                    </h-col>
+                    <h-col span="8">
+                        <p>通常多个出现，有一个相同的name，表示同一组，可以通过name来获取当前组的选中</p>
+                        <h-checkbox name="lang" checked>Html</h-checkbox>
+                        <h-checkbox name="lang">Css</h-checkbox>
+                        <h-checkbox name="lang">Javascript</h-checkbox>
+                        <h-checkbox name="lang">Python</h-checkbox>
+                        <h-checkbox name="lang">Php</h-checkbox>
+                        <h-checkbox name="lang">Dart</h-checkbox>
+                        <h-checkbox name="lang">Swift</h-checkbox>
+                        <h-button type="primary" onclick="HiMessage.info({
+                            content: Array.from(document.querySelectorAll('h-checkbox[name=lang][checked]')).map(el=>el.textContent)
+                        })">获取选中状态</h-button>
+                    </h-col>
+                    <h-col span="8">
+                        <p>现新增h-checkbox-group组件，表示同一组</p>
+                        <h-checkbox-group name="books" disabled defaultvalue="React,Angular">
+                            <h-checkbox>React</h-checkbox>
+                            <h-checkbox indeterminate>Vue</h-checkbox>
+                            <h-checkbox>Angular</h-checkbox>
+                            <h-checkbox>Flutter</h-checkbox>
+                            <h-checkbox>Swift</h-checkbox>
+                        </h-checkbox-group>
+                        <h-switch checked onchange="this.previousElementSibling.disabled = this.checked;"></h-switch>
+                        <h-button type="primary" onclick="this.previousElementSibling.previousElementSibling.value='[\'Vue\',\'Flutter\']'">选中Vue、Flutter</h-button>
+                    </h-col>
+                </h-row>
+                
             </div>
             <h2>单选框 <span>radio</span></h2>
             <div>

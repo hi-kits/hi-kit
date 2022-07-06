@@ -189,16 +189,18 @@ export class HiPagination extends HIElement {
      * @param total 总数
      */
     render(pagesize, total): void {
-        this.count = Math.ceil(total/pagesize);
-        const current = Math.min(Math.max(1,this.current),this.count);
-        if(this.simple){
-            const html = `<h-button class="simple-page" tabindex="-1" type="flat">${current} / ${this.count}</h-button>`;
-            this.page.innerHTML = html;
-        }else{
-            const html = Array.from({length:this.count},(el,i)=>i).splice(0,9).map(el=>`<h-button ${this.href?"href="+(el+1):""} target="_self" ${el+1==current?"current":""} type="flat" data-current="${el+1}">${el+1}</h-button>`).join('');
-            this.page.innerHTML = html;
-        }
-        this.updatePage(current);
+        setTimeout(() => {
+            this.count = Math.ceil(total/pagesize);
+            const current = Math.min(Math.max(1,this.current),this.count);
+            if(this.simple){
+                const html = `<h-button class="simple-page" tabindex="-1" type="flat">${current} / ${this.count}</h-button>`;
+                this.page.innerHTML = html;
+            }else{
+                const html = Array.from({length:this.count},(el,i)=>i).splice(0,9).map(el=>`<h-button ${this.href?"href="+(el+1):""} target="_self" ${el+1==current?"current":""} type="flat" data-current="${el+1}">${el+1}</h-button>`).join('');
+                this.page.innerHTML = html;
+            }
+            this.updatePage(current);
+        }, 10);
     }
     /**
      * 更新分页

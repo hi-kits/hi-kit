@@ -16,7 +16,11 @@ const template = html<HiTabs>`
 <style ${ref("Filter")}></style>
 <div class="Tab">
     <div class="TabNavWrap">
-        <div class="TabNav" ${ref('TabNav')}></div>
+        <div 
+            class="TabNav"
+            ${ref('TabNav')}
+            @click="${(x, c) => x.tabNavClick(c.event as MouseEvent)}"
+        ></div>
         <div class="TabLine"  ${ref('TabLine')}></div>
     </div>
     <div class="TabContent">
@@ -86,39 +90,41 @@ export class HiTabs extends HIElementBase {
         if (!newValue) {
             return
         }
-        let active = this.tabPos[newValue];
-        if( active === undefined ){
-            this.activekey = this.Slot.assignedElements()[0].getAttribute('key');
-            active = this.tabPos[this.activekey];
-        }
-        this.TabLine.style.width = `${active.width}px`;
-        this.TabLine.style.transform =  `translateX(${active.left}px)`;
-        this.TabContent.style.transform = `translateX(${-(active.index) * 100}%)`;
-        this.Filter.innerHTML = `
-        ::slotted(h-tab:not([key="${this.activekey}"])){
-            height:0;
-            overflow:visible;
-        }
-        `
-        if( oldValue!==newValue){
-            this.TabNav.parentNode!['scrollLeft'] = active.left + active.width/2-this.TabNav.parentNode!['offsetWidth']/2;
-            const pre = this.TabNav.querySelector(`.NavItem.active`);
-            if(pre){
-                pre.classList.remove('active');
+        setTimeout(() => {
+            let active = this.tabPos[newValue];
+            if( active === undefined ){
+                this.activekey = this.Slot.assignedElements()[0].getAttribute('key');
+                active = this.tabPos[this.activekey];
             }
-            const cur = this.TabNav.querySelector(`.NavItem[key='${newValue}']`);
-            cur!.classList.add('active');
-            // cur!.focus();
-            // if(this.init && oldValue!==null){
-            //     this.dispatchEvent(new CustomEvent('change',{
-            //         detail:{
-            //             key:this.activekey,
-            //             index:active.index,
-            //             label:active.label,
-            //         }
-            //     }));
-            // }
-        }
+            this.TabLine.style.width = `${active.width}px`;
+            this.TabLine.style.transform =  `translateX(${active.left}px)`;
+            this.TabContent.style.transform = `translateX(${-(active.index) * 100}%)`;
+            this.Filter.innerHTML = `
+            ::slotted(h-tab:not([key="${this.activekey}"])){
+                height:0;
+                overflow:visible;
+            }
+            `
+            if( oldValue!==newValue){
+                this.TabNav.parentNode!['scrollLeft'] = active.left + active.width/2-this.TabNav.parentNode!['offsetWidth']/2;
+                const pre = this.TabNav.querySelector(`.NavItem.active`);
+                if(pre){
+                    pre.classList.remove('active');
+                }
+                const cur = this.TabNav.querySelector(`.NavItem[key='${newValue}']`);
+                cur!.classList.add('active');
+                // cur!.focus();
+                // if(this.init && oldValue!==null){
+                //     this.dispatchEvent(new CustomEvent('change',{
+                //         detail:{
+                //             key:this.activekey,
+                //             index:active.index,
+                //             label:active.label,
+                //         }
+                //     }));
+                // }
+            }
+        }, 50);
     }
     
 
@@ -154,16 +160,25 @@ export class HiTabs extends HIElementBase {
             // this.init = true;
         });
         
-        this.TabNav.addEventListener('click',(ev)=>{
-            const item = ev.target!['closest']('h-button');
-            if(item){
-                if (item.getAttribute('disabled') !== null) {
-                    return
-                }
-                this.activekey = item.getAttribute('key');
-            }
-        })
+        // this.TabNav.addEventListener('click',(ev)=>{
+        //     const item = ev.target!['closest']('h-button');
+        //     if(item){
+        //         if (item.getAttribute('disabled') !== null) {
+        //             return
+        //         }
+        //         this.activekey = item.getAttribute('key');
+        //     }
+        // })
         
+    }
+    tabNavClick(ev): void {
+        const item = ev.target!['closest']('h-button');
+        if(item){
+            if (item.getAttribute('disabled') !== null) {
+                return
+            }
+            this.activekey = item.getAttribute('key');
+        }
     }
     inittab() {
         const items = this.TabNav.querySelectorAll('.NavItem');
