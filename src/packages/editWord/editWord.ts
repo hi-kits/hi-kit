@@ -5,7 +5,7 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, html, when, observable,slotted, Observable, ref } from 'hi-element';
 import { EditWordStyles as styles } from "./editWord.style";
 
@@ -20,6 +20,7 @@ const template = html<HiEditWord>`
 </span>
 
 `;
+// 定义元素
 @customElement({
    name: 'h-edit-word',
    template,

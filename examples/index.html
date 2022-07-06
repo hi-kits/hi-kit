@@ -127,6 +127,51 @@
             </div>
             <h2>单选框 <span>radio</span></h2>
             <div>
+                <h-row gutter="10">
+                    <h-col span="8">
+                        <p>禁用disabled 通过disabled可以禁用开关</p>
+                        <h-radio>radio</h-radio>
+                        <h-switch onchange="this.previousElementSibling.disabled = this.checked"></h-switch>
+                    </h-col>
+                    <h-col span="8">
+                        <p>值value</p>
+                        <h-radio value="AAA">radio</h-radio>
+                        <h-button type="primary" onclick="HiMessage.info(({content: this.previousElementSibling.value, duration: 3000}))">获取value</h-button>
+                    </h-col>
+                    <h-col span="8">
+                        <p>选中checked</p>
+                        <h-radio checked>radio</h-radio>
+                    </h-col>
+                    <h-col span="8">
+                        <p>disabled</p>
+                        <h-radio disabled>radio</h-radio>
+                    </h-col>
+                    <h-col span="8">
+                        <p>通常多个出现，有一个相同的name，表示同一组，可以通过name来获取当前组的选中</p>
+                        <h-radio name="lang" checked>Html</h-radio>
+                        <h-radio name="lang">Css</h-radio>
+                        <h-radio name="lang">Javascript</h-radio>
+                        <h-radio name="lang">Python</h-radio>
+                        <h-radio name="lang">Php</h-radio>
+                        <h-radio name="lang">Dart</h-radio>
+                        <h-radio name="lang">Swift</h-radio>
+                        <h-button type="primary" onclick="HiMessage.info({
+                            content: Array.from(document.querySelectorAll('h-checkbox[name=lang][checked]')).map(el=>el.textContent)
+                        })">获取选中状态</h-button>
+                    </h-col>
+                    <h-col span="8">
+                        <p>现新增h-radio-group组件，表示同一组</p>
+                        <h-radio-group name="books" disabled defaultvalue="React,Angular">
+                            <h-radio>React</h-radio>
+                            <h-radio indeterminate>Vue</h-radio>
+                            <h-radio>Angular</h-radio>
+                            <h-radio>Flutter</h-radio>
+                            <h-radio>Swift</h-radio>
+                        </h-radio-group>
+                        <h-switch checked onchange="this.previousElementSibling.disabled = this.checked;"></h-switch>
+                        <h-button type="primary" onclick="this.previousElementSibling.previousElementSibling.value='[\'Vue\',\'Flutter\']'">选中Vue、Flutter</h-button>
+                    </h-col>
+                </h-row>
                 <h-radio-group  required min="2" max="3" defaultvalue="Angular">
                     <h-radio>React</h-radio>
                     <h-radio>Vue</h-radio>
@@ -641,7 +686,32 @@
             <!-- <h-drawlottery>h-drawlotterys</h-drawlottery> -->
             <h2>侧边栏 <span>pagination</span></h2>
             <div>
-                <h-sidebar id="Sidebar"></h-sidebar>
+                <h-sidebar id="Sidebar">
+                    <h2 style="text-align: center">边栏</h2>
+                    <h-list>
+                        <h-list-item>数据管理</h-list-item>
+                        <h-list-item>位置</h-list-item>
+                        <h-list-item>
+                            学习
+                            <h-list-item-action>
+                                <h-short style="color: #FFF; background-color: #31d100fd; " text="333"></h-short>
+                            </h-list-item-action>
+                        </h-list-item>
+                        <h-list-item>
+                            收藏
+                            <h-list-item-action>
+                                <h-short style="color: #FFF; background-color: #01bffd; " text="333"></h-short>
+                            </h-list-item-action>
+                        </h-list-item>
+                        <h-list-item>
+                            信用
+                            <h-list-item-action>
+                                <h-switch></h-switch>
+                            </h-list-item-action>
+                        </h-list-item>
+                    </h-list>
+                    
+                </h-sidebar>
                 <h-button onclick="document.getElementById('Sidebar').setAttribute('show','')">打开侧边栏</h-button>
             </div>
             <h2>日历<span>date-picker</span></h2>

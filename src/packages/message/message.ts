@@ -5,9 +5,11 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, slotted,  html, when } from 'hi-element';
+// 样式文件
 import { MessageStyles as styles } from "./message.style";
+// 依赖组件
 import { HiIcon } from "../icon";
 import { HiLoading } from "../loading";
 
@@ -31,7 +33,7 @@ interface MessageOptions {
     duration?: number | undefined, 
     callback?: () => void 
 }
-
+// 模版文件
 const template = html<HiMessage>`
     <div class="message">
         ${when(
@@ -45,7 +47,8 @@ const template = html<HiMessage>`
         <slot></slot>
         ${ x => x.textContent}
     </div>
- `;
+`;
+// 定义元素
 @customElement({
    name: 'h-message',
    template,

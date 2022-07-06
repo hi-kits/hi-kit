@@ -6,10 +6,10 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { css } from 'hi-element';
 import { display } from '../_utils/style';
-
+// 样式
 export const CheckboxGroupStyles = css`
     ${display("inline-block")}
     :host(:focus-within) h-tips,:host(:hover) h-tips{

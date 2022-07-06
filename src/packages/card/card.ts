@@ -5,10 +5,11 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, html, css, ref, observable } from 'hi-element';
+// 配置文件
 import { hiConfig } from "../config";
-
+// 样式
 export const styles = css`
 
 .Card{
@@ -24,7 +25,7 @@ export const styles = css`
 }
 
 `;
-
+// 模版文件
 const template = html<HiCard>`
 
 <div class="Card" ${ref('cardbox')}>
@@ -32,6 +33,7 @@ const template = html<HiCard>`
 </div>
 
 `;
+// 定义元素
 @customElement({
    name: 'h-card',
    template,

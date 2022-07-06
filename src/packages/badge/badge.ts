@@ -5,17 +5,18 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
- import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
- import { HiIcon } from "../icon";
- 
- const styles = css`
- :host {
+// 核心库
+import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
+// 样式
+const styles = css`
+:host {
      position: relative;
      display: flex;
      width: 100%;
- }
- :host .Badge{
+}
+:host .Badge{
      position: absolute;
      top: 0;
      right: 0;
@@ -35,18 +36,18 @@
      background: #ff4d4f;
      border-radius: 10px;
      box-shadow: 0 0 0 1px #fff;
- }
+}
  
- :host([invalid]) {
+:host([invalid]) {
      display: none;
- }
- :host([dot]) {
+}
+:host([dot]) {
      display: flex;
- }
- :host([suit]) .Badge{
+}
+:host([suit]) .Badge{
      padding: 0 6px;
- }
- :host([dot]) .Badge{
+}
+:host([dot]) .Badge{
      display: inline;
      z-index: auto;
      width: 6px;
@@ -56,21 +57,23 @@
      background: #ff4d4f;
      border-radius: 100%;
      box-shadow: 0 0 0 1px #fff;
- }
+}
  
  
- `
- const template = html<HiBadge>`
+ `;
+ // 模版文件
+const template = html<HiBadge>`
  <template>
      <span class="Badge" style="${ x => x.badgeStyle}">${ x => x.count}</span>
  </template>
- `;
- @customElement({
+`;
+// 定义元素
+@customElement({
     name: 'h-badge',
     styles,
     template,
- })
- export class HiBadge extends HIElement {
+})
+export class HiBadge extends HIElementBase {
      // ------------------ 构造函数 ------------------
      // ------------------ 参数 ------------------
      // ------------------ 属性 ------------------
@@ -106,14 +109,6 @@
       */
      @attr badgeStyle: string;
  
-     /**
-      * 字体 颜色
-      * @public string
-      */
-     @attr color: string;
-     private colorChanged(oldValue, newValue): void {
-         this.style.color = newValue;
-     }
      // ------------------ 自定义函数 ------------------
      /**
       * 当自定义元素第一次被连接到文档DOM时被调用

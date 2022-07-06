@@ -26,6 +26,7 @@ const template = html<HiCheckbox>`
     </label>
 </h-tips>
 `;
+// 定义元素
 @customElement({
     name: 'h-checkbox',
     template,
@@ -52,7 +53,9 @@ export class HiCheckbox extends HIElementForm {
         this.checkedFn(!!newValue);
     }
     @attr value: any = this.textContent;
-
+    private valueChanged(oldValue, newValue): void {
+        this.setAttribute('value', newValue || this.textContent);
+    }
     // ------------------ 自定义函数 ------------------
     /**
       * 当自定义元素第一次被连接到文档DOM时被调用

@@ -19,6 +19,7 @@ const template = html<HiCheckboxGroup>`
     <slot ${ref('slots')}></slot>
 </h-tips>
 `;
+// 定义元素
 @customElement({
     name: 'h-checkbox-group',
     template,

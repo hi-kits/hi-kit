@@ -9,7 +9,7 @@
 import { customElement, attr, css,  html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
-
+// 样式文件
 const styles = css`
 :host {
     box-sizing: border-box;
@@ -28,9 +28,11 @@ const styles = css`
     flex-direction: column;
 }
 
-`
-const template = html<HiSteps>`<slot></slot>`;
+`;
 
+// 模版文件
+const template = html<HiSteps>`<slot></slot>`;
+// 定义元素
 @customElement({
    name: 'h-steps',
    styles,

@@ -5,8 +5,9 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, html, ref, when, observable } from 'hi-element';
+// 样式文件
 import { ModalStyles as styles } from "./modal.style";
 
 
@@ -33,7 +34,7 @@ interface ModalOptions {
     canceltext: string;
     cancel?: () => void;
 }
-
+// 模版文件
 const template = html<HiModal>`
 <div class="Modal">
     <div class="ModalContent">
@@ -62,6 +63,7 @@ const template = html<HiModal>`
 </div>
 
 `;
+// 定义元素
 @customElement({
    name: 'h-modal',
    template,

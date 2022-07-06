@@ -5,10 +5,11 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { css } from 'hi-element';
+// 配置文件
 import { hiConfig } from "../config";
-
+// 样式
 export const MessageStyles = css`
 :host{
     display:flex;

@@ -5,10 +5,11 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, html } from 'hi-element';
+// 样式文件
 import { ShortStyles as styles } from "./short.style";
-
+// 模版文件
 const template = html<HiShort>`
 
 <div class="Short">
@@ -16,6 +17,7 @@ const template = html<HiShort>`
     <slot></slot>
 </div>
 `;
+// 定义元素
 @customElement({
    name: 'h-short',
    template,

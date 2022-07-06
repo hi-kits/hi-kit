@@ -5,9 +5,9 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-
+// 样式文件
 const styles = css`
 :host{ 
     box-sizing:border-box; 
@@ -129,7 +129,8 @@ input[type="range"]:focus::-moz-range-thumb{
 :host(:focus-within) #slider-con,:host(:hover) #slider-con{
     z-index:10
 }
-`
+`;
+// 模版文件
 const template = html<HiSlider>`
 <template>
     <h-tips id='slider-con'
@@ -152,6 +153,8 @@ const template = html<HiSlider>`
     </h-tips>
 </template>
 `;
+
+// 定义元素
 @customElement({
    name: 'h-slider',
    styles,

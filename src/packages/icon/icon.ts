@@ -5,7 +5,7 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
+// 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html, when } from 'hi-element';
 
 
@@ -154,6 +154,7 @@ ${ x => x.path ? html<HiIcon>` <svg class="icon" viewBox="0 0 ${x => x.view} ${x
 `}
 
 `;
+// 定义元素
 @customElement({
    name: 'h-icon',
    styles,
