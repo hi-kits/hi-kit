@@ -72,6 +72,7 @@ const template = html<HiDivider>`
    name: 'h-divider',
    styles,
    template,
+   shadowOptions: { mode: 'closed'}
 })
 export class HiDivider extends HIElement {
     // ------------------ 构造函数 ------------------

@@ -71,14 +71,17 @@ input[type="range"]::-moz-range-track{
 }
 input[type="range"]::-webkit-slider-thumb{
     -webkit-appearance: none;
-    border:2px solid var(--themeColor,#42b983);
     position: relative;
-    width:10px;
-    height:10px;
-    margin-top: -4px;
+
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+    background-color: #fff;
+    border:2px solid var(--themeColor,#42b983);
     border-radius: 50%;
-    background:var(--themeColor,#42b983);
-    transition:.2s cubic-bezier(.12, .4, .29, 1.46);
+    box-shadow: 0;
+    cursor: pointer;
+    transition: border-color .3s,box-shadow .6s,transform .3s cubic-bezier(.18,.89,.32,1.28);
 }
 input[type="range"]::-moz-range-thumb{
     box-sizing:border-box;
@@ -183,8 +186,8 @@ export class HiSlider extends HIElement {
 
         this.sliderCon.setAttribute('tips', this.showtips != null && !this.disabled? String(this.value) : '');
     }
-    suffix: string;
-    prefix: string;
+    @attr suffix: string;
+    @attr prefix: string;
     _oninput;
     /**
      * svg 对象

@@ -48,6 +48,7 @@ const template = html<HiEmpty>`
    name: 'h-empty',
    styles,
    template,
+   shadowOptions: { mode: 'closed'}
 })
 export class HiEmpty extends HIElement {
     // ------------------ 构造函数 ------------------

@@ -30,7 +30,8 @@ const template = html<HiCheckbox>`
 @customElement({
     name: 'h-checkbox',
     template,
-    styles
+    styles,
+    shadowOptions: { mode: 'closed'}
 })
 export class HiCheckbox extends HIElementForm {
     // ------------------ 构造函数 ------------------

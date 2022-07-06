@@ -72,6 +72,7 @@ const template = html<HiBadge>`
     name: 'h-badge',
     styles,
     template,
+    shadowOptions: { mode: 'closed'}
 })
 export class HiBadge extends HIElementBase {
      // ------------------ 构造函数 ------------------

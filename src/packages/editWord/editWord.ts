@@ -24,7 +24,7 @@ const template = html<HiEditWord>`
 @customElement({
    name: 'h-edit-word',
    template,
-   styles
+   styles,
 })
 export class HiEditWord extends HIElement {
     // ------------------ 构造函数 ------------------

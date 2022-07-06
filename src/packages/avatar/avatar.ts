@@ -60,6 +60,7 @@ const template = html<HiAvatar>`
    name: 'h-avatar',
    styles,
    template,
+   shadowOptions: { mode: 'closed'}
 })
 export class HiAvatar extends HIElementBase {
     // ------------------ 构造函数 ------------------

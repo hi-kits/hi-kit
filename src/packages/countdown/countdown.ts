@@ -53,6 +53,7 @@ const template = html<HiCountdown>`
    name: 'h-countdown',
    styles,
    template,
+   shadowOptions: { mode: 'closed'}
 })
 export class HiCountdown extends HIElement {
     // ------------------ 构造函数 ------------------

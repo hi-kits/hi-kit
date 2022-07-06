@@ -22,6 +22,7 @@ const template = html<HiTimeline>`
    name: 'h-timeline',
    styles,
    template,
+   shadowOptions: { mode: 'closed'}
 })
 export class HiTimeline extends HIElement {
     // ------------------ 构造函数 ------------------

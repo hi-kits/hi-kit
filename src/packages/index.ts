@@ -37,7 +37,7 @@ import { HiComment, HiCommentAction } from './comment';
 import { HiSteps, HiStep } from './steps';
 import { HiSegmenteds, HiSegmented } from './segmented';
 import { HiTabs, HiTab } from './tabs';
-import { HiUpload } from './upload';
+// import { HiUpload } from './upload';
 import { HiTimePane, HiTimePicker } from './time-picker';
 
 window['HiMessage'] = HiMessageService;

@@ -29,6 +29,7 @@ const template = html<HiAvatarGroup>`
    name: 'h-avatar-group',
    styles,
    template,
+   shadowOptions: { mode: 'closed'}
 })
 export class HiAvatarGroup extends HIElementBase {
     // ------------------ 构造函数 ------------------
