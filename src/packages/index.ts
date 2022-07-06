@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-23 10:24:32
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-01 17:14:02
+ * @LastEditTime: 2022-07-06 18:56:30
  */
 // import  { Box } from "./box";
 import { HiButton, HiButtonGroup } from './button';
@@ -37,6 +37,8 @@ import { HiComment, HiCommentAction } from './comment';
 import { HiSteps, HiStep } from './steps';
 import { HiSegmenteds, HiSegmented } from './segmented';
 import { HiTabs, HiTab } from './tabs';
+import { HiUpload } from './upload';
+import { HiTimePane, HiTimePicker } from './time-picker';
 
 window['HiMessage'] = HiMessageService;
 window['HiModal'] = HiModalService;
