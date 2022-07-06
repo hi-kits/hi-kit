@@ -17,24 +17,26 @@
             .MainBody {padding:10px 0 50px;}
             h2 span{color: #999; font-size: 60%; font-weight: 200;}
             h-row{ margin: 6px 0;}
-            .Grid h-col{
-                background: #2196f380;
-                color:#fff;
-                line-height: 24px;
-                min-height: 24px;
-            }
+
             .layout{ height: 300px; }
         .side{ width: 200px; }
         .main{ margin: 0 10px; }
         .box{ width: 100px; height: 100px; color: #fff; }
         .header,.footer{ padding: 5px 10px; color: #fff; }
             h-layout{ background: #2196f380; }
-           
+            .Grid h-col {
+                padding: 20px;
+                color: #fff;
+                background: #42b983c5;
+            }
+            .Grid h-col:nth-child(odd) {
+                background: #3ba1f49a;
+            }
         h-popover{ margin: 0 10px 10px 0; }
         </style>
     </head>
-    <script  src="./font_icon/iconfont.js"></script>
-    <link rel="stylesheet" href="../font_icon/iconfont.css">
+    <!-- <script  src="./font_icon/iconfont.js"></script> -->
+    <!-- <link rel="stylesheet" href="../font_icon/iconfont.css"> -->
     <body>
         <div class="MainBody">
 
@@ -49,7 +51,7 @@
                 <h-button type="dashed">dashed</h-button>
                 <h-button shape='circle' type="primary">cir</h-button>
                 <h-button  type="danger">danger</h-button>
-                <h-button  type='flat'>flat</h-button>
+                <h-button loading type='flat'>flat</h-button>
                 <h-button block >block</h-button>
                 <h-button type="flat" href="https://ys-zjrs.haier.net/zjm/synsm/pushManage/favicon.ico" download="111">href</h-button>
             </div>
@@ -80,7 +82,7 @@
                     <h-checkbox>Vue</h-checkbox>
                     <h-checkbox>Angular</h-checkbox>
                     <h-checkbox>Flutter</h-checkbox>
-                    <h-checkbox>Swift</h-checkbox>
+                    <h-checkbox required>Swift</h-checkbox>
                 </h-checkbox-group>
                 <h-checkbox>123</h-checkbox>
                 <h-switch onchange="this.previousElementSibling.disabled = this.checked" checked=""></h-switch>
@@ -129,28 +131,31 @@
             <h2>栅格 <span>grid</span></h2>
             <div class="Grid">
                 <h-row gutter="10">
-                    <h-col span="8"></h-col>
-                    <h-col span="8"></h-col>
-                    <h-col span="8"></h-col>
+                    <h-col span="8">col-8</h-col>
+                    <h-col span="8">col-8</h-col>
+                    <h-col span="8">col-8</h-col>
                 </h-row>
                 <h-row gutter="10">
-                    <h-col span="4"></h-col>
-                    <h-col span="8"></h-col>
-                    <h-col span="12"></h-col>
+                    <h-col span="4">col-4</h-col>
+                    <h-col span="8">col-8</h-col>
+                    <h-col span="12">col-12</h-col>
                 </h-row>
                 <h-row gutter="10">
-                    <h-col span="12"></h-col>
-                    <h-col span="12"></h-col>
+                    <h-col span="4">col-4</h-col>
+                    <h-col span="8">col-8</h-col>
+                    <h-col span="4">col-4</h-col>
+                    <h-col span="8">col-8</h-col>
                 </h-row>
                 <h-row gutter="10">
-                    <h-col span="24">
-                        <h-row gutter="10">
-                            <h-col span="6"></h-col>
-                            <h-col span="6"></h-col>
-                            <h-col span="6"></h-col>
-                            <h-col span="6"></h-col>
-                        </h-row>
-                    </h-col>
+                    <h-col span="12">col-12</h-col>
+                    <h-col span="12">col-12</h-col>
+                </h-row>
+                <h-slider type="number" oninput="this.nextElementSibling.gutter=this.value" min="0" max="24" suffix="px" defaultvalue="10" showtips></h-slider>
+                <h-row gutter="10">
+                    <h-col span="6">col-6</h-col>
+                    <h-col span="6">col-6</h-col>
+                    <h-col span="6">col-6</h-col>
+                    <h-col span="6">col-6</h-col>
                 </h-row>
             </div>
             <h2>加载 <span>loading</span></h2>
@@ -252,6 +257,34 @@
                 <h-button onclick="HiToast({content: '顶部提示', site:['5%'], duration: 1000})">顶部提示</h-button>
                 <h-button onclick="HiToast({content: '左侧提示', site:['50%',,,10], duration: 1000})">左侧提示</h-button>
                 <h-button onclick="HiToast({content: '右侧提示', site:['50%',10,], duration: 1000})">右侧提示</h-button>
+            </div>
+            <h2>对话框 <span>modal</span></h2>
+            <div>
+                <h-button onclick="HiModal.alert({
+                    content: 'This a alert Modal',
+                    ok: () => {
+                        HiMessage.info({content: '确认', duration: 2000})
+                    }
+                })">alert</h-button>
+                <h-button onclick="HiModal.confirm({
+                    content: 'This is a question',
+                    ok: () => {
+                        HiMessage.info({content: 'ok', duration: 2000})
+                    },
+                    cancel:function(){
+                        //按取消键的操作
+                        HiMessage.info({content: 'cancel', duration: 2000})
+                    }
+                })">confirm</h-button>
+                <h-button onclick="HiModal.prompt({content: 'This a info message'})">prompt</h-button>
+                <h-button type="primary" onclick="document.getElementById('modal01').open = true;">open modal</h-button>
+                <h-modal id="modal01" title="自定义弹窗内容" oktext="知道了" >
+                    <h-tabs>
+                        <h-tab label="tab1">tab111</h-tab>
+                        <h-tab label="tab2">tab222</h-tab>
+                        <h-tab label="tab3">tab333</h-tab>
+                    </h-tabs>
+                </h-modal>
             </div>
             <h2>评分 <span>rate</span></h2>
             <div>
@@ -412,9 +445,9 @@
                     </h-col>
                     <h-col span="8">
                         <div style="margin-bottom: 20px ; text-align: center;">
-                            <button onclick="document.getElementById('Timeline').setAttribute('mode', 'left')">left</button>
-                            <button onclick="document.getElementById('Timeline').setAttribute('mode', 'right')">right</button>
-                            <button onclick="document.getElementById('Timeline').setAttribute('mode', 'alternate')">alternate</button>
+                            <h-button onclick="document.getElementById('Timeline').setAttribute('mode', 'left')">left</h-button>
+                            <h-button onclick="document.getElementById('Timeline').setAttribute('mode', 'right')">right</h-button>
+                            <h-button onclick="document.getElementById('Timeline').setAttribute('mode', 'alternate')">alternate</h-button>
                         </div>
                         <h-timeline id="Timeline" mode="alternate">
                             <h-timeline-item color="green" style="color:#1890ff" label="2022-06-01 09:00:00">创建服务网站</h-timeline-item>

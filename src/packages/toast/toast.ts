@@ -123,7 +123,7 @@ let toastContent: any = document.getElementById('HiToastWrap');
 if(!toastContent){
     toastContent = document.createElement('div');
     toastContent.id = 'HiToastWrap';
-    toastContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:-100px; z-index:51;';
+    toastContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:-100px; z-index:88;';
     document.body.appendChild(toastContent);
 }
 

@@ -172,7 +172,7 @@ let messageContent: any = document.getElementById('HiMessageWrap');
 if(!messageContent){
     messageContent = document.createElement('div');
     messageContent.id = 'HiMessageWrap';
-    messageContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:10px; z-index:51;';
+    messageContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:10px; z-index:99;';
     document.body.appendChild(messageContent);
 }
 

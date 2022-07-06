@@ -30,7 +30,7 @@ import { HiTips } from './tips';
 import { HiPagination } from './pagination';
 import { HiTimeline, HiTimelineItem } from './timeline';
 import { HiMessageService } from './message';
-import { HiDialog } from './dialog';
+import { HiModal, HiModalService } from './modal';
 import { HiToastService } from './toast';
 import { HiDatePane, HiDateRangePane } from './date-picker';
 import { HiList, HiListItem, HiListItemAction, HiListItemExtra, HiListItemMedia, HiListItemInner } from './list';
@@ -40,7 +40,7 @@ import { HiSegmenteds, HiSegmented } from './segmented';
 import { HiTabs, HiTab } from './tabs';
 
 window['HiMessage'] = HiMessageService;
-window['HiDialog'] = HiDialog;
+window['HiModal'] = HiModalService;
 window['HiToast'] = HiToastService;
 
 // window['showDialog'] = function (e){

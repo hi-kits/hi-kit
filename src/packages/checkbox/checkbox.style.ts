@@ -28,12 +28,14 @@ export const CheckboxStyles = css`
     position:absolute;
     clip:rect(0,0,0,0);
 }
-:host(:focus-within) .cheked,:host(:not([disabled])) label:hover .cheked{ 
+:host(:focus-within) .cheked,
+:host(:not([disabled])) label:hover .cheked{ 
     border-color:var(--themeColor,#42b983);
     /*box-shadow: 0 0 10px rgba(0,0,0,0.1);*/
     z-index:1;
 }
-:host(:focus-within) #checkbox,:host(:active) #checkbox{
+:host(:focus-within) #checkbox,
+:host(:active) #checkbox{
     z-index:2
 }
 :host([disabled]) .cheked{ 
@@ -45,12 +47,12 @@ label{
     display:flex;
     align-items:center;
 }
-xy-tips{
+h-tips{
     display:block;
     padding-left: 0.575em;
     margin-left: -0.575em;
 }
-xy-tips[show=show]{
+h-tips[show=show]{
     --themeColor:var(--errorColor,#f4615c);
     --borderColor:var(--errorColor,#f4615c);
 }
@@ -93,7 +95,8 @@ xy-tips[show=show]{
     transition: .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
 }
 /*
-:host(:focus-within) .cheked::after,:host(:active:not([disabled])) .cheked::after{ 
+:host(:focus-within) .cheked::after,
+:host(:active:not([disabled])) .cheked::after{ 
     transform:scale(2.5);
 }
 */

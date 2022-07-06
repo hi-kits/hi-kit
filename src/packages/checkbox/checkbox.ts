@@ -5,11 +5,16 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
-import { HIElement, customElement, attr, observable, ref, slotted,  html } from 'hi-element';
+// 核心库
+import { customElement, attr, observable, ref, html } from 'hi-element';
+// 混入基础功能
+import { HIElementForm } from '../_mixins/hiElementForm';
+// 样式文件
 import { CheckboxStyles as styles } from "./checkbox.style";
 
+// 模版文件
 const template = html<HiCheckbox>`
+<h-tips ${ref('tips')} type="error" dir="topleft">
     <input type="checkbox" id="checkbox" ${ref('checkbox')}>
     <label for="checkbox">
         <span class="cheked">
@@ -19,52 +24,34 @@ const template = html<HiCheckbox>`
         </span>
         <slot></slot>
     </label>
+</h-tips>
 `;
 @customElement({
     name: 'h-checkbox',
     template,
     styles
 })
-export class HiCheckbox extends HIElement {
+export class HiCheckbox extends HIElementForm {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     @observable
     checkbox: HTMLInputElement;
+    @observable
+    tips: HTMLTemplateElement;
     isfocus;
     // ------------------ 属性 ------------------
-     
     /**
-      * 不可点击
-      * @date 6/23/2022 - 5:36:38 PM
-      *
-      * @type {!boolean}
-      */
-    @attr({ attribute: "disabled", mode: "boolean" }) disabled!: boolean;
-    
-    /**
-     * 必填项
-     * @date 6/23/2022 - 5:37:57 PM
-     *
-     * @type {!boolean}
+     * disabled 状态变更时触发
+     * @param oldValue 原始值
+     * @param newValue 新值
      */
-    @attr required!: boolean;
-    
-    /**
-     * 选中的
-     * @date 6/23/2022 - 5:39:08 PM
-     *
-     * @type {!boolean}
-     */
-    @attr checked!: boolean;
-    
-    /**
-     * 当前值
-     * @date 6/23/2022 - 5:41:34 PM
-     *
-     * @type {string}
-     */
-    @attr value: string;
- 
+    disabledChanged(oldValue, newValue): void {
+        if(!!newValue){
+            this.checkbox.setAttribute('disabled', '');
+        }else{
+            this.checkbox.removeAttribute('disabled');
+        }
+    }
      
     // ------------------ 自定义函数 ------------------
     /**
@@ -74,22 +61,13 @@ export class HiCheckbox extends HIElement {
     public connectedCallback(): void {
         super.connectedCallback();
         this.checkbox.addEventListener('change',(ev)=>{
-            this.checked = this.checkbox.checked;
-            this.checkValidity();
-            this.dispatchEvent(new CustomEvent('change', {
-                detail: {
-                    checked: this.checked
-                }
-            }));
+            // this.checked = this.checkbox.checked;
+            this.$emit('change', { checked: this.checked });
         })
         this.checkbox.addEventListener('focus',(ev)=>{
             ev.stopPropagation();
             if(!this.isfocus){
-                this.dispatchEvent(new CustomEvent('focus',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
+                this.$emit('focus', { value: this.value });
             }
         })
         this.checkbox.addEventListener('blur',(ev)=>{
@@ -98,30 +76,26 @@ export class HiCheckbox extends HIElement {
                 this.isfocus = true;
             }else{
                 this.isfocus = false;
-                this.dispatchEvent(new CustomEvent('blur',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
+                this.$emit('blur', { value: this.value });
             }
         })
         
     }
     checkValidity(){
-        // if(this.novalidate||this.disabled || this.form && this.form.novalidate){
-        //     return true;
-        // }
-        // if(this.validity){
-        //     this.invalid = false;
-        //     this.tip.show = false;
-        //     return true;
-        // }else{
-        //     this.focus();
-        //     this.invalid = true;
-        //     this.tip.show = 'show';
-        //     this.tip.tips = this.errortips||this.checkbox.validationMessage;
-        //     return false;
-        // }
+        if( this.disabled ){
+            return true;
+        }
+        if(this.validity){
+            this.invalid = false;
+            this.tips['show'] = false;
+            return true;
+        }else{
+            this.focus();
+            this.invalid = true;
+            this.tips['show'] = 'show';
+            this.tips['tips'] = this.checkbox.validationMessage;
+            return false;
+        }
     }
     
 }
