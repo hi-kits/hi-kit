@@ -8,6 +8,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
 
 // 模版文件
 const template = html<HiList>`
@@ -20,24 +22,11 @@ const template = html<HiList>`
    name: 'h-list',
    template
 })
-export class HiList extends HIElement {
+export class HiList extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
 
     // ------------------ 属性 ------------------
-    /**
-     * 尺寸
-     * @public number
-     */
-    @attr size: 'large' | 'small' | 'default' | string;
-    private sizeChanged(oldValue, newValue): void {
-
-        for (let index = 0; index < this.children.length; index++) {
-            const element = this.children[index];
-            element.setAttribute('size', this.size);
-        }
-        
-    }
     // @attr pending: string;
     // ------------------ 自定义函数 ------------------
     /**
