@@ -7,6 +7,9 @@
  */
 // 核心库
 import { HIElement, customElement, html } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
+
 // 样式文件
 import { ToastStyles as styles } from "./toast.style";
 
@@ -76,14 +79,13 @@ export class HiToast extends HIElement {
      */
     connectedCallback() {
         super.connectedCallback();
-        this.shadowRoot!.addEventListener('transitionend',(ev:any)=>{
+        EventUtil.addHandler(this.shadowRoot!, 'transitionend',(ev:any)=>{
             if(ev.propertyName === 'transform' && !this.show){
                 // DOM.removeChildNodes(toastContent);
                 toastContent.removeChild(this);
                 this.$emit('close');
             }
         });
-            
         this.position();
     }
     

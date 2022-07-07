@@ -7,7 +7,7 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-
+// 样式
 const styles = css`
 :host{
     margin: 0 8px;
@@ -27,6 +27,7 @@ const styles = css`
 }
 
 `;
+// 模版文件
 const template = html<HiEmpty>`
 <template>
     <slot class="Slot">

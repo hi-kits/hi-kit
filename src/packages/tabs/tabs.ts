@@ -162,16 +162,6 @@ export class HiTabs extends HIElementBase {
             // this.init = true;
         });
         
-        // this.TabNav.addEventListener('click',(ev)=>{
-        //     const item = ev.target!['closest']('h-button');
-        //     if(item){
-        //         if (item.getAttribute('disabled') !== null) {
-        //             return
-        //         }
-        //         this.activekey = item.getAttribute('key');
-        //     }
-        // })
-        
     }
     tabNavClick(ev): void {
         const item = ev.target!['closest']('h-button');

@@ -66,17 +66,17 @@ export class HiCheckbox extends HIElementForm {
       */
     public connectedCallback(): void {
         super.connectedCallback();
-        EventUtil.addHandler(this.checkbox, 'change',(ev)=>{
+        EventUtil.addHandler(this.checkbox, 'change', (ev)=>{
             this.checked = this.checkbox.checked;
             this.$emit('change', { checked: this.checked });
         });
-        EventUtil.addHandler(this.checkbox, 'focus',(ev)=>{
+        EventUtil.addHandler(this.checkbox, 'focus', (ev)=>{
             ev.stopPropagation();
             if(!this.isfocus){
                 this.$emit('focus', { value: this.value });
             }
         });
-        EventUtil.addHandler(this.checkbox, 'blur',(ev)=>{
+        EventUtil.addHandler(this.checkbox, 'blur', (ev)=>{
             ev.stopPropagation();
             if( Number(getComputedStyle(this.checkbox).zIndex) ==2){
                 this.isfocus = true;

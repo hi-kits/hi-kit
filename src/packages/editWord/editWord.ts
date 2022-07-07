@@ -7,9 +7,12 @@
  */
 // 核心库
 import { HIElement, customElement, attr, html, when, observable,slotted, Observable, ref } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
+// 样式文件
 import { EditWordStyles as styles } from "./editWord.style";
 
-
+// 明白文件
 const template = html<HiEditWord>`
 
 <form ${ref("form")}>
@@ -55,20 +58,21 @@ export class HiEditWord extends HIElement {
         this.input.value =  String(this.textContent);
         this.setAttribute('tabindex', '0');
         this.input.setAttribute('required', 'required');
-        this.shadowRoot!.addEventListener('click', (ev) => {
+
+        EventUtil.addHandler(this.shadowRoot, 'click', (ev) => {
             this.span.style.display = 'none';
             this.form.style.display = 'inline-block';
             this.input.focus();
-            this.input.setSelectionRange(0, this.input.value.length)
+            this.input.setSelectionRange(0, this.input.value.length);
         });
-        this.form.addEventListener('submit', e => {
+        EventUtil.addHandler(this.form, 'submit', (ev) => {
             this.updateDisplay();
-            e.preventDefault();
+            ev.preventDefault();
         });
-        this.input.addEventListener('blur', () => {
+        EventUtil.addHandler(this.input, 'blur', (ev) => {
             this.updateDisplay();
         });
-        this.addEventListener("ochange", (e: Event): void => {
+        EventUtil.addHandler(this, 'ochange', (e: Event): void => {
             if (
                 e.defaultPrevented ||
                 e.target === null

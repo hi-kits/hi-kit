@@ -72,7 +72,7 @@ export class HiRadioGroup extends HIElementForm {
             this.elements  = this.querySelectorAll('h-radio');
             this.value = this.defaultvalue;
             this.elements.forEach(el=>{
-                el.addEventListener('change',()=>{
+                EventUtil.addHandler(el, 'change',()=>{
                     if(el.checked){
                         this.$emit('change', {
                             value:this.value

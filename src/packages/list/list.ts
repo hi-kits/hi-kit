@@ -9,11 +9,7 @@
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 
-
-const styles = css`
-
-
-`
+// 模版文件
 const template = html<HiList>`
 <template>
     <slot></slot>
@@ -22,8 +18,7 @@ const template = html<HiList>`
 // 定义元素
 @customElement({
    name: 'h-list',
-   styles,
-   template,
+   template
 })
 export class HiList extends HIElement {
     // ------------------ 构造函数 ------------------

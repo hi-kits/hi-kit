@@ -8,7 +8,7 @@
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html, when } from 'hi-element';
 
-
+// 样式
 const styles = css`
 :host{
     font-size:inherit;
@@ -32,7 +32,8 @@ const styles = css`
         transform: rotate(360deg); 
     }
 }
-`
+`;
+// 模版文件
 const template = html<HiIcon>`
 ${ x => x.path ? html<HiIcon>` <svg class="icon" viewBox="0 0 ${x => x.view} ${x => x.view}"><path ${ref('paths')}></path></svg>` : html`
     ${when(

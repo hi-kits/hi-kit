@@ -7,7 +7,9 @@
  */
 
 // 核心库
-import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+import { customElement, attr, css,  html } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 
@@ -97,7 +99,7 @@ export class HiSidebar extends HIElementBase {
     connectedCallback(): void {
         super.connectedCallback();
         // this.sidebar = this;
-        document.addEventListener('mousedown', this.setpop);
+        EventUtil.addHandler(document, 'mousedown', this.setpop);
     }
     setpop = ev => {
         const path = ev.path || (ev.composedPath && ev.composedPath());

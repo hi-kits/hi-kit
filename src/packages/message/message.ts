@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, slotted,  html, when } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
 // 样式文件
 import { MessageStyles as styles } from "./message.style";
 // 依赖组件
@@ -160,13 +162,13 @@ export class HiMessage extends HIElement {
      */
     connectedCallback(): void {
         super.connectedCallback();
-        this.shadowRoot!.addEventListener('transitionend', (ev:any) =>{
+        EventUtil.addHandler(this.shadowRoot, 'transitionend', (ev:any) =>{
             if ( ev.propertyName === 'transform' && !this.show ) {
                 messageContent.removeChild(this);
                 this.onCallback();
                 this.dispatchEvent(new CustomEvent('close'));
             }
-        })
+        });
     }
 
 }

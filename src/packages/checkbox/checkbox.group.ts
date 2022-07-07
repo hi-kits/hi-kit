@@ -53,7 +53,7 @@ export class HiCheckboxGroup extends HIElementForm {
             this.elements  = this.querySelectorAll('h-checkbox');
             this.value = this.defaultvalue;
             this.elements.forEach(el=>{
-                el.addEventListener('change',()=>{
+                EventUtil.addHandler(el, 'change',()=>{
                     this.checkValidity();
                     this.$emit('change', {
                         value:this.value
