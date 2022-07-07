@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, html, attr } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式文件
 import { TipsStyles as styles } from "./tips.style";
 
@@ -26,7 +28,7 @@ const template = html<HiTips>`<slot></slot>`;
    styles,
    shadowOptions: { mode: 'closed'},
 })
-export class HiTips extends HIElement {
+export class HiTips extends HIElementBase {
     // ------------------ 构造函数 ------------------
     constructor(
     ) {
@@ -42,8 +44,7 @@ export class HiTips extends HIElement {
      *
      * @type {string}
      */
-    @attr color: string ;
-    private colorChanged(oldValue, newValue): void {
+    colorChanged(oldValue, newValue): void {
         this.style.setProperty('--color',newValue);
     }
     

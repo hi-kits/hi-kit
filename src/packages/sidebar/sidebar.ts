@@ -78,22 +78,10 @@ export class HiSidebar extends HIElementBase {
      * 尺寸
      * @public number
      */
-    @attr size;
     sizeChanged(oldValue, newValue): void {
         Style(this)({
             fontSize: newValue + 'px',
             height: newValue + 'px'
-        });
-    }
-
-    /**
-     * 颜色
-     * @public string
-     */
-    @attr color: string;
-    colorChanged(oldValue, newValue): void {
-        Style(this)({
-            color: newValue
         });
     }
     @attr({ mode: "boolean" }) show: boolean;

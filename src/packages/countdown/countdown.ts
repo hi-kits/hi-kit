@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
 import { Style } from '../_utils/style/style';
 // 日期
@@ -58,7 +60,7 @@ const template = html<HiCountdown>`
    template,
    shadowOptions: { mode: 'closed'}
 })
-export class HiCountdown extends HIElement {
+export class HiCountdown extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     
@@ -114,21 +116,12 @@ export class HiCountdown extends HIElement {
         this.endTime = +new Date(DateServices(new Date(newValue), 'yyyy-MM-dd hh:mm:ss'));
     }
     
-
-    /**
-     * 文字颜色
-     * @public string
-     */
-    @attr color: string;
-    private colorChanged(oldValue, newValue): void {
-        Style(this)('color', newValue)
-    }
     /**
      * 文字尺寸
      * @public number
      */
     @attr size;
-    private sizeChanged(oldValue, newValue): void {
+    sizeChanged(oldValue, newValue): void {
         Style(this)({ 
             fontSize: newValue + 'px'
         });      

@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
 import { Style } from '../_utils/style/style';
 // 样式
@@ -59,7 +61,7 @@ const template = html<HiComment>`
    styles,
    template,
 })
-export class HiComment extends HIElement {
+export class HiComment extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     // ------------------ 属性 ------------------
@@ -67,21 +69,11 @@ export class HiComment extends HIElement {
      * 尺寸
      * @public number
      */
-    @attr size;
-    private sizeChanged(oldValue, newValue): void {
+    sizeChanged(oldValue, newValue): void {
         Style(this)({
             fontSize: newValue + 'px',
             height: newValue + 'px'
         });
-    }
-
-    /**
-     * 颜色
-     * @public string
-     */
-    @attr color: string;
-    private colorChanged(oldValue, newValue): void {
-        Style(this)('color', newValue);
     }
     // ------------------ 自定义函数 ------------------
     /**

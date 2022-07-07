@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html, when } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
 import { Style } from '../_utils/style/style';
 
@@ -163,7 +165,7 @@ ${ x => x.path ? html<HiIcon>` <svg class="icon" viewBox="0 0 ${x => x.view} ${x
    styles,
    template,
 })
-export class HiIcon extends HIElement {
+export class HiIcon extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     @observable
@@ -179,13 +181,9 @@ export class HiIcon extends HIElement {
     private pathChanged(oldValue, newValue): void {
         this.paths && (this.paths!.setAttribute("d", newValue));
     }
-    @attr size: string;
-    private sizeChanged(oldValue, newValue): void {
+
+    sizeChanged(oldValue, newValue): void {
        Style(this)({ fontSize: newValue + 'px' }); 
-    }
-    @attr color: string;
-    private colorChanged(oldValue, newValue): void {
-        Style(this)({ color: newValue }); 
     }
 
     // ------------------ 自定义函数 ------------------

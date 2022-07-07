@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html, when } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
 import { Style } from '../_utils/style/style';
 
@@ -112,7 +114,7 @@ const template = html<HiTimelineItem>`
    styles,
    template,
 })
-export class HiTimelineItem extends HIElement {
+export class HiTimelineItem extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     @observable
@@ -140,8 +142,7 @@ export class HiTimelineItem extends HIElement {
      * loading 颜色
      * @public string
      */
-    @attr color: string;
-    private colorChanged(oldValue, newValue): void {
+    colorChanged(oldValue, newValue): void {
         setTimeout(() => {
             Style(this.temp)({
                 borderColor: newValue
