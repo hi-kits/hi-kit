@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 样式
 const styles = css`
 :host{
@@ -63,7 +65,7 @@ export class HiEmpty extends HIElement {
      */
     @attr size;
     private sizeChanged(oldValue, newValue): void {
-        this.style.fontSize = newValue + 'px';        
+        Style(this)({ fontSize: newValue + 'px'});
     }
 
     /**
@@ -72,7 +74,7 @@ export class HiEmpty extends HIElement {
      */
     @attr color: string;
     private colorChanged(oldValue, newValue): void {
-        this.style.color = newValue;
+        Style(this)({ color: newValue });
     }
     // ------------------ 自定义函数 ------------------
     /**

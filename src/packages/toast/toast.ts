@@ -9,8 +9,10 @@
 import { HIElement, customElement, html } from 'hi-element';
 // 事件处理
 import { EventUtil } from '../_utils/event';
+// 样式助手
+import { Style } from '../_utils/style/style';
 
-// 样式文件
+// 样式
 import { ToastStyles as styles } from "./toast.style";
 
 const template = html<HiToast>`
@@ -127,7 +129,14 @@ let toastContent: any = document.getElementById('HiToastWrap');
 if(!toastContent){
     toastContent = document.createElement('div');
     toastContent.id = 'HiToastWrap';
-    toastContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:-100px; z-index:88;';
+    Style(toastContent)({
+        'position': 'fixed',
+        'pointer-events': 'none',
+        'left': 0,
+        'right': 0,
+        'top': '-100px',
+        'z-index': 88
+    });
     document.body.appendChild(toastContent);
 }
 

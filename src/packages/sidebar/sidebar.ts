@@ -10,6 +10,8 @@
 import { customElement, attr, css,  html } from 'hi-element';
 // 事件处理
 import { EventUtil } from '../_utils/event';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 
@@ -78,8 +80,10 @@ export class HiSidebar extends HIElementBase {
      */
     @attr size;
     sizeChanged(oldValue, newValue): void {
-        this.style.fontSize = newValue + 'px';        
-        this.style.height = newValue + 'px'; 
+        Style(this)({
+            fontSize: newValue + 'px',
+            height: newValue + 'px'
+        });
     }
 
     /**
@@ -88,7 +92,9 @@ export class HiSidebar extends HIElementBase {
      */
     @attr color: string;
     colorChanged(oldValue, newValue): void {
-        this.style.color = newValue;
+        Style(this)({
+            color: newValue
+        });
     }
     @attr({ mode: "boolean" }) show: boolean;
     // ------------------ 自定义函数 ------------------

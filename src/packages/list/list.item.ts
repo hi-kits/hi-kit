@@ -8,6 +8,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 配置文件
 import { hiConfig } from "../config";
 
@@ -56,7 +58,9 @@ export class HiListItem extends HIElement {
     @attr size: 'large' | 'small' | 'default' | number;
     private sizeChanged(oldValue, newValue): void {
         if (!['large', 'small', 'default'].includes(newValue)) {
-            this.style.padding = `${newValue}px`;        
+            Style(this)({
+                padding: `${newValue}px`,
+            });
         }
     }
     // @attr pending: string;

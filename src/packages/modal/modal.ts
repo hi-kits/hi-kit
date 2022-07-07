@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, html, ref, when, observable } from 'hi-element';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 样式文件
 import { ModalStyles as styles } from "./modal.style";
 
@@ -180,7 +182,13 @@ let modalContent: any = document.getElementById('HiModalWrap');
 if(!modalContent){
     modalContent = document.createElement('div');
     modalContent.id = 'HiModalWrap';
-    modalContent.style = 'position:fixed; left:0; right:0; top:10px; z-index:51;';
+    Style(modalContent)({
+        'position': 'fixed',
+        'left': 0,
+        'right': 0,
+        'top': '10px',
+        'z-index': 51
+    });
     document.body.appendChild(modalContent);
 }
 

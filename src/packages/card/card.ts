@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, html, css, ref, observable } from 'hi-element';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 配置文件
 import { hiConfig } from "../config";
 // 样式
@@ -75,7 +77,9 @@ export class HiCard extends HIElement {
     @attr radius: number;
     private radiusChanged(oldValue, newValue): void {
         setTimeout(() => {
-            this.cardbox.style.borderRadius = newValue + 'px';
+            Style(this.cardbox)({
+                borderRadius: newValue + 'px',
+            });
         }, 10);
     }
 	// ------------------ 自定义函数 ------------------

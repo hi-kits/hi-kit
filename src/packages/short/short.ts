@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, html } from 'hi-element';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 样式文件
 import { ShortStyles as styles } from "./short.style";
 // 模版文件
@@ -53,7 +55,9 @@ export class HiShort extends HIElement {
       */
      @attr color: string;
      private colorChanged(oldValue, newValue): void {
-         this.style.color = newValue;
+        Style(this)({
+            color: newValue
+        });
      }
      /**
       * 文字尺寸
@@ -61,7 +65,9 @@ export class HiShort extends HIElement {
       */
      @attr size;
      private sizeChanged(oldValue, newValue): void {
-         this.style.fontSize = newValue + 'px';        
+        Style(this)({
+            fontSize: newValue + 'px'
+        });
      }
      // ------------------ 自定义函数 ------------------
      /**

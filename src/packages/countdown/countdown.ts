@@ -7,10 +7,12 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-
+// 样式助手
+import { Style } from '../_utils/style/style';
+// 日期
 import { DateServices } from '../_utils/date.services'
 
-
+// 样式
 const styles = css`
 
 :host .Countdown{
@@ -42,7 +44,8 @@ const styles = css`
     vertical-align: -webkit-baseline-middle;
     margin-right: 1vw;
 }
-`
+`;
+// 模版文件
 const template = html<HiCountdown>`
 <template>
     <div class="starttime" ${ref('countdownTxt')}></div>
@@ -118,7 +121,7 @@ export class HiCountdown extends HIElement {
      */
     @attr color: string;
     private colorChanged(oldValue, newValue): void {
-        this.style.color = newValue;
+        Style(this)('color', newValue)
     }
     /**
      * 文字尺寸
@@ -126,7 +129,9 @@ export class HiCountdown extends HIElement {
      */
     @attr size;
     private sizeChanged(oldValue, newValue): void {
-        this.style.fontSize = newValue + 'px';        
+        Style(this)({ 
+            fontSize: newValue + 'px'
+        });      
     }
     // ------------------ 自定义函数 ------------------
     /**

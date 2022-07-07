@@ -9,6 +9,8 @@
 import { customElement, attr, observable, css,  html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 依赖组件
 // 样式文件
 const styles = css`
@@ -84,9 +86,11 @@ export class HiAvatar extends HIElementBase {
      */
     sizeChanged(oldValue, newValue): void {
         if (!['large', 'small', 'default'].includes(newValue)) {
-            this.style.width = newValue + 'px';
-            this.style.height = newValue + 'px';        
-            this.style.fontSize = newValue * 0.65 + 'px';        
+            Style(this)({
+                width: newValue + 'px',
+                height: newValue + 'px',
+                fontSize: newValue * 0.65 + 'px'
+            });
         }
     }
 

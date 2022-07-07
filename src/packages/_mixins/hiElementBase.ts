@@ -8,6 +8,8 @@
  * @public
  */
 import { HIElement, attr } from 'hi-element';
+// 样式助手
+import { Style } from '../_utils/style/style';
 export class HIElementBase extends HIElement {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
@@ -18,7 +20,7 @@ export class HIElementBase extends HIElement {
      */
     @attr color: string;
     colorChanged(oldValue, newValue): void {
-        this.style.color = newValue;
+        Style(this)({'color': newValue});
     }
     /**
      * 尺寸

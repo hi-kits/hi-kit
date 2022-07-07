@@ -7,8 +7,10 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html, when } from 'hi-element';
+// 样式助手
+import { Style } from '../_utils/style/style';
 
-// 样式文件
+// 样式
 const styles = css`
 :host {
     position: relative;
@@ -141,7 +143,9 @@ export class HiTimelineItem extends HIElement {
     @attr color: string;
     private colorChanged(oldValue, newValue): void {
         setTimeout(() => {
-            this.temp.style.borderColor = newValue;
+            Style(this.temp)({
+                borderColor: newValue
+            });
         }, 10);
     }
     @attr label: string;

@@ -7,7 +7,9 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-
+// 样式助手
+import { Style } from '../_utils/style/style';
+// 样式
 const styles = css`
 :host {
     display: flex;
@@ -21,7 +23,8 @@ const styles = css`
 
 
 
-`
+`;
+// 模版文件
 const template = html<HiCommentAction>`
 <slot></slot>
 `;
@@ -41,8 +44,11 @@ export class HiCommentAction extends HIElement {
      */
     @attr size;
     private sizeChanged(oldValue, newValue): void {
-        this.style.fontSize = newValue + 'px';        
-        this.style.height = newValue + 'px'; 
+        Style(this)({
+            height: newValue + 'px',
+            fontSize: newValue + 'px'
+        });
+
     }
 
     /**
@@ -51,7 +57,7 @@ export class HiCommentAction extends HIElement {
      */
     @attr color: string;
     private colorChanged(oldValue, newValue): void {
-        this.style.color = newValue;
+        Style(this)('color', newValue);
     }
     // ------------------ 自定义函数 ------------------
     /**
