@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, html, observable } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式文件
@@ -78,13 +80,13 @@ export class HiSwitch extends HIElementBase {
         super.connectedCallback();
         this.switch = this.shadowRoot!.getElementById('switch');
         // this.switch.addEventListener("click", this.clickHandler);
-        this.switch.addEventListener('change',(ev)=>{
+        EventUtil.addHandler(this.switch, 'change', (ev)=>{
             this.checked = this.switch.checked;
             this.$emit('change', {
                 checked: this.checked
             });
         });
-        this.switch.addEventListener('keydown', (ev) => {
+        EventUtil.addHandler(this.switch, 'keydown', (ev)=>{
             switch (ev.keyCode) {
                 case 13://Enter
                     this.checked = !this.checked;
@@ -93,7 +95,7 @@ export class HiSwitch extends HIElementBase {
                     break;
             }
         });
-        this.switch.addEventListener('focus',(ev)=>{
+        EventUtil.addHandler(this.switch, 'focus', (ev)=>{
             ev.stopPropagation();
             if(!this.isfocus){
                 this.$emit('focus', {
@@ -101,7 +103,7 @@ export class HiSwitch extends HIElementBase {
                 });
             }
         });
-        this.switch.addEventListener('blur',(ev)=>{
+        EventUtil.addHandler(this.switch, 'blur', (ev)=>{
             ev.stopPropagation();
             if(Number(getComputedStyle(this).zIndex) == 2 ){
                 this.isfocus = true;
@@ -112,6 +114,7 @@ export class HiSwitch extends HIElementBase {
                 });
             }
         });
+
         if (this.checked) {
             this.switch.setAttribute('checked','');
         } else {

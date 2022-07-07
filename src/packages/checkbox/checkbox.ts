@@ -7,6 +7,8 @@
  */
 // 核心库
 import { customElement, attr, observable, ref, html } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
 // 混入基础功能
 import { HIElementForm } from '../_mixins/hiElementForm';
 // 样式文件
@@ -64,17 +66,17 @@ export class HiCheckbox extends HIElementForm {
       */
     public connectedCallback(): void {
         super.connectedCallback();
-        this.checkbox.addEventListener('change',(ev)=>{
+        EventUtil.addHandler(this.checkbox, 'change',(ev)=>{
             this.checked = this.checkbox.checked;
             this.$emit('change', { checked: this.checked });
-        })
-        this.checkbox.addEventListener('focus',(ev)=>{
+        });
+        EventUtil.addHandler(this.checkbox, 'focus',(ev)=>{
             ev.stopPropagation();
             if(!this.isfocus){
                 this.$emit('focus', { value: this.value });
             }
-        })
-        this.checkbox.addEventListener('blur',(ev)=>{
+        });
+        EventUtil.addHandler(this.checkbox, 'blur',(ev)=>{
             ev.stopPropagation();
             if( Number(getComputedStyle(this.checkbox).zIndex) ==2){
                 this.isfocus = true;

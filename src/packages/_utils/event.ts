@@ -3,8 +3,14 @@
  * 
  * EventUtil.addHandler( element, 'click', function )
  */
-export class  EventUtil {
-    addHandler(element, type, handler) {
+export const  EventUtil = {
+    /**
+     * 添加时间处理
+     * @param element 元素
+     * @param type 事件类型 例如： click、 change
+     * @param handler 事件执行的函数
+     */
+    addHandler(element, type, handler): void {
         element.addEventListener ? element.addEventListener(type, handler, false) :
             element.attachEvent ? element.attachEvent('on' + type, handler) :
                 element['on' + type] = handler;

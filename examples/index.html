@@ -148,15 +148,15 @@
                     </h-col>
                     <h-col span="8">
                         <p>通常多个出现，有一个相同的name，表示同一组，可以通过name来获取当前组的选中</p>
-                        <h-radio name="lang" checked>Html</h-radio>
-                        <h-radio name="lang">Css</h-radio>
-                        <h-radio name="lang">Javascript</h-radio>
-                        <h-radio name="lang">Python</h-radio>
-                        <h-radio name="lang">Php</h-radio>
-                        <h-radio name="lang">Dart</h-radio>
-                        <h-radio name="lang">Swift</h-radio>
+                        <h-radio name="radio" checked>Html</h-radio>
+                        <h-radio name="radio">Css</h-radio>
+                        <h-radio name="radio">Javascript</h-radio>
+                        <h-radio name="radio">Python</h-radio>
+                        <h-radio name="radio">Php</h-radio>
+                        <h-radio name="radio">Dart</h-radio>
+                        <h-radio name="radio">Swift</h-radio>
                         <h-button type="primary" onclick="HiMessage.info({
-                            content: Array.from(document.querySelectorAll('h-checkbox[name=lang][checked]')).map(el=>el.textContent)
+                            content: Array.from(document.querySelectorAll('h-radio[name=radio][checked]')).map(el=>el.textContent)
                         })">获取选中状态</h-button>
                     </h-col>
                     <h-col span="8">
@@ -169,7 +169,7 @@
                             <h-radio>Swift</h-radio>
                         </h-radio-group>
                         <h-switch checked onchange="this.previousElementSibling.disabled = this.checked;"></h-switch>
-                        <h-button type="primary" onclick="this.previousElementSibling.previousElementSibling.value='[\'Vue\',\'Flutter\']'">选中Vue、Flutter</h-button>
+                        <h-button type="primary" onclick="this.previousElementSibling.previousElementSibling.value='[\'Vue\']'">选中Vue</h-button>
                     </h-col>
                 </h-row>
                 <h-radio-group  required min="2" max="3" defaultvalue="Angular">

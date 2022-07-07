@@ -7,24 +7,28 @@
  */
 // 核心库
 import { HIElement, customElement, html, attr, ref, observable } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
+// 混入基础功能
+import { HIElementForm } from '../_mixins/hiElementForm';
 // 样式文件
-import { RadioStyles as styles } from "./radio.style";
+import { RadioGroupStyles as styles } from "./radio.group.style";
 // 依赖组件
 import { HiTips } from "../tips";
 // 模版文件
-const template = html<HiRadio>`
-<h-tips id="tip" type="error">
-    <slot></slot>
+const template = html<HiRadioGroup>`
+<h-tips id="tip" type="error" ${ref('tip')}>
+    <slot  ${ref('slots')}></slot>
 </h-tips>
 
 `;
 // 定义元素
 @customElement({
-   name: 'h-radio',
+   name: 'h-radio-group',
    template,
    styles
 })
-export class HiRadio extends HIElement {
+export class HiRadioGroup extends HIElementForm {
     // ------------------ 构造函数 ------------------
     constructor(
     ) {
@@ -32,46 +36,52 @@ export class HiRadio extends HIElement {
     }
     // ------------------ 参数 ------------------
     @observable
-    public radio: HTMLInputElement;
+    public slots: HTMLSlotElement;
+    @observable
+    tip: HTMLDivElement;
     group;
+    elements;
     parent;
+    init;
     
     // ------------------ 属性 ------------------
-    @attr disabled: boolean;
-    private disabledChanged(oldValue, newValue): void {
-        if (newValue === null || newValue === false) {
-            this.removeAttribute('disabled');
-        } else {
-            this.setAttribute('disabled', '');
-        }
-    }
-    @attr checked: boolean;
-    private checkedChanged(oldValue, newValue): void {
-        if (newValue === null || newValue === false) {
-            this.radio.checked = true;
-        } else {
-            this.radio.checked = false;
-        }
-    }
+
     @attr name: string;
-    @attr value: string;
-    private valueChanged(oldValue, newValue): void {
-        this.setAttribute('value', newValue);
-    }
-    
+
+    @attr defaultvalue!:any;
 
     // ------------------ 自定义函数 ------------------
+    valueChanged(): any {
+        this.elements.forEach(el=>{
+            if(this.value.includes(el.value)){
+                el.setAttribute('checked','');
+            } else {
+                el.removeAttribute('checked');
+            }
+        })
+        
+    }
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
     connectedCallback(): void {
         super.connectedCallback();
-        this.group = this.closest('h-radio-group');
-        this.parent = this.group || this.getRootNode();
-        this.radio.addEventListener('change',(ev)=>{
-            this.tocheck();
-            this.$emit('change', { checked: this.checked });
+        // this.form = this.closest('h-form');
+        EventUtil.addHandler(this.slots, 'slotchange',()=>{
+            this.elements  = this.querySelectorAll('h-radio');
+            this.value = this.defaultvalue;
+            this.elements.forEach(el=>{
+                el.addEventListener('change',()=>{
+                    if(el.checked){
+                        this.$emit('change', {
+                            value:this.value
+                        })
+                        // this.checkValidity();
+                    }
+                })
+            })
+            this.init = true;
         })
     }
     tocheck(): void {

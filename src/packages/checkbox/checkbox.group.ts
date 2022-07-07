@@ -8,6 +8,8 @@
 
 // 核心库
 import { HIElement, customElement, observable, ref, html, attr } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
 // 混入基础功能
 import { HIElementForm } from '../_mixins/hiElementForm';
 // 样式文件
@@ -47,22 +49,19 @@ export class HiCheckboxGroup extends HIElementForm {
     // ------------------ 自定义函数 ------------------
     connectedCallback(): void {
         super.connectedCallback();
-        this.slots.addEventListener('slotchange',()=>{
+        EventUtil.addHandler(this.slots, 'slotchange', ()=>{
             this.elements  = this.querySelectorAll('h-checkbox');
             this.value = this.defaultvalue;
             this.elements.forEach(el=>{
                 el.addEventListener('change',()=>{
                     this.checkValidity();
-                    this.dispatchEvent(new CustomEvent('change',{
-                        detail:{
-                            value:this.value
-                        }
-                    }));
+                    this.$emit('change', {
+                        value:this.value
+                    })
                 })
             })
             this.init = true;
-        })
-        
+        });        
     }
 
     checkValidity(){

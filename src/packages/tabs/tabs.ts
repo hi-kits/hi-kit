@@ -7,6 +7,8 @@
  */
 // 核心库
 import { customElement, attr, ref, css, html, observable } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式文件
@@ -136,7 +138,7 @@ export class HiTabs extends HIElementBase {
      */
     connectedCallback(): void {
         super.connectedCallback();
-        this.Slot.addEventListener('slotchange', ()=>{
+        EventUtil.addHandler(this.Slot, 'slotchange', ()=>{
             const slots = this.Slot.assignedElements();
             let _html = ''
             slots.forEach((item, index)=>{

@@ -9,11 +9,12 @@
 import { css } from 'hi-element';
 // 配置文件
 import { hiConfig } from "../config";
+// 
+import { display } from '../_utils/style';
 // 样式
 export const RadioStyles = css`
-
+${display("inline-block")}
 :host{ 
-    display:inline-block;
     font-size:14px;
     color:var(--fontColor,#333);
     -webkit-tap-highlight-color: transparent;
@@ -89,10 +90,10 @@ label{
 #radio:focus-visible+label .cheked::after{
     transform:scale(2.5);
 }
-#radio:checked+label .cheked::before{
+#radio[checked]+label .cheked::before{
     transform: scale(1);
 }
-#radio:checked+label .cheked{
+#radio[checked]+label .cheked{
     border-color:var(--themeColor,#42b983);
 }
 

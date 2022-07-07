@@ -10,7 +10,7 @@ import { css } from 'hi-element';
 // 配置文件
 import { hiConfig } from "../config";
 // 样式
-export const RadioStyles = css`
+export const RadioGroupStyles = css`
 
 :host {
     display:inline-block;
