@@ -103,6 +103,7 @@ export class HiRadio extends HIElementForm {
     tocheck(): void {
         const selector = this.group ? `h-radio[checked]` : `h-radio[name="${this.name}"][checked]`;
         const prev = this.parent.querySelector(selector);
+        this.parent.value = this.value;
         if( prev ){
             prev.checked = false;
         }

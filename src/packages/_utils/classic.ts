@@ -8,6 +8,13 @@
  */
 export class Classic {
   // ------------------ 构造函数 ------------------
+  private static _instance: Classic;
+  public static get instance(): Classic {
+    if (!this._instance) {
+      this._instance = new Classic();
+    }
+    return this._instance;
+  }
   constructor() {
     if ( 'classList' in document.documentElement ) {
       this.has = ( elem, c ) => {

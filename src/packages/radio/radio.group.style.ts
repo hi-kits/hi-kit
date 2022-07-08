@@ -15,13 +15,14 @@ export const RadioGroupStyles = css`
 :host {
     display:inline-block;
 }
-:host(:focus-within) xy-tips,:host(:hover) h-tips{
+:host(:focus-within) h-tips,
+:host(:hover) h-tips{
     z-index:2;
 }
 :host([disabled]){ 
     pointer-events: none; 
 }
-:host([disabled]) xy-tips{
+:host([disabled]) h-tips{
     pointer-events: all;
     cursor: not-allowed;
     outline: 0;

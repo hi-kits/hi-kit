@@ -39,10 +39,14 @@ export class HiRadioGroup extends HIElementForm {
     public slots: HTMLSlotElement;
     @observable
     tip: HTMLDivElement;
-    group;
+    
+    /**
+     * 子元素
+     * @date 7/8/2022 - 10:51:52 AM
+     *
+     * @type {*}
+     */
     elements;
-    parent;
-    init;
     
     // ------------------ 属性 ------------------
 
@@ -51,9 +55,9 @@ export class HiRadioGroup extends HIElementForm {
     @attr defaultvalue!:any;
 
     // ------------------ 自定义函数 ------------------
-    valueChanged(): any {
+    valueChanged(oldValue, newValue): any {
         this.elements.forEach(el=>{
-            if(this.value.includes(el.value)){
+            if(newValue === el.value){
                 el.setAttribute('checked','');
             } else {
                 el.removeAttribute('checked');
@@ -67,10 +71,9 @@ export class HiRadioGroup extends HIElementForm {
      */
     connectedCallback(): void {
         super.connectedCallback();
-        // this.form = this.closest('h-form');
         EventUtil.addHandler(this.slots, 'slotchange',()=>{
             this.elements  = this.querySelectorAll('h-radio');
-            this.value = this.defaultvalue;
+            // this.value = this.defaultvalue;
             this.elements.forEach(el=>{
                 EventUtil.addHandler(el, 'change',()=>{
                     if(el.checked){
@@ -81,16 +84,7 @@ export class HiRadioGroup extends HIElementForm {
                     }
                 })
             })
-            this.init = true;
         })
-    }
-    tocheck(): void {
-        const selector = this.group ? `h-radio[checked]` : `h-radio[name="${this.name}"][checked]`;
-        const prev = this.parent.querySelector(selector);
-        if( prev ){
-            prev.checked = false;
-        }
-        this.checked = true;
     }
     
 }

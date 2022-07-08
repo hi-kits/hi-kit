@@ -32,8 +32,13 @@ export class HiCheckboxGroup extends HIElementForm {
     // ------------------ 参数 ------------------
     @observable
     slots: HTMLSlotElement;
+    /**
+     * 子元素
+     * @date 7/8/2022 - 10:51:52 AM
+     *
+     * @type {*}
+     */
     elements;
-    init;
     // ------------------ 属性 ------------------
     valueChanged(): any {
         this.elements.forEach(el=>{
@@ -60,8 +65,7 @@ export class HiCheckboxGroup extends HIElementForm {
                     })
                 })
             })
-            this.init = true;
-        });        
+        });
     }
 
     checkValidity(){

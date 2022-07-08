@@ -161,7 +161,7 @@
                     </h-col>
                     <h-col span="8">
                         <p>现新增h-radio-group组件，表示同一组</p>
-                        <h-radio-group name="books" disabled defaultvalue="React,Angular">
+                        <h-radio-group name="bookws" disabled defaultvalue="Angular">
                             <h-radio>React</h-radio>
                             <h-radio indeterminate>Vue</h-radio>
                             <h-radio>Angular</h-radio>
@@ -169,16 +169,9 @@
                             <h-radio>Swift</h-radio>
                         </h-radio-group>
                         <h-switch checked onchange="this.previousElementSibling.disabled = this.checked;"></h-switch>
-                        <h-button type="primary" onclick="this.previousElementSibling.previousElementSibling.value='[\'Vue\']'">选中Vue</h-button>
+                        <h-button type="primary" onclick="this.previousElementSibling.previousElementSibling.value='Angular'">选中Angular</h-button>
                     </h-col>
                 </h-row>
-                <h-radio-group  required min="2" max="3" defaultvalue="Angular">
-                    <h-radio>React</h-radio>
-                    <h-radio>Vue</h-radio>
-                    <h-radio>Angular</h-radio>
-                    <h-radio>Flutter</h-radio>
-                    <h-radio>Swift</h-radio>
-                </h-radio-group>
             </div>
             <h2>分割线 <span>divider</span></h2>
             <div>
@@ -918,6 +911,9 @@
                                 <h-badge count="643"></h-badge>
                             </a>
                             <a class="Example">
+                                <h-badge count="秒杀"></h-badge>
+                            </a>
+                            <a class="Example">
                                 <h-badge  count="4" badgeStyle="background-color: rgb(255, 255, 255);
                             box-shadow: rgb(217 217 217) 0px 0px 0px 1px inset;
                             color: rgb(153, 153, 153);" >
@@ -1591,6 +1587,24 @@
             </div>
             <h2>上传文件 <span>upload</span></h2>
             <h-upload>33</h-upload>
+            <h2>导航点 <span>navdot</span></h2>
+            <div>
+                <h-row class="NavDotWrap" gutter="10">
+                    <h-col span="8">
+                        <p style="margin: 12px;">基本用法</p>
+                        <h-nav-dot>
+                        </h-nav-dot>
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">禁用 disabled</p>
+                        
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">标识key、activekey</p>
+                        
+                    </h-col>
+                </h-row>
+            </div>
         </div>
     </body>
     

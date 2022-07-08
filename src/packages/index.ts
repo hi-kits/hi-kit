@@ -39,6 +39,7 @@ import { HiSegmenteds, HiSegmented } from './segmented';
 import { HiTabs, HiTab } from './tabs';
 // import { HiUpload } from './upload';
 import { HiTimePane, HiTimePicker } from './time-picker';
+import { HiNavDot } from './navDot';
 
 window['HiMessage'] = HiMessageService;
 window['HiModal'] = HiModalService;
