@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-06 18:47:37
+ * @LastEditTime: 2022-07-07 09:53:27
  */
 import { HIElement, customElement, attr, html, ValueConverter, ref, observable } from 'hi-element';
 import { timePaneStyle as styles } from './time-pane.style';
@@ -62,12 +62,14 @@ export class HiTimePane extends HIElement {
  
   private hour = '00';
   private minute = '00';
-  private second = '00'
+  private second = '00';
+  private step = 0;
 
   // DOM Ref
   public hour_select : HTMLSelectElement;
   public minute_select: HTMLSelectElement;
   public second_select: HTMLSelectElement;
+
 
 
   public connectedCallback(): void {
@@ -80,6 +82,7 @@ export class HiTimePane extends HIElement {
       // 设置select的value
       this.setSelectValue();
     });
+    this.step = this.hour_select.children[0].clientHeight
     this.setSelectValue();
   }
 
@@ -87,10 +90,12 @@ export class HiTimePane extends HIElement {
 
   timeChangeHandler(ev, type) {
     // hour/minute/second 改动了
+    // 获取当前的change的select的值
+    const value= this[type + '_select'].value.padStart(2, '0')
     // 更新对应的值
-    this[type] = this[type + '_select'].value.padStart(2, '0');
+    this.setValueAndPosition(type, value, 'single')
     // 修改selectedTime
-    this.updateSelectedTime()
+    this.updateSelectedTime();
     
   }
   // 当select的选择的值改变了更新展示的text
@@ -102,8 +107,18 @@ export class HiTimePane extends HIElement {
   setSelectValue() {
     const time = this.timevalue || this.selectedTime;
     const [hour, minute, second] = time.split(' : ');
-    this.hour_select.value = hour;
-    this.minute_select.value = minute;
-    this.second_select.value = second;
+
+    this.setValueAndPosition('hour', hour, 'select');
+    this.setValueAndPosition('minute', minute, 'select');
+    this.setValueAndPosition('second', second, 'select');
+  }
+  // 设置select的value以及option的位置
+  setValueAndPosition(type, value, valueType){
+    if (valueType === 'select') {
+      this[type + '_select'].value = value;
+    }
+    this[type] = value;
+    // 滚动到顶部
+    this[type + '_select'].scrollTop = this.step * value;
   }
 }

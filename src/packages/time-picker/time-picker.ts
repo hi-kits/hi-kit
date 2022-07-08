@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-06 18:47:55
+ * @LastEditTime: 2022-07-07 09:49:32
  */
 import { HIElement, customElement, attr, when, ref, html } from 'hi-element';
 import { timePickerStyle as styles } from './time-picker.style';
@@ -78,10 +78,10 @@ export class HiTimePicker extends HIElement {
     this.select.addEventListener('click', () => {
       if (!this.timePane) {
         this.timePane = new HiTimePane();
-        this.timePane.selectedTime = this.timevalue || this.defaultTimeValue;
-        this.timePane.timevalue = this.timevalue || this.defaultTimeValue;
-        this.popcon.prepend(this.timePane);
       }
+      this.timePane.selectedTime = this.timevalue || this.defaultTimeValue;
+      this.timePane.timevalue = this.timevalue || this.defaultTimeValue;
+      this.popcon.prepend(this.timePane);
     });
     // 点击确定按钮
     this.btnSubmit.addEventListener('click', () => {
