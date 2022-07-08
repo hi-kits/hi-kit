@@ -32,8 +32,13 @@ export class HiCheckboxGroup extends HIElementForm {
     // ------------------ 参数 ------------------
     @observable
     slots: HTMLSlotElement;
+    /**
+     * 子元素
+     * @date 7/8/2022 - 10:51:52 AM
+     *
+     * @type {*}
+     */
     elements;
-    init;
     // ------------------ 属性 ------------------
     valueChanged(): any {
         this.elements.forEach(el=>{
@@ -53,15 +58,14 @@ export class HiCheckboxGroup extends HIElementForm {
             this.elements  = this.querySelectorAll('h-checkbox');
             this.value = this.defaultvalue;
             this.elements.forEach(el=>{
-                el.addEventListener('change',()=>{
+                EventUtil.addHandler(el, 'change',()=>{
                     this.checkValidity();
                     this.$emit('change', {
                         value:this.value
                     })
                 })
             })
-            this.init = true;
-        });        
+        });
     }
 
     checkValidity(){

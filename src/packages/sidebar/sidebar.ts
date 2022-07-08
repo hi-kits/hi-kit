@@ -7,7 +7,11 @@
  */
 
 // 核心库
-import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+import { customElement, attr, css,  html } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 
@@ -74,19 +78,11 @@ export class HiSidebar extends HIElementBase {
      * 尺寸
      * @public number
      */
-    @attr size;
     sizeChanged(oldValue, newValue): void {
-        this.style.fontSize = newValue + 'px';        
-        this.style.height = newValue + 'px'; 
-    }
-
-    /**
-     * 颜色
-     * @public string
-     */
-    @attr color: string;
-    colorChanged(oldValue, newValue): void {
-        this.style.color = newValue;
+        Style(this)({
+            fontSize: newValue + 'px',
+            height: newValue + 'px'
+        });
     }
     @attr({ mode: "boolean" }) show: boolean;
     // ------------------ 自定义函数 ------------------
@@ -97,7 +93,7 @@ export class HiSidebar extends HIElementBase {
     connectedCallback(): void {
         super.connectedCallback();
         // this.sidebar = this;
-        document.addEventListener('mousedown', this.setpop);
+        EventUtil.addHandler(document, 'mousedown', this.setpop);
     }
     setpop = ev => {
         const path = ev.path || (ev.composedPath && ev.composedPath());

@@ -7,7 +7,11 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
+// 样式助手
+import { Style } from '../_utils/style/style';
+// 样式
 const styles = css`
 :host{
     display: flex;
@@ -58,7 +62,8 @@ span {
 :host([dir="left"])::after {
     width: 95%;
 }
-`
+`;
+// 模版文件
 const template = html<HiDivider>`
 <template>
     <span>
@@ -74,7 +79,7 @@ const template = html<HiDivider>`
    template,
    shadowOptions: { mode: 'closed'}
 })
-export class HiDivider extends HIElement {
+export class HiDivider extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     // ------------------ 属性 ------------------
@@ -109,20 +114,14 @@ export class HiDivider extends HIElement {
     @attr dir: 'center' | 'left' | 'right';
 
     /**
-     * 文字颜色
-     * @public string
-     */
-    @attr color: string;
-    private colorChanged(oldValue, newValue): void {
-        this.style.color = newValue;
-    }
-    /**
      * 文字尺寸
      * @public number
      */
     @attr size;
-    private sizeChanged(oldValue, newValue): void {
-        this.style.fontSize = newValue + 'px';        
+    sizeChanged(oldValue, newValue): void {
+        Style(this)({ 
+            fontSize: newValue + 'px'
+        });
     }
     // ------------------ 自定义函数 ------------------
     /**

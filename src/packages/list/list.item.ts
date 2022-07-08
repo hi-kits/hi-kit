@@ -8,6 +8,10 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 配置文件
 import { hiConfig } from "../config";
 
@@ -44,7 +48,7 @@ const template = html<HiListItem>`
    styles,
    template,
 })
-export class HiListItem extends HIElement {
+export class HiListItem extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
 
@@ -53,10 +57,11 @@ export class HiListItem extends HIElement {
      * 尺寸
      * @public number
      */
-    @attr size: 'large' | 'small' | 'default' | number;
-    private sizeChanged(oldValue, newValue): void {
+    sizeChanged(oldValue, newValue): void {
         if (!['large', 'small', 'default'].includes(newValue)) {
-            this.style.padding = `${newValue}px`;        
+            Style(this)({
+                padding: `${newValue}px`,
+            });
         }
     }
     // @attr pending: string;

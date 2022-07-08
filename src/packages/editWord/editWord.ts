@@ -7,9 +7,13 @@
  */
 // 核心库
 import { HIElement, customElement, attr, html, when, observable,slotted, Observable, ref } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
+import { Style } from '../_utils/style/style';
+// 样式文件
 import { EditWordStyles as styles } from "./editWord.style";
 
-
+// 明白文件
 const template = html<HiEditWord>`
 
 <form ${ref("form")}>
@@ -48,27 +52,28 @@ export class HiEditWord extends HIElement {
      * @internal
      */
     connectedCallback(): void {
-        super.connectedCallback()
-        this.form.style.display = 'none';
-        this.span.style.display = 'inline-block'
-        this.input.style.width = this.span.clientWidth + 'px';
+        super.connectedCallback();
+        Style(this.form)({ display: 'none'});
+        Style(this.span)({ display: 'inline-block'});
+        Style(this.input)({ width: this.span.clientWidth + 'px'});
         this.input.value =  String(this.textContent);
         this.setAttribute('tabindex', '0');
         this.input.setAttribute('required', 'required');
-        this.shadowRoot!.addEventListener('click', (ev) => {
-            this.span.style.display = 'none';
-            this.form.style.display = 'inline-block';
+
+        EventUtil.addHandler(this.shadowRoot, 'click', (ev) => {
+            Style(this.span)({ display: 'none'})
+            Style(this.form)({ display: 'inline-block'});
             this.input.focus();
-            this.input.setSelectionRange(0, this.input.value.length)
+            this.input.setSelectionRange(0, this.input.value.length);
         });
-        this.form.addEventListener('submit', e => {
+        EventUtil.addHandler(this.form, 'submit', (ev) => {
             this.updateDisplay();
-            e.preventDefault();
+            ev.preventDefault();
         });
-        this.input.addEventListener('blur', () => {
+        EventUtil.addHandler(this.input, 'blur', (ev) => {
             this.updateDisplay();
         });
-        this.addEventListener("ochange", (e: Event): void => {
+        EventUtil.addHandler(this, 'ochange', (e: Event): void => {
             if (
                 e.defaultPrevented ||
                 e.target === null
@@ -84,10 +89,11 @@ export class HiEditWord extends HIElement {
      * 更新显示
     */
     updateDisplay(): void {
-        this.span.style.display = 'inline-block';
-        this.form.style.display = 'none';
+
+        Style(this.form)({ display: 'none'});
+        Style(this.span)({ display: 'inline-block'});
+        Style(this.input)({ width: this.span.clientWidth + 'px'});
         this.span.textContent = this.input.value;
-        this.input.style.width = this.span.clientWidth + 'px';
         // console.log(this.ochange);
         // this.ochange(3)
         

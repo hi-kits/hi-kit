@@ -7,6 +7,10 @@
  */
 // 核心库
 import { HIElement, customElement, attr, html } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 样式文件
 import { ShortStyles as styles } from "./short.style";
 // 模版文件
@@ -23,7 +27,7 @@ const template = html<HiShort>`
    template,
    styles
 })
-export class HiShort extends HIElement {
+export class HiShort extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     // ------------------ 属性 ------------------
@@ -48,20 +52,13 @@ export class HiShort extends HIElement {
      @attr dir: 'center' | 'left' | 'right';
  
      /**
-      * 文字颜色
-      * @public string
-      */
-     @attr color: string;
-     private colorChanged(oldValue, newValue): void {
-         this.style.color = newValue;
-     }
-     /**
       * 文字尺寸
       * @public number
       */
-     @attr size;
-     private sizeChanged(oldValue, newValue): void {
-         this.style.fontSize = newValue + 'px';        
+     sizeChanged(oldValue, newValue): void {
+        Style(this)({
+            fontSize: newValue + 'px'
+        });
      }
      // ------------------ 自定义函数 ------------------
      /**

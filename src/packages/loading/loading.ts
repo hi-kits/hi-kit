@@ -7,6 +7,10 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 样式
 const styles = css`
 :host{
@@ -67,7 +71,7 @@ const template = html<HiLoading>`
    styles,
    template,
 })
-export class HiLoading extends HIElement {
+export class HiLoading extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
     /**
@@ -80,23 +84,18 @@ export class HiLoading extends HIElement {
      * loading 尺寸
      * @public number
      */
-    @attr size;
-    private sizeChanged(oldValue, newValue): void {
-        this.style.fontSize = newValue + 'px';        
-        this.style.height = newValue + 'px'; 
+    sizeChanged(oldValue, newValue): void {
+        Style(this)({
+            fontSize: `${newValue}px`,
+            height: `${newValue}px`
+        }); 
         if (this.loading) {
-            this.loading!.style.height = newValue + 'px'
+            Style(this.loading)({
+                height: `${newValue}px`
+            });
         }
     }
 
-    /**
-     * loading 颜色
-     * @public string
-     */
-    @attr color: string;
-    private colorChanged(oldValue, newValue): void {
-        this.style.color = newValue;
-    }
     // ------------------ 自定义函数 ------------------
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
@@ -104,7 +103,9 @@ export class HiLoading extends HIElement {
      */
     connectedCallback(): void {
         super.connectedCallback();
-        this.loading!.style.height   = this.size  + 'px';
+        Style(this.loading)({
+            height: this.size  + 'px'
+        });
 
     }
 

@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
 // 样式文件
 const styles = css`
 :host{ 
@@ -228,19 +230,19 @@ export class HiSlider extends HIElement {
                 }
             });
             this.resizeObserver.observe(this);
-        }
-        this.slider.addEventListener('input',(ev) => {
+        };
+        EventUtil.addHandler(this.slider, 'input', (ev) => {
             this.value = Number(this.slider.value);
             this._oninput = true;
             ev.stopPropagation();
-            this.$emit('input', { value: this.slider.value })
-        })
-        this.slider.addEventListener('change',(ev) => {
+            this.$emit('input', { value: this.slider.value });
+        });
+        EventUtil.addHandler(this.slider, 'change', (ev) => {
             this.value = Number(this.slider.value);
             this._oninput = false;
-            this.$emit('change', { value: this.slider.value })
-        })
-        this.shadowRoot!.addEventListener('wheel',(ev: any)=>{
+            this.$emit('change', { value: this.slider.value });
+        });
+        EventUtil.addHandler(this.shadowRoot, 'wheel', (ev) => {
             if( Number(getComputedStyle(this.slider).zIndex) == 2){
                 ev.preventDefault();
                 if(ev.deltaY<0 && !this.vertical || ev.deltaY>0 && this.vertical){
@@ -251,8 +253,7 @@ export class HiSlider extends HIElement {
                 
                 this.$emit('change', { value: this.slider.value })
             }
-        },true)
-
+        });
     }
     disconnectedCallback() {
         if( this.vertical ){

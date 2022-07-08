@@ -7,11 +7,14 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, slotted,  html, when } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
 // 样式文件
 import { MessageStyles as styles } from "./message.style";
 // 依赖组件
 import { HiIcon } from "../icon";
 import { HiLoading } from "../loading";
+import { Style } from '../_utils/style/style';
 
 /**
  * 消息类型
@@ -100,24 +103,31 @@ export class HiMessage extends HIElement {
      */
     @attr type!: MessageType;
     private typeChanged(oldValue: string, newValue: string): void {
-        let name = '';
-        let color = '';
+
         switch (newValue) {
             case 'info':
                 this.iconName = 'info-circle';
-                this.icon.style.color = 'var(--infoColor,#1890ff)';
+                Style(this.icon)({
+                    color: 'var(--infoColor,#1890ff)'
+                });
                 break;
             case 'success':
                 this.iconName = 'check-circle';
-                this.icon.style.color = 'var(--successColor,#52c41a)';
+                Style(this.icon)({
+                    color: 'var(--successColor,#52c41a)'
+                });
                 break;
             case 'error':
                 this.iconName = 'error';
-                this.icon.style.color = 'var(--errorColor,#f4615c)';
+                Style(this.icon)({
+                    color: 'var(--errorColor,#f4615c)'
+                });
                 break;
             case 'warning':
                 this.iconName = 'warning-circle';
-                this.icon.style.color = 'var(--waringColor,#faad14)';
+                Style(this.icon)({
+                    color: 'var(--waringColor,#faad14)'
+                });
                 break;
             default:
                 break;
@@ -160,13 +170,13 @@ export class HiMessage extends HIElement {
      */
     connectedCallback(): void {
         super.connectedCallback();
-        this.shadowRoot!.addEventListener('transitionend', (ev:any) =>{
+        EventUtil.addHandler(this.shadowRoot, 'transitionend', (ev:any) =>{
             if ( ev.propertyName === 'transform' && !this.show ) {
                 messageContent.removeChild(this);
                 this.onCallback();
                 this.dispatchEvent(new CustomEvent('close'));
             }
-        })
+        });
     }
 
 }
@@ -175,7 +185,14 @@ let messageContent: any = document.getElementById('HiMessageWrap');
 if(!messageContent){
     messageContent = document.createElement('div');
     messageContent.id = 'HiMessageWrap';
-    messageContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:10px; z-index:99;';
+    Style(messageContent)({
+        'position': 'fixed',
+        'pointer-events': 'none',
+        'left': 0,
+        'right': 0,
+        'top': '10px',
+        'z-index': 99
+    });
     document.body.appendChild(messageContent);
 }
 

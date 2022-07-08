@@ -79,7 +79,6 @@ export class HiSwitch extends HIElementBase {
      connectedCallback() {
         super.connectedCallback();
         this.switch = this.shadowRoot!.getElementById('switch');
-        // this.switch.addEventListener("click", this.clickHandler);
         EventUtil.addHandler(this.switch, 'change', (ev)=>{
             this.checked = this.switch.checked;
             this.$emit('change', {

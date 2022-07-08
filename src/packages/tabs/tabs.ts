@@ -9,6 +9,8 @@
 import { customElement, attr, ref, css, html, observable } from 'hi-element';
 // 事件处理
 import { EventUtil } from '../_utils/event';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式文件
@@ -98,15 +100,19 @@ export class HiTabs extends HIElementBase {
                 this.activekey = this.Slot.assignedElements()[0].getAttribute('key');
                 active = this.tabPos[this.activekey];
             }
-            this.TabLine.style.width = `${active.width}px`;
-            this.TabLine.style.transform =  `translateX(${active.left}px)`;
-            this.TabContent.style.transform = `translateX(${-(active.index) * 100}%)`;
+            Style(this.TabLine)({
+                width: `${active.width}px`,
+                transform: `translateX(${active.left}px)`
+            });
+            Style(this.TabContent)({
+                transform: `translateX(${-(active.index) * 100}%)`
+            });
+
             this.Filter.innerHTML = `
             ::slotted(h-tab:not([key="${this.activekey}"])){
                 height:0;
                 overflow:visible;
-            }
-            `
+            }`;
             if( oldValue!==newValue){
                 this.TabNav.parentNode!['scrollLeft'] = active.left + active.width/2-this.TabNav.parentNode!['offsetWidth']/2;
                 const pre = this.TabNav.querySelector(`.NavItem.active`);
@@ -162,16 +168,6 @@ export class HiTabs extends HIElementBase {
             // this.init = true;
         });
         
-        // this.TabNav.addEventListener('click',(ev)=>{
-        //     const item = ev.target!['closest']('h-button');
-        //     if(item){
-        //         if (item.getAttribute('disabled') !== null) {
-        //             return
-        //         }
-        //         this.activekey = item.getAttribute('key');
-        //     }
-        // })
-        
     }
     tabNavClick(ev): void {
         const item = ev.target!['closest']('h-button');
@@ -193,8 +189,10 @@ export class HiTabs extends HIElementBase {
             };
         })
         if(this.activekey != null || this.activekey != undefined){
-            this.TabLine.style.width = `${this.tabPos[this.activekey].width}px`;
-            this.TabLine.style.transform =  `translateX(${this.tabPos[this.activekey].left}px)`;
+            Style(this.TabLine)({
+                width: `${this.tabPos[this.activekey].width}px`,
+                transform: `translateX(${this.tabPos[this.activekey].left}px)`
+            });
         }
     }
 

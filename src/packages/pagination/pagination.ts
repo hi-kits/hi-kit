@@ -7,6 +7,8 @@
  */
 // 核心库
 import { HIElement, customElement, html, attr, ref, observable } from 'hi-element';
+// 事件处理
+import { EventUtil } from '../_utils/event';
 // 样式文件
 import { PaginationStyles as styles } from "./pagination.style";
 // 依赖组件
@@ -160,13 +162,13 @@ export class HiPagination extends HIElement {
         super.connectedCallback();
         this.current = this.defaultcurrent;
         this.render(this.pagesize, this.total);
-        this.page.addEventListener('click',  ev => {
+        EventUtil.addHandler(this.page, 'click',  ev => {
             const item = (ev.target as HTMLElement).closest('h-button');
             if(item){
                 this.current = Number(item['dataset'].current);
             }
-        })
-        this.addEventListener('keydown', ev =>{
+        });
+        EventUtil.addHandler(this, 'keydown',  ev => {
             switch (ev.keyCode) {
                 case 37://ArrowLeft
                     this.current--;
@@ -177,13 +179,13 @@ export class HiPagination extends HIElement {
                 default:
                     break;
             }
-        })
-        this.left.addEventListener('click',(ev)=>{
+        });
+        EventUtil.addHandler(this.left, 'click',  ev => {
             this.current--;
-        })
-        this.right.addEventListener('click',(ev)=>{
+        });
+        EventUtil.addHandler(this.right, 'click',  ev => {
             this.current++;
-        })
+        });
         this.init = true;
     }
     /**

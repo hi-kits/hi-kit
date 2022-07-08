@@ -7,23 +7,28 @@
  */
 // 核心库
 import { HIElement, customElement, attr, html, ref, when, observable } from 'hi-element';
+// 样式助手
+import { Style } from '../_utils/style/style';
 // 样式文件
 import { ModalStyles as styles } from "./modal.style";
 
 
 /**
- * 消息类型
+ * 对话框类型
  */
 type ModalType = 'alert' | 'confirm' | 'prompt';
 
 /**
- * 消息提示
+ * 对话框参数
  * @function get
  * @param { Object } options 请求参数对象
- * @param { string } options.type 消息类型
- * @param { string } options.content 消息内容
- * @param { number } options.duration 自动关闭的延时，单位毫秒。设为 0 时不自动关闭
- * @param { number } options.callback 关闭时触发的回调函数
+ * @param { string } options.title 标题
+ * @param { ModalType } options.type 类型
+ * @param { string } options.content 内容
+ * @param { string } options.oktext 确认键文本
+ * @param { string } options.canceltext 取消键文本
+ * @param { function } options.ok 确认回调
+ * @param { function } options.cancel 取消回调
  */
 interface ModalOptions {
     title?: string;
@@ -180,13 +185,19 @@ let modalContent: any = document.getElementById('HiModalWrap');
 if(!modalContent){
     modalContent = document.createElement('div');
     modalContent.id = 'HiModalWrap';
-    modalContent.style = 'position:fixed; left:0; right:0; top:10px; z-index:51;';
+    Style(modalContent)({
+        'position': 'fixed',
+        'left': 0,
+        'right': 0,
+        'top': '10px',
+        'z-index': 51
+    });
     document.body.appendChild(modalContent);
 }
 
 export const HiModalService = {
     /**
-     * 信息提示
+     * alert
      * @date 2022-06-16
      * @param { ModalOptions} options
      */
@@ -198,7 +209,7 @@ export const HiModalService = {
     },
  
     /**
-     * 加载提示
+     * confirm
      * @date 2022-06-16
      * @param { ModalOptions} options
      */
@@ -209,7 +220,7 @@ export const HiModalService = {
         modal.setParams(modal, 'confirm', options);
     },
     /**
-     * 通用提示
+     * prompt
      * @date 2022-06-16
      * @param { ModalOptions} options
      */

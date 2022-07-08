@@ -161,7 +161,7 @@
                     </h-col>
                     <h-col span="8">
                         <p>现新增h-radio-group组件，表示同一组</p>
-                        <h-radio-group name="books" disabled defaultvalue="React,Angular">
+                        <h-radio-group name="bookws" disabled defaultvalue="Angular">
                             <h-radio>React</h-radio>
                             <h-radio indeterminate>Vue</h-radio>
                             <h-radio>Angular</h-radio>
@@ -169,16 +169,9 @@
                             <h-radio>Swift</h-radio>
                         </h-radio-group>
                         <h-switch checked onchange="this.previousElementSibling.disabled = this.checked;"></h-switch>
-                        <h-button type="primary" onclick="this.previousElementSibling.previousElementSibling.value='[\'Vue\']'">选中Vue</h-button>
+                        <h-button type="primary" onclick="this.previousElementSibling.previousElementSibling.value='Angular'">选中Angular</h-button>
                     </h-col>
                 </h-row>
-                <h-radio-group  required min="2" max="3" defaultvalue="Angular">
-                    <h-radio>React</h-radio>
-                    <h-radio>Vue</h-radio>
-                    <h-radio>Angular</h-radio>
-                    <h-radio>Flutter</h-radio>
-                    <h-radio>Swift</h-radio>
-                </h-radio-group>
             </div>
             <h2>分割线 <span>divider</span></h2>
             <div>
@@ -918,6 +911,9 @@
                                 <h-badge count="643"></h-badge>
                             </a>
                             <a class="Example">
+                                <h-badge count="秒杀"></h-badge>
+                            </a>
+                            <a class="Example">
                                 <h-badge  count="4" badgeStyle="background-color: rgb(255, 255, 255);
                             box-shadow: rgb(217 217 217) 0px 0px 0px 1px inset;
                             color: rgb(153, 153, 153);" >
@@ -1591,6 +1587,80 @@
             </div>
             <h2>上传文件 <span>upload</span></h2>
             <h-upload>33</h-upload>
+            <h2>导航点 <span>navdot</span></h2>
+            <div>
+                <h-row class="NavDotWrap" gutter="10">
+                    <h-col span="8">
+                        <p style="margin: 12px;">基本用法</p>
+                        <h-nav-dot total="4"></h-nav-dot>
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">改变大小</p>
+                        <p style="margin: 12px 0;">
+                           小： <h-nav-dot total="4" size="small"></h-nav-dot>
+                        </p>
+                        <p style="margin: 12px 0;">
+                            大： <h-nav-dot total="4" size="large"></h-nav-dot>
+                        </p>
+                        <p style="margin: 12px 0;">
+                           自定义： <h-nav-dot total="4" size="20"></h-nav-dot>
+                        </p>
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">风格</p>
+                        <p style="margin: 12px 0;">
+                            type="puff"： <h-nav-dot type="puff" total="4" ></h-nav-dot>
+                         </p>
+                         <p style="margin: 12px 0;">
+                            type="scaleup"： <h-nav-dot type="scaleup" total="4" ></h-nav-dot>
+                         </p>
+                    </h-col>
+                </h-row>
+            </div>
+            <h2>警告提示 <span>Alert</span></h2>
+            <div>
+                <h-row class="NavDotWrap" gutter="10">
+                    <h-col span="8">
+                        <p style="margin: 12px;">基本用法</p>
+                        <p style="margin: 12px 0;">
+                            <h-alert type="success">Success Text</h-alert>
+                        </p>
+                        <p style="margin: 12px 0;">
+                            <h-alert type="info">Info Text</h-alert>
+                        </p>
+                        <p style="margin: 12px 0;">
+                            <h-alert type="warning">Warning Text</h-alert>
+                        </p>
+                        <p style="margin: 12px 0;">
+                            <h-alert type="error">Error Text</h-alert>
+                        </p>
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">可关闭</p>
+                        <p style="margin: 12px 0;">
+                            <h-alert type="success" title="Success" closeable>Success Text</h-alert>
+                        </p>
+                        <p style="margin: 12px 0;">
+                            <h-alert type="info" title="info" closeable>info Text</h-alert>
+                        </p>
+                    </h-col>
+                    <h-col span="8">
+                        <p style="margin: 12px;">图标</p>
+                        <p style="margin: 12px 0;">
+                            <h-alert type="success" showIcon title="Success">Detailed description and advices about successful copywriting.</h-alert>
+                        </p>
+                        <p style="margin: 12px 0;">
+                            <h-alert type="info" showIcon>Info Text</h-alert>
+                        </p>
+                        <p style="margin: 12px 0;">
+                            <h-alert type="warning" showIcon>Warning Text</h-alert>
+                        </p>
+                        <p style="margin: 12px 0;">
+                            <h-alert type="error" showIcon>Error Text</h-alert>
+                        </p>
+                    </h-col>
+                </h-row>
+            </div>
         </div>
     </body>
     

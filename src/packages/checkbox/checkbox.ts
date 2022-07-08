@@ -43,6 +43,8 @@ export class HiCheckbox extends HIElementForm {
     @observable
     tips: HTMLTemplateElement;
     isfocus;
+    group;
+    parent;
     // ------------------ 属性 ------------------
     /**
      * disabled 状态变更时触发
@@ -66,17 +68,19 @@ export class HiCheckbox extends HIElementForm {
       */
     public connectedCallback(): void {
         super.connectedCallback();
-        EventUtil.addHandler(this.checkbox, 'change',(ev)=>{
+        this.parent = this.group || this.getRootNode();
+        EventUtil.addHandler(this.checkbox, 'change', (ev)=>{
             this.checked = this.checkbox.checked;
             this.$emit('change', { checked: this.checked });
         });
-        EventUtil.addHandler(this.checkbox, 'focus',(ev)=>{
+        EventUtil.addHandler(this.checkbox, 'focus', (ev)=>{
             ev.stopPropagation();
+            this.tocheck();
             if(!this.isfocus){
                 this.$emit('focus', { value: this.value });
             }
         });
-        EventUtil.addHandler(this.checkbox, 'blur',(ev)=>{
+        EventUtil.addHandler(this.checkbox, 'blur', (ev)=>{
             ev.stopPropagation();
             if( Number(getComputedStyle(this.checkbox).zIndex) ==2){
                 this.isfocus = true;
@@ -129,6 +133,15 @@ export class HiCheckbox extends HIElementForm {
             this.tips['tips'] = this.checkbox.validationMessage;
             return false;
         }
+    }
+    tocheck(): void {
+        // const selector = this.group ? `h-checkbox[checked]` : `h-checkbox[name="${this.name}"][checked]`;
+        // const prev = this.parent.querySelector(selector);
+        this.parent.value = this.value;
+        // if( prev ){
+        //     prev.checked = false;
+        // }
+        // this.checked = true;
     }
     
 }

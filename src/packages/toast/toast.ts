@@ -7,7 +7,12 @@
  */
 // 核心库
 import { HIElement, customElement, html } from 'hi-element';
-// 样式文件
+// 事件处理
+import { EventUtil } from '../_utils/event';
+// 样式助手
+import { Style } from '../_utils/style/style';
+
+// 样式
 import { ToastStyles as styles } from "./toast.style";
 
 const template = html<HiToast>`
@@ -76,14 +81,13 @@ export class HiToast extends HIElement {
      */
     connectedCallback() {
         super.connectedCallback();
-        this.shadowRoot!.addEventListener('transitionend',(ev:any)=>{
+        EventUtil.addHandler(this.shadowRoot!, 'transitionend',(ev:any)=>{
             if(ev.propertyName === 'transform' && !this.show){
                 // DOM.removeChildNodes(toastContent);
                 toastContent.removeChild(this);
                 this.$emit('close');
             }
         });
-            
         this.position();
     }
     
@@ -125,7 +129,14 @@ let toastContent: any = document.getElementById('HiToastWrap');
 if(!toastContent){
     toastContent = document.createElement('div');
     toastContent.id = 'HiToastWrap';
-    toastContent.style = 'position:fixed; pointer-events:none; left:0; right:0; top:-100px; z-index:88;';
+    Style(toastContent)({
+        'position': 'fixed',
+        'pointer-events': 'none',
+        'left': 0,
+        'right': 0,
+        'top': '-100px',
+        'z-index': 88
+    });
     document.body.appendChild(toastContent);
 }
 
