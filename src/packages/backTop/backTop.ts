@@ -78,9 +78,17 @@ export class HiBackTop extends HIElementBase {
             left: 0,
             top: 0,
             behavior: 'smooth'
-        })
+        });
+        // this.scrollToTop()
+        
     }
-    
+    scrollToTop() {
+        let scrollTop = document.documentElement.scrollTo || document.body.scrollTop
+        if (Number(scrollTop) > 0) {
+            window.requestAnimationFrame(this.scrollToTop)
+            window.scrollTo(0, Number(scrollTop) - Number(scrollTop) / 8)
+        }
+    }
 
 }
 
