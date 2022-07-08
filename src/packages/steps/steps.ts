@@ -80,9 +80,7 @@ export class HiSteps extends HIElementBase {
      * @internal
      */
     connectedCallback(): void {
-        super.connectedCallback();
-        console.log(this.getAttribute('dot'));
-        
+        super.connectedCallback();        
         this.childrenFn(()=> {
             for (let index = 0; index < this.children.length; index++) {
                 const element = this.children[index];

@@ -112,8 +112,7 @@ export class HiTabs extends HIElementBase {
             ::slotted(h-tab:not([key="${this.activekey}"])){
                 height:0;
                 overflow:visible;
-            }
-            `
+            }`;
             if( oldValue!==newValue){
                 this.TabNav.parentNode!['scrollLeft'] = active.left + active.width/2-this.TabNav.parentNode!['offsetWidth']/2;
                 const pre = this.TabNav.querySelector(`.NavItem.active`);

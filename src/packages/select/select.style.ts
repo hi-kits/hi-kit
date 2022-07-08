@@ -36,10 +36,10 @@ export const SelectStyles = css`
     pointer-events:none;
 }
 
-:host(:focus-within) xy-popover,:host(:active) xy-popover{ 
+:host(:focus-within) h-popover,:host(:active) h-popover{ 
     z-index: 2;
 }
-xy-tips{
+h-tips{
     display:block;
     width: 100%;
     height: 100%;
@@ -58,7 +58,7 @@ xy-tips{
     color:currentColor;
 }
 
-xy-tips[show=show]{
+h-tips[show=show]{
     --themeColor:var(--errorColor,#f4615c);
     --borderColor:var(--errorColor,#f4615c);
 }
@@ -71,7 +71,7 @@ xy-tips[show=show]{
     text-align:left;
 }
 
-xy-input::after{
+h-input::after{
     content:'';
     position:absolute;
     left:0;
@@ -98,21 +98,21 @@ xy-input::after{
 :host([search]) .arrow{
     transition:color .3s  cubic-bezier(.645, .045, .355, 1),.3s transform cubic-bezier(.645, .045, .355, 1);
 }
-xy-popover[open] .arrow{
+h-popover[open] .arrow{
     transform:scaleY(-.8);
 }
-xy-popover{
+h-popover{
     display:block;
     height:inherit;
     border-radius: inherit;
 }
-xy-popcon{
+h-popcon{
     min-width:100%;
     overflow:auto;
     max-height:50vh;
     scroll-behavior: smooth;
 }
-:host([search]) xy-popcon::before{
+:host([search]) h-popcon::before{
     display:none;
     box-sizing: border-box;
     width:100%;
@@ -123,7 +123,7 @@ xy-popcon{
     white-space:nowrap;
     opacity:.5;
 }
-:host([empty]) xy-popcon::before{
+:host([empty]) h-popcon::before{
     display:block;
 }
 

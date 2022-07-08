@@ -18,17 +18,19 @@ import { NavDotStyles as styles } from "./nav.dot.style";
 
 // 模版文件
 const template = html<HiNavDot>`
-<ul class="DotStyle Fillup">
+
+<ul class="DotStyle ${x => x.type}" ${ref('dotBox')}>
     ${repeat(
         (x, c) => x.dot, 
-        html`
+        html<HiNavDot>`
             <li
-                class="${(x, c) => x}"
+                class="${(x, c) => c.parent.current}"
                 @click="${(x, c) => c.parent.dotClick(c.parentContext.event as MouseEvent, c.index)}">${x => x}
-            </li>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16"preserveAspectRatio="none"><circle cx="8" cy="8" r="6.215"/></svg></li>
         `
     )}
 </ul>
+<style ${ref("Filter")}></style>
 `;
 // 定义元素
 @customElement({
@@ -43,27 +45,37 @@ export class HiNavDot extends HIElementBase {
         super();
     }
     // ------------------ 参数 ------------------
-    slots: HTMLSlotElement;
-    options;
     @observable
-    class = 'w111';
-    elements;
+    dot: string[] = [];
+    dotBox;
     @observable
-    dot: string[] = ['1','2'];
+    Filter: HTMLStyleElement;
     // ------------------ 属性 ------------------
-    @attr total: number = 2;
-    @attr current: number = 0;
+    @attr type: 'fillup' | 'puff' | 'scaleup' = 'fillup' ;
     /**
-     * 颜色
-     * 通过color可以设置提示框为任意颜色，优先级高于type
-     * @date 6/17/2022 - 1:55:30 PM
+     * 总数
+     * @date 7/8/2022 - 1:52:26 PM
      *
-     * @type {string}
+     * @type {number}
      */
-    colorChanged(oldValue, newValue): void {
-        this.style.setProperty('--color',newValue);
-    }
+    @attr total: number = 6;
     
+    /**
+     * 当前位置
+     * @date 7/8/2022 - 1:57:20 PM
+     *
+     * @type {number}
+     */
+    @attr current: number = 0;
+    sizeChanged(oldValue, newValue): void {
+        setTimeout(() => {
+            this.Filter.innerHTML = `
+                :host .DotStyle li{
+                    width: ${newValue}px!important;
+                    height: ${newValue}px!important;
+                }`;
+        }, 10);
+    }
     
 
     // ------------------ 自定义函数 ------------------
@@ -73,54 +85,24 @@ export class HiNavDot extends HIElementBase {
      */
     connectedCallback() {
         super.connectedCallback();
-        function supportImport() {
-            return 'import' in document.createElement('link');
-          }
-          
-          
-        // EventUtil.addHandler(this.slots, 'slotchange', ()=>{
-        //     this.elements  = [].slice.call(this.querySelectorAll('a'));
-            
-        //     this.elements.forEach( ( dot, idx ) => {
-        //         dot.addEventListener( 'click', ( ev ) => {
-        //             ev.preventDefault();
-        //             if( idx !== this.current ) {
-        //                 Classic.instance.remove(this.elements[ this.current ], 'current');
-        //                 // this.elements[ current ].className = '';
-    
-        //                 // special case
-        //                 // if( idx < current ) {
-        //                 // 	dot.className += ' current-from-right';
-        //                 // }
-    
-        //                 setTimeout( () => {
-        //                     Classic.instance.add(dot, 'current')
-        //                     this.current = idx;
-                            
-        //                 }, 25 );						
-        //             }
-        //         } );
-        //     } );
-        // });
+        for (let index = 0; index < this.total; index++) {
+            this.dot.push('');
+        }
+        
         
     }
     dotClick(ev, idx): void {
         ev.preventDefault();
         if( idx !== this.current ) {
-            // Classic.instance.remove(ev.target, 'current');
-            // ev.target.className = '';
-            // ev.target.parexnt.element.class = 'ws';
+            const children = this.dotBox.children;
+            for (let index = 0; index < children.length; index++) {
+                const element = children[index];
+                Classic.instance.remove(element, 'current');
+            }
 
-            // special case
-            // if( idx < current ) {
-            // 	dot.className += ' current-from-right';
-            // }
+            Classic.instance.add(ev.target, 'current')
+            this.current = idx;
 
-            setTimeout( () => {
-                ev.target.className = 'current';
-                this.current = idx;
-                
-            }, 25 );
         }
     }
     
