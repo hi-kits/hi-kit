@@ -12,7 +12,7 @@ import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
 import { Style } from '../_utils/style/style';
 // 样式文件
-import { TipsStyles as styles } from "./alert.style";
+import { AlertStyles as styles } from "./alert.style";
 // 依赖组件
 import { HiButton } from "../button";
 import { HiIcon } from "../icon";

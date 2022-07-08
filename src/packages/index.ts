@@ -41,6 +41,7 @@ import { HiTabs, HiTab } from './tabs';
 import { HiTimePane, HiTimePicker } from './time-picker';
 import { HiNavDot } from './navDot';
 import { HiAlert } from './alert';
+import { HiBackTop } from './backTop';
 
 window['HiMessage'] = HiMessageService;
 window['HiModal'] = HiModalService;
