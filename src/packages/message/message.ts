@@ -103,8 +103,7 @@ export class HiMessage extends HIElement {
      */
     @attr type!: MessageType;
     private typeChanged(oldValue: string, newValue: string): void {
-        let name = '';
-        let color = '';
+
         switch (newValue) {
             case 'info':
                 this.iconName = 'info-circle';

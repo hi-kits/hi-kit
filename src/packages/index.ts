@@ -40,6 +40,7 @@ import { HiTabs, HiTab } from './tabs';
 // import { HiUpload } from './upload';
 import { HiTimePane, HiTimePicker } from './time-picker';
 import { HiNavDot } from './navDot';
+import { HiAlert } from './alert';
 
 window['HiMessage'] = HiMessageService;
 window['HiModal'] = HiModalService;
