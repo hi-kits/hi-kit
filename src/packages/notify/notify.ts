@@ -10,11 +10,11 @@ import { customElement, html, attr, when, ref, observable } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
-import { Style } from '../_utils/style/style';
+import { Style } from '../../utils/style/style';
 // 事件处理
-import { EventUtil } from '../_utils/event';
+import { EventUtil } from '../../utils/event';
 // 获取滚动条位置
-import { GetPageScroll } from '../_utils/browser/getPageScroll';
+import { GetPageScroll } from '../../utils/browser/getPageScroll';
 // 样式文件
 import { NotifyStyles as styles } from "./notify.style";
 // 依赖组件

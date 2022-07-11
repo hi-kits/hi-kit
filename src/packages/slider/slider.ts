@@ -8,7 +8,7 @@
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../_utils/event';
+import { EventUtil } from '../../utils/event';
 // 样式文件
 const styles = css`
 :host{ 

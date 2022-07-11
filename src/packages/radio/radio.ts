@@ -11,8 +11,8 @@ import { HIElement, customElement, html, attr, ref, observable } from 'hi-elemen
 // 混入基础功能
 import { HIElementForm } from '../_mixins/hiElementForm';
 // 事件处理
-import { EventUtil } from '../_utils/event';
-import { Style } from '../_utils/style/style';
+import { EventUtil } from '../../utils/event';
+import { Style } from '../../utils/style/style';
 // 样式文件
 import { RadioStyles as styles } from "./radio.style";
 

@@ -9,7 +9,7 @@
 // 核心库
 import { HIElement, customElement, observable, ref, html, attr } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../_utils/event';
+import { EventUtil } from '../../utils/event';
 // 混入基础功能
 import { HIElementForm } from '../_mixins/hiElementForm';
 // 样式文件

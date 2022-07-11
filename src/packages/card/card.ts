@@ -8,7 +8,7 @@
 // 核心库
 import { HIElement, customElement, attr, html, css, ref, observable } from 'hi-element';
 // 样式助手
-import { Style } from '../_utils/style/style';
+import { Style } from '../../utils/style/style';
 // 配置文件
 import { hiConfig } from "../config";
 // 样式

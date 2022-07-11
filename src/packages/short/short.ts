@@ -10,7 +10,7 @@ import { HIElement, customElement, attr, html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
-import { Style } from '../_utils/style/style';
+import { Style } from '../../utils/style/style';
 // 样式文件
 import { ShortStyles as styles } from "./short.style";
 // 模版文件

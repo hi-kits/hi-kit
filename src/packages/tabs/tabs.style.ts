@@ -8,7 +8,7 @@
 // 核心库
 import { css } from 'hi-element';
 // display规则
-import { display } from '../_utils/style';
+import { display } from '../../utils/style';
 // 配置文件
 import { hiConfig } from "../config";
 // 样式文件
