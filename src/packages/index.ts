@@ -43,6 +43,7 @@ import { HiNavDot } from './navDot';
 import { HiAlert } from './alert';
 import { HiBackTop } from './backTop';
 import { HiNotify } from './notify';
+import { HiBox } from './box';
 
 window['HiMessage'] = HiMessageService;
 window['HiModal'] = HiModalService;

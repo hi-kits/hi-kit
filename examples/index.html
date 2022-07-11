@@ -1665,6 +1665,28 @@
             <div>
                 <h-back-top></h-back-top>
             </div>
+            <h2>盒子模型 <span>box</span></h2>
+            <div>
+                <h-row  gutter="10">
+                    <h-col span="8">
+                        <img style="max-width: 100%;" src="./box-model.gif"/>
+                    </h-col>
+
+                    <h-col span="8">
+                        <style>
+                            .Box {
+                                background-color: #bababa;
+                                border-style: dashed;
+                                border-color: #1890ff;
+                                box-shadow: 0 0 0px 25px #f4e02b;
+                            }
+                        </style>
+                        <h-box class="Box" margin="25" padding="25" border="25" >这里是盒子内的实际内容。有 25px 内间距，25px 黄色外间距、25px 蓝色边框。</h-box>
+                    </h-col>
+                </h-row>
+                
+                
+            </div>
         </div>
     </body>
     

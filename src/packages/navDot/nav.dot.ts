@@ -6,7 +6,7 @@
  * @description
  */
 // 核心库
-import { customElement, html, attr, repeat, observable, ref, elements, children } from 'hi-element';
+import { customElement, html, attr, repeat, observable, ref, elements, children, ExecutionContext } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 // class 助手
@@ -25,7 +25,7 @@ const template = html<HiNavDot>`
         html<HiNavDot>`
             <li
                 class="${(x, c) => c.parent.current}"
-                @click="${(x, c) => c.parent.dotClick(c.parentContext.event as MouseEvent, c.index)}">${x => x}
+                @click="${(x, c: ExecutionContext) => c.parent.dotClick(c.parentContext.event as MouseEvent, c.index)}">${x => x}
                 </li>
         `
     )}
