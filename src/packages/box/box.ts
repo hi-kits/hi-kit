@@ -7,7 +7,12 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-
+// 样式
+const styles = css`
+:host{
+    display:inline-block;
+}
+`;
 // 模版文件
 const template = html<HiBox>`
 <template>
@@ -17,11 +22,13 @@ const template = html<HiBox>`
 // 定义元素
 @customElement({
    name: 'h-box',
+   styles,
    template,
 })
 export class HiBox extends HIElement {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------
+
     // ------------------ 属性 ------------------
     
     /**
@@ -74,6 +81,8 @@ export class HiBox extends HIElement {
      */
     connectedCallback(): void {
         super.connectedCallback();
+
+
     }
 
 }
