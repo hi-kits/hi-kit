@@ -5,18 +5,23 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
-import { HIElement, customElement, attr, observable, html, when, ref } from 'hi-element';
-
+// 核心库
+import { customElement, attr, observable} from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
+// 样式文件
 import { ButtonStyles as styles } from './button.style';
+// 模版文件
 import { template } from './button.template';
-
+// 定义元素
 @customElement({
   name: 'h-button',
   template,
   styles
 })
-export class HiButton extends HIElement {
+export class HiButton extends HIElementBase {
+  // ------------------ 构造函数 ------------------
+  // ------------------ 参数 ------------------
   // 代理
   proxy = document.createElement('input');
   // imgDOM
@@ -26,16 +31,17 @@ export class HiButton extends HIElement {
   // ishref!: false;
   // disabled!: boolean;
   checked: boolean = false;
-
   /**
-   * 按钮是否可用
+   *
+   * Default slotted content
+   *
    * @public
    * @remarks
-   * HTML Attribute: disabled
    */
-  @attr({ mode: 'boolean' })
-  public disabled = false;
-
+  @observable
+  public defaultSlottedContent: HTMLElement[] = [];
+   
+  // ------------------ 属性 ------------------
   /**
    * 确定元素是否应在页面加载时接收文档焦点
    * @public
@@ -202,16 +208,7 @@ export class HiButton extends HIElement {
     previous === 'reset' && this.removeEventListener('click', this.handleFormReset);
   }
 
-  /**
-   *
-   * Default slotted content
-   *
-   * @public
-   * @remarks
-   */
-
-  @observable
-  public defaultSlottedContent: HTMLElement[] = [];
+  // ------------------ 自定义函数 ------------------
   attachProxy(): void {}
   detachProxy(): void {}
   /**
@@ -220,6 +217,15 @@ export class HiButton extends HIElement {
    */
   public connectedCallback(): void {
     super.connectedCallback();
+    this.addEventListener('mousedown', (ev) =>{
+      //ev.preventDefault();
+      //ev.stopPropagation();
+      if(!this.disabled){
+          const { left, top } = this.getBoundingClientRect();
+          this.style.setProperty('--x',(ev.clientX - left)+'px');
+          this.style.setProperty('--y',(ev.clientY - top)+'px');
+      }
+  })
 
     /* 图片测试 */
     // import('./img/qipao.png').then(res => {
