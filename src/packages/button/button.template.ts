@@ -1,6 +1,3 @@
-import { html, ref, when } from 'hi-element';
-import type { HiButton } from './button';
-
 /*
  * @Descripttion:
  * @version:
@@ -9,11 +6,15 @@ import type { HiButton } from './button';
  * @LastEditors: liulina
  * @LastEditTime: 2022-06-23 10:22:52
  */
-
+// 核心库
+import { html, ref, when } from 'hi-element';
+// 组件
+import type { HiButton } from './button';
 // export const dialogTemplate = (
 //     context,
 //     definition
 // ) => html`
+// 模版
 export const template = html<HiButton>`
   ${when(
     x => x.href,

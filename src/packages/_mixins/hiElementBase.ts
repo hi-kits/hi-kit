@@ -9,7 +9,7 @@
  */
 import { HIElement, attr } from 'hi-element';
 // 样式助手
-import { Style } from '../_utils/style/style';
+import { Style } from '../../utils/style/style';
 export class HIElementBase extends HIElement {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------

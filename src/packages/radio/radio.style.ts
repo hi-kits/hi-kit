@@ -10,7 +10,7 @@ import { css } from 'hi-element';
 // 配置文件
 import { hiConfig } from "../config";
 // 
-import { display } from '../_utils/style';
+import { display } from '../../utils/style';
 // 样式
 export const RadioStyles = css`
 ${display("inline-block")}

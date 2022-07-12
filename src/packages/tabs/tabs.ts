@@ -8,9 +8,9 @@
 // 核心库
 import { customElement, attr, ref, css, html, observable } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../_utils/event';
+import { EventUtil } from '../../utils/event';
 // 样式助手
-import { Style } from '../_utils/style/style';
+import { Style } from '../../utils/style/style';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式文件

@@ -1,3 +1,8 @@
+/**
+ * 转 string
+ * @param {any} value 
+ * @returns 
+ */
 const toString = (value: any) => Object.prototype.toString.call(value)
 
 /**

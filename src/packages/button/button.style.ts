@@ -110,7 +110,7 @@ export const ButtonStyles = css`
     user-select: none;
     cursor: unset;
   }
-  xy-loading {
+  h-loading {
     margin-right: 0.35em;
   }
   ::-moz-focus-inner {
@@ -156,7 +156,7 @@ export const ButtonStyles = css`
     margin-right: 0.35em;
     transition: none;
   }
-  :host(:empty) xy-icon {
+  :host(:empty) h-icon {
     margin: auto;
   }
   :host(:empty) {
@@ -166,7 +166,7 @@ export const ButtonStyles = css`
   :host([type='primary']:empty) {
     padding: calc(0.65em + 1px);
   }
-  ::slotted(xy-icon) {
+  ::slotted(h-icon) {
     transition: none;
   }
   :host([href]) {

@@ -8,7 +8,7 @@
 // 核心库
 import { css } from 'hi-element';
 // display规则
-import { display } from '../_utils/style';
+import { display } from '../../utils/style';
 // 样式文件
 export const SwitchStyles = css`
 ${display("inline-block")}

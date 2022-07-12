@@ -10,11 +10,11 @@ import { customElement, html, attr, when, ref, observable } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
-import { Style } from '../_utils/style/style';
+import { Style } from '../../utils/style/style';
 // 事件处理
-import { EventUtil } from '../_utils/event';
+import { EventUtil } from '../../utils/event';
 // 获取滚动条位置
-import { GetPageScroll } from '../_utils/browser/getPageScroll';
+import { GetPageScroll } from '../../utils/browser/getPageScroll';
 // 样式文件
 import { BackTopStyles as styles } from "./backTop.style";
 // 依赖组件
@@ -78,9 +78,17 @@ export class HiBackTop extends HIElementBase {
             left: 0,
             top: 0,
             behavior: 'smooth'
-        })
+        });
+        // this.scrollToTop()
+        
     }
-    
+    scrollToTop() {
+        let scrollTop = document.documentElement.scrollTo || document.body.scrollTop
+        if (Number(scrollTop) > 0) {
+            window.requestAnimationFrame(this.scrollToTop)
+            window.scrollTo(0, Number(scrollTop) - Number(scrollTop) / 8)
+        }
+    }
 
 }
 

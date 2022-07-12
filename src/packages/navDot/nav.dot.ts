@@ -6,13 +6,13 @@
  * @description
  */
 // 核心库
-import { customElement, html, attr, repeat, observable, ref, elements, children } from 'hi-element';
+import { customElement, html, attr, repeat, observable, ref, elements, children, ExecutionContext } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 // class 助手
-import { Classic } from '../_utils/classic';
+import { Classic } from '../../utils/style/classic';
 // 事件处理
-import { EventUtil } from '../_utils/event';
+import { EventUtil } from '../../utils/event';
 // 样式文件
 import { NavDotStyles as styles } from "./nav.dot.style";
 
@@ -25,7 +25,7 @@ const template = html<HiNavDot>`
         html<HiNavDot>`
             <li
                 class="${(x, c) => c.parent.current}"
-                @click="${(x, c) => c.parent.dotClick(c.parentContext.event as MouseEvent, c.index)}">${x => x}
+                @click="${(x, c: ExecutionContext) => c.parent.dotClick(c.parentContext.event as MouseEvent, c.index)}">${x => x}
                 </li>
         `
     )}

@@ -5,19 +5,18 @@
  * @Copyright © 2022 hi-kits. All rights reserved.
  * @description
  */
-
-import { HIElement, customElement, attr, observable, ref, slotted,  html } from 'hi-element';
+// 核心库
+import { customElement, html } from 'hi-element';
+// 混入基础功能
+import { HIElementBase } from '../_mixins/hiElementBase';
+// 样式文件
 import { ButtonGroupStyles as styles } from "./button.group.style";
- 
-
+// 模版文件
 const template = html<HiButtonGroup>`<slot></slot>`;
+// 定义元素
 @customElement({
    name: 'h-button-group',
    template,
    styles
 })
-export class HiButtonGroup extends HIElement {
-    // 不可点击
-    disabled!: boolean;
-
-}
+export class HiButtonGroup extends HIElementBase {}

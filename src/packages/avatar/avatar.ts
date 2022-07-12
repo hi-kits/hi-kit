@@ -10,7 +10,7 @@ import { customElement, attr, observable, css,  html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
-import { Style } from '../_utils/style/style';
+import { Style } from '../../utils/style/style';
 // 依赖组件
 // 样式文件
 const styles = css`
