@@ -4,13 +4,14 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-06 10:32:49
+ * @LastEditTime: 2022-07-12 15:57:34
  */
-import { HIElement, customElement, attr, html, ValueConverter, ref, observable } from 'hi-element';
+import { HIElement, customElement, attr, html, ValueConverter, ref, when } from 'hi-element';
 import { datePaneStyle as styles } from './date-pane.style';
 import type { HiButton } from '../../button/button';
 import { DateUtils } from '../_util';
 import type { DatePaneType } from '../_dateType';
+import type { HiTimePane } from '../../time-picker';
 
 const template = html<HiDatePane>`
   <div class="date-pane" id="date-pane">
@@ -33,18 +34,23 @@ const template = html<HiDatePane>`
     </div>
     <div class="date-con" data-type="date" ${ref('dateCon')}>
       <div class="date-mode date-date">
-        <div class="date-week">
-          <span class="date-week-item">日</span>
-          <span class="date-week-item">一</span>
-          <span class="date-week-item">二</span>
-          <span class="date-week-item">三</span>
-          <span class="date-week-item">四</span>
-          <span class="date-week-item">五</span>
-          <span class="date-week-item">六</span>
+        <div class="data-pane-content">
+          <div class="date-week">
+            <span class="date-week-item">日</span>
+            <span class="date-week-item">一</span>
+            <span class="date-week-item">二</span>
+            <span class="date-week-item">三</span>
+            <span class="date-week-item">四</span>
+            <span class="date-week-item">五</span>
+            <span class="date-week-item">六</span>
+          </div>
+          <div class="date-body" ${ref('days')}>
+            ${Array.from({ length: 42 }, el => '<button class="date-button date-day-item" type="flat"></button>').join('')}
+          </div>
         </div>
-        <div class="date-body" ${ref('days')}>
-          ${Array.from({ length: 42 }, el => '<button class="date-button date-day-item" type="flat"></button>').join('')}
-        </div>
+          ${when(x=> x.enableTimePicker, html`
+          <h-time-pane id="date-left" ${ref('timepicker')}></h-time-pane>
+        `)}
       </div>
       <div class="date-mode date-month" ${ref('dateMonth')}>
         ${Array.from(
@@ -187,10 +193,45 @@ export class HiDatePane extends HIElement {
   prev: HiButton;
   // next
   next: HiButton;
+  // --------timepicker----------
+  // 是否展示timePicker
+  @attr({ mode: 'boolean' }) enableTimePicker: boolean = false;
+  // DOM ref
+  timepicker: HiTimePane;
+  // 时间选择器的value
+  timepickValue: string;
+  enableTimePickerChanged() {
+    this.timepicker.selectedTime = this.timepickValue;
+    this.timepicker.dispatchEvent(
+      new CustomEvent('change', {
+        detail: {
+          value: this.timepickValue,
+        }
+      })
+    );
+  }
 
   public connectedCallback(): void {
     super.connectedCallback();
     this.mode = this.type;
+    // 如果时间picker是展示的状态
+    if (this.enableTimePicker) {
+      
+      this.timepicker.selectedTime = this.timepickValue;
+      this.timepicker.dispatchEvent(
+        new CustomEvent('change', {
+          detail: {
+            value: this.timepickValue,
+          }
+        })
+      );
+      // time-picker时间value改变
+      this.timepicker.addEventListener('updateValue', ev => {
+        this.timepickValue =  ev['detail'].value;
+        // 触发父级事件
+        this.select(this.value);
+      })
+    }
     // 左侧向前的按钮
     this.prev.addEventListener('click', () => {
       let [year, month, day] = DateUtils.toDate(this.value);
@@ -292,6 +333,7 @@ export class HiDatePane extends HIElement {
         }
       }
     });
+    
     // 获取到yearBtns的集合
     this.yearBtns = Array.from(this.dateYear?.children) as HTMLButtonElement[];
     this.value = this.defaultvalue;
@@ -310,7 +352,8 @@ export class HiDatePane extends HIElement {
       new CustomEvent('select', {
         detail: {
           value: value,
-          date: this.date
+          date: this.date,
+          time: this.timepickValue
         }
       })
     );
