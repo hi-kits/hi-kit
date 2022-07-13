@@ -30,8 +30,7 @@ const template = html<HiTips>`<slot></slot>`;
 })
 export class HiTips extends HIElementBase {
     // ------------------ 构造函数 ------------------
-    constructor(
-    ) {
+    constructor() {
         super();
     }
     // ------------------ 参数 ------------------
@@ -45,7 +44,7 @@ export class HiTips extends HIElementBase {
      * @type {string}
      */
     colorChanged(oldValue, newValue): void {
-        this.style.setProperty('--color',newValue);
+        this.style.setProperty('--backgroundColor',newValue);
     }
     
     /**

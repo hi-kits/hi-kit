@@ -25,7 +25,7 @@ const styles = css`
     padding: 2px;
     color: rgb(0 0 0 / 65%);
     background-color: rgb(0 0 0 / 4%);
-    border-radius: 2px;
+    border-radius: var(--borderRadius, 4px);
     transition: all .3s cubic-bezier(.645,.045,.355,1);
 }
 :host .Segmenteds{
@@ -37,7 +37,7 @@ const styles = css`
 }
 .thumb{
     background-color: #fff;
-    border-radius: 2px;
+    border-radius: var(--borderRadius, 4px);
     box-shadow: 0 2px 8px -2px #0000000d, 0 1px 4px -1px #00000012, 0 0 1px #00000014;
     position: absolute;
     top: 0;

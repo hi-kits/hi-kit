@@ -26,7 +26,7 @@ ${hiConfigStyle()}
     align-items: center;
     padding: 8px 15px;
     word-wrap: break-word;
-    border-radius: 2px;
+    border-radius: var(--borderRadius, 4px);
 }
 :host .Slot {
     flex: 1;

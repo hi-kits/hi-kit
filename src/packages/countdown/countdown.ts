@@ -23,7 +23,7 @@ const styles = css`
 :host .Countdown span{
     color: #000;
     background: #fff;
-    border-radius: 1.00067vw;
+    border-radius: var(--borderRadius, 4px);
     width:4vw;
     text-align: center;
     font-size: 4.6667vw;

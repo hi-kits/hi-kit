@@ -42,9 +42,8 @@ export function hiConfigStyle(): string {
     --themeColor: #42b983;
     --themeBackground: #42b983;
 
-    --percent: 10%;
 
-    --background: #fafafa;
+    --backgroundColor: rgba(0,0,0,0.75);
 
     --fontColor: #42b983;
 
@@ -56,7 +55,7 @@ export function hiConfigStyle(): string {
     --primaryColor-active: #096dd9;
     --primaryColor-outline: rgba(24, 144, 255, .2);
 
-    --successColor: #52c41a;
+    --successColor: #00a870;
     --successColor-hover: #73d13d;
     --successColor-active: #389e0d;
     --successColor-outline: rgba(82, 196, 26, .2);

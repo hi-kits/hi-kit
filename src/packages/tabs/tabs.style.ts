@@ -47,7 +47,7 @@ ${hiConfigStyle()}
     width:0;
     margin-top:-2px;
     height:2px;
-    border-radius:2px;
+    border-radius: var(--borderRadius, 4px);
     background:var(--themeColor,#42b983);
     transition:.2s;
 }

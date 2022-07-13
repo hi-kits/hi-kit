@@ -19,7 +19,7 @@ ${hiConfigStyle()}
     color: rgb(0 0 0 / 85%);
     border: 1px solid #d9d9d9;
     display:inline-block;
-    border-radius:2px;
+    border-radius: var(--borderRadius, 4px);
     padding:2px 8px;
     vertical-align:middle;
     background-color: var(--background, #fafafa);

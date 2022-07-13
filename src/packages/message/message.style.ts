@@ -32,7 +32,7 @@ ${hiConfigStyle()}
     font-size: 14px;
     color: #666;
     background: #fff;
-    border-radius: 3px;
+    border-radius: var(--borderRadius, 4px);
     transform: translateY(-100%);
     transition:.3s transform cubic-bezier(.645, .045, .355, 1);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
