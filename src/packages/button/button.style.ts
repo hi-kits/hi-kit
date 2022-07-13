@@ -126,7 +126,7 @@ ${hiConfigStyle()}
     left: 0;
     top: 0;
     transition: 0.2s;
-    background: #fff;
+    background: var(--colorWhite, #fff);
     opacity: 0;
   }
   :host(:not([disabled]):active) .btn::before {
@@ -141,7 +141,7 @@ ${hiConfigStyle()}
     left: var(--x, 0);
     top: var(--y, 0);
     pointer-events: none;
-    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-image: radial-gradient(circle, var(--colorWhite, #fff) 10%, transparent 10.01%);
     background-repeat: no-repeat;
     background-position: 50%;
     transform: translate(-50%, -50%) scale(10);

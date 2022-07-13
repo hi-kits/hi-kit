@@ -60,7 +60,7 @@ label::after{
     height:.4em;
     border-radius:1.2em;
     border:.4em solid #fff;
-    background:#fff;
+    background: var(--colorWhite, #fff);
     transition:.3s background,.3s padding,.3s width,.3s height,.3s border-radius,.3s border;
     box-shadow: 0 2px 4px 0 rgba(0,35,11,0.2);
 }

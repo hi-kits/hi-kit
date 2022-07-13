@@ -79,7 +79,7 @@ h-tips[show=show]{
     content:'';
     width:74%;
     height:0.15em;
-    background:#fff;
+    background: var(--colorWhite, #fff);
     transform:scale(0);
     border-radius: 0.15em;
     transition: .2s cubic-bezier(.12, .4, .29, 1.46) .1s;

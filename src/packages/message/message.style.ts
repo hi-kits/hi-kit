@@ -31,7 +31,7 @@ ${hiConfigStyle()}
     align-items:center;
     font-size: 14px;
     color: #666;
-    background: #fff;
+    background: var(--colorWhite, #fff);
     border-radius: var(--borderRadius, 4px);
     transform: translateY(-100%);
     transition:.3s transform cubic-bezier(.645, .045, .355, 1);

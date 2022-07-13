@@ -33,6 +33,11 @@ export function hiConfigStyle(): string {
         '--background: rgba(0,0,0,0.75)',
         // 弹框背景色 - 浅色
         '--background-1: rgba(0,0,0,0.3)',
+
+
+        // 颜色-白
+        '--colorWhite: #fff',
+
         // 文字颜色
         '--fontColor: #333',
         // 边框颜色，按钮、输入框

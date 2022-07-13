@@ -120,7 +120,7 @@ ${hiConfigStyle()}
 
 :host([status="finish"]) .Icon{
     color: #1890ff;
-    background-color: #fff;
+    background-color: var(--colorWhite, #fff);
     border-color: var(--borderColor, #1890ff);
 }
 :host([status="finish"]) .Title:after,

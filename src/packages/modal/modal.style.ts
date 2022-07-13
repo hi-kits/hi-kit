@@ -44,7 +44,7 @@ ${display("flex")}
     max-width: 80vw;
     max-height: calc(100vh - 20px);
     border-radius: var(--borderRadius, 4px);
-    background-color: #fff;
+    background-color: var(--colorWhite, #fff);
     opacity:0;
     transform:scale(0.5);
     transition:.3s cubic-bezier(.645, .045, .355, 1);

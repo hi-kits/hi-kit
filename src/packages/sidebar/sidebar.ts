@@ -26,7 +26,7 @@ const styles = css`
 	height: 100%;
     opacity: 0;
     inset: 0px;
-    background: rgba(0, 0, 0, 0.3);
+    background: var(--background-1, rgba(0, 0, 0, 0.3)) ;
     transition: all 0.3s ease 0s;
 }
 :host .Sidebar{
@@ -38,7 +38,7 @@ const styles = css`
     padding:12px;
     width: 300px;
     height: 100%;
-    background: #fff;
+    background: var(--colorWhite, #fff);
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
     -webkit-transform: translate3d(-100%, 0, 0);

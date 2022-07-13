@@ -119,7 +119,7 @@ input[type="number"]::-webkit-inner-spin-button{
 .input:focus ~ .input-label{
     text-overflow: ellipsis;
     transform: translateY( calc( -50% - 0.43em ) ) scale(0.8);
-    background:#fff;
+    background: var(--colorWhite, #fff);
 }
 .input:focus{
     border-color: #40a9ff;

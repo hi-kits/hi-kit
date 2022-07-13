@@ -80,8 +80,8 @@ input[type="range"]::-webkit-slider-thumb{
     width: 14px;
     height: 14px;
     margin-top: -5px;
-    background-color: #fff;
-    border:2px solid var(--themeColor,#42b983);
+    background-color: var(--colorWhite, #fff);
+    border:2px solid var(--themeColor, #42b983);
     border-radius: 50%;
     box-shadow: 0;
     cursor: pointer;
@@ -105,13 +105,13 @@ input[type="range"]::-webkit-slider-thumb:active,
 input[type="range"]:focus::-webkit-slider-thumb{
     transform:scale(1.2);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background: #fff;
+    background: var(--colorWhite, #fff);
 }
 input[type="range"]::-moz-range-thumb:active,
 input[type="range"]:focus::-moz-range-thumb{
     transform:scale(1.2);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background: #fff;
+    background: var(--colorWhite, #fff);
 }
 :host([vertical]) #slider-con{
     position: absolute;

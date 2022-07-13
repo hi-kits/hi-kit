@@ -34,7 +34,7 @@ ${hiConfigStyle()}
     border-radius: var(--borderRadius, 4px);
     box-shadow: 0 2px 8px -2px #0000000d, 0 1px 4px -1px #00000012, 0 0 1px #00000014;
     color: #262626;
-    background-color: #fff;
+    background-color: var(--colorWhite, #fff);
     min-height: 28px;
     padding: 0 11px;
     line-height: 28px;
