@@ -29,7 +29,7 @@ ${hiConfigStyle()}
     transform: translate(-50%, -20px);
     opacity: 0;
     transition:all .15s .15s,left 0s, top 0s;
-    color: var(--background, rgba(0,0,0,0.75));
+    color: var(--colorGray7, rgba(0,0,0,0.75));
     visibility: hidden;
     pointer-events: none;
 }
@@ -39,7 +39,7 @@ ${hiConfigStyle()}
     padding: 6px 10px;
     line-height: 18px;
     text-align: left;
-    background-color: var(--background, rgba(0,0,0,0.75));
+    background-color: var(--colorGray7, rgba(0,0,0,0.75));
     color: #fff;
     font-size: 12px;
     font-style: normal;
@@ -313,15 +313,15 @@ ${hiConfigStyle()}
 }
 /* success */
 :host([type="success"]){
-    --background: var(--successColor, #52c41a);
+    --colorGray7: var(--successColor, #52c41a);
 }
 /* error */
 :host([type="error"]){
-    --background: var(--errorColor, #f4615c);
+    --colorGray7: var(--errorColor, #f4615c);
 }
 /* warning */
 :host([type="warning"]){
-    --background: var(--waringColor, #faad14);
+    --colorGray7: var(--waringColor, #faad14);
 }
 slot{
     border-radius: inherit;

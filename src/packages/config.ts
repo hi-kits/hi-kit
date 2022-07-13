@@ -24,19 +24,13 @@ export const hiConfig = {
 
 export function hiConfigStyle(): string {
     const Theme = [
+        // ---------------------- 主题色 ---------------------
         // 主题颜色
         '--themeColor: #42b983',
         // 主题背景色
         '--themeBackground: #42b983',
 
-        // 弹框背景色
-        '--background: rgba(0,0,0,0.75)',
-        // 弹框背景色 - 浅色
-        '--background-1: rgba(0,0,0,0.3)',
 
-
-        // 颜色-白
-        '--colorWhite: #fff',
 
         // 文字颜色
         '--fontColor: #333',
@@ -44,6 +38,20 @@ export function hiConfigStyle(): string {
         '--borderColor: #d9d9d9',
         // 圆角
         '--borderRadius: 4px',
+
+        // ---------------------- 中性色 ---------------------
+
+        // 颜色 - 白
+        '--colorWhite: #fff',        
+        // 灰色透明 - 浅
+        '--colorGray3: rgba(0,0,0,0.3)',
+        // 灰色透明 - 深
+        '--colorGray7: rgba(0,0,0,0.75)',
+        // 颜色 - 黑
+        '--colorBlack: #000',
+
+
+        // ---------------------- 功能色 ---------------------
         // 首选颜色
         '--primaryColor: #1890ff',
         '--primaryColor-hover: #40a9ff',
