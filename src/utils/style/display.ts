@@ -31,7 +31,7 @@ export type CSSDisplayPropertyValue =
  * 设置 `display: none;` 的CSS片段使用 [hidden] 属性隐藏 host
  * @public
  */
-export const hidden = `:host([hidden]){display:none}`;
+export const hidden = `:host([hidden]),:host([hide]){display:none}`;
 
 /**
  * 应用CSS display 属性

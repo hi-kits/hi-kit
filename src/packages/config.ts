@@ -42,7 +42,11 @@ export function hiConfigStyle(): string {
         // ---------------------- 中性色 ---------------------
 
         // 颜色 - 白
-        '--colorWhite: #fff',        
+        '--colorWhite: #fff',
+        // 灰色 - 浅
+        '--colorGray1: #fafafa',
+        // 灰色 - 浅
+        '--colorGray2: #eee',
         // 灰色透明 - 浅
         '--colorGray3: rgba(0,0,0,0.3)',
         // 灰色透明 - 深
