@@ -8,12 +8,13 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 
 import { display } from '../../utils/style';
 // 样式
 export const RadioStyles = css`
 ${display("inline-block")}
+${hiConfigStyle()}
 :host{ 
     font-size:14px;
     color:var(--fontColor,#333);
@@ -32,7 +33,7 @@ ${display("inline-block")}
     clip:rect(0,0,0,0);
 }
 :host(:focus-within) .cheked,:host(:not([disabled])) label:hover .cheked{ 
-    border-color:var(--themeColor,#42b983);
+    border-color: var(--borderColor,#42b983);
     /*box-shadow: 0 0 10px rgba(0,0,0,0.1);*/
     z-index:1;
 }
@@ -94,7 +95,7 @@ label{
     transform: scale(1);
 }
 #radio[checked]+label .cheked{
-    border-color:var(--themeColor,#42b983);
+    border-color: var(--borderColor,#42b983);
 }
 
 `;

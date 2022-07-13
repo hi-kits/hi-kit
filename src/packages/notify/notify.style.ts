@@ -8,10 +8,10 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式文件
 export const NotifyStyles = css`
-
+${hiConfigStyle()}
 :host {
     position: fixed;
     bottom: 1em;

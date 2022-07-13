@@ -8,10 +8,10 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式
 export const RadioGroupStyles = css`
-
+${hiConfigStyle()}
 :host {
     display:inline-block;
 }

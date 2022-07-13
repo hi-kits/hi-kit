@@ -10,14 +10,14 @@ import { HIElement, customElement, attr, html, css, ref, observable } from 'hi-e
 // 样式助手
 import { Style } from '../../utils/style/style';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式
 export const styles = css`
-
+${hiConfigStyle()}
 .Card{
     position:relative;
     background:#fff;
-    border: 1px solid rgba(0,0,0,0.06);
+    border: 1px solid var(--borderColor, rgba(0,0,0,0.06)) ;
     font-size:12px;
     overflow:hidden;
 }

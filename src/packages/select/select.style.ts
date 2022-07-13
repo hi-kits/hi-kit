@@ -8,14 +8,14 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式文件
 export const SelectStyles = css`
-
+${hiConfigStyle()}
 :host{
     display:inline-block;
     font-size: 14px;
-    border-radius: var(--borderRadius,.25em);
+    border-radius: var(--borderRadius, .25em);
 }
 :host([block]){
     display:block;
@@ -23,7 +23,7 @@ export const SelectStyles = css`
 
 :host(:not([disabled]):not([type="primary"]):focus-within) #select,
 :host(:not([disabled]):not([type="primary"]):hover) #select{
-    border-color:var(--themeColor,#42b983);
+    border-color: var(--borderColor,#42b983);
     color:var(--themeColor,#42b983);
 }
 

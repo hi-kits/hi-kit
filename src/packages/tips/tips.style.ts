@@ -8,10 +8,10 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式文件
 export const TipsStyles = css`
-
+${hiConfigStyle()}
 :host {
         display:inline-block;
         position: relative;
@@ -27,7 +27,7 @@ export const TipsStyles = css`
         transform: translate(-50%, -20px);
         opacity: 0;
         transition:all .15s .15s,left 0s, top 0s;
-        color: var(--color,rgba(0,0,0,0.75));
+        color: var(--fontColor,rgba(0,0,0,0.75));
         visibility: hidden;
         pointer-events: none;
     }
@@ -37,7 +37,7 @@ export const TipsStyles = css`
         padding: 6px 10px;
         line-height: 18px;
         text-align: left;
-        background-color: var(--color,rgba(0,0,0,0.75));
+        background-color: var(--background,rgba(0,0,0,0.75));
         color: #fff;
         font-size: 12px;
         font-style: normal;
@@ -311,15 +311,15 @@ export const TipsStyles = css`
     }
     /* success */
     :host([type="success"]){
-        --color:var(--successColor,#52c41a);
+        --fontColor:var(--successColor,#52c41a);
     }
     /* error */
     :host([type="error"]){
-        --color:var(--errorColor,#f4615c);
+        --fontColor:var(--errorColor,#f4615c);
     }
     /* warning */
     :host([type="warning"]){
-        --color:var(--waringColor,#faad14);
+        --fontColor:var(--waringColor,#faad14);
     }
     slot{
         border-radius: inherit;

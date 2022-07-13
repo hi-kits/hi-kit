@@ -8,10 +8,10 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式文件
 export const StepStyles = css`
-
+${hiConfigStyle()}
 :host {
     position: relative;
     display: inline-block;
@@ -121,7 +121,7 @@ export const StepStyles = css`
 :host([status="finish"]) .Icon{
     color: #1890ff;
     background-color: #fff;
-    border-color: #1890ff;
+    border-color: var(--borderColor, #1890ff);
 }
 :host([status="finish"]) .Title:after,
 :host([status="finish"][dir="vertical"]) .Tail:after{
@@ -130,12 +130,12 @@ export const StepStyles = css`
 :host([status="process"]) .Icon{
     color: #fff;
     background-color: #1890ff;
-    border-color: #1890ff;
+    border-color: var(--borderColor, #1890ff);
 }
 :host([status="error"]) .Icon{
     color: #ff4d4f;
     background-color: #ff4d4f;
-    border-color: #ff4d4f;
+    border-color: var(--borderColor, #ff4d4f);
 }
 :host([status="error"]) .Content,
 :host([status="error"]) .Icon{

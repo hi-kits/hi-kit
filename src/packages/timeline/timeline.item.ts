@@ -11,9 +11,12 @@ import { HIElement, customElement, attr, observable, ref, css,  html, when } fro
 import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
 import { Style } from '../../utils/style/style';
+// 配置文件
+import { hiConfigStyle } from '../config';
 
 // 样式
 const styles = css`
+${hiConfigStyle()}
 :host {
     position: relative;
     margin: 0;

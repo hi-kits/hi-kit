@@ -9,10 +9,10 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式文件
 export const ShortStyles = css`
-
+${hiConfigStyle()}
 :host{
     font-size:12px;
     font-weight:400;
@@ -22,8 +22,8 @@ export const ShortStyles = css`
     border-radius:2px;
     padding:2px 8px;
     vertical-align:middle;
-    background-color: var(--color, #fafafa);
-    border-color: var(--color);
+    background-color: var(--background, #fafafa);
+    border-color: var(--borderColor, #eeeeee);
 }
 :host([hide]) {
     display: none;

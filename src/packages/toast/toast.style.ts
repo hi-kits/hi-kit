@@ -8,10 +8,10 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式文件
 export const ToastStyles = css`
-
+${hiConfigStyle()}
 .ToastBox{
         position:fixed;
         left:50%;
@@ -19,7 +19,7 @@ export const ToastStyles = css`
         min-width:100px;
         max-width:100%;
         margin-left:-50px;
-        border-radius:${hiConfig.borderRadius};
+        border-radius: var(--borderRadius, 4px);
         background-color:rgba(0,0,0,.8);
         box-shadow:rgba(0,0,0,0.4) 0 0 5px;
         opacity:0;color:#fff;

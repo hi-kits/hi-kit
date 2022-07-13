@@ -8,10 +8,10 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式
 export const ModalStyles = css`
-
+${hiConfigStyle()}
 :host{
     position:fixed;
     display:flex;
@@ -42,7 +42,7 @@ export const ModalStyles = css`
     box-sizing: border-box;
     max-width: 80vw;
     max-height: calc(100vh - 20px);
-    border-radius: 3px;
+    border-radius: var(--borderRadius, 4px);
     background-color: #fff;
     opacity:0;
     transform:scale(0.5);

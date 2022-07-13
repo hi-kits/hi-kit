@@ -8,10 +8,10 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式
 export const PaginationStyles = css`
-
+${hiConfigStyle()}
 :host {
     display:flex;
     font-size:14px;
@@ -39,7 +39,7 @@ h-button[tabindex]{
 }
 h-button[current] {
     background: #42b983;
-    border-color: #42b983;
+    border-color: var(--borderColor,#42b983);
     color:#fff;
 }
 .page{

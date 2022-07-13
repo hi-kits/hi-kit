@@ -8,9 +8,10 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式
 export const MessageStyles = css`
+${hiConfigStyle()}
 :host{
     display:flex;
     visibility:hidden;
@@ -46,9 +47,6 @@ export const MessageStyles = css`
 }
 
 
-// :host([show][type="info"]) .message {
-//     background: ${hiConfig.infoColor};
-// }
 
 :host h-icon{
     font-size: 16px;

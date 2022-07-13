@@ -9,8 +9,11 @@
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 // 事件处理
 import { EventUtil } from '../../utils/event';
+// 配置文件
+import { hiConfigStyle } from '../config';
 // 样式文件
 const styles = css`
+${hiConfigStyle()}
 :host{ 
     box-sizing:border-box; 
     display:flex; 
@@ -18,7 +21,6 @@ const styles = css`
 }
 :host([disabled]){ 
     opacity:.8; 
-    --themeColor:#999; 
     cursor:not-allowed; 
 }
 :host([disabled]) input[type="range"]{ 

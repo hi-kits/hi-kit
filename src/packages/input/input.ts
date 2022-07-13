@@ -27,9 +27,9 @@ const template = html<HiInput>`
 <h-tips id="input-con" dir="${x => x.errordir}" type="error">
     ${when(
         x => x.icon ,
-        html`<h-icon class="icon-pre" name='+this.icon+'></h-icon>`
+        html<HiInput>`<h-icon class="icon-pre" name='+this.icon+'></h-icon>`
     )}
-    <input id="input" class="input"
+    <input ${ref('input')} class="input"
         value="${x => x.defaultvalue}" 
         type="${x => x.typeMap(x.type)}" 
         placeholder="${x => x.placeholder}" 
@@ -39,19 +39,22 @@ const template = html<HiInput>`
     <slot></slot>
     ${when(
         x => x.label && !x.icon ,
-        html`<label class="input-label">${x => x.label}</label>`
+        html<HiInput>`<label class="input-label">${x => x.label}</label>`
     )}
     ${when(
         x => x.type === 'password' && !x.multi,
-        html`<h-button id="btn-pass" class="btn-right" icon="eye-close" type="flat" shape="circle"></h-button>`
+        html<HiInput>`<h-button ${ref('btnPass')} class="btn-right" icon="eye-close" type="flat" shape="circle"></h-button>`
     )}
     ${when(
         x => x.type === 'search' && !x.multi,
-        html`<h-button id="btn-search" class="btn-right" icon="search" type="flat" shape="circle"></h-button>`
+        html<HiInput>`<h-button  ${ref('btnSearch')} class="btn-right" icon="search" type="flat" shape="circle"></h-button>`
     )}
     ${when(
         x => x.type === 'number' && !x.multi,
-        html`<div class="btn-right btn-number"><h-button id="btn-add" icon="up" type="flat"></h-button><h-button id="btn-sub" icon="down" type="flat"></h-button></div>`
+        html<HiInput>`<div class="btn-right btn-number">
+            <h-button ${ref('btnAdd')} icon="up" type="flat"></h-button>
+            <h-button ${ref('btnSub')} icon="down" type="flat"></h-button>
+        </div>`
     )}
 </h-tips>
 `;
@@ -77,19 +80,24 @@ export class HiInput extends HIElementBase {
     validity;
     inputCon;
     invalid;
-    input;
+    @observable
+    input: HTMLInputElement;
     customValidity;
     errortips;
     debounce;
     timer;
     value;
-    list;
-    btnPass;
-    btnAdd;
-    btnSub;
+    list ;
+    @observable
+    btnPass: HTMLButtonElement;
+    @observable
+    btnAdd: HTMLButtonElement;
+    @observable
+    btnSub: HTMLButtonElement;
     password;
     pattern;
-    btnSearch;
+    @observable
+    btnSearch: HTMLButtonElement;
     rows;
     maxlength;
     
@@ -191,69 +199,49 @@ export class HiInput extends HIElementBase {
             }
         });
         if(!this.multi){
-            this.btnPass = this.shadowRoot!.getElementById('btn-pass');
-            this.btnAdd = this.shadowRoot!.getElementById('btn-add');
-            this.btnSub = this.shadowRoot!.getElementById('btn-sub');
-            this.btnSearch = this.shadowRoot!.getElementById('btn-search');
             if(this.btnSearch){
-                this.btnSearch.addEventListener('click',()=>{
-                    this.dispatchEvent(new CustomEvent('submit',{
-                        detail:{
-                            value:this.value
-                        }
-                    }));
-                })
+                EventUtil.addHandler(this.btnSearch, 'click', ()=>{
+                    this.$emit('submit', { value:this.value });
+                });
             }
             if(this.btnPass){
-                this.btnPass.addEventListener('click',()=>{
+                EventUtil.addHandler(this.btnPass, 'click', ()=>{
                     this.password = !this.password;
                     if(this.password){
                         this.input.setAttribute('type','text');
-                        this.btnPass.icon = 'eye';
+                        this.btnPass['icon'] = 'eye';
                     }else{
                         this.input.setAttribute('type','password');
-                        this.btnPass.icon = 'eye-close';
+                        this.btnPass['icon'] = 'eye-close';
                     }
                     this.input.focus();
-                })
+                });
             }
             if(this.btnAdd){
-                this.btnAdd.addEventListener('click',()=>{
+                EventUtil.addHandler(this.btnAdd, 'click', ()=>{
                     this.input.stepUp();
-                    this.dispatchEvent(new CustomEvent('change',{
-                        detail:{
-                            value:this.value
-                        }
-                    }));
-                })
+                    this.$emit('change', { value:this.value });
+                });
             }
             if(this.btnSub){
-                this.btnSub.addEventListener('click',()=>{
+                EventUtil.addHandler(this.btnSub, 'click', ()=>{
                     this.input.stepDown();
-                    this.dispatchEvent(new CustomEvent('change',{
-                        detail:{
-                            value:this.value
-                        }
-                    }));
-                })
+                    this.$emit('change', { value:this.value });
+                });
             }
             this.pattern = this.pattern;
         }
 
         EventUtil.addHandler(document, 'mousedown', this.setlist);
 
-        EventUtil.addHandler(this.list, 'submit', (ev)=>{
-            this.focus();
-            if(ev.target.value){
-                this.value = ev.target.value;
-                this.list.show = false;
-                this.dispatchEvent(new CustomEvent('change',{
-                    detail:{
-                        value:this.value
-                    }
-                }));
-            }
-        });
+        // EventUtil.addHandler(this.list, 'submit', (ev)=>{
+        //     this.focus();
+        //     if(ev.target.value){
+        //         this.value = ev.target.value;
+        //         this.list.show = false;
+        //         this.$emit('change', { value:this.value });
+        //     }
+        // });
        
     }
 

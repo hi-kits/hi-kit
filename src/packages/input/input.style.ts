@@ -8,10 +8,10 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 // 样式文件
 export const NotifyStyles = css`
-
+${hiConfigStyle()}
 :host{
     box-sizing:border-box;
     display:inline-block;
@@ -117,11 +117,15 @@ input[type="number"]::-webkit-inner-spin-button{
 }
 .input:not(:placeholder-shown) ~ .input-label,
 .input:focus ~ .input-label{
+    text-overflow: ellipsis;
     transform: translateY( calc( -50% - 0.43em ) ) scale(0.8);
     background:#fff;
 }
 .input:focus{
-    color:#f00;
+    border-color: #40a9ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
+    border-right-width: 1px;
+    outline: 0
 }
 .input:-moz-ui-invalid{
     box-shadow:none;

@@ -8,9 +8,10 @@
  */
 
 import { css } from 'hi-element';
-import { hiConfig } from '../config';
+import { hiConfig, hiConfigStyle } from '../config';
 
 export const ButtonStyles = css`
+${hiConfigStyle()}
   :host {
     position: relative;
     display: inline-flex;

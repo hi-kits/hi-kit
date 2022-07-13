@@ -9,9 +9,12 @@
 import { css } from 'hi-element';
 // display规则
 import { display } from '../../utils/style';
+// 配置文件
+import { hiConfigStyle } from '../config';
 // 样式文件
 export const SwitchStyles = css`
 ${display("inline-block")}
+${hiConfigStyle()}
 :host{ 
     -webkit-tap-highlight-color: transparent;
     vertical-align: middle;
