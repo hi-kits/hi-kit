@@ -48,7 +48,13 @@ export class HiTag extends HIElementBase {
       * @type {('center' | 'left' | 'right')}
       */
     @attr dir: 'center' | 'left' | 'right';
- 
+    /**
+     * 没有边框
+     * @date 6/27/2022 - 5:39:55 PM
+     *
+     * @type {boolean}
+     */
+    @attr({ mode: "boolean" }) noBorder: boolean;
     /**
       * 文字尺寸
       * @public number

@@ -13,10 +13,11 @@ import { HIElementBase } from '../_mixins/hiElementBase';
 // 样式助手
 import { Style } from '../../utils/style/style';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 
 // 样式
 const styles = css`
+${hiConfigStyle()}
 :host{
     display: flex;
     align-items: center;
@@ -25,7 +26,7 @@ const styles = css`
     border-bottom: 1px solid rgba(0,0,0,.06);
 }
 :host(:hover) { 
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.02);
 }
 :host([size="large"]) {
     padding: 16px;

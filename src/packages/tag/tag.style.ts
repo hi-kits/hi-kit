@@ -27,7 +27,9 @@ ${display("inline-block")}
     background-color: var(--colorGray1, #fafafa);
     border-color: var(--borderColor, #eee);
 }
-
+:host([noBorder]){
+    border: 0;
+}
 
 `;
  

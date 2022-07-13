@@ -21,6 +21,9 @@ import { template } from './button.template';
 })
 export class HiButton extends HIElementBase {
   // ------------------ 构造函数 ------------------
+  constructor(){
+    super();
+  }
   // ------------------ 参数 ------------------
   // 代理
   proxy = document.createElement('input');
