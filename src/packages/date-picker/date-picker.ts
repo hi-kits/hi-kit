@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-05 17:34:54
+ * @LastEditTime: 2022-07-12 15:06:09
  */
 import { HIElement, customElement, attr, when, ref, slotted, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-picker.style';
@@ -59,11 +59,16 @@ export class DatePicker extends HIElement {
   @attr max: string;
   // 默认值
   @attr defaultvalue: string = '';
+  // 默认的时间值
+  @attr defaultTimeValue: string = '';
   // popover方向
   @attr dir = 'top';
   // type
   @attr type: DatePaneType = 'date';
 
+  // 是否展示时间选择器
+  @attr ({ mode: 'boolean' }) enableTimePicker: boolean = false;
+  // data-picker的value
   @attr value: string;
   private valueChanged(value) {
     if (this.range) {
@@ -72,7 +77,7 @@ export class DatePicker extends HIElement {
     } else {
       DateUtils.parseDate(this.$value, this.type);
     }
-    this.datetxt.textContent = this.value;
+    this.datetxt.textContent = this.showValue;
     if (this.nativeclick) {
       this.nativeclick = false;
       this.dispatchEvent(
@@ -91,6 +96,8 @@ export class DatePicker extends HIElement {
       }
     }
   }
+  // select 展示的value
+  public showValue;
 
   // @attr({ converter: dateParseDate }) date: string = '';
   private _date;
@@ -121,6 +128,7 @@ export class DatePicker extends HIElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.defaultvalue = this.getDefaultValue();
+    this.defaultTimeValue = this.getDefaultTimeValue();
     // selec点击事件
     this.select.addEventListener('click', () => {
       if (!this.datePane) {
@@ -128,14 +136,18 @@ export class DatePicker extends HIElement {
           this.datePane = new HiDateRangePane();
           // 当是range的时候需要date类型的数组
           this.datePane.defaultvalue = this.defaultvalue.split('~');
+          this.datePane.timepickValue = this.defaultTimeValue.split('~');
         } else {
           this.datePane = new HiDatePane();
           this.datePane.defaultvalue = this.defaultvalue;
+          this.datePane.timepickValue = this.defaultTimeValue;
         }
         this.min ? (this.datePane.min = this.min) : '';
         this.max ? (this.datePane.max = this.max) : '';
 
         this.datePane.type = this.type;
+        // 是否展示enableTimePicker
+        this.datePane.enableTimePicker = this.enableTimePicker;
         console.log('datePicker----', this.datePane.min, this.datePane.max);
 
         this.popcon.prepend(this.datePane);
@@ -146,17 +158,32 @@ export class DatePicker extends HIElement {
       this.nativeclick = true;
       if (typeof this.datePane.value !== 'string') {
       }
-      console.log('this.btnSubmit', this.datePane.value);
-
+      
+      this.$value = this.datePane.value;
       this.value = typeof this.datePane.value !== 'string' ? this.datePane.value.join('~') : this.datePane.value;
+      console.log( 'btnSubmit:',this.$value , this.value);
+      this.setShowValue(this.$value, this.datePane.timepickValue);
     });
     // 面板关闭
     this.popcon.addEventListener('close', () => {
+      // 需要获取time-picker的value
       this.datePane.value = this.range ? this.value.split('~') : this.value;
       this.datePane.mode = this.type;
     });
     this.$value = this.range ? this.defaultvalue.split('~') : this.defaultvalue;
     this.value = this.defaultvalue;
+    this.setShowValue(this.$value, this.defaultTimeValue.split('~'));
+  }
+
+  setShowValue(value, timeValue): void {
+    // 需要获取time-picker的value
+    if (this.enableTimePicker) {
+      this.showValue = typeof value !== 'string' ?
+      value[0] + ' ' + timeValue[0] + '~' + value[1] + ' ' + timeValue[1]
+      : value + ' ' + timeValue;
+    } else {
+      this.showValue = typeof value !== 'string' ? value.join('~') : value;
+    }
   }
 
   getDefaultValue(): string {
@@ -164,6 +191,13 @@ export class DatePicker extends HIElement {
       return this.defaultvalue || DateUtils.dateToString(new Date()) + '~' + DateUtils.dateToString(new Date());
     } else {
       return this.defaultvalue || DateUtils.dateToString(new Date());
+    }
+  }
+  getDefaultTimeValue(): string {
+    if (this.range) {
+      return this.defaultTimeValue || DateUtils.dateToTimeString(new Date()) + '~' + DateUtils.dateToTimeString(new Date());
+    } else {
+      return this.defaultTimeValue || DateUtils.dateToTimeString(new Date());
     }
   }
 }

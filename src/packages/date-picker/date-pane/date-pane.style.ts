@@ -24,6 +24,9 @@ export const datePaneStyle = css`
   .date-switch[disabled] {
     opacity: 1;
   }
+  .date-date{
+    display: flex;
+  }
   xy-button {
     padding: 1px;
     font-size: inherit;

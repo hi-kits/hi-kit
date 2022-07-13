@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-07 09:53:27
+ * @LastEditTime: 2022-07-12 14:30:30
  */
 import { HIElement, customElement, attr, html, ValueConverter, ref, observable } from 'hi-element';
 import { timePaneStyle as styles } from './time-pane.style';
@@ -20,7 +20,7 @@ const template = html<HiTimePane>`
       <div class="date-mode date-date">
         <div class="timepicker_data_select">
         
-          <select  @change="${(x, c) => x.timeChangeHandler(c.event, 'hour')}" ${ref('hour_select')} size="5" class="timepicker_hour">
+          <select  @change="${(x, c) => x.timeChangeHandler(c.event, 'hour')}" ${ref('hour_select')} size="9" class="timepicker_hour">
             ${Array.from(
               { length: 24 },
               (el, i) =>
@@ -28,14 +28,14 @@ const template = html<HiTimePane>`
             ).join('')}
           
           </select>
-          <select @change="${(x, c) => x.timeChangeHandler(c.event, 'minute')}" ${ref('minute_select')} size="5"  class="timepicker_minute">
+          <select @change="${(x, c) => x.timeChangeHandler(c.event, 'minute')}" ${ref('minute_select')} size="9"  class="timepicker_minute">
           ${Array.from(
             { length: 60 },
             (el, i) =>
               `<option class='timeOption' value="${(i).toString().padStart(2, '0')}" data-minute="${(i).toString().padStart(2, '0')}">${(i).toString().padStart(2, '0')}</option>`
           ).join('')}
           </select>
-          <select @change="${(x, c) => x.timeChangeHandler(c.event, 'second')}" size="5"  ${ref('second_select')} class="timepicker_second">
+          <select @change="${(x, c) => x.timeChangeHandler(c.event, 'second')}" size="9"  ${ref('second_select')} class="timepicker_second">
           ${Array.from(
             { length: 60 },
             (el, i) =>
@@ -56,14 +56,14 @@ const template = html<HiTimePane>`
 export class HiTimePane extends HIElement {
  
   // 选择的时间
-  @attr selectedTime: string = "00 : 00 : 00";
+  @attr selectedTime: string = "00:00:00";
   // 用于和父组件交互
   @attr timevalue: string;
  
   private hour = '00';
   private minute = '00';
   private second = '00';
-  private step = 0;
+  private stepStyle = 0;
 
   // DOM Ref
   public hour_select : HTMLSelectElement;
@@ -81,33 +81,41 @@ export class HiTimePane extends HIElement {
       this.selectedTime = this.timevalue;
       // 设置select的value
       this.setSelectValue();
+      console.log('change----', this.selectedTime);
+      
     });
-    this.step = this.hour_select.children[0].clientHeight
+
+    this.stepStyle = this.hour_select.children[0].clientHeight;
     this.setSelectValue();
+    console.log('init----', this.selectedTime);
   }
 
   
-
+  // 时间发生改变后
   timeChangeHandler(ev, type) {
     // hour/minute/second 改动了
     // 获取当前的change的select的值
-    const value= this[type + '_select'].value.padStart(2, '0')
+    const value = this[type + '_select'].value.padStart(2, '0')
     // 更新对应的值
     this.setValueAndPosition(type, value, 'single')
     // 修改selectedTime
     this.updateSelectedTime();
-    
+    this.dispatchEvent(new CustomEvent('updateValue', {
+      detail: {
+        value: this.selectedTime
+      }
+     }))
   }
   // 当select的选择的值改变了更新展示的text
   updateSelectedTime() {
-    this.selectedTime = this.hour + ' : ' + this.minute + ' : ' + this.second;
+    this.selectedTime = this.hour + ':' + this.minute + ':' + this.second;
     this.timevalue = this.selectedTime;
   }
   // 设置select的value
   setSelectValue() {
     const time = this.timevalue || this.selectedTime;
-    const [hour, minute, second] = time.split(' : ');
-
+    const [hour, minute, second] = time.split(':');
+    console.log('setSelectValuet----', hour, minute, second);
     this.setValueAndPosition('hour', hour, 'select');
     this.setValueAndPosition('minute', minute, 'select');
     this.setValueAndPosition('second', second, 'select');
@@ -119,6 +127,7 @@ export class HiTimePane extends HIElement {
     }
     this[type] = value;
     // 滚动到顶部
-    this[type + '_select'].scrollTop = this.step * value;
+    this[type + '_select'].scrollTop = this.stepStyle * value;
+
   }
 }

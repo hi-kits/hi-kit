@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-07 09:49:32
+ * @LastEditTime: 2022-07-12 14:32:06
  */
 import { HIElement, customElement, attr, when, ref, html } from 'hi-element';
 import { timePickerStyle as styles } from './time-picker.style';
@@ -82,7 +82,9 @@ export class HiTimePicker extends HIElement {
       this.timePane.selectedTime = this.timevalue || this.defaultTimeValue;
       this.timePane.timevalue = this.timevalue || this.defaultTimeValue;
       this.popcon.prepend(this.timePane);
+      this.timePane.$emit('change', { value: this.timevalue})
     });
+    
     // 点击确定按钮
     this.btnSubmit.addEventListener('click', () => {
       this.nativeclick = true;
@@ -103,12 +105,12 @@ export class HiTimePicker extends HIElement {
 
   getDefaultValue(): string {
     const arr = this.defaultTimeValue.split(':').map(item => item.padStart(2, '0'));
-    return arr.join (' : ');
+    return arr.join (':');
   }
 
   getCurrentTime(): string {
     const date = new Date();
     
-    return date.getHours().toString().padStart(2, '0') + ' : ' + date.getMinutes().toString().padStart(2, '0') + ' : ' + date.getSeconds().toString().padStart(2, '0');
+    return date.getHours().toString().padStart(2, '0') + ':' + date.getMinutes().toString().padStart(2, '0') + ':' + date.getSeconds().toString().padStart(2, '0');
   }
 }

@@ -4,7 +4,7 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-05 17:34:10
+ * @LastEditTime: 2022-07-12 15:36:36
  */
 import { HIElement, customElement, attr, ref, html, ValueConverter } from 'hi-element';
 import { datePickerStyle as styles } from './date-range-pane.style';
@@ -51,6 +51,7 @@ export class HiDateRangePane extends HIElement {
     this.date01.render(this.value[0]);
     this.selected = false;
   }
+  @attr timepickValue;
   @attr({ converter: dateParseDate }) date: [Date, Date];
   // 最小值
   @attr min: string;
@@ -84,6 +85,8 @@ export class HiDateRangePane extends HIElement {
       this.date02.type = this.type;
     }
   }
+  // 是否展示timePicker
+  @attr({ mode: 'boolean' }) enableTimePicker: boolean = false;
 
   // 选择事件
   choose(value) {
@@ -110,7 +113,8 @@ export class HiDateRangePane extends HIElement {
         new CustomEvent('change', {
           detail: {
             value: value,
-            date: this.$date
+            date: this.$date,
+            time: [this.date01.timepickValue, this.date02.timepickValue]
           }
         })
       );
@@ -126,14 +130,23 @@ export class HiDateRangePane extends HIElement {
 
     this.date01.min = this.min;
     this.date02.min = this.min;
+    this.date01.enableTimePicker = this.enableTimePicker;
+    this.date02.enableTimePicker = this.enableTimePicker;
+    this.date01.timepickValue = this.timepickValue[0];
+    this.date02.timepickValue = this.timepickValue[1];
     this.date01.max = this.max;
     this.date02.max = this.max;
 
     this.date01.addEventListener('select', ev => {
       this.choose(ev['detail'].value);
+      // 时间更新了也会触发select
+      this.date01.timepickValue = ev['detail'].time;
+    
     });
     this.date02.addEventListener('select', ev => {
       this.choose(ev['detail'].value);
+      // 时间更新了也会触发select
+      this.date02.timepickValue = ev['detail'].time;
     });
     // 监听change事件
     this.addEventListener('change', ev => {
