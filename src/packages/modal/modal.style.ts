@@ -7,25 +7,26 @@
  */
 // 核心库
 import { css } from 'hi-element';
+// display规则
+import { display } from '../../utils/style/display';
 // 配置文件
 import { hiConfig, hiConfigStyle } from "../config";
 // 样式
 export const ModalStyles = css`
 ${hiConfigStyle()}
+${display("flex")}
 :host{
     position:fixed;
-    display:flex;
     left:0;
     top:0;
     right:0;
     bottom:0;
     z-index:-1;
-    background:rgba(0,0,0,.3);
+    background:  var(--background-1, rgba(0,0,0,.3));
     visibility:hidden;
     opacity:0;
     /* backdrop-filter: blur(3px); 
     -webkit-backdrop-filter: blur(3px);*/
-
     transition:.3s;
 }
 :host([open]){
@@ -65,7 +66,7 @@ ${hiConfigStyle()}
     padding: 15px 30px 0 0;
     font-weight: 700;
     font-size: 14px;
-    color: #4c5161;
+    color:  #4c5161;
     user-select: none;
     cursor: default;
 }

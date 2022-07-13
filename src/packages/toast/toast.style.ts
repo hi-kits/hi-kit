@@ -20,8 +20,8 @@ ${hiConfigStyle()}
         max-width:100%;
         margin-left:-50px;
         border-radius: var(--borderRadius, 4px);
-        background-color:rgba(0,0,0,.8);
-        box-shadow:rgba(0,0,0,0.4) 0 0 5px;
+        background-color: var(--background, rgba(0,0,0,.75));
+        box-shadow: rgba(0,0,0,0.4) 0 0 5px;
         opacity:0;color:#fff;
         padding:10px;
         white-space:nowrap;

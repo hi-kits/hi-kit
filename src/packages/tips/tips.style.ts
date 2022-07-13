@@ -13,7 +13,7 @@ import { display } from '../../utils/style/display';
 import { hiConfig, hiConfigStyle } from "../config";
 // 样式文件
 export const TipsStyles = css`
-${display("block")}
+${display("inline-block")}
 ${hiConfigStyle()}
 :host {
     position: relative;
@@ -29,7 +29,7 @@ ${hiConfigStyle()}
     transform: translate(-50%, -20px);
     opacity: 0;
     transition:all .15s .15s,left 0s, top 0s;
-    color: var(--backgroundColor, rgba(0,0,0,0.75));
+    color: var(--background, rgba(0,0,0,0.75));
     visibility: hidden;
     pointer-events: none;
 }
@@ -39,7 +39,7 @@ ${hiConfigStyle()}
     padding: 6px 10px;
     line-height: 18px;
     text-align: left;
-    background-color: var(--backgroundColor, rgba(0,0,0,0.75));
+    background-color: var(--background, rgba(0,0,0,0.75));
     color: #fff;
     font-size: 12px;
     font-style: normal;
@@ -313,15 +313,15 @@ ${hiConfigStyle()}
 }
 /* success */
 :host([type="success"]){
-    --backgroundColor: var(--successColor, #52c41a);
+    --background: var(--successColor, #52c41a);
 }
 /* error */
 :host([type="error"]){
-    --backgroundColor: var(--errorColor, #f4615c);
+    --background: var(--errorColor, #f4615c);
 }
 /* warning */
 :host([type="warning"]){
-    --backgroundColor: var(--waringColor, #faad14);
+    --background: var(--waringColor, #faad14);
 }
 slot{
     border-radius: inherit;

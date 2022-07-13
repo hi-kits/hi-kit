@@ -22,7 +22,7 @@ ${hiConfigStyle()}
     border-radius: var(--borderRadius, 4px);
     padding:2px 8px;
     vertical-align:middle;
-    background-color: var(--background, #fafafa);
+    background-color: #fafafa;
     border-color: var(--borderColor, #eeeeee);
 }
 :host([hide]) {

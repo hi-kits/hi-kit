@@ -44,7 +44,7 @@ export class HiTips extends HIElementBase {
      * @type {string}
      */
     colorChanged(oldValue, newValue): void {
-        this.style.setProperty('--backgroundColor',newValue);
+        this.style.setProperty('--background',newValue);
     }
     
     /**

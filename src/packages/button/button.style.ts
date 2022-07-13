@@ -22,10 +22,10 @@ ${hiConfigStyle()}
     overflow: hidden;
     align-items: center;
     justify-content: center;
-    border: 1px solid ${hiConfig.borderColor};
+    border: 1px solid var(--borderColor, #eee);
     font-size: 14px;
-    color: ${hiConfig.color};
-    border-radius: ${hiConfig.borderRadius};
+    color: var(--fontColor, #333);
+    border-radius: var(--borderRadius, 4px);
     transition: background 0.3s, box-shadow 0.3s, border-color 0.3s, color 0.3s;
   }
   :host([shape='circle']) {
