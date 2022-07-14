@@ -34,7 +34,7 @@ const styles = css`
      white-space: nowrap;
      text-align: center;
      background: #ff4d4f;
-     border-radius: 50%;
+     border-radius: 100px;
      box-shadow: 0 0 0 1px #fff;
 }
  

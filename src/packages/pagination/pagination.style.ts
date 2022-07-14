@@ -38,7 +38,7 @@ h-button[tabindex]{
     margin:auto;
 }
 h-button[current] {
-    background: #42b983;
+    background: var(--themeColor, #42b983);
     border-color: var(--borderColor,#42b983);
     color:#fff;
 }

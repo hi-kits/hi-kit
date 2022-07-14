@@ -24,10 +24,12 @@ const template = html<HiNavDot>`
         (x, c) => x.dot, 
         html<HiNavDot>`
             <li
-                class="${(x, c) => c.parent.current}"
+                class="${(x, c) => c.parent.current == c.index ? 'current' : ''}"
                 @click="${(x, c: ExecutionContext) => c.parent.dotClick(c.parentContext.event as MouseEvent, c.index)}">${x => x}
                 </li>
-        `
+        `, {
+            positioning: true
+        }
     )}
 </ul>
 <style ${ref("Filter")}></style>
@@ -93,6 +95,8 @@ export class HiNavDot extends HIElementBase {
     }
     dotClick(ev, idx): void {
         ev.preventDefault();
+        console.log(idx);
+        
         if( idx !== this.current ) {
             const children = this.dotBox.children;
             for (let index = 0; index < children.length; index++) {

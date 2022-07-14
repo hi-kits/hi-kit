@@ -103,7 +103,7 @@ ${hiConfigStyle()}
     height: 100%;
     border-radius: 100px;
     transition: all .3s;
-    background: #1890ff;
+    background: var(--themeColor, #42b983);
 } 
 :host([dot][dir="vertical"]) .Tail {
     left: 4px;
@@ -119,27 +119,26 @@ ${hiConfigStyle()}
 
 
 :host([status="finish"]) .Icon{
-    color: #1890ff;
+    color: var(--themeColor, #42b983);
     background-color: var(--colorWhite, #fff);
     border-color: var(--borderColor, #1890ff);
 }
 :host([status="finish"]) .Title:after,
 :host([status="finish"][dir="vertical"]) .Tail:after{
-    background: #1890ff;
+    background: var(--themeColor, #42b983);
 }
 :host([status="process"]) .Icon{
     color: #fff;
-    background-color: #1890ff;
-    border-color: var(--borderColor, #1890ff);
+    background-color: var(--themeColor, #42b983);
 }
 :host([status="error"]) .Icon{
-    color: #ff4d4f;
+    color: var(--themeColor, #42b983);
     background-color: #ff4d4f;
     border-color: var(--borderColor, #ff4d4f);
 }
 :host([status="error"]) .Content,
 :host([status="error"]) .Icon{
-    color: #ff4d4f;
+    color: var(--themeColor, #42b983);
 }
 :host([size="small"]) {
     padding-left: 12px;
