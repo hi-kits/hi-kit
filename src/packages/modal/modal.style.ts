@@ -22,7 +22,7 @@ ${display("flex")}
     right:0;
     bottom:0;
     z-index:-1;
-    background:  var(--colorGray3, rgba(0,0,0,.3));
+    background:  var(--colorNeutral3, rgba(0,0,0,.3));
     visibility:hidden;
     opacity:0;
     /* backdrop-filter: blur(3px); 

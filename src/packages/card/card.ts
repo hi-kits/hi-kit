@@ -17,7 +17,7 @@ ${hiConfigStyle()}
 .Card{
     position:relative;
     background:var(--colorWhite, #fff);
-    border: 1px solid var(--borderColor, rgba(0,0,0,0.06)) ;
+    border: 1px solid var(--colorNeutral05, rgba(0,0,0,0.05)) ;
     font-size:12px;
     overflow:hidden;
 }

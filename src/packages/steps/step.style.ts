@@ -67,7 +67,7 @@ ${hiConfigStyle()}
 }
 :host .Icon {
     color: #b3b3b3;
-    border: 1px solid rgba(0,0,0,.25);
+    border: 1px solid rgba(0,0,0,.2);
     border-radius: 32px;
     transition: background-color .3s,border-color .3s;
 }

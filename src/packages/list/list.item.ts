@@ -23,10 +23,10 @@ ${hiConfigStyle()}
     align-items: center;
     justify-content: space-between;
     padding: 12px;
-    border-bottom: 1px solid rgba(0,0,0,.06);
+    border-bottom: 1px solid var(--colorNeutral05, rgba(0, 0, 0, 0.05));
 }
 :host(:hover) { 
-    background: rgba(0, 0, 0, 0.02);
+    background: var(--colorNeutral02, rgba(0, 0, 0, 0.02));
 }
 :host([size="large"]) {
     padding: 16px;

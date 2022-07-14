@@ -26,7 +26,7 @@ const styles = css`
 	height: 100%;
     opacity: 0;
     inset: 0px;
-    background: var(--colorGray3, rgba(0, 0, 0, 0.3)) ;
+    background: var(--colorNeutral3, rgba(0, 0, 0, 0.3)) ;
     transition: all 0.3s ease 0s;
 }
 :host .Sidebar{

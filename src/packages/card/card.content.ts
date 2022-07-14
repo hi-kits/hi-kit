@@ -26,7 +26,7 @@ export const styles = css`
     right:auto;
     height:1px;
     width:100%;
-    background-color:rgba(0,0,0,0.06);
+    background-color:var(--colorNeutral05, rgba(0, 0, 0, 0.05));
     display:block;
     z-index:15
 }

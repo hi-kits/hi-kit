@@ -24,7 +24,7 @@ const styles = css`
     display: inline-block;
     padding: 2px;
     color: rgb(0 0 0 / 65%);
-    background-color:  var(--colorGray3, rgb(0 0 0 / 4%));
+    background-color:  var(--colorNeutral3, rgb(0 0 0 / 4%));
     border-radius: var(--borderRadius, 4px);
     transition: all .3s cubic-bezier(.645,.045,.355,1);
 }
