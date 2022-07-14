@@ -15,7 +15,7 @@ const styles = css`
 :host {
     box-sizing: border-box;
     margin: 0;
-    color: var(--fontColor, #333);
+    color: var(--fontColor);
     font-size: 14px;
     font-variant: tabular-nums;
     line-height: 1.5715;
@@ -24,8 +24,8 @@ const styles = css`
     display: inline-block;
     padding: 2px;
     color: rgb(0 0 0 / 65%);
-    background-color:  var(--colorNeutral3, rgb(0 0 0 / 4%));
-    border-radius: var(--borderRadius, 4px);
+    background-color:  var(--colorNeutral05);
+    border-radius: var(--borderRadius);
     transition: all .3s cubic-bezier(.645,.045,.355,1);
 }
 :host .Segmenteds{
@@ -36,8 +36,8 @@ const styles = css`
     width: 100%;
 }
 .thumb{
-    background-color: var(--colorWhite, #fff);
-    border-radius: var(--borderRadius, 4px);
+    background-color: var(--colorWhite);
+    border-radius: var(--borderRadius);
     box-shadow: 0 2px 8px -2px #0000000d, 0 1px 4px -1px #00000012, 0 0 1px #00000014;
     position: absolute;
     top: 0;

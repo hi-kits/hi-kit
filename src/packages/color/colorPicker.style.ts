@@ -36,7 +36,7 @@ xy-popover{
     height:100%;
     padding:5px;
     background-clip: content-box;
-    background-color:var(--themeColor,#42b983);
+    background-color:var(--themeColor);
 }
 .color-btn:hover{
     z-index: auto;

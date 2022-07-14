@@ -31,7 +31,7 @@ ${hiConfigStyle()}
     clip:rect(0,0,0,0);
 }
 :host(:focus-within) label::after,:host(:active) ::after{ 
-    background:var(--themeColor,#42b983);
+    background:var(--themeColor);
 }
 :host(:focus-within) label{ 
     /*box-shadow: 0 0 10px rgba(0,0,0,0.1); */
@@ -60,7 +60,7 @@ label::after{
     height:.4em;
     border-radius:1.2em;
     border:.4em solid #fff;
-    background: var(--colorWhite, #fff);
+    background: var(--colorWhite);
     transition:.3s background,.3s padding,.3s width,.3s height,.3s border-radius,.3s border;
     box-shadow: 0 2px 4px 0 rgba(0,35,11,0.2);
 }
@@ -68,7 +68,7 @@ label:active::after{
     padding:0 .3em;
 }
 #switch:checked+label{
-    background:var(--themeBackground,var(--themeColor,#42b983));
+    background:var(--themeBackground,var(--themeColor));
 }
 #switch:checked+label::before{
     flex:1;

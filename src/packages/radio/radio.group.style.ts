@@ -35,8 +35,8 @@ ${hiConfigStyle()}
     opacity:.6;
 }
 h-tips[show=show]{
-    --themeColor:var(--errorColor,#f4615c);
-    --borderColor:var(--errorColor,#f4615c);
+    --themeColor:var(--errorColor);
+    --borderColor:var(--errorColor);
 }
 
 `;

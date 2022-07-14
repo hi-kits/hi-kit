@@ -20,7 +20,7 @@ export const PopconStyles = css`
     z-index:10;
     transition:.3s cubic-bezier(.645, .045, .355, 1);
     transform-origin:inherit;
-    background: var(--colorWhite, #fff);
+    background: var(--colorWhite);
     visibility:hidden;
 }
 .popcon-content{

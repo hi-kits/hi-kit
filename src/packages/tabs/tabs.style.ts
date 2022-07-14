@@ -40,15 +40,15 @@ ${hiConfigStyle()}
     border-color:transparent;
 }
 :host(:not([type="line"])) .NavItem.active{
-    color: var(--themeColor,#42b983);
+    color: var(--themeColor);
 }
 .TabLine{
     position:absolute;
     width:0;
     margin-top:-2px;
     height:2px;
-    border-radius: var(--borderRadius, 4px);
-    background:var(--themeColor,#42b983);
+    border-radius: var(--borderRadius);
+    background:var(--themeColor);
     transition:.2s;
 }
 .TabContent{
@@ -70,13 +70,13 @@ ${hiConfigStyle()}
     border-radius:.5em .5em 0 0;
 }
 :host([type="line"]) .NavItem{
-    border-radius:var(--borderRadius,.25em) var(--borderRadius,.25em) 0 0;
+    border-radius:var(--borderRadius) var(--borderRadius) 0 0;
 }
 :host([type="card"]) .NavItem.active,:host([type="card"]) .TabContent{
-    background-color: var(--colorWhite, #fff);
+    background-color: var(--colorWhite);
 }
 :host([type="line"]) .NavItem.active{
-    border-color:var(--borderColor,rgba(0,0,0,.2)) var(--borderColor,rgba(0,0,0,.2)) transparent;
+    border-color:var(--borderColor) var(--borderColor) transparent;
 }
 :host([type="line"]) .TabNavWrap{
     oveflow:hidden;
@@ -92,7 +92,7 @@ ${hiConfigStyle()}
     width:9999px;
     height:1px;
     bottom:0;
-    background:var(--borderColor,rgba(0,0,0,.2));
+    background:var(--borderColor);
 }
 :host([type="line"]) .TabLine::before{
     right:100%;

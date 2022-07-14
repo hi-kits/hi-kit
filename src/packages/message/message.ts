@@ -108,25 +108,25 @@ export class HiMessage extends HIElement {
             case 'info':
                 this.iconName = 'info-circle';
                 Style(this.icon)({
-                    color: 'var(--infoColor,#1890ff)'
+                    color: 'var(--infoColor)'
                 });
                 break;
             case 'success':
                 this.iconName = 'check-circle';
                 Style(this.icon)({
-                    color: 'var(--successColor,#52c41a)'
+                    color: 'var(--successColor)'
                 });
                 break;
             case 'error':
                 this.iconName = 'error';
                 Style(this.icon)({
-                    color: 'var(--errorColor,#f4615c)'
+                    color: 'var(--errorColor)'
                 });
                 break;
             case 'warning':
                 this.iconName = 'warning-circle';
                 Style(this.icon)({
-                    color: 'var(--waringColor,#faad14)'
+                    color: 'var(--waringColor)'
                 });
                 break;
             default:

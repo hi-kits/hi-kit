@@ -21,11 +21,11 @@ ${display("inline-block")}
     font-weight:400;
     color: rgb(0 0 0 / 85%);
     border: 1px solid #d9d9d9;
-    border-radius: var(--borderRadius, 4px);
+    border-radius: var(--borderRadius);
     padding:2px 8px;
     vertical-align:middle;
-    background-color: var(--colorGray1, #fafafa);
-    border-color: var(--borderColor, #eee);
+    background-color: var(--colorGray1);
+    border-color: var(--borderColor);
 }
 :host([noBorder]){
     border: 0;

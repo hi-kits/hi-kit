@@ -15,12 +15,12 @@ ${hiConfigStyle()}
 :host{
     box-sizing:border-box;
     display:inline-block;
-    border:1px solid var(--borderColor,rgba(0,0,0,.2));
-    border-radius:var(--borderRadius,.25em);
+    border:1px solid var(--borderColor);
+    border-radius:var(--borderRadius);
     line-height: 1.8;
     transition:border-color .3s,box-shadow .3s;
     padding: .25em .625em;
-    color: var(--fontColor,#333);
+    color: var(--fontColor);
     font-size: 14px;
 }
 :host(:focus-within){
@@ -30,17 +30,17 @@ ${hiConfigStyle()}
     display:block
 }
 h-tips[show=show]{
-    color:var(--errorColor,#f4615c);
+    color:var(--errorColor);
 }
 :host([invalid]){
-    --themeColor:var(--errorColor,#f4615c);
-    border-color:var(--errorColor,#f4615c);
+    --themeColor:var(--errorColor);
+    border-color:var(--errorColor);
 }
 :host([invalid]) h-icon{
-    color:var(--errorColor,#f4615c);
+    color:var(--errorColor);
 }
 :host(:focus-within:not([disabled])),:host(:not([disabled]):hover){
-    border-color:var(--themeColor,#42b983);
+    border-color:var(--themeColor);
 }
 :host([disabled]){ 
     opacity:.8;
@@ -119,7 +119,7 @@ input[type="number"]::-webkit-inner-spin-button{
 .input:focus ~ .input-label{
     text-overflow: ellipsis;
     transform: translateY( calc( -50% - 0.43em ) ) scale(0.8);
-    background: var(--colorWhite, #fff);
+    background: var(--colorWhite);
 }
 .input:focus{
     border-color: #40a9ff;
@@ -172,14 +172,14 @@ input[type="number"]::-webkit-inner-spin-button{
 }
 
 h-button:not([disabled]):hover,h-button:not([disabled]):focus-within{
-    color:var(--themeColor,#42b983);
+    color:var(--themeColor);
 }
 
 :host(:focus-within:not([disabled])) .icon-pre,
 :host(:not([disabled]):hover) .icon-pre,
 :host(:not([disabled]):hover) .input-label,
 :host(:focus-within:not([disabled])) .input-label{
-    color:var(--themeColor,#42b983);
+    color:var(--themeColor);
 }
 
 :host(:focus-within:not([disabled])) .btn-number,

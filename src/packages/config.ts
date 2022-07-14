@@ -89,7 +89,7 @@ export function hiConfigStyle(): string {
         '--infoColor: #1890ff',
     ]
 
-    return `:host {${Theme.join(';')}}`;
+    return `:host, :root {${Theme.join(';')}}`;
 }
 
 

@@ -29,17 +29,17 @@ ${hiConfigStyle()}
     transform: translate(-50%, -20px);
     opacity: 0;
     transition:all .15s .15s,left 0s, top 0s;
-    color: var(--colorNeutral7, rgba(0,0,0,0.75));
+    color: var(--colorNeutral7);
     visibility: hidden;
     pointer-events: none;
 }
 :host::before {
     content:attr(prefix) attr(tips) attr(suffix);
-    border-radius: var(--borderRadius, 4px);
+    border-radius: var(--borderRadius);
     padding: 6px 10px;
     line-height: 18px;
     text-align: left;
-    background-color: var(--colorNeutral7, rgba(0,0,0,0.75));
+    background-color: var(--colorNeutral7);
     color: #fff;
     font-size: 12px;
     font-style: normal;
@@ -313,15 +313,15 @@ ${hiConfigStyle()}
 }
 /* success */
 :host([type="success"]){
-    --colorNeutral7: var(--successColor, #52c41a);
+    --colorNeutral7: var(--successColor);
 }
 /* error */
 :host([type="error"]){
-    --colorNeutral7: var(--errorColor, #f4615c);
+    --colorNeutral7: var(--errorColor);
 }
 /* warning */
 :host([type="warning"]){
-    --colorNeutral7: var(--waringColor, #faad14);
+    --colorNeutral7: var(--waringColor);
 }
 slot{
     border-radius: inherit;

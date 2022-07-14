@@ -15,7 +15,7 @@ export const CheckboxStyles = css`
 ${display("inline-block")}
 :host{ 
     font-size:14px;
-    color:var(--fontColor,#333);
+    color:var(--fontColor);
     -webkit-tap-highlight-color: transparent;
 }
 :host([disabled]){ 
@@ -32,7 +32,7 @@ ${display("inline-block")}
 }
 :host(:focus-within) .cheked,
 :host(:not([disabled])) label:hover .cheked{ 
-    border-color:var(--themeColor,#42b983);
+    border-color:var(--themeColor);
     /*box-shadow: 0 0 10px rgba(0,0,0,0.1);*/
     z-index:1;
 }
@@ -55,8 +55,8 @@ h-tips{
     margin-left: -0.575em;
 }
 h-tips[show=show]{
-    --themeColor:var(--errorColor,#f4615c);
-    --borderColor:var(--errorColor,#f4615c);
+    --themeColor:var(--errorColor);
+    --borderColor:var(--errorColor);
 }
 .cheked{
     display:flex;
@@ -66,7 +66,7 @@ h-tips[show=show]{
     position:relative;
     width: 1em;
     height: 1em;
-    border: 0.0875em solid var(--borderColor,rgba(0,0,0,.2));
+    border: 0.0875em solid var(--borderColor);
     border-radius: 0.15em;
     text-align: initial;
     transition:.3s;
@@ -79,7 +79,7 @@ h-tips[show=show]{
     content:'';
     width:74%;
     height:0.15em;
-    background: var(--colorWhite, #fff);
+    background: var(--colorWhite);
     transform:scale(0);
     border-radius: 0.15em;
     transition: .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
@@ -89,7 +89,7 @@ h-tips[show=show]{
     content:'';
     width:100%;
     height:100%;
-    background:var(--themeColor,#42b983);
+    background:var(--themeColor);
     border-radius:50%;
     opacity:.2;
     transform:scale(0);
@@ -117,7 +117,7 @@ h-tips[show=show]{
 #checkbox:checked+label .cheked,
 #checkbox:indeterminate+label .cheked{
     border-color:transparent;
-    background-color:var(--themeColor,#42b983);
+    background-color:var(--themeColor);
 }
 #checkbox:indeterminate+label .cheked::before{
     transform:scale(1);

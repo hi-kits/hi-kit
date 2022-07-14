@@ -33,8 +33,8 @@ export const timePaneStyle = css`
     background: none;
     border: 0;
     padding: 0;
-    color: var(--fontColor, #333);
-    border-radius: var(--borderRadius, 0.25em);
+    color: var(--fontColor);
+    border-radius: var(--borderRadius);
     transition: background 0.3s, color 0.3s, opacity 0.3s, border-color 0.3s, border-radius 0.3s;
     display: inline-flex;
     align-items: center;
@@ -45,7 +45,7 @@ export const timePaneStyle = css`
   .date-button::before {
     content: '';
     position: absolute;
-    background: var(--themeColor, #42b983);
+    background: var(--themeColor);
     pointer-events: none;
     left: 0;
     right: 0;
@@ -59,7 +59,7 @@ export const timePaneStyle = css`
   }
   .date-button:not([disabled]):not([current]):not([select]):not([selectstart]):not([selectend]):hover,
   .date-button:not([disabled]):not([current]):not([select]):not([selectstart]):not([selectend]):focus {
-    color: var(--themeColor, #42b983);
+    color: var(--themeColor);
   }
   .date-button:not([disabled]):hover::before {
     opacity: 0.1;
@@ -78,21 +78,21 @@ export const timePaneStyle = css`
     /*color:var(--errorColor,#f4615c);*/
   }
   .date-button[now] {
-    color: var(--themeColor, #42b983);
+    color: var(--themeColor);
   }
   .date-button[current] {
-    background: var(--themeBackground, var(--themeColor, #42b983));
+    background: var(--themeBackground, var(--themeColor));
     color: #fff;
   }
   .date-button[select]:not([other]) {
     color: #fff;
-    background: var(--themeBackground, var(--themeColor, #42b983));
+    background: var(--themeBackground, var(--themeColor));
   }
   .date-button[selectstart]:not([other]),
   .date-button[selectend]:not([other]) {
     color: #fff;
-    border-color: var(--themeColor, #42b983);
-    background: var(--themeBackground, var(--themeColor, #42b983));
+    border-color: var(--themeColor);
+    background: var(--themeBackground, var(--themeColor));
   }
   .date-button[selectstart]:not([other])::after,
   .date-button[selectend]:not([other])::after {
@@ -106,25 +106,25 @@ export const timePaneStyle = css`
     transform: translate(0, -50%);
   }
   .date-button[selectstart]:not([other])::after {
-    border-left-color: var(--themeColor, #42b983);
+    border-left-color: var(--themeColor);
     right: 100%;
   }
   .date-button[selectend]:not([other])::after {
-    border-right-color: var(--themeColor, #42b983);
+    border-right-color: var(--themeColor);
     left: 100%;
   }
   .date-button[selectstart][selectend]:not([other])::after {
     opacity: 0;
   }
 .date-button[selectend]:not([other]){
-	color: var(--themeColor,#42b983);
-	border-color: var(--themeColor,#42b983);
+	color: var(--themeColor);
+	border-color: var(--themeColor);
 	border-top-left-radius:0;
 	border-bottom-left-radius:0;
 }
 .date-button[selectstart][selectend]:not([other]){
-	border-color: var(--themeColor,#42b983);
-	border-radius:var(--borderRadius,.25em);
+	border-color: var(--themeColor);
+	border-radius:var(--borderRadius);
 }
 
   .date-mode {
@@ -137,7 +137,7 @@ export const timePaneStyle = css`
     outline: none;
   }
   select:focus-visible {
-    outline: var(--themeBackground, var(--themeColor, #42b983)) auto 1px;
+    outline: var(--themeBackground, var(--themeColor)) auto 1px;
   }
   .timepicker_hour,
   .timepicker_minute,
@@ -145,7 +145,7 @@ export const timePaneStyle = css`
       scroll-behavior: smooth;
       -ms-overflow-style: none;
       scrollbar-width: none;
-      border: 1px solid var(--themeBackground, var(--themeColor, #42b983));
+      border: 1px solid var(--themeBackground, var(--themeColor));
       color: #0000009e;
       font-weight: bold;
   }
@@ -161,7 +161,7 @@ export const timePaneStyle = css`
     padding: 0.22em 1.1em;
   }
   .timeOption:checked {
-    background-color: var(--themeBackground, var(--themeColor, #42b983));
+    background-color: var(--themeBackground, var(--themeColor));
     color: #fff;
   }
   

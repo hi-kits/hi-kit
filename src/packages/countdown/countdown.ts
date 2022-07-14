@@ -22,8 +22,8 @@ const styles = css`
 }
 :host .Countdown span{
     color: #000;
-    background: var(--colorWhite, #fff);
-    border-radius: var(--borderRadius, 4px);
+    background: var(--colorWhite);
+    border-radius: var(--borderRadius);
     width:4vw;
     text-align: center;
     font-size: 4.6667vw;

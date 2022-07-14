@@ -41,11 +41,11 @@ ${hiConfigStyle()}
     position: absolute;
     width: 6px;
     height: 6px;
-    background-color: var(--colorWhite, #fff);
+    background-color: var(--colorWhite);
     border: 2px solid transparent;
     border-radius: 100px;
-    color: var(--themeColor, #1890ff);
-    border-color: var(--themeColor, #1890ff);
+    color: var(--themeColor);
+    border-color: var(--themeColor);
 }
 .ItemContent {
     position: relative;

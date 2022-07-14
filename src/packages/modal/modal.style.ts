@@ -22,7 +22,7 @@ ${display("flex")}
     right:0;
     bottom:0;
     z-index:-1;
-    background:  var(--colorNeutral3, rgba(0,0,0,.3));
+    background:  var(--colorNeutral3);
     visibility:hidden;
     opacity:0;
     /* backdrop-filter: blur(3px); 
@@ -43,8 +43,8 @@ ${display("flex")}
     box-sizing: border-box;
     max-width: 80vw;
     max-height: calc(100vh - 20px);
-    border-radius: var(--borderRadius, 4px);
-    background-color: var(--colorWhite, #fff);
+    border-radius: var(--borderRadius);
+    background-color: var(--colorWhite);
     opacity:0;
     transform:scale(0.5);
     transition:.3s cubic-bezier(.645, .045, .355, 1);

@@ -19,8 +19,8 @@ ${hiConfigStyle()}
         min-width:100px;
         max-width:100%;
         margin-left:-50px;
-        border-radius: var(--borderRadius, 4px);
-        background-color: var(--colorNeutral7, rgba(0,0,0,.75));
+        border-radius: var(--borderRadius);
+        background-color: var(--colorNeutral7);
         box-shadow: rgba(0,0,0,0.4) 0 0 5px;
         opacity:0;color:#fff;
         padding:10px;

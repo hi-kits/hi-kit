@@ -38,8 +38,8 @@ h-button[tabindex]{
     margin:auto;
 }
 h-button[current] {
-    background: var(--themeColor, #42b983);
-    border-color: var(--borderColor,#42b983);
+    background: var(--themeColor);
+    border-color: var(--borderColor);
     color:#fff;
 }
 .page{

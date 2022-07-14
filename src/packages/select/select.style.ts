@@ -15,7 +15,7 @@ ${hiConfigStyle()}
 :host{
     display:inline-block;
     font-size: 14px;
-    border-radius: var(--borderRadius, .25em);
+    border-radius: var(--borderRadius);
 }
 :host([block]){
     display:block;
@@ -23,13 +23,13 @@ ${hiConfigStyle()}
 
 :host(:not([disabled]):not([type="primary"]):focus-within) #select,
 :host(:not([disabled]):not([type="primary"]):hover) #select{
-    border-color: var(--borderColor,#42b983);
-    color:var(--themeColor,#42b983);
+    border-color: var(--borderColor);
+    color:var(--themeColor);
 }
 
 :host([search]:focus-within:not([disabled])) #select, 
 :host([search]:not([disabled]):hover) #select{
-    color: var(--themeColor,#42b983);
+    color: var(--themeColor);
 }
 
 :host([disabled]){
@@ -59,11 +59,11 @@ h-tips{
 }
 
 h-tips[show=show]{
-    --themeColor:var(--errorColor,#f4615c);
-    --borderColor:var(--errorColor,#f4615c);
+    --themeColor:var(--errorColor);
+    --borderColor:var(--errorColor);
 }
 :host([invalid]) #select:not([type="primary"]){
-    color:var(--errorColor,#f4615c);
+    color:var(--errorColor);
 }
 
 #select span{
@@ -119,7 +119,7 @@ h-popcon{
     content:'没有匹配到任何选项';
     padding: .25em .625em;
     line-height: 1.8;
-    color:var(--fontColor,#333);
+    color:var(--fontColor);
     white-space:nowrap;
     opacity:.5;
 }

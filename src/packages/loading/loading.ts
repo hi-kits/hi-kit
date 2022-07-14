@@ -21,7 +21,7 @@ ${hiConfigStyle()}
     display:inline-flex;
     align-items: center;
     justify-content:center;
-    color:var(--themeColor,#42b983);
+    color:var(--themeColor);
 }
 .loading{
     display: block;

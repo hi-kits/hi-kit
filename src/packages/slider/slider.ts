@@ -58,7 +58,7 @@ input[type="range"]::-webkit-slider-runnable-track{
     position: relative;
     height: 2px;
     border-radius:2px;
-    background:linear-gradient(to right, var(--themeColor,#42b983) calc(100% * var(--percent)), rgba(0,0,0,.1) 0% )
+    background:linear-gradient(to right, var(--themeColor) calc(100% * var(--percent)), rgba(0,0,0,.1) 0% )
 }
 input[type="range"]::-moz-range-progress {
     display: flex;
@@ -67,7 +67,7 @@ input[type="range"]::-moz-range-progress {
     height: 2px;
     border-radius:2px;
     outline : 0;
-    background:var(--themeColor,#42b983)
+    background:var(--themeColor)
 }
 input[type="range"]::-moz-range-track{
     height: 2px;
@@ -80,8 +80,8 @@ input[type="range"]::-webkit-slider-thumb{
     width: 14px;
     height: 14px;
     margin-top: -5px;
-    background-color: var(--colorWhite, #fff);
-    border:2px solid var(--themeColor, #42b983);
+    background-color: var(--colorWhite);
+    border:2px solid var(--themeColor);
     border-radius: 50%;
     box-shadow: 0;
     cursor: pointer;
@@ -90,12 +90,12 @@ input[type="range"]::-webkit-slider-thumb{
 input[type="range"]::-moz-range-thumb{
     box-sizing:border-box;
     pointer-events:none;
-    border:2px solid var(--themeColor,#42b983);
+    border:2px solid var(--themeColor);
     position: relative;
     width:10px;
     height:10px;
     border-radius: 50%;
-    background:var(--themeColor,#42b983);
+    background:var(--themeColor);
     transition:.2s cubic-bezier(.12, .4, .29, 1.46);
 }
 input[type="range"]:focus{
@@ -105,13 +105,13 @@ input[type="range"]::-webkit-slider-thumb:active,
 input[type="range"]:focus::-webkit-slider-thumb{
     transform:scale(1.2);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background: var(--colorWhite, #fff);
+    background: var(--colorWhite);
 }
 input[type="range"]::-moz-range-thumb:active,
 input[type="range"]:focus::-moz-range-thumb{
     transform:scale(1.2);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background: var(--colorWhite, #fff);
+    background: var(--colorWhite);
 }
 :host([vertical]) #slider-con{
     position: absolute;

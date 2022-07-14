@@ -21,7 +21,7 @@ const styles = css`
     margin: 24px 0;
     text-align: center;
     white-space: nowrap;
-    border-top-color: var(--colorNeutral05, rgba(0, 0, 0, 0.05));
+    border-top-color: var(--colorNeutral05);
 }
 span {
     display: inline-block;

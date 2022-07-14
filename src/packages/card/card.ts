@@ -16,8 +16,8 @@ export const styles = css`
 ${hiConfigStyle()}
 .Card{
     position:relative;
-    background:var(--colorWhite, #fff);
-    border: 1px solid var(--colorNeutral05, rgba(0,0,0,0.05)) ;
+    background:var(--colorWhite);
+    border: 1px solid var(--colorNeutral05) ;
     font-size:12px;
     overflow:hidden;
 }

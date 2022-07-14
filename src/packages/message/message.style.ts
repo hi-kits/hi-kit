@@ -31,11 +31,11 @@ ${hiConfigStyle()}
     align-items:center;
     font-size: 14px;
     color: #666;
-    background: var(--colorWhite, #fff);
-    border-radius: var(--borderRadius, 4px);
+    background: var(--colorWhite);
+    border-radius: var(--borderRadius);
     transform: translateY(-100%);
     transition:.3s transform cubic-bezier(.645, .045, .355, 1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px var(--colorNeutral1);
     pointer-events:all;
 }
 :host([show]) .message{
@@ -50,7 +50,7 @@ ${hiConfigStyle()}
 
 :host h-icon{
     font-size: 16px;
-    color:var(--themeColor,#42b983);
+    color:var(--themeColor);
 }
 `;
  

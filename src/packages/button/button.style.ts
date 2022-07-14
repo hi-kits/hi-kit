@@ -22,10 +22,10 @@ ${hiConfigStyle()}
     overflow: hidden;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--borderColor, #eee);
+    border: 1px solid var(--borderColor);
     font-size: 14px;
-    color: var(--fontColor, #333);
-    border-radius: var(--borderRadius, 4px);
+    color: var(--fontColor);
+    border-radius: var(--borderRadius);
     transition: background 0.3s, box-shadow 0.3s, border-color 0.3s, color 0.3s;
   }
   :host([shape='circle']) {
@@ -50,19 +50,19 @@ ${hiConfigStyle()}
   :host(:not([type='primary']):not([type='danger']):not([disabled]):hover),
   :host(:not([type='primary']):not([type='danger']):focus-within),
   :host([type='flat'][focus]) {
-    color: var(--themeColor, #42b983);
-    border-color: var(--themeColor, #42b983);
+    color: var(--themeColor);
+    border-color: var(--themeColor);
   }
   :host(:not([type='primary']):not([type='danger'])) .btn::after {
-    background-image: radial-gradient(circle at center, var(--themeColor, #42b983) 10%, transparent 10.01%);
+    background-image: radial-gradient(circle at center, var(--themeColor) 10%, transparent 10.01%);
   }
   :host([type='primary']) {
     color: #fff;
-    background: var(--themeBackground, var(--themeColor, #42b983));
+    background: var(--themeBackground, var(--themeColor));
   }
   :host([type='danger']) {
     color: #fff;
-    background: var(--themeBackground, var(--dangerColor, #ff7875));
+    background: var(--themeBackground, var(--dangerColor));
   }
   :host([type='dashed']) {
     border-style: dashed;
@@ -76,7 +76,7 @@ ${hiConfigStyle()}
   :host([type='flat']) .btn::before {
     content: '';
     position: absolute;
-    background: var(--themeColor, #42b983);
+    background: var(--themeColor);
     pointer-events: none;
     left: 0;
     right: 0;
@@ -126,7 +126,7 @@ ${hiConfigStyle()}
     left: 0;
     top: 0;
     transition: 0.2s;
-    background: var(--colorWhite, #fff);
+    background: var(--colorWhite);
     opacity: 0;
   }
   :host(:not([disabled]):active) .btn::before {
@@ -141,7 +141,7 @@ ${hiConfigStyle()}
     left: var(--x, 0);
     top: var(--y, 0);
     pointer-events: none;
-    background-image: radial-gradient(circle, var(--colorWhite, #fff) 10%, transparent 10.01%);
+    background-image: radial-gradient(circle, var(--colorWhite) 10%, transparent 10.01%);
     background-repeat: no-repeat;
     background-position: 50%;
     transform: translate(-50%, -50%) scale(10);

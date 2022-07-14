@@ -8,25 +8,25 @@
 // 核心库
 import { HIElement, customElement, attr, html, css } from 'hi-element';
 // 配置文件
-import { hiConfig } from "../config";
+import { hiConfig, hiConfigStyle } from "../config";
 
 // 样式
 export const styles = css`
-
+${hiConfigStyle()}
 :host .CardContent{
     position: relative;
     padding: 12px;
     margin: -1px 0;
 }
-:host .CardContent:after,
-:host .CardContent:before{
+:host .CardContent::after,
+:host .CardContent::before{
     content:'';
     position:absolute;
     left:0;
     right:auto;
     height:1px;
     width:100%;
-    background-color:var(--colorNeutral05, rgba(0, 0, 0, 0.05));
+    background-color: var(--colorNeutral05);
     display:block;
     z-index:15
 }
