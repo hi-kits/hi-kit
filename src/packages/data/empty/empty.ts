@@ -11,14 +11,18 @@ import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-
 import { HIElementBase } from '../../_mixins/hiElementBase';
 // 样式助手
 import { Style } from '../../../utils/style/style';
+// 配置文件
+import { hiConfigStyle } from "../../config";
 // 样式
 const styles = css`
+${hiConfigStyle()}
 :host{
     margin: 0 8px;
     font-size: 14px;
     line-height: 1.5715;
     text-align: center;
     height: 100px;
+    color: var(--colorGray6);
     margin-bottom: 8px;
 }
 :host .SVG{
