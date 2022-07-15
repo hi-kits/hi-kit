@@ -221,7 +221,7 @@ export class HiSlider extends HIElement {
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
-    connectedCallback() {
+    connectedCallback(): void {
         super.connectedCallback();
         this.slider.focus();
         if( this.vertical ){
@@ -257,12 +257,12 @@ export class HiSlider extends HIElement {
             }
         });
     }
-    disconnectedCallback() {
+    disconnectedCallback(): void {
         if( this.vertical ){
             this.resizeObserver.unobserve(this);
         }
     }
-    attributeChangedCallback1 (name, oldValue, newValue) {
+    attributeChangedCallback1 (name, oldValue, newValue): void {
         if( this.slider && oldValue!==newValue && !this._oninput){
             if(name == 'disabled'){
                 if(newValue!==null){

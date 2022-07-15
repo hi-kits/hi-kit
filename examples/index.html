@@ -401,7 +401,15 @@
             </div>
             <h2>评分 <span>rate</span></h2>
             <div>
-                <h-rate></h-rate>
+                <h-row gutter="10">
+                    <h-col span="6">
+                        <h-rate></h-rate>
+                    </h-col>
+                    <h-col span="6">
+                        <h-rate defaultvalue="1" tips="terrible,bad,normal,good,wonderful"></h-rate>
+                    </h-col>
+                </h-row>
+                
             </div>
             <h2>倒计时 <span>countdown</span></h2>
             <div>

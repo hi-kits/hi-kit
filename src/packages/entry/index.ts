@@ -14,3 +14,4 @@ export { HiDatePane, HiDateRangePane } from './date-picker';
 export { HiInput } from './input';
 export { HiUpload } from './upload';
 export { HiTimePane, HiTimePicker } from './time-picker';
+export { HiRate } from './rate';

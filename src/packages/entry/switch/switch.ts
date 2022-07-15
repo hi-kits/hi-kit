@@ -25,9 +25,20 @@ const template = html<HiSwitch>`
    styles
 })
 export class HiSwitch extends HIElementBase {
+    // ------------------ 构造函数 ------------------
+    // ------------------ 参数 ------------------ 
     isfocus = true;
     value;
     switch;
+    /**
+     * 选中时在表单提交中的元素值。
+     * Default to "on" to reach parity with input[type="checkbox"]
+     *
+     * @internal
+     */
+    public initialValue: string = 'no';
+    
+    // ------------------ 属性 ------------------
     /**
      * When true, the control will be immutable by user interaction. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly | readonly HTML attribute} for more information.
      * @public
@@ -47,36 +58,21 @@ export class HiSwitch extends HIElementBase {
     /**
      * @internal
      */
-    public checkedChanged(prev: boolean | undefined, next: boolean) {
+    public checkedChanged(prev: boolean | undefined, next: boolean): void {
         if(next === null || next === false){
             this.removeAttribute('checked');
         }else{
             this.setAttribute('checked', '');
         }
     }
-    /**
-     * 选中时在表单提交中的元素值。
-     * Default to "on" to reach parity with input[type="checkbox"]
-     *
-     * @internal
-     */
-    public initialValue: string = 'no';
 
 
-    /**
-     * @internal
-     */
-    //  public clickHandler = (e: MouseEvent) => {
-    //     if (!this.disabled && !this.readOnly) {
-    //         this.checked = !this.checked;
-
-    //     }
-    // };
+    // ------------------ 自定义函数 ------------------
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
-     connectedCallback() {
+     connectedCallback(): void {
         super.connectedCallback();
         this.switch = this.shadowRoot!.getElementById('switch');
         EventUtil.addHandler(this.switch, 'change', (ev)=>{
