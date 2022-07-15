@@ -6,9 +6,12 @@
  * @LastEditors: liulina
  * @LastEditTime: 2022-06-30 19:29:05
  */
+// 核心库
 import { css } from 'hi-element';
-
+// 配置文件
+import { hiConfigStyle } from '../../../config';
 export const PopconStyles = css`
+${hiConfigStyle()}
 :host{
     position:absolute;
     display:flex;
@@ -18,6 +21,7 @@ export const PopconStyles = css`
     opacity:0.5;
     border-radius: 3px;
     z-index:10;
+    padding:12px;
     transition:.3s cubic-bezier(.645, .045, .355, 1);
     transform-origin:inherit;
     background: var(--colorWhite);

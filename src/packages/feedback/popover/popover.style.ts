@@ -1,6 +1,10 @@
+// 核心库
 import { css } from 'hi-element';
+// 配置文件
+import { hiConfigStyle } from '../../config';
 
 export const PopoverStyles = css`
+${hiConfigStyle()}
   :host {
     display: inline-block;
     position: relative;
