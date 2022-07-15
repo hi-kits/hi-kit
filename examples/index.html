@@ -196,6 +196,36 @@
                     <h-divider text="Right Text"  dir="right"></h-divider>
                 </div>
             </div>
+            <h2>间距 <span>space</span></h2>
+            <div>
+                <h-row gutter="10">
+                    <h-col span="8">
+                        <p>水平方向</p>
+                        <h-space>
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                        </h-space>
+                    </h-col>
+                    <h-col span="8">
+                        <p>垂直方向线</p>
+                        <h-space dir="vertical">
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                        </h-space>
+                    </h-col>
+                    <h-col span="8">
+                        <p>调整默认间隔为30</p>
+                        <h-space gutter="30">
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                        </h-space>
+                        
+                    </h-col>
+                </h-row>
+            </div>
             <h2>消息 <span>message</span></h2>
             <div>
                 <h-button onclick="HiMessage.info({content: 'This a info message', duration: 3000})">info</h-button>

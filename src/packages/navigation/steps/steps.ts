@@ -50,6 +50,21 @@ export class HiSteps extends HIElementBase {
      * @type {number}
      */
     @attr start: number = 0;
+    startChanged(oldValue?, newValue?): void {
+        for (let index = 0; index < this.children.length; index++) {
+            const element = this.children[index];
+            element.setAttribute('index', String(Number(this.start)+index));
+            if ( index < this.current) {
+                element.setAttribute('status', 'finish');
+            }
+            if ( this.dir ) {
+                element.setAttribute('dir', this.dir);
+            }
+            if ( this.getAttribute('dot') ) {
+                element.setAttribute('dot','');
+            }
+        }
+    }
     
     /**
      * 指定当前步骤，从 0 开始记数。在子 h-step 元素中，可以通过 status 属性覆盖状态
@@ -82,22 +97,11 @@ export class HiSteps extends HIElementBase {
     connectedCallback(): void {
         super.connectedCallback();        
         this.childrenFn(()=> {
-            for (let index = 0; index < this.children.length; index++) {
-                const element = this.children[index];
-                element.setAttribute('index', String(Number(this.start)+index));
-                if ( index < this.current) {
-                    element.setAttribute('status', 'finish');
-                }
-                if ( this.dir ) {
-                    element.setAttribute('dir', this.dir);
-                }
-                if ( this.getAttribute('dot') ) {
-                    element.setAttribute('dot','');
-                }
-            }
+            this.startChanged();
             this.children[this.current].setAttribute('status', 'process');
         });
     }
+    // 处理
 
 }
 

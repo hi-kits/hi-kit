@@ -17,6 +17,7 @@ import { HiBackTop } from './other/backTop';
 // 布局
 import { HiCol, HiRow, HiLayout } from './layout/grid';
 import { HiDivider } from './layout/divider';
+import { HiSpace } from './layout/space';
 
 
 //导航
