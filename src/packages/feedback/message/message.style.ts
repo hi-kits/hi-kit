@@ -34,7 +34,7 @@ ${hiConfigStyle()}
     background: var(--colorWhite);
     border-radius: var(--borderRadius);
     transform: translateY(-100%);
-    transition:.3s transform cubic-bezier(.645, .045, .355, 1);
+    transition: .3s transform cubic-bezier(.645, .045, .355, 1);
     box-shadow: 0 4px 12px var(--colorNeutral1);
     pointer-events:all;
 }
@@ -45,8 +45,6 @@ ${hiConfigStyle()}
 .message>*{
     margin-right:5px;
 }
-
-
 
 :host h-icon{
     font-size: 16px;

@@ -163,7 +163,12 @@ export class HiMessage extends HIElement {
             message.show = false;
         }, duration || 2000);
     }
-
+    close(): void {
+        this.show = false;
+        setTimeout(() => {
+            this.remove();
+        }, 300);
+    }
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
@@ -172,9 +177,10 @@ export class HiMessage extends HIElement {
         super.connectedCallback();
         EventUtil.addHandler(this.shadowRoot, 'transitionend', (ev:any) =>{
             if ( ev.propertyName === 'transform' && !this.show ) {
+                // 移除当前消息
                 messageContent.removeChild(this);
                 this.onCallback();
-                this.dispatchEvent(new CustomEvent('close'));
+                // this.dispatchEvent(new CustomEvent('close'));
             }
         });
     }
@@ -206,6 +212,7 @@ export const HiMessageService = {
         const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, 'info', options.content, options.duration, options.callback);
+        return message;
     },
     /**
      * 成功提示
@@ -216,6 +223,7 @@ export const HiMessageService = {
         const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, 'success', options.content, options.duration, options.callback);
+        return message;
     },
     /**
      * 错误提示
@@ -226,6 +234,7 @@ export const HiMessageService = {
         const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, 'error', options.content, options.duration, options.callback);
+        return message;
     },
     /**
      * 警告提示
@@ -236,6 +245,7 @@ export const HiMessageService = {
         const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, 'warning', options.content, options.duration, options.callback);
+        return message;
     },
     /**
      * 加载提示
@@ -246,6 +256,7 @@ export const HiMessageService = {
         const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, 'loading', options.content, options.duration, options.callback);
+        return message;
     },
     /**
      * 通用提示
@@ -256,6 +267,13 @@ export const HiMessageService = {
         const message = new HiMessage();
         messageContent.appendChild(message);
         message.setParams(message, options.type, options.content, options.duration, options.callback);
+        return message;
     },
+    /**
+     * 清空子元素
+     */
+    close: () => {
+        messageContent.innerHTML = '';
+    }
 }
 
