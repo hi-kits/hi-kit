@@ -8,3 +8,4 @@
  */
 import './drawlottery';
 import  { HiFlip } from "./flip";
+import { HiCountdown } from './countdown';
