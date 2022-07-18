@@ -332,9 +332,11 @@ export class HiButton extends HIElementBase {
     }
   };
   public onClick() {
-    this.checked = !this.checked;
-    // this.dispatchEvent(new CustomEvent('onclick'));
-    this.dispatchEvent(new CustomEvent('textchange'));
+    if (!this.disabled) {
+      this.checked = !this.checked;
+      // this.dispatchEvent(new CustomEvent('onclick'));
+      this.dispatchEvent(new CustomEvent('textchange'));
+    }
   }
 
   public onMouceDown(ev: any) {

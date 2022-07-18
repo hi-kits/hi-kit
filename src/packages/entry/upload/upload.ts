@@ -4,9 +4,9 @@
  * @Author: liulina
  * @Date: 2022-07-05 16:14:21
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-08 17:25:41
+ * @LastEditTime: 2022-07-14 17:31:27
  */
-import { HIElement, customElement, attr, observable } from 'hi-element';
+import { HIElement, customElement, attr, Observable, observable, DOM } from 'hi-element';
 import { UploadStyles as styles } from './upload.style';
 import { template } from './upload.tmplate';
 
@@ -20,15 +20,68 @@ const Uploader = require('./_uploader');
 export class HiUpload extends HIElement {
   private uploader;
   allFilUploader;
-  // 地址
+  // 上传接口
   @attr action: string;
+
+  // 接受上传的文件类型
+  @attr accept: string;
+
+  // 是否允许重复上传相同文件名的文件
+  @attr allowUploadDuplicateFile = false;
+
+  // 是否是选取文件后自动上传
+  @attr autoUpload = true;
+
+  // 上传文件时所需的额外的参数
+  @attr data: object;
+
+  // 上传文件的请求头部
+  @attr headers: object;
+
+  // 是否禁用
+  @attr({ mode: 'boolean' }) disabled: boolean = false;
+
+  // 是否启用拖拽上传
+  @attr({ mode: 'boolean' }) draggable: boolean = false;
+
+  // 是否启用拖拽上传
+  @attr({ mode: 'boolean' }) directory: boolean = false;
+
+  // 是否支持多文件
+  @attr({ mode: 'boolean' }) multiple: boolean = false;
+
+  // 是否支持多文件
+  @attr name: string = 'file';
+
+  /**
+   * 上传组件主题，可选值：custom/file/file-input/file-flow/image/image-flow
+   * custom 表示完全自定义风格；
+   * file 表示默认文件上传风格；
+   * file-input 表示输入框形式的文件上传；
+   * file-flow 表示文件批量上传；
+   * image 表示默认图片上传风格；
+   * image-flow 表示图片批量上传
+   * 
+   */
+  @attr theme: string = 'file';
+
+  /*
+    图片文件大小限制，单位 KB。
+    可选单位有：'B' | 'KB' | 'MB' | 'GB'。
+    示例一：1000。示例二：{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }。
+  */
+  @attr limit : number| object;
+
+  @attr files: Array<any>
+  
 
   // 是否展示待上传文件列表
   @observable
   public showUploadList: boolean = false;
   // 待上传文件列表
   @observable
-  public uploadQueue: [];
+  public uploadQueue: Array<any>;
+
   
   // 暂停按钮 
   public showFilePauseBtn: boolean = false;
@@ -170,12 +223,13 @@ export class HiUpload extends HIElement {
     };
   }
   // 暂停按钮
-  filePauseHandler (file) {
+  filePauseHandler (file, index) {
     file.pause();
     // 文件对应的
     file.showFilePauseBtn = false;
     file.showFileResumeBtn = true;
-    console.log(this.uploadQueue);
+    // this.uploadQueue.splice(index, 1, file as never);
+    console.log('@@@@@',this.uploadQueue);
   }
   // 续传按钮
   fileResumeHandler (file) {

@@ -4,16 +4,13 @@
  * @Author: liulina
  * @Date: 2022-06-21 17:53:32
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-23 10:22:52
+ * @LastEditTime: 2022-07-12 16:04:55
  */
 // 核心库
 import { html, ref, when } from 'hi-element';
 // 组件
 import type { HiButton } from './button';
-// export const dialogTemplate = (
-//     context,
-//     definition
-// ) => html`
+
 // 模版
 export const template = html<HiButton>`
   ${when(

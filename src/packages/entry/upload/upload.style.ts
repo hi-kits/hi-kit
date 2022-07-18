@@ -4,12 +4,23 @@
  * @Author: liulina
  * @Date: 2022-07-05 16:14:31
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-08 15:57:57
+ * @LastEditTime: 2022-07-12 16:09:49
  */
 import { css } from 'hi-element';
 import { hiConfig } from '../../config';
 
 export const UploadStyles = css`
+  /* Reset */
+  body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,th,var{font-style:normal;font-weight:normal;}ol,ul {list-style:none;}caption,th {text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;}
+
+  /* Baseline */
+  body, p, h1, h2, h3, h4, h5, h6 {font:normal 12px/1.3em Helvetica, Arial, sans-serif; color:#333; }
+  h1 {font-size:22px; font-weight:bold;}
+  h2 {font-size:19px; font-weight:bold;}
+  h3 {font-size:16px; font-weight:bold;}
+  h4 {font-size:14px; font-weight:bold;}
+  h5 {font-size:12px; font-weight:bold;}
+  p {margin:10px 0;}
   .ToastBox {
   }
   .icon{
