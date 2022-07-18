@@ -18,7 +18,13 @@ const template = html<HiRate>`
 ${repeat(
     x => x.rateData,
     html`
-    <input tabindex="${(x, c) => c.index}" type="radio" name="item" value="${(x, c) => c.index}" id="item0${(x, c) => c.index}" />
+    <input 
+        type="radio" 
+        name="item" 
+        value="${(x, c) => c.index}" 
+        id="item0${(x, c) => c.index}"
+        @change="${(x, c: ExecutionContext) => c.parent.changeFn()}"
+    />
     <h-tips class="star-item" tips="${(x, c) => c.parent!.tips[c.length - c.index-1]}">
         <label 
             for="item0${(x, c) => c.index}"
@@ -41,9 +47,15 @@ export class HiRate extends HIElementBase {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------ 
     @observable
-    rateData: string[] = ['','','','',''];
-    radio;
-
+    rateData: string[] = [];
+    
+    /**
+     * 单选
+     * @date 7/18/2022 - 3:37:49 PM
+     *
+     * @type {*}
+     */
+    private radio;
     // ------------------ 属性 ------------------
     
     /**
@@ -59,36 +71,77 @@ export class HiRate extends HIElementBase {
             this.tips = this.tips['split'](',');
         }
     }
-    defaultvalue = 0;
-
+    
+    /**
+     * 默认数
+     * @date 7/18/2022 - 3:35:03 PM
+     *
+     * @type {number}
+     */
+    @attr defaultvalue: number;
+    
+    /**
+     * 图标
+     * @date 7/18/2022 - 3:35:17 PM
+     *
+     * @type {string}
+     */
     @attr icon: string;
+    
+    /**
+     * 当前值
+     * @date 7/18/2022 - 3:35:28 PM
+     *
+     * @type {number}
+     */
+    @attr value: number;
+    
+    /**
+     * 评分长度
+     * @date 7/18/2022 - 3:55:55 PM
+     *
+     * @type {number}
+     */
+    @attr length: number = 5;
     
 
     // ------------------ 自定义函数 ------------------
-    focus(){
-        this.shadowRoot!.querySelector('input[type="radio"]')!['focus']();
-    }
     /**
      * 当自定义元素第一次被连接到文档DOM时被调用
      * @internal
      */
-     connectedCallback(): void {
+    connectedCallback(): void {
         super.connectedCallback();
-        this.radio = this.shadowRoot!.querySelectorAll('input[type="radio"]');
-        // this.radio = [..._Radio].reverse();
-        if(this.defaultvalue){
-            this.radio[Number(this.defaultvalue)-1].checked = true;
+        if (this.length) {
+            this.rateData = [];
+            for (let index = 0; index < this.length; index++) {
+                this.rateData.push('');
+            }
         }
-        
+        setTimeout(() => {
+            if(this.defaultvalue){
+                this.checkedFn(this.length - Number(this.defaultvalue));
+            };
+        }, 10);
     }
     dotClick(ev, idx): void {
         ev.preventDefault();
-        if(idx === 0){
-            this.radio[idx].checked = false;
-        }else{
-            this.radio[Number(idx)].checked = true;
+        this.checkedFn(idx);
+    }
+    checkedFn(idx): void {
+        const _Radio = this.shadowRoot!.querySelectorAll('input[type="radio"]');
+        if(_Radio.length > 0) {
+            this.radio = _Radio;
+            this.radio.forEach((el, index)=>{
+                if (idx < (this.length + index)) {
+                    this.radio[Number(idx)].checked = true;
+                } else {
+                    this.radio[idx].checked = false;
+                }
+                this.value = (this.length - idx);
+            });
+            this.$emit('change', { value:this.value });
         }
-        
     }
 
 }

@@ -403,10 +403,16 @@
             <div>
                 <h-row gutter="10">
                     <h-col span="6">
-                        <h-rate></h-rate>
+                        <h-rate onchange="console.log(event.detail)"></h-rate>
                     </h-col>
                     <h-col span="6">
                         <h-rate defaultvalue="1" tips="terrible,bad,normal,good,wonderful"></h-rate>
+                    </h-col>
+                    <h-col span="6">
+                        <h-rate length="8" defaultvalue="1" ></h-rate>
+                    </h-col>
+                    <h-col span="6">
+                        <h-rate length="8" color="red" defaultvalue="1" ></h-rate>
                     </h-col>
                 </h-row>
                 
