@@ -30,8 +30,8 @@ input[type="radio"]{
     position: absolute;
     clip: rect(0,0,0,0)
 }
-input[type="radio"]:checked~.star-item{
-    color:var(--themeColor,#42b983);
+input[type="radio"]:checked ~ .star-item{
+    color:var(--themeColor);
 }
 .star-item:hover h-icon{
     transform:scale(1.2)
@@ -41,7 +41,7 @@ input[type="radio"]:checked~.star-item{
 }
 :host(:not([disabled])) h-tips.star-item:hover,
 :host(:not([disabled])) h-tips.star-item:hover~.star-item{
-   color:var(--themeColor,#42b983);
+   color:var(--themeColor);
 }
 :host([disabled]) input[type="radio"]{
     visibility:hidden;
