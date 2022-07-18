@@ -9,9 +9,12 @@
 import { customElement, attr, css,  html, when } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
+// display 规则
+import { display } from '../../../utils/style';
+
 // 样式文件
 const styles = css`
-
+${display('inline-block')}
 :host {
     box-sizing: border-box;
     margin: 0;
@@ -21,7 +24,6 @@ const styles = css`
     line-height: 1.5715;
     list-style: none;
     font-feature-settings: "tnum","tnum";
-    display: inline-block;
     padding: 2px;
     color: rgb(0 0 0 / 65%);
     background-color:  var(--colorNeutral05);

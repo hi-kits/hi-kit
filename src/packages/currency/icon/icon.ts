@@ -10,13 +10,12 @@ import { HIElement, customElement, attr, observable, ref, css,  html, when } fro
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
 // 样式助手
-import { Style } from '../../../utils/style/style';
-
+import { Style, display } from '../../../utils/style';
 // 样式
 const styles = css`
+${display('inline-block')}
 :host{
     font-size:inherit;
-    display:inline-block;
     transition:.3s;
 }
 .icon {

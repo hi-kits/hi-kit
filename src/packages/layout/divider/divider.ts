@@ -9,15 +9,16 @@
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
-// 样式助手
-import { Style } from '../../../utils/style/style';
+// 样式助手 display规则
+import { Style, display } from '../../../utils/style';
+
 // 配置文件
 import { hiConfigStyle } from '../../config';
 // 样式
 const styles = css`
 ${hiConfigStyle()}
+${display('flex')}
 :host{
-    display: flex;
     clear: both;
     width: 100%;
     min-width: 100%;

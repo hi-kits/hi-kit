@@ -6,15 +6,15 @@
  * @description
  */
 // 核心库
-import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+import { customElement, attr, observable, ref, css,  html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
 // 样式助手
-import { Style } from '../../../utils/style/style';
+import { Style, display } from '../../../utils/style';
 // 样式
 const styles = css`
+${display('flex')}
 :host {
-    display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     margin: 4px 0;

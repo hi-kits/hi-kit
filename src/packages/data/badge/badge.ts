@@ -9,11 +9,13 @@
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
+// display 规则
+import { display } from '../../../utils/style';
 // 样式
 const styles = css`
+${display('flex')}
 :host {
      position: relative;
-     display: flex;
      width: 100%;
 }
 :host .Badge{

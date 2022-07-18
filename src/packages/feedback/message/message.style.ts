@@ -8,10 +8,13 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig, hiConfigStyle } from "../../config";
+import { hiConfigStyle } from "../../config";
+// display规则
+import { display } from '../../../utils/style';
 // 样式
 export const MessageStyles = css`
 ${hiConfigStyle()}
+${display('flex')}
 :host{
     display:flex;
     visibility:hidden;

@@ -14,7 +14,8 @@ import { MessageStyles as styles } from "./message.style";
 // 依赖组件
 import { HiIcon } from "../../currency/icon";
 import { HiLoading } from "../loading";
-import { Style } from '../../../utils/style/style';
+// 样式助手
+import { Style } from '../../../utils/style';
 
 /**
  * 消息类型

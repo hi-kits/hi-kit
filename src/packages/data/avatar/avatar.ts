@@ -9,13 +9,14 @@
 import { customElement, attr, observable, css,  html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
-// 样式助手
-import { Style } from '../../../utils/style/style';
+// 样式助手 display 规则
+import { Style, display } from '../../../utils/style';
+
 // 依赖组件
 // 样式文件
 const styles = css`
+${display('inline-block')}
 :host{
-    display: inline-block;
     box-sizing: border-box;
     text-align: center;
     vertical-align: middle;

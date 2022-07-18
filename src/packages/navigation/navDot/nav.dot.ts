@@ -10,7 +10,7 @@ import { customElement, html, attr, repeat, observable, ref, elements, children,
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
 // class 助手
-import { Classic } from '../../../utils/style/classic';
+import { Classic } from '../../../utils/style';
 // 事件处理
 import { EventUtil } from '../../../utils/event';
 // 样式文件

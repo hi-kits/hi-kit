@@ -11,7 +11,7 @@ import { customElement, attr, css,  html } from 'hi-element';
 // 事件处理
 import { EventUtil } from '../../../utils/event';
 // 样式助手
-import { Style } from '../../../utils/style/style';
+import { Style } from '../../../utils/style';
 // 配置文件
 import { hiConfigStyle } from '../../config';
 // 混入基础功能

@@ -8,9 +8,9 @@
 // 核心库
 import { css } from 'hi-element';
 // display规则
-import { display } from '../../../utils/style/display';
+import { display } from '../../../utils/style';
 // 配置文件
-import { hiConfig, hiConfigStyle } from "../../config";
+import { hiConfigStyle } from "../../config";
 // 样式文件
 export const TipsStyles = css`
 ${display("inline-block")}

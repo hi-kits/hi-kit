@@ -12,7 +12,7 @@ import { HIElement, customElement, html, attr, ref, observable } from 'hi-elemen
 import { HIElementForm } from '../../_mixins/hiElementForm';
 // 事件处理
 import { EventUtil } from '../../../utils/event';
-import { Style } from '../../../utils/style/style';
+import { Style } from '../../../utils/style';
 // 样式文件
 import { RadioStyles as styles } from "./radio.style";
 

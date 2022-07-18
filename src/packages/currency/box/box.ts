@@ -7,18 +7,14 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+// display 规则
+import { display } from '../../../utils/style';
 // 样式
 const styles = css`
-:host{
-    display:inline-block;
-}
+${display('inline-block')}
 `;
 // 模版文件
-const template = html<HiBox>`
-<template>
-    <slot></slot>
-</template>
-`;
+const template = html<HiBox>`<slot></slot>`;
 // 定义元素
 @customElement({
    name: 'h-box',

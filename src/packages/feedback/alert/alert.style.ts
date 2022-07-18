@@ -9,9 +9,12 @@
 import { css } from 'hi-element';
 // 配置文件
 import { hiConfig, hiConfigStyle } from "../../config";
+// display规则
+import { display } from '../../../utils/style';
 // 样式文件
 export const AlertStyles = css`
 ${hiConfigStyle()}
+${display('flex')}
 :host {
     box-sizing: border-box;
     margin: 0;
@@ -22,7 +25,6 @@ ${hiConfigStyle()}
     list-style: none;
     font-feature-settings: "tnum","tnum";
     position: relative;
-    display: flex;
     align-items: center;
     padding: 8px 15px;
     word-wrap: break-word;
