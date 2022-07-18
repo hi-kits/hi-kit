@@ -196,10 +196,6 @@ export class HiDatePane extends HIElement {
   // --------timepicker----------
   // 是否展示timePicker
   @attr({ mode: 'boolean' }) enableTimePicker: boolean = false;
-  // DOM ref
-  timepicker: HiTimePane;
-  // 时间选择器的value
-  timepickValue: string;
   enableTimePickerChanged() {
     this.timepicker.selectedTime = this.timepickValue;
     this.timepicker.dispatchEvent(
@@ -210,6 +206,10 @@ export class HiDatePane extends HIElement {
       })
     );
   }
+  // DOM ref
+  timepicker: HiTimePane;
+  // 时间选择器的value
+  timepickValue: string;
 
   public connectedCallback(): void {
     super.connectedCallback();

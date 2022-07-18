@@ -1,6 +1,8 @@
 import { css } from 'hi-element';
+import { hiConfigStyle } from '../config';
 
 export const PopoverStyles = css`
+${hiConfigStyle()}
   :host {
     display: inline-block;
     position: relative;
