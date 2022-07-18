@@ -45,8 +45,12 @@ export function hiConfigStyle(): string {
         '--colorWhite: #fff',
         // 灰色 - 浅
         '--colorGray1: #fafafa',
-        // 灰色 - 浅
         '--colorGray2: #eee',
+        // 灰色 - 深
+        '--colorGray6: #757575',
+        '--colorGray7: #585858',
+        '--colorGray8: #333',
+
         // 中性透明 - 浅
         '--colorNeutral02: rgba(0,0,0,0.02)',
         '--colorNeutral05: rgba(0,0,0,0.05)',
@@ -54,6 +58,7 @@ export function hiConfigStyle(): string {
         '--colorNeutral2: rgba(0,0,0,0.2)',
         '--colorNeutral3: rgba(0,0,0,0.3)',
         // 中性透明 - 深
+        '--colorNeutral4: rgba(0,0,0,0.4)',
         '--colorNeutral5: rgba(0,0,0,0.5)',
         '--colorNeutral6: rgba(0,0,0,0.65)',
         '--colorNeutral7: rgba(0,0,0,0.75)',

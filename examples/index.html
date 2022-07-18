@@ -196,6 +196,36 @@
                     <h-divider text="Right Text"  dir="right"></h-divider>
                 </div>
             </div>
+            <h2>间距 <span>space</span></h2>
+            <div>
+                <h-row gutter="10">
+                    <h-col span="8">
+                        <p>水平方向</p>
+                        <h-space>
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                        </h-space>
+                    </h-col>
+                    <h-col span="8">
+                        <p>垂直方向线</p>
+                        <h-space dir="vertical">
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                        </h-space>
+                    </h-col>
+                    <h-col span="8">
+                        <p>调整默认间隔为30</p>
+                        <h-space gutter="30">
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                            <h-button>button</h-button>
+                        </h-space>
+                        
+                    </h-col>
+                </h-row>
+            </div>
             <h2>消息 <span>message</span></h2>
             <div>
                 <h-button onclick="HiMessage.info({content: 'This a info message', duration: 3000})">info</h-button>
@@ -203,6 +233,9 @@
                 <h-button onclick="HiMessage.error({content:'This a error message'})">error</h-button>
                 <h-button onclick="HiMessage.warning({content:'This a warning message'})">warning</h-button>
                 <h-button onclick="HiMessage.loading({content:'This a loading message'})">loading</h-button>
+
+                <h-button onclick="HiMessage.info({content:'This a info message',duration: 3000000})">消息展示</h-button>
+                <h-button onclick="HiMessage.close()">关闭消息展示</h-button>
             </div>
             <h2>栅格 <span>grid</span></h2>
             <div class="Grid">
@@ -368,7 +401,15 @@
             </div>
             <h2>评分 <span>rate</span></h2>
             <div>
-                <h-rate></h-rate>
+                <h-row gutter="10">
+                    <h-col span="6">
+                        <h-rate></h-rate>
+                    </h-col>
+                    <h-col span="6">
+                        <h-rate defaultvalue="1" tips="terrible,bad,normal,good,wonderful"></h-rate>
+                    </h-col>
+                </h-row>
+                
             </div>
             <h2>倒计时 <span>countdown</span></h2>
             <div>
@@ -958,6 +999,9 @@
                             <h-list-item>
                                 content
                                 <h-list-item-action>
+                                    <h-tips tips="some tips" type="success">
+                                        <h-tag noBorder color="#3F51B5"  text="有提醒的标签"></h-tag>
+                                    </h-tips>
                                     <h-tag noBorder style="color: #FFF; background-color: #31d100fd; " text="333"></h-tag>
                                 </h-list-item-action>
                             </h-list-item>
