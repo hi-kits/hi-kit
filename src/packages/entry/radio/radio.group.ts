@@ -84,7 +84,7 @@ export class HiRadioGroup extends HIElementForm {
                     }
                 })
             })
-        })
+        });
     }
     
 }

@@ -5,6 +5,7 @@
  * @description
  */
 
-export { HiCol, HiRow, HiLayout, HiGrid } from './grid';
+export { HiCol, HiRow, HiLayout } from './grid';
 export { HiDivider } from './divider';
 export { HiSpace } from './space';
+export { HiVajra, HiVajraItem } from './vajra';

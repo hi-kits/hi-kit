@@ -1,5 +1,5 @@
 /**
- * @class: HiAlert 警告提示
+ * @class: HiBackTop 返回顶部
  * @version 0.0.1
  * @author by fico on 2022/06/17
  * @Copyright © 2022 hi-kits. All rights reserved.
@@ -9,8 +9,6 @@
 import { customElement, html, attr, when, ref, observable } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
-// 样式助手
-import { Style } from '../../../utils/style';
 // 事件处理
 import { EventUtil } from '../../../utils/event';
 // 获取滚动条位置
