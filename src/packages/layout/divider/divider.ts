@@ -6,7 +6,7 @@
  * @description
  */
 // 核心库
-import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+import { customElement, attr, when, ref, css,  html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
 // 样式助手
@@ -70,10 +70,16 @@ span {
 // 模版文件
 const template = html<HiDivider>`
 <template>
-    <span>
-        <slot></slot>
-        ${x => x.text}
-    </span>
+    ${when(
+        x => x.text,
+        html<HiDivider>`
+        <span>
+            <slot></slot>
+            ${x => x.text}
+        </span>
+        `
+    )}
+    
 </template>
 `;
 // 定义元素
