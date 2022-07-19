@@ -8,19 +8,11 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-// 配置文件
-import { hiConfig } from "../../config";
 
 // 样式
-const styles = css`
-:host {
-    margin-right: 12px;
-}
-`;
+const styles = css`:host{margin-right: 12px;}`;
 // 模版文件
-const template = html<HiListItemMedia>`
-<slot></slot>
-`;
+const template = html<HiListItemMedia>`<slot></slot>`;
 // 定义元素
 @customElement({
    name: 'h-list-item-media',

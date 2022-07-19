@@ -9,7 +9,7 @@
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
-// 样式助手 display规则
+// 样式助手
 import { Style, display } from '../../../utils/style';
 
 // 配置文件

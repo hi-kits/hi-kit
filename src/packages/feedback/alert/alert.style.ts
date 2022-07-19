@@ -9,7 +9,7 @@
 import { css } from 'hi-element';
 // 配置文件
 import { hiConfig, hiConfigStyle } from "../../config";
-// display规则
+// 样式助手
 import { display } from '../../../utils/style';
 // 样式文件
 export const AlertStyles = css`

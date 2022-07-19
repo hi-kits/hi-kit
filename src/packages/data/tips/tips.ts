@@ -6,7 +6,7 @@
  * @description
  */
 // 核心库
-import { HIElement, customElement, html, attr } from 'hi-element';
+import { customElement, html, attr } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
 // 样式文件

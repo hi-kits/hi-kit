@@ -7,7 +7,7 @@
  */
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
-// display 规则
+// 样式助手
 import { display } from '../../../utils/style';
 // 样式
 const styles = css`

@@ -8,8 +8,8 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig, hiConfigStyle } from "../../config";
-// 
+import { hiConfigStyle } from "../../config";
+// 样式助手
 import { display } from '../../../utils/style';
 // 样式
 export const RadioStyles = css`

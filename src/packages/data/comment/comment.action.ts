@@ -27,9 +27,7 @@ ${display('flex')}
 
 `;
 // 模版文件
-const template = html<HiCommentAction>`
-<slot></slot>
-`;
+const template = html<HiCommentAction>`<slot></slot>`;
 // 定义元素
 @customElement({
    name: 'h-comment-action',

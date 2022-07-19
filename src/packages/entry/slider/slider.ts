@@ -11,12 +11,17 @@ import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-
 import { EventUtil } from '../../../utils/event';
 // 配置文件
 import { hiConfigStyle } from '../../config';
+// 样式助手
+import { display } from '../../../utils/style';
+// 依赖组件
+import { HiTips } from "../../data/tips";
+
 // 样式文件
 const styles = css`
 ${hiConfigStyle()}
+${display("flex")}
 :host{ 
     box-sizing:border-box; 
-    display:flex; 
     padding:0 5px;
 }
 :host([disabled]){ 

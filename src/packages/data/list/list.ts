@@ -7,7 +7,7 @@
  * 垂直展示的时间流信息。
  */
 // 核心库
-import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
+import { customElement, attr, observable, ref, css,  html } from 'hi-element';
 // 混入基础功能
 import { HIElementBase } from '../../_mixins/hiElementBase';
 

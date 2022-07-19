@@ -7,8 +7,6 @@
  */
 // 核心库
 import { HIElement, customElement, attr, html, css } from 'hi-element';
-// 配置文件
-import { hiConfig } from "../../config";
 
 // 样式
 export const styles = css`

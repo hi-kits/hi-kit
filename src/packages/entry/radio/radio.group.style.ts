@@ -8,13 +8,13 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfig, hiConfigStyle } from "../../config";
+import { hiConfigStyle } from "../../config";
+// 样式助手
+import { display } from '../../../utils/style';
 // 样式
 export const RadioGroupStyles = css`
 ${hiConfigStyle()}
-:host {
-    display:inline-block;
-}
+${display("inline-block")}
 :host(:focus-within) h-tips,
 :host(:hover) h-tips{
     z-index:2;

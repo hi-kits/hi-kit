@@ -14,8 +14,9 @@ import { EventUtil } from '../../../utils/event';
 import { HIElementForm } from '../../_mixins/hiElementForm';
 // 样式文件
 import { CheckboxGroupStyles as styles } from "./checkbox.group.style";
-  
- // 模版文件
+// 依赖组件
+import { HiTips } from "../../data/tips";
+// 模版文件
 const template = html<HiCheckboxGroup>`
 <h-tips id="tip" ${x => x.disabled ? "tabindex='-1'" : ""} type="error">
     <slot ${ref('slots')}></slot>

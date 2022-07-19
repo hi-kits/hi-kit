@@ -12,9 +12,7 @@ import { HIElementBase } from '../../_mixins/hiElementBase';
 // 样式文件
 import { TabsStyles as styles } from "./tabs.style";
 // 模版文件
-const template = html<HiTab>`
-<slot></slot>
-`;
+const template = html<HiTab>`<slot></slot>`;
 // 定义元素
 @customElement({
    name: 'h-tab',

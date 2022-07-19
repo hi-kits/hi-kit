@@ -12,7 +12,6 @@ import { HIElementBase } from '../../_mixins/hiElementBase';
 // 样式助手 display 规则
 import { Style, display } from '../../../utils/style';
 
-// 依赖组件
 // 样式文件
 const styles = css`
 ${display('inline-block')}

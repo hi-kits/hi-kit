@@ -13,6 +13,8 @@ import { EventUtil } from '../../../utils/event';
 import { HIElementBase } from '../../_mixins/hiElementBase';
 // 样式文件
 import { RateStyles as styles } from "./rate.style";
+// 依赖组件
+import { HiTips } from "../../data/tips";
 // 模版文件
 const template = html<HiRate>`
 ${repeat(

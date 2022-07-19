@@ -13,7 +13,8 @@ import { EventUtil } from '../../../utils/event';
 import { HIElementForm } from '../../_mixins/hiElementForm';
 // 样式文件
 import { CheckboxStyles as styles } from "./checkbox.style";
-
+// 依赖组件
+import { HiTips } from "../../data/tips";
 // 模版文件
 const template = html<HiCheckbox>`
 <h-tips ${ref('tips')} type="error" dir="topleft">

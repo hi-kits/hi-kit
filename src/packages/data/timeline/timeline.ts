@@ -9,18 +9,11 @@
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 
-// 样式文件
-const styles = css``;
 // 模版文件
-const template = html<HiTimeline>`
-<template>
-    <slot></slot>
-</template>
-`;
+const template = html<HiTimeline>`<slot></slot>`;
 // 定义元素
 @customElement({
    name: 'h-timeline',
-   styles,
    template,
    shadowOptions: { mode: 'closed'}
 })

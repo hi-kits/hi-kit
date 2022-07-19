@@ -8,7 +8,7 @@
  */
 // 核心库
 import { css } from 'hi-element';
-// display规则
+// 样式助手
 import { display } from '../../../utils/style';
 // 样式
 export const CheckboxGroupStyles = css`

@@ -13,8 +13,6 @@ import { HIElementBase } from '../../_mixins/hiElementBase';
 // 样式助手
 import { Style } from '../../../utils/style';
 
-// 依赖组件
-import { HiIcon } from "../../currency/icon";
 // 样式文件
 const styles = css`
 ::slotted(h-avatar:not(:first-child)) {

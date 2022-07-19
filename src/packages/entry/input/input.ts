@@ -20,7 +20,7 @@ import { NotifyStyles as styles } from "./input.style";
 // 依赖组件
 import { HiButton } from "../../currency/button";
 import { HiIcon } from "../../currency/icon";
-
+import { HiTips } from "../../data/tips";
 
 // 模版文件
 const template = html<HiInput>`
