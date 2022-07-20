@@ -16,3 +16,5 @@ export { HiList, HiListItem, HiListItemAction, HiListItemExtra, HiListItemMedia,
 export { HiComment, HiCommentAction } from './comment';
 export { HiSegmenteds, HiSegmented } from './segmented';
 export { HiTabs, HiTab } from './tabs';
+export { HiAccordion } from './accordion';
+export { HiStatistic } from './statistic';

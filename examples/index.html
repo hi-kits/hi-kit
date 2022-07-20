@@ -356,6 +356,61 @@
                 <h-switch></h-switch>
                 <h-switch disabled checked name="disabled">sdsdd</h-switch>
             </div>
+            <h2>折叠面板/手风琴 <span>accordion</span></h2>
+            <div>
+                <h-row gutter="10">
+                    <h-col span="8">
+                        <h-accordion>
+                            <span slot="element-name">slot</span>
+      <span slot="description">A placeholder inside a web
+        component that users can fill with their own markup,
+        with the effect of composing different DOM trees
+        together.</span>
+      <dl slot="attributes">
+        <dt>name</dt>
+        <dd>The name of the slot.</dd>
+      </dl>
+                        </h-accordion>
+                    </h-col>
+                    <h-col span="8">
+                        
+                    </h-col>
+                    <h-col span="8">
+                        
+                    </h-col>
+                </h-row>
+            </div>
+            <h2>统计 <span>Statistic</span></h2>
+            <div>
+                <h-row gutter="10">
+                    <h-col span="4">
+                        <h-statistic title="Active Users">
+                            1,949,101
+                        </h-statistic>
+                    </h-col>
+                    <h-col span="4">
+                        <h-statistic title="Account Balance (CNY)
+                        ">
+                        2,019.11
+                        </h-statistic>
+                    </h-col>
+                    <h-col span="4">
+                        <h-statistic title="Unmerged">
+                            93/ 100
+                        </h-statistic>
+                    </h-col>
+                    <h-col span="4">
+                        <h-statistic title="Feedback">
+                            <h-icon name="heart" size="24" color="#F44336"></h-icon>  1,128
+                        </h-statistic>
+                    </h-col>
+                    <h-col span="4">
+                        <h-statistic title="Day Level">
+                            <h-countdown style="font-size: 24px; color: rgba(8, 136, 6, 0.707); "></h-countdown>
+                        </h-statistic>
+                    </h-col>
+                </h-row>
+            </div>
             <h2>标签 <span>tag</span></h2>
             <div>
                 <h-tag text="例子标签"></h-tag>
