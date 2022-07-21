@@ -6,3 +6,5 @@ out-tsc/
 dts/
 esm/
 module/
+res/
+lib/

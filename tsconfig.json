@@ -16,6 +16,13 @@
   "strictPropertyInitialization": false,
   "target": "es2015",
   "module": "ESNext",
+  //解析非相对模块名的基准目录 "./"
+  "baseUrl": ".",
+  //模块名到基于baseUrl的路径映射的列表
+  "paths": {
+    "@utils": [ "src/_utils" ],
+    "@utils/*": [ "src/_utils/*" ],
+  },
   "types": [
       "webpack-env",
       "web-ie11"
@@ -25,7 +32,8 @@
     "es2017",
     "ES2016.Array.Include"
   ]},
-  "exclude": ["examples/src", "rollup.config.ts", "dist", "src/utils1"],
+  "exclude": ["examples/src", "rollup.config.ts", "dist", "module"],
   "include": ["src"]
+  
 // "": []
 }

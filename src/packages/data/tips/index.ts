@@ -1,1 +1,0 @@
-export { HiTips } from "./tips"

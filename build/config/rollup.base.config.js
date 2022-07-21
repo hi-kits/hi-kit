@@ -4,17 +4,22 @@
  * @Author: liulina
  * @Date: 2022-06-17 10:11:57
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-23 10:13:55
+ * @LastEditTime: 2022-07-21 22:24:43
  */
 import commonJS from 'rollup-plugin-commonjs';
 import filesize from 'rollup-plugin-filesize';
 import resolve from 'rollup-plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
 import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
 import typescript from 'rollup-plugin-typescript2';
 import babel from '@rollup/plugin-babel';
-import { transformCSSFragment, transformHTMLFragment } from '../transform-fragments';
+import { transformCSSFragment, transformHTMLFragment } from './build/transform-fragments';
 // import { getPackagesInfoList } from './build/getPackageName';
 import image from 'rollup-plugin-img';
+
+// const buildConfig =  require('./build-config');
+// import { join } from 'path';
+
 
 const extensions = ['.js', '.ts'];
 
@@ -26,20 +31,32 @@ const parserOptions = {
 };
 
 export const kitCommonPluginList = [
+  alise({
+    entries: [
+      {find: '@utils',}
+    ]
+  }),
   resolve(),
   commonJS(),
   typescript({
     tsconfigOverride: {
       compilerOptions: {
-        declaration: false
+        declaration: false,
+        // "baseUrl": ".",
+        // //模块名到基于baseUrl的路径映射的列表
+        // "paths": {
+        //   "@utils": [ "res/modlue/_utils" ],
+        //   "@utils/*": [ "res/modlue/_utils/*" ],
+        // }
       }
     }
   }),
+  terser(),
   image({
     limit: 10000,
     output: `images`, // default the root
     extensions: /\.(png|jpg|jpeg|gif|svg)$/, // support png|jpg|jpeg|gif|svg, and it's alse the default value
-    limit: 8192, // default 8192(8k)
+    limit: 8192000, // default 8192(8k)
     exclude: 'node_modules/**'
   }),
   babel({
@@ -51,16 +68,13 @@ export const kitCommonPluginList = [
       '@babel/plugin-proposal-class-properties',
       ['@babel/plugin-proposal-decorators', { legacy: true }],
       '@babel/plugin-transform-runtime'
+      // ,
       // [
-      //   'import',
+      //   'component',
       //   {
       //     libraryName: 'hi-kits',
-      //     libraryDirectory: 'module',
-      //     camel2DashComponentName: false, // default: true,
-      //     customName: (name, file) => {
-      //       console.log('---------namenamenamenamename-------------', name, file);
-      //       return `hi-kits/module/${name}`;
-      //     }
+      //     "libDir": "esm/module",
+      //     "root": "esm/module/index"
       //   }
       // ]
     ]

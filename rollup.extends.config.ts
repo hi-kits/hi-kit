@@ -4,10 +4,10 @@
  * @Author: liulina
  * @Date: 2022-06-23 09:21:07
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-23 10:38:35
+ * @LastEditTime: 2022-07-21 22:03:09
  */
 import { getPackagesInfoList } from './build/getPackageName';
-import { kitCommonPluginList } from './build/config/rollup.base.config';
+import { kitCommonPluginList } from './rollup.base.config';
 
 const timeStart = new Date().getTime();
 const kitsList = getPackagesInfoList('src/extendPackages/', '_', function (filePath) {
