@@ -8,15 +8,16 @@
 import { HiMessage, HiMessageService } from './message';
 import { HiModal, HiModalService } from './modal';
 import { HiToast, HiToastService } from './toast';
+import { HiNotify, HiNotifyService } from './notify';
 
 export { HiLoading } from './loading';
 export { HiSidebar } from './sidebar';
 export { HiPopcon, Popover } from './popover';
 export { HiAlert } from './alert';
-export { HiNotify } from './notify';
 
 
 
 window['HiMessage'] = HiMessageService;
 window['HiModal'] = HiModalService;
 window['HiToast'] = HiToastService;
+window['HiNotify'] = HiNotifyService;

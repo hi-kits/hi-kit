@@ -86,10 +86,10 @@ export function hiConfigStyle(): string {
         '--errorColor-outline: rgba(255, 77, 79, .2)',
 
         // 警告色
-        '--warningColor: #faad14',
-        '--warningColor-hover: #ffc53d',
-        '--warningColor-active: #d48806',
-        '--warningColor-outline: rgba(250, 173, 20, .2)',
+        '--waringColor: #faad14',
+        '--waringColor-hover: #ffc53d',
+        '--waringColor-active: #d48806',
+        '--waringColor-outline: rgba(250, 173, 20, .2)',
         // 信息色
         '--infoColor: #1890ff',
     ]
