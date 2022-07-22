@@ -24,7 +24,7 @@
 import  './currency/button';
 import  './currency/icon';
 import  './currency/box';
-import  './currency/color';
+// import  './currency/color';
 
 import './data/accordion';
 import  './data/tag';
@@ -68,7 +68,7 @@ import  './entry/radio';
 import  './entry/editWord';
 import  './entry/date-picker';
 import  './entry/input';
-import  '/entry./upload';
+import  './entry/upload';
 import  './entry/time-picker';
 import  './entry/rate';
 import  './entry/select';

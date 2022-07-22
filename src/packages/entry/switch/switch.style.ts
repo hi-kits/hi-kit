@@ -18,6 +18,7 @@ ${hiConfigStyle()}
 :host{ 
     -webkit-tap-highlight-color: transparent;
     vertical-align: middle;
+    font-size: var(--fontSize16);
 }
 :host([disabled]){ 
     opacity:.6; 

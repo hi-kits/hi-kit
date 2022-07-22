@@ -33,7 +33,7 @@ ${hiConfigStyle()}
     display:flex;
 }
 .NavItem{
-    font-size:inherit;
+    font-size: var(--fontSize16);
     border-radius:0;
     box-shadow:none;
     flex-shrink: 0;

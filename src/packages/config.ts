@@ -34,6 +34,10 @@ export function hiConfigStyle(): string {
 
         // 文字颜色
         '--fontColor: #333',
+        // 字体大小
+        '--fontSize14: 14px',
+        '--fontSize16: 16px',
+        '--fontSize20: 20px',
         // 边框颜色，按钮、输入框
         '--borderColor: #d9d9d9',
         // 圆角

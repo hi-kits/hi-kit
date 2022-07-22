@@ -15,6 +15,9 @@ import { hiConfigStyle } from "@packages/config";
 export const StatisticStyles = css`
 ${hiConfigStyle()}
 ${display("inline-block")}
+:host{
+    font-size: var(--fontSize16);
+}
 :host .Title {
     margin-bottom: 4px;
     color: var(--colorNeutral4);

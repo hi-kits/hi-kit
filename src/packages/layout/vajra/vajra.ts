@@ -11,9 +11,13 @@ import { customElement, attr, observable, ref, css,  html } from 'hi-element';
 import { HIElementBase } from '@mixins/hiElementBase';
 // 事件处理
 import { EventUtil } from '@utils/event';
+// 配置文件
+import { hiConfigStyle } from '@packages/config';
 // 样式
 const styles = css`
+${hiConfigStyle()}
 :host {
+   font-size: var(--fontSize16);
    display: grid;
    flex-wrap: wrap;
    grid-template-columns: repeat(24, 1fr);

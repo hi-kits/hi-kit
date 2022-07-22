@@ -9,6 +9,8 @@
 import { HIElement, customElement, attr, html, observable } from 'hi-element';
 // 事件处理
 import { EventUtil } from '@utils/event';
+// 样式助手
+import { Style } from '@utils/style';
 // 混入基础功能
 import { HIElementBase } from '@mixins/hiElementBase';
 // 样式文件
@@ -66,6 +68,13 @@ export class HiSwitch extends HIElementBase {
         }
     }
 
+    sizeChanged(oldValue, newValue): void {
+        if (!['large', 'small', 'default'].includes(newValue)) {
+            Style(this)({
+                fontSize: newValue + 'px'
+            });
+        }
+    }
 
     // ------------------ 自定义函数 ------------------
     /**

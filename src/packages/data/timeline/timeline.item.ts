@@ -20,6 +20,7 @@ ${hiConfigStyle()}
 ${display('block')}
 
 :host {
+    font-size: var(--fontSize14);
     position: relative;
     margin: 0;
     padding-bottom: 20px;

@@ -20,6 +20,7 @@ const styles = css`
 ${hiConfigStyle()}
 :host{
     display: flex;
+    font-size: var(--fontSize14);
     align-items: center;
     justify-content: space-between;
     padding: 12px;
@@ -48,6 +49,7 @@ const template = html<HiListItem>`
    name: 'h-list-item',
    styles,
    template,
+   shadowOptions: { mode: 'closed'}
 })
 export class HiListItem extends HIElementBase {
     // ------------------ 构造函数 ------------------

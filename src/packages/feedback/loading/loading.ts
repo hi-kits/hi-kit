@@ -19,7 +19,7 @@ const styles = css`
 ${hiConfigStyle()}
 ${display('inline-flex')}
 :host{
-    font-size:inherit;
+    font-size: var(--fontSize16);
     align-items: center;
     justify-content:center;
     color:var(--themeColor);
@@ -74,6 +74,7 @@ const template = html<HiLoading>`
    name: 'h-loading',
    styles,
    template,
+   shadowOptions: { mode: 'closed'}
 })
 export class HiLoading extends HIElementBase {
     // ------------------ 构造函数 ------------------

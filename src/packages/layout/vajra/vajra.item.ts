@@ -14,6 +14,7 @@ import { Style } from '@utils/style';
 // 样式
 const styles = css`
 :host {
+   
    text-align: center;
    height: 100%;
    width: 100%;
