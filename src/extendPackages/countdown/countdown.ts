@@ -13,9 +13,12 @@ import { HIElementBase } from '@packages/_mixins/hiElementBase';
 import { Style } from '@utils/style/style';
 // 日期
 import { DateServices } from '@utils/date.services'
+// 配置文件
+import { hiConfigStyle } from '@packages/config';
 
 // 样式
 const styles = css`
+${hiConfigStyle()}
 
 :host .Countdown{
     text-align: center;
@@ -46,6 +49,7 @@ const styles = css`
     vertical-align: -webkit-baseline-middle;
     margin-right: 1vw;
 }
+
 `;
 // 模版文件
 const template = html<HiCountdown>`
@@ -168,7 +172,11 @@ export class HiCountdown extends HIElementBase {
             }
             try {
                 // tslint:disable-next-line: max-line-length
-                this.countdownTxt.innerHTML = `<span>${this.days[0]}</span><span>${this.days[1]}</span><b>天</b><span>${this.hours[0]}</span><span>${this.hours[1]}</span><b>时</b><span>${this.minutes[0]}</span><span>${this.minutes[1]}</span><b>分</b><span>${this.seconds[0]}</span><span>${this.seconds[1]}</span><b>秒</b>`;
+                this.countdownTxt.innerHTML = 
+                    `<span class="Days">${this.days[0]}${this.days[1]}</span><b>天</b>` +
+                    `<span class="Hours">${this.hours[0]}${this.hours[1]}</span><b>时</b>` +
+                    `<span class="Minutes">${this.minutes[0]}${this.minutes[1]}</span><b>分</b>` +
+                    `<span class="Seconds">${this.seconds[0]}${this.seconds[1]}</span><b>秒</b>`;
             } catch (error) {
             }
         };

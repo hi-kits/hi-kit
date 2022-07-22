@@ -37,7 +37,7 @@ input[type="radio"]:checked ~ .star-item{
     transform:scale(1.2)
 }
 :host(:not([disabled]):hover) h-tips.star-item{
-    color:inherit;
+   /* color:inherit;*/
 }
 :host(:not([disabled])) h-tips.star-item:hover,
 :host(:not([disabled])) h-tips.star-item:hover~.star-item{

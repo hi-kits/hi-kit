@@ -134,14 +134,21 @@ export class HiRate extends HIElementBase {
         const _Radio = this.shadowRoot!.querySelectorAll('input[type="radio"]');
         if(_Radio.length > 0) {
             this.radio = _Radio;
+            const _Current = this.radio[Number(idx)];
+            const isChecked = _Current.checked;
             this.radio.forEach((el, index)=>{
-                if (idx < (this.length + index)) {
-                    this.radio[Number(idx)].checked = true;
+                if (isChecked) {
+                    _Current.checked = false;
                 } else {
-                    this.radio[idx].checked = false;
+                    if (idx < (Number(this.length) + index)) {
+                        _Current.checked = true;
+                    } else {
+                        _Current.checked = false;
+                    }
                 }
                 this.value = (this.length - idx);
             });
+            
             this.$emit('change', { value:this.value });
         }
     }
