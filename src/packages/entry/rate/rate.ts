@@ -128,20 +128,26 @@ export class HiRate extends HIElementBase {
     }
     dotClick(ev, idx): void {
         ev.preventDefault();
-        this.checkedFn(idx);
+        this.checkedFn(idx, this.radio[Number(idx)].checked);
     }
-    checkedFn(idx): void {
+    checkedFn(idx, isChecked?): void {
         const _Radio = this.shadowRoot!.querySelectorAll('input[type="radio"]');
         if(_Radio.length > 0) {
             this.radio = _Radio;
-            this.radio.forEach((el, index)=>{
-                if (idx < (this.length + index)) {
-                    this.radio[Number(idx)].checked = true;
-                } else {
-                    this.radio[idx].checked = false;
-                }
-                this.value = (this.length - idx);
-            });
+            
+                this.radio.forEach((el, index)=>{
+                    if (isChecked) {
+                        this.radio[Number(idx)].checked = false;
+                    } else {
+                        if (idx < (Number(this.length) + index)) {
+                            this.radio[Number(idx)].checked = true;
+                        } else {
+                            this.radio[Number(idx)].checked = false;
+                        }
+                    }
+                    this.value = (this.length - idx);
+                });
+            
             this.$emit('change', { value:this.value });
         }
     }
