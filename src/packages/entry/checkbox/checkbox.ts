@@ -8,13 +8,13 @@
 // 核心库
 import { customElement, attr, observable, ref, html } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 混入基础功能
-import { HIElementForm } from '../../_mixins/hiElementForm';
+import { HIElementForm } from '@mixins/hiElementForm';
 // 样式文件
 import { CheckboxStyles as styles } from "./checkbox.style";
 // 依赖组件
-import { HiTips } from "../../data/tips";
+import { HiTips } from "@data/tips";
 // 模版文件
 const template = html<HiCheckbox>`
 <h-tips ${ref('tips')} type="error" dir="topleft">

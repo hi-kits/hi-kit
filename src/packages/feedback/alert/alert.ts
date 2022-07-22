@@ -8,14 +8,14 @@
 // 核心库
 import { customElement, html, attr, when, ref, observable } from 'hi-element';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 样式助手
-import { Style } from '../../../utils/style';
+import { Style } from '@utils/style';
 // 样式文件
 import { AlertStyles as styles } from "./alert.style";
 // 依赖组件
-import { HiButton } from "../../currency/button";
-import { HiIcon } from "../../currency/icon";
+import { HiButton } from "@currency/button";
+import { HiIcon } from "@currency/icon";
 
 // 模版文件
 const template = html<HiAlert>`

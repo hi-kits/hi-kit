@@ -8,12 +8,13 @@
 // 核心库
 import { HIElement, customElement, attr, html, ref, when, observable } from 'hi-element';
 // 样式助手
-import { Style } from '../../../utils/style';
+import { Style } from '@utils/style';
 // 样式文件
 import { ModalStyles as styles } from "./modal.style";
 // 依赖组件
-import { HiButton, HiIcon } from "../../currency";
-import { HiInput } from "../../entry/input";
+import { HiButton } from "@currency/button";
+import { HiIcon } from "@currency/icon";
+import { HiInput } from "@entry/input";
 
 /**
  * 对话框类型

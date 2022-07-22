@@ -8,9 +8,9 @@
 // 核心库
 import { customElement, attr, html } from 'hi-element';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 样式助手
-import { Style } from '../../../utils/style';
+import { Style } from '@utils/style';
 // 样式文件
 import { ShortStyles as styles } from "./tag.style";
 // 模版文件

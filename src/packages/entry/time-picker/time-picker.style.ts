@@ -7,7 +7,7 @@
  * @LastEditTime: 2022-07-06 15:33:17
  */
 import { css } from 'hi-element';
-import { hiConfig } from '../../config';
+import { hiConfig } from '@packages/config';
 
 export const timePickerStyle = css`
   :host {

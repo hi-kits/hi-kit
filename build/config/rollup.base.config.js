@@ -9,10 +9,11 @@
 import commonJS from 'rollup-plugin-commonjs';
 import filesize from 'rollup-plugin-filesize';
 import resolve from 'rollup-plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
 import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
 import typescript from 'rollup-plugin-typescript2';
 import babel from '@rollup/plugin-babel';
-import { transformCSSFragment, transformHTMLFragment } from '../transform-fragments';
+import { transformCSSFragment, transformHTMLFragment } from './build/transform-fragments';
 // import { getPackagesInfoList } from './build/getPackageName';
 import image from 'rollup-plugin-img';
 
@@ -26,6 +27,11 @@ const parserOptions = {
 };
 
 export const kitCommonPluginList = [
+  alise({
+    entries: [
+      {find: '@utils',}
+    ]
+  }),
   resolve(),
   commonJS(),
   typescript({
@@ -35,11 +41,12 @@ export const kitCommonPluginList = [
       }
     }
   }),
+  terser(),
   image({
     limit: 10000,
     output: `images`, // default the root
     extensions: /\.(png|jpg|jpeg|gif|svg)$/, // support png|jpg|jpeg|gif|svg, and it's alse the default value
-    limit: 8192, // default 8192(8k)
+    limit: 8192000, // default 8192(8k)
     exclude: 'node_modules/**'
   }),
   babel({

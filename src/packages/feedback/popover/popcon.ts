@@ -4,12 +4,12 @@
  * @Author: sueRimn
  * @Date: 2022-06-09 15:44:00
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-04 18:10:17
+ * @LastEditTime: 2022-07-22 11:25:28
  */
 import { HIElement, customElement, attr, observable, ref, when, html } from 'hi-element';
 
 import { PopconStyles as styles } from './popcon.style';
-import type { HiButton } from '../../../currency/button/button';
+import type { HiButton } from '@currency/button/button';
 
 declare const window: any;
 

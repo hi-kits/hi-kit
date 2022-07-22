@@ -8,7 +8,7 @@
  */
 
 import { css } from 'hi-element';
-import { hiConfig, hiConfigStyle } from '../../config';
+import { hiConfig, hiConfigStyle } from '@packages/config';
 
 export const ButtonStyles = css`
 ${hiConfigStyle()}

@@ -8,9 +8,9 @@
 // 核心库
 import { HIElement, customElement, html } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 样式助手
-import { Style } from '../../../utils/style';
+import { Style } from '@utils/style';
 
 // 样式
 import { ToastStyles as styles } from "./toast.style";

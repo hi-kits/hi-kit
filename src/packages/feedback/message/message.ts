@@ -8,14 +8,14 @@
 // 核心库
 import { HIElement, customElement, attr, observable, ref, slotted,  html, when } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 样式文件
 import { MessageStyles as styles } from "./message.style";
 // 依赖组件
-import { HiIcon } from "../../currency/icon";
+import { HiIcon } from "@currency/icon";
 import { HiLoading } from "../loading";
 // 样式助手
-import { Style } from '../../../utils/style';
+import { Style } from '@utils/style';
 
 /**
  * 消息类型

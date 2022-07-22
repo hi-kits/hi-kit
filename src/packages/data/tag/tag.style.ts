@@ -9,9 +9,9 @@
 // 核心库
 import { css } from 'hi-element';
 // 样式助手
-import { display } from '../../../utils/style';
+import { display } from '@utils/style';
 // 配置文件
-import { hiConfig, hiConfigStyle } from "../../config";
+import { hiConfig, hiConfigStyle } from "@packages/config";
 // 样式文件
 export const ShortStyles = css`
 ${hiConfigStyle()}

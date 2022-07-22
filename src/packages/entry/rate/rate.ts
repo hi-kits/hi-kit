@@ -8,13 +8,13 @@
 // 核心库
 import { customElement, attr, html, observable, repeat, ExecutionContext } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 样式文件
 import { RateStyles as styles } from "./rate.style";
 // 依赖组件
-import { HiTips } from "../../data/tips";
+import { HiTips } from "@data/tips";
 // 模版文件
 const template = html<HiRate>`
 ${repeat(

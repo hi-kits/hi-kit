@@ -11,8 +11,13 @@ public/
 build/
 doc/sss
 packages/
+extendPackages/
 examples/
 utils/
+module1/
+src/
+components/
+res/
 
 # config files
 .eslintignore

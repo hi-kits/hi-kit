@@ -1,7 +1,7 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfigStyle } from '../../config';
+import { hiConfigStyle } from '@packages/config';
 
 export const PopoverStyles = css`
 ${hiConfigStyle()}

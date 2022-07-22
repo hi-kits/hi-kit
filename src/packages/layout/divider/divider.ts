@@ -8,12 +8,12 @@
 // 核心库
 import { customElement, attr, when, ref, css,  html } from 'hi-element';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 样式助手
-import { Style, display } from '../../../utils/style';
+import { Style, display } from '@utils/style';
 
 // 配置文件
-import { hiConfigStyle } from '../../config';
+import { hiConfigStyle } from '@packages/config';
 // 样式
 const styles = css`
 ${hiConfigStyle()}

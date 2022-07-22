@@ -8,11 +8,11 @@
 // 核心库
 import { customElement, html, attr, repeat, observable, ref, elements, children, ExecutionContext } from 'hi-element';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // class 助手
-import { Classic } from '../../../utils/style';
+import { Classic } from '@utils/style';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 样式文件
 import { NavDotStyles as styles } from "./nav.dot.style";
 

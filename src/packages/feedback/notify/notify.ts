@@ -8,11 +8,11 @@
 // 核心库
 import { customElement, html, attr, ref, observable } from 'hi-element';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 样式助手
-import { Style } from '../../../utils/style';
+import { Style } from '@utils/style';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 样式文件
 import { NotifyStyles as styles } from "./notify.style";
 

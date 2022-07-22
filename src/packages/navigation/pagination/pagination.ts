@@ -8,11 +8,11 @@
 // 核心库
 import { HIElement, customElement, html, attr, ref, observable } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 样式文件
 import { PaginationStyles as styles } from "./pagination.style";
 // 依赖组件
-import { HiButton } from "../../currency/button";
+import { HiButton } from "@currency/button";
 // 模版文件
 const template = html<HiPagination>`
 <h-button type="flat" ${ x => x.href ? "href=1" : "" } target="_self" ${ref('left')}>

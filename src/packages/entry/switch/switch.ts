@@ -8,9 +8,9 @@
 // 核心库
 import { HIElement, customElement, attr, html, observable } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 样式文件
 import { SwitchStyles as styles } from "./switch.style";
 // 模版文件

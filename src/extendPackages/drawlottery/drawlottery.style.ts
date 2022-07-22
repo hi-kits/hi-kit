@@ -7,7 +7,7 @@
  */
 
 import { css } from 'hi-element';
-import { hiConfig } from '../../packages/config';
+import { hiConfig } from '@packages/config';
 
 export const DrawlotteryStyles = css`
   .DrawlotteryModel {

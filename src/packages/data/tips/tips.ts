@@ -8,7 +8,7 @@
 // 核心库
 import { customElement, html, attr } from 'hi-element';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 样式文件
 import { TipsStyles as styles } from "./tips.style";
 

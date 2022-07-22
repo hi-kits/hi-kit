@@ -8,13 +8,13 @@
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 配置文件
-import { hiConfigStyle } from '../../config';
+import { hiConfigStyle } from '@packages/config';
 // 样式助手
-import { display } from '../../../utils/style';
+import { display } from '@utils/style';
 // 依赖组件
-import { HiTips } from "../../data/tips";
+import { HiTips } from "@data/tips";
 
 // 样式文件
 const styles = css`

@@ -8,20 +8,21 @@
  */
 import { getPackagesInfoList } from './build/getPackageName.js';
 
-import { kitCommonPluginList } from './build/config/rollup.base.config';
+import { kitCommonPluginList } from './rollup.base.config';
 
 const timeStart = new Date().getTime();
-const kitsList = getPackagesInfoList('src/packages/', '_', function (filePath) {
+const kitsList = getPackagesInfoList('res/module/', '_', function (filePath) {
   console.log('done', new Date().getTime() - timeStart);
 });
 module.exports = {
+  // 多入口打包内部会提取公共模块，内部会使用代码拆分，所以需使用amd
   input: {
-    index: 'src/packages/index.ts',
+    index: 'res/module/index.ts',
     ...kitsList
   },
   output: [
     {
-      dir: 'module',
+      dir: 'lib/esm',
       format: 'esm'
     }
   ],

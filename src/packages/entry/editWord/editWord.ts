@@ -8,8 +8,8 @@
 // 核心库
 import { HIElement, customElement, attr, html, when, observable,slotted, Observable, ref } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
-import { Style } from '../../../utils/style';
+import { EventUtil } from '@utils/event';
+import { Style } from '@utils/style';
 // 样式文件
 import { EditWordStyles as styles } from "./editWord.style";
 

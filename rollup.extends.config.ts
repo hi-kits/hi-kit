@@ -7,7 +7,7 @@
  * @LastEditTime: 2022-06-23 10:38:35
  */
 import { getPackagesInfoList } from './build/getPackageName';
-import { kitCommonPluginList } from './build/config/rollup.base.config';
+import { kitCommonPluginList } from './rollup.base.config';
 
 const timeStart = new Date().getTime();
 const kitsList = getPackagesInfoList('src/extendPackages/', '_', function (filePath) {

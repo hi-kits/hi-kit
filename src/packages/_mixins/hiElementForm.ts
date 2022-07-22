@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: liulina
+ * @Date: 2022-07-22 09:32:54
+ * @LastEditors: liulina
+ * @LastEditTime: 2022-07-22 15:38:15
+ */
 /**
  * 将mixin应用于构造函数
  * 来源于 {@link https://www.typescriptlang.org/docs/handbook/mixins.html | TypeScript Documentation }

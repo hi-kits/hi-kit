@@ -8,11 +8,11 @@
 // 核心库
 import { HIElement, customElement, attr, observable, ref, css,  html } from 'hi-element';
 // 混入基础功能
-import { HIElementBase } from '../../packages/_mixins/hiElementBase';
+import { HIElementBase } from '@packages/_mixins/hiElementBase';
 // 样式助手
-import { Style } from '../../utils/style/style';
+import { Style } from '@utils/style/style';
 // 日期
-import { DateServices } from '../../utils/date.services'
+import { DateServices } from '@utils/date.services'
 
 // 样式
 const styles = css`

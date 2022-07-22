@@ -8,8 +8,8 @@
  */
 import { HIElement, customElement, attr, when, ref, html } from 'hi-element';
 import { timePickerStyle as styles } from './time-picker.style';
-import '../../currency/button/button';
-import '../../feedback/popover/popover';
+import '@currency/button/button';
+import '@feedback//popover/popover';
 import  { HiTimePane } from './time-pane/time-pane';
 
 const template = html<HiTimePicker>`

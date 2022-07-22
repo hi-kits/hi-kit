@@ -4,10 +4,10 @@
  * @Author: sueRimn
  * @Date: 2022-06-09 15:44:00
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-03 18:55:36
+ * @LastEditTime: 2022-07-22 11:24:51
  */
 import { HIElement, customElement, attr, observable, ref, when, html } from 'hi-element';
-import { HiPopcon } from './popcon/popcon';
+import { HiPopcon } from './popcon';
 
 import { PopoverStyles as styles } from './popover.style';
 declare const window: any;

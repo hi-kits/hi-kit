@@ -4,14 +4,14 @@
  * @Author: liulina
  * @Date: 2022-06-20 18:27:46
  * @LastEditors: liulina
- * @LastEditTime: 2022-07-12 15:57:34
+ * @LastEditTime: 2022-07-22 14:06:57
  */
 import { HIElement, customElement, attr, html, ValueConverter, ref, when } from 'hi-element';
 import { datePaneStyle as styles } from './date-pane.style';
-import type { HiButton } from '../../../currency/button/button';
+import type { HiButton } from '@currency/button/button';
 import { DateUtils } from '../_util';
 import type { DatePaneType } from '../_dateType';
-import type { HiTimePane } from '../../time-picker';
+import type { HiTimePane } from '@entry/time-picker';
 
 const template = html<HiDatePane>`
   <div class="date-pane" id="date-pane">
@@ -197,14 +197,16 @@ export class HiDatePane extends HIElement {
   // 是否展示timePicker
   @attr({ mode: 'boolean' }) enableTimePicker: boolean = false;
   enableTimePickerChanged() {
-    this.timepicker.selectedTime = this.timepickValue;
-    this.timepicker.dispatchEvent(
-      new CustomEvent('change', {
-        detail: {
-          value: this.timepickValue,
-        }
-      })
-    );
+    if (this.timepickValue && this.timepicker) {
+      this.timepicker.selectedTime = this.timepickValue;
+      this.timepicker.dispatchEvent(
+        new CustomEvent('change', {
+          detail: {
+            value: this.timepickValue,
+          }
+        })
+      );
+    }
   }
   // DOM ref
   timepicker: HiTimePane;

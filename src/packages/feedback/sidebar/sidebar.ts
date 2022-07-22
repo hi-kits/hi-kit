@@ -9,13 +9,13 @@
 // 核心库
 import { customElement, attr, css,  html } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 样式助手
-import { Style } from '../../../utils/style';
+import { Style } from '@utils/style';
 // 配置文件
-import { hiConfigStyle } from '../../config';
+import { hiConfigStyle } from '@packages/config';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 
 // 样式文件
 const styles = css`

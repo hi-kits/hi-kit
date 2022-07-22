@@ -8,7 +8,7 @@
 // 核心库
 import { customElement, attr, css,  html, when } from 'hi-element';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 样式文件
 import { SegmentedStyles as styles } from "./segmented.style";
 // 模版文件

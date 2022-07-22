@@ -8,11 +8,11 @@
 // 核心库
 import { customElement, attr, ref, css, html, observable } from 'hi-element';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 样式助手
-import { Style } from '../../../utils/style';
+import { Style } from '@utils/style';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 样式文件
 import { TabsStyles as styles } from "./tabs.style";
 // 模版文件

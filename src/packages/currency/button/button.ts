@@ -8,7 +8,7 @@
 // 核心库
 import { customElement, attr, observable} from 'hi-element';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 样式文件
 import { ButtonStyles as styles } from './button.style';
 // 模版文件

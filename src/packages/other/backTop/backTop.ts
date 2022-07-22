@@ -8,16 +8,16 @@
 // 核心库
 import { customElement, html, attr, when, ref, observable } from 'hi-element';
 // 混入基础功能
-import { HIElementBase } from '../../_mixins/hiElementBase';
+import { HIElementBase } from '@mixins/hiElementBase';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
+import { EventUtil } from '@utils/event';
 // 获取滚动条位置
-import { GetPageScroll } from '../../../utils/browser/getPageScroll';
+import { GetPageScroll } from '@utils/browser/getPageScroll';
 // 样式文件
 import { BackTopStyles as styles } from "./backTop.style";
 // 依赖组件
-import { HiButton } from "../../currency/button";
-import { HiIcon } from "../../currency/icon";
+import { HiButton } from "@currency/button";
+import { HiIcon } from "@currency/icon";
 
 // 模版文件
 const template = html<HiBackTop>`

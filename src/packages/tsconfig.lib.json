@@ -1,0 +1,63 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "outDir": "esm",
+    "importsNotUsedAsValues": "error",
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "importHelpers": true,
+    "strictPropertyInitialization": false,
+    "target": "es2015",
+    "module": "ESNext",
+    "types": [
+        "webpack-env",
+        "web-ie11"
+    ],
+    "lib": [
+      "DOM",
+      "es2017",
+      "ES2016.Array.Include"
+    ],
+     //解析非相对模块名的基准目录 "./"
+    "baseUrl": "./",
+    //模块名到基于baseUrl的路径映射的列表
+    "paths": {
+      // "@utils": [ "module/_utils/" ],
+      "@utils/*": [ "module/_utils/*" ],
+      // "@packages": [ "module" ],
+      "@packages/*": [ "module/*" ],
+      // "@mixins": [ "module/_mixins" ],
+      "@mixins/*": [ "module/_mixins/*" ],
+      // "@data": [ "module" ],
+      "@data/*": [ "module/*" ],
+      // "@feedback": [ "module" ],
+      "@feedback/*": [ "module/*" ],
+      // "@currency": [ "module" ],
+      "@currency/*": [ "module/*" ],
+      // "@entry": [ "module" ],
+      "@entry/*": [ "module/*" ],
+    },
+   },
+    "include": ["module/**/*"],
+    "exclude": ["esm","dts"],
+    // "tsc-alias": {
+    //   "verbose": false,
+    //   "resolveFullPaths": true,
+    //   "replacers": {
+    //     "@mixins": {
+    //       "enabled": true,
+    //       "file": "../_mixins"
+    //     },
+    //     "@packages": {
+    //       "enabled": true,
+    //       "file": ".."
+    //     }
+    //   }
+    // }
+}

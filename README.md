@@ -2,7 +2,7 @@
 <img src="./examples/logo.svg" alt="KITS" width="300" >
 
 ### a UI based on web compoents.
-# hi-kit
+# hi-kits
 
 </div>
 
@@ -23,7 +23,7 @@
 ## 安装
 
 ```shell
-npm i hi-kit
+npm i hi-kits
 ```
 
 ### Setting up the hit-kit for development
@@ -32,7 +32,7 @@ Initialize repo:
 
 ```sh
 git clone https://github.com/hi-kits/hi-kit.git
-cd hi-kit
+cd hi-kits
 npm install
 ```
 

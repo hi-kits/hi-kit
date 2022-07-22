@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: liulina
+ * @Date: 2022-07-22 09:33:40
+ * @LastEditors: liulina
+ * @LastEditTime: 2022-07-22 09:37:02
+ */
 /**
  * 将mixin应用于构造函数
  * 来源于 {@link https://www.typescriptlang.org/docs/handbook/mixins.html | TypeScript Documentation }
@@ -9,7 +17,7 @@
  */
 import { HIElement, attr } from 'hi-element';
 // 样式助手
-import { Style } from '../../utils/style';
+import { Style } from '@utils/style';
 export class HIElementBase extends HIElement {
     // ------------------ 构造函数 ------------------
     // ------------------ 参数 ------------------

@@ -9,10 +9,10 @@
 // 核心库
 import { HIElement, customElement, html, attr, ref, observable } from 'hi-element';
 // 混入基础功能
-import { HIElementForm } from '../../_mixins/hiElementForm';
+import { HIElementForm } from '@mixins/hiElementForm';
 // 事件处理
-import { EventUtil } from '../../../utils/event';
-import { Style } from '../../../utils/style';
+import { EventUtil } from '@utils/event';
+import { Style } from '@utils/style';
 // 样式文件
 import { RadioStyles as styles } from "./radio.style";
 

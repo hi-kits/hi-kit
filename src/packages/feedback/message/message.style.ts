@@ -8,9 +8,9 @@
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfigStyle } from "../../config";
+import { hiConfigStyle } from "@packages/config";
 // 样式助手
-import { display } from '../../../utils/style';
+import { display } from '@utils/style';
 // 样式
 export const MessageStyles = css`
 ${hiConfigStyle()}

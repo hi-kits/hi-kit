@@ -7,7 +7,7 @@
  * @LastEditTime: 2022-07-12 16:09:49
  */
 import { css } from 'hi-element';
-import { hiConfig } from '../../config';
+import { hiConfig } from '@packages/config';
 
 export const UploadStyles = css`
   /* Reset */

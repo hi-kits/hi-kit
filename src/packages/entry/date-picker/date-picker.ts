@@ -10,8 +10,8 @@ import { HIElement, customElement, attr, when, ref, slotted, html, ValueConverte
 import { datePickerStyle as styles } from './date-picker.style';
 import { HiDatePane } from './date-pane/date-pane';
 import { HiDateRangePane } from './date-range-pane/date-range-pane';
-import '../../currency/button/button';
-import '../../feedback/popover/popover';
+import '@currency/button/button';
+import '@feedback//popover/popover';
 import { DateUtils } from './_util';
 import type { DatePaneType } from './_dateType';
 

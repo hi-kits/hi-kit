@@ -4,12 +4,12 @@
  * @Author: liulina
  * @Date: 2022-06-30 19:20:53
  * @LastEditors: liulina
- * @LastEditTime: 2022-06-30 19:29:05
+ * @LastEditTime: 2022-07-22 11:25:19
  */
 // 核心库
 import { css } from 'hi-element';
 // 配置文件
-import { hiConfigStyle } from '../../../config';
+import { hiConfigStyle } from '@packages/config';
 export const PopconStyles = css`
 ${hiConfigStyle()}
 :host{
